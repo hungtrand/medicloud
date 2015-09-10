@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if (gt IE 8)]><!-->
+<html lang="en">
+    <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <title>triangular 2.0.1 | Source folder</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <link rel="icon" type="image/x-icon" href="assets/images/favicons/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicons/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicons/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/images/favicons/apple-touch-icon-60x60-precomposed.png">
+        <link rel="stylesheet" href="assets/css/main.css">
+    </head>
+    <body class="bs-docs-home ">
+        <header class="navbar navbar-default navbar-fixed-top bs-docs-nav" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="index.html" class="navbar-brand">triangular</a>
+                </div>
+                <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Getting Started</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="introduction.html">
+                                    Introduction
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="download.html">
+                                    Download
+                                </a>
+                                </li>
+                                <li class="active">
+                                    <a href="source.html">
+                                    Source folder
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="demo.html">
+                                    Demo folder
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="extras.html">
+                                    Extras folder
+                                </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customisation</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="modules.html">
+                                    Modules
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="themes.html">
+                                    Colors &amp; Themes
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="typography.html">
+                                    Typography
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="logo.html">
+                                    Logo &amp; Name
+                                </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Triangular</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="css.html">
+                                    CSS
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="elements.html">
+                                    Elements
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="translating.html">
+                                    Translating
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="directives.html">
+                                    Directives
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="migration.html">
+                                    Migration 1.0 -&gt; 2.0
+                                </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="rest-server.html">
+                    Rest Server
+                </a>
+                        </li>
+                        <li>
+                            <a href="videos.html">
+                    Tutorials
+                </a>
+                        </li>
+                        <li>
+                            <a href="changelog.html">
+                    Changelog
+                </a>
+                        </li>
+                        <li>
+                            <a href="support.html">
+                    Support
+                </a>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-right">
+                        <a href="http://themeforest.net/item/triangular-material-design-admin-template-angularjs/11711437&ref=oxygenna" target="_blank" class="btn btn-success"><i class="fa fa-shopping-cart"></i> Purchase</a>
+                    </form>
+                </nav>
+            </div>
+        </header>
+        <div class="bs-header" id="content">
+            <div class="container">
+                <h1>Source folder</h1>
+                <p>How to get started setting up the build found in the source folder</p>
+            </div>
+        </div>
+        <div id="online-docs-warning" class="alert alert-info text-center">
+            <div class="container">
+                <strong>Online Docs Available</strong>
+                Looks like you are looking at the offline docs. You can find possibly more up to date docs <a target="_blank" href="http://help.oxygenna.com/angular/triangular">online here</a>
+            </div>
+        </div>
+        <div class="container bs-docs-container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="bs-sidebar hidden-print affix-top" role="complementary">
+                        <ul class="nav bs-sidenav">
+                            <li><a href="#the-source-files">The source files</a>
+                                <ul class="nav">
+                                    <li><a href="#introduction">Introduction</a>
+                                    </li>
+                                    <li><a href="#gulp-angular-build-system">Gulp Angular build system</a>
+                                    </li>
+                                    <li><a href="#folder-and-file-structure">Folder and File structure</a>
+                                    </li>
+                                    <li><a href="#module-structure">Module structure</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#setting-up-gulp">Setting up Gulp</a>
+                                <ul class="nav">
+                                    <li><a href="#installing-node-js">Installing Node.js</a>
+                                    </li>
+                                    <li><a href="#checking-node-is-installed-and-working">Checking node is installed and working</a>
+                                    </li>
+                                    <li><a href="#getting-the-build-system-ready">Getting the build system ready</a>
+                                    </li>
+                                    <li><a href="#install-node-modules">Install node modules</a>
+                                    </li>
+                                    <li><a href="#install-bower-packages">Install bower packages</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#running-a-development-server">Running a development server</a>
+                                <ul class="nav">
+                                    <li><a href="#start-a-development-server">Start a development server</a>
+                                    </li>
+                                    <li><a href="#browsersync">Browsersync</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#creating-a-production-build">Creating a production build</a>
+                                <ul class="nav">
+                                    <li><a href="#running-a-production-server">Running a production server</a>
+                                    </li>
+                                    <li><a href="#running-a-production-build">Running a production build</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="bs-docs-section">
+                        <h1 id="the-source-files">The source files</h1>
+                        <h2 id="introduction">Introduction</h2>
+                        <p>Once you have <a href="download.html">downloaded and unzipped</a> the main template download zip.</p>
+                        <p>You will find several folders have been created, one of which will be a folder called source.</p>
+                        <p>This is where you will find the main <a href="http://gulpjs.com/">gulp</a> build and angularjs source files.</p>
+                        <h2 id="gulp-angular-build-system">Gulp Angular build system</h2>
+                        <p>The gulp build system was generated using the <a href="https://github.com/Swiip/generator-gulp-angular">Yeoman Gulp Angular</a> generator.</p>
+                        <p>Generator offers a great start to creating any AngularJS app becuas it incudes the following:</p>
+                        <ul>
+                            <li>useref : allow configuration of your files in comments of your HTML file</li>
+                            <li>ngAnnotate : convert simple injection to complete syntax to be minification proof</li>
+                            <li>uglify : optimize all your JavaScript</li>
+                            <li>csso : optimize all your CSS</li>
+                            <li>rev : add a hash in the file names to prevent browser cache problems</li>
+                            <li>watch : watch your source files and recompile them automatically</li>
+                            <li>jshint : JavaScript code linter</li>
+                            <li>Unit test (karma) : out of the box unit test configuration with karma</li>
+                            <li>e2e test (protractor) : out of the box e2e test configuration with protractor</li>
+                            <li>browser sync : full-featured development web server with livereload and devices sync</li>
+                            <li>angular-templatecache : all HTML partials will be converted to JS to be bundled in the application</li>
+                        </ul>
+                        <p>The generator was also built using the <a href="https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/pub">Best Practice Recommendations for Angular App Structure</a>
+                        </p>
+                        <h2 id="folder-and-file-structure">Folder and File structure</h2>
+                        <p>Inside the source folder you will see a folder structure like this:</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Folder / File</th>
+                                    <th style="text-align:left">Contents</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>.bowerrc</td>
+                                    <td style="text-align:left">Sets folder to install bower components</td>
+                                </tr>
+                                <tr>
+                                    <td>.editorconfig</td>
+                                    <td style="text-align:left">Sets editor coding standards</td>
+                                </tr>
+                                <tr>
+                                    <td>.jshintrc</td>
+                                    <td style="text-align:left">Sets jshint configuration</td>
+                                </tr>
+                                <tr>
+                                    <td>.yo-rc.json</td>
+                                    <td style="text-align:left">Yeoman config</td>
+                                </tr>
+                                <tr>
+                                    <td>bower.json</td>
+                                    <td style="text-align:left">Lists all packages to be installed by bower</td>
+                                </tr>
+                                <tr>
+                                    <td>gulpfile.js</td>
+                                    <td style="text-align:left">Main gulp file</td>
+                                </tr>
+                                <tr>
+                                    <td>karma.conf.js</td>
+                                    <td style="text-align:left">Karma unit test config</td>
+                                </tr>
+                                <tr>
+                                    <td>package.json</td>
+                                    <td style="text-align:left">Lists all packages to be installed by node package manager (npm)</td>
+                                </tr>
+                                <tr>
+                                    <td>protractor.conf.js</td>
+                                    <td style="text-align:left">Protractor end to end config</td>
+                                </tr>
+                                <tr>
+                                    <td>e2e/</td>
+                                    <td style="text-align:left">Protractor end to end test folder</td>
+                                </tr>
+                                <tr>
+                                    <td>gulp/</td>
+                                    <td style="text-align:left">Contains gulp build source files</td>
+                                </tr>
+                                <tr>
+                                    <td>src/</td>
+                                    <td style="text-align:left">Contains the triangular app code (JS/SASS/HTML/ETC)</td>
+                                </tr>
+                                <tr>
+                                    <td>test/</td>
+                                    <td style="text-align:left">Karma unit test folder</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Inside the source folder you will find the following folders and files</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Folder / File</th>
+                                    <th style="text-align:left">Contents</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>app/</td>
+                                    <td style="text-align:left">Contains the main app files</td>
+                                </tr>
+                                <tr>
+                                    <td>assets/</td>
+                                    <td style="text-align:left">Contains app image files</td>
+                                </tr>
+                                <tr>
+                                    <td>404.tmpl.html</td>
+                                    <td style="text-align:left">404 page html</td>
+                                </tr>
+                                <tr>
+                                    <td>500.tmpl.html</td>
+                                    <td style="text-align:left">500 page html</td>
+                                </tr>
+                                <tr>
+                                    <td>favicon.png</td>
+                                    <td style="text-align:left">Favourite icon</td>
+                                </tr>
+                                <tr>
+                                    <td>index.html</td>
+                                    <td style="text-align:left">Main index html file</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Inside the app folder you will find the following files and folders</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Folder / File</th>
+                                    <th style="text-align:left">Contents</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>examples/</td>
+                                    <td style="text-align:left">Includes all the example pages used in the app</td>
+                                </tr>
+                                <tr>
+                                    <td>il8n/</td>
+                                    <td style="text-align:left">Contains app translation files</td>
+                                </tr>
+                                <tr>
+                                    <td>seed-module</td>
+                                    <td style="text-align:left">Contans an example module to use in your own app</td>
+                                </tr>
+                                <tr>
+                                    <td>triangular/</td>
+                                    <td style="text-align:left">The main triangular module</td>
+                                </tr>
+                                <tr>
+                                    <td>app.module.js</td>
+                                    <td style="text-align:left">The main app module file</td>
+                                </tr>
+                                <tr>
+                                    <td>app.scss</td>
+                                    <td style="text-align:left">The main app scss file</td>
+                                </tr>
+                                <tr>
+                                    <td>config.chartjs.js</td>
+                                    <td style="text-align:left">Config to make chartjs plugin use MD colors</td>
+                                </tr>
+                                <tr>
+                                    <td>config.route.js</td>
+                                    <td style="text-align:left">Config to set up your app routes</td>
+                                </tr>
+                                <tr>
+                                    <td>config.translate.js</td>
+                                    <td style="text-align:left">Config to set your app languages</td>
+                                </tr>
+                                <tr>
+                                    <td>config.triangular.layout.js</td>
+                                    <td style="text-align:left">Config to set triangulars default page layouts</td>
+                                </tr>
+                                <tr>
+                                    <td>config.triangular.settings.js</td>
+                                    <td style="text-align:left">Config to set triangulars default settings</td>
+                                </tr>
+                                <tr>
+                                    <td>config.triangular.themes.js</td>
+                                    <td style="text-align:left">Config to set up triangulars theme colors and themes</td>
+                                </tr>
+                                <tr>
+                                    <td>value.googlechart.js</td>
+                                    <td style="text-align:left">Adds a value used by google charts plugin</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="module-structure">Module structure</h2>
+                        <p>Each module in triangular uses John Papa&#39;s recommended structure and naming conventions.</p>
+                        <p>To find out how this structure works we will describe one of the more simple modules below, the introduction module.</p>
+                        <p>This module justs adds one menu item and one page to the site.</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Folder / File</th>
+                                    <th style="text-align:left">Contents</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>il8n/</td>
+                                    <td style="text-align:left">Translation json files</td>
+                                </tr>
+                                <tr>
+                                    <td>introduction.config.js</td>
+                                    <td style="text-align:left">Sets up the modules routes and adds menus to triangular</td>
+                                </tr>
+                                <tr>
+                                    <td>introduction.controller.js</td>
+                                    <td style="text-align:left">Controller for the introduction.tmpl.html page</td>
+                                </tr>
+                                <tr>
+                                    <td>introduction.module.js</td>
+                                    <td style="text-align:left">Module js file</td>
+                                </tr>
+                                <tr>
+                                    <td>introduction.tmpl.html</td>
+                                    <td style="text-align:left">Introduction page HTML</td>
+                                </tr>
+                                <tr>
+                                    <td>introduction.tmpl.scss</td>
+                                    <td style="text-align:left">Introduction page SCSS for CSS styling</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h1 id="setting-up-gulp">Setting up Gulp</h1>
+                        <p>In order you run the gulp build system for the template you will need to install node.js on your system.</p>
+                        <p>Follow the instructions below to install node.js on your system.</p>
+                        <h2 id="installing-node-js">Installing Node.js</h2>
+                        <p>We recommend installing the latest version of node. At the time of writing this was (0.12.6).</p>
+                        <p>You can download the latest of node.js <a href="https://nodejs.org/download/">from here</a> alternatively there are <a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">guides on how to install using a package manager</a>.</p>
+                        <h2 id="checking-node-is-installed-and-working">Checking node is installed and working</h2>
+                        <p>Once you have node.js installed on your system you should be able to go to your command line and type</p>
+                        <pre><code>npm version</code></pre>
+                        <p>and see something like this</p>
+                        <pre><code>$ npm version
+{ http_parser: &#39;1.0&#39;,
+  node: &#39;0.10.28&#39;,
+  v8: &#39;3.14.5.9&#39;,
+  ares: &#39;1.9.0-DEV&#39;,
+  uv: &#39;0.10.27&#39;,
+  zlib: &#39;1.2.3&#39;,
+  modules: &#39;11&#39;,
+  openssl: &#39;1.0.1g&#39;,
+  npm: &#39;2.0.0-alpha-5&#39;,
+  triangular: &#39;0.0.0&#39; }</code></pre>
+                        <h2 id="getting-the-build-system-ready">Getting the build system ready</h2>
+                        <p>In order to finish the set up of the build system you just need to run 2 simple commands from the root directory of your unzipped source files.</p>
+                        <h2 id="install-node-modules">Install node modules</h2>
+                        <p>Run the following command from the root of your source files to install the node modules listed in packages.json</p>
+                        <pre><code>npm install</code></pre>
+                        <h2 id="install-bower-packages">Install bower packages</h2>
+                        <p>If you do not have bower installed run</p>
+                        <pre><code>npm -g install bower</code></pre>
+                        <div class="alert alert-info" role="alert">
+                            <strong>Note</strong> - You will need git installed for bower to work <a href="https://git-scm.com/">Git website</a>
+                        </div>
+                        <p>Run the following command from the root of your source files to install the bower packages listed in bower.json</p>
+                        <pre><code>bower install</code></pre>
+                        <h1 id="running-a-development-server">Running a development server</h1>
+                        <p>Once you have gulp all ready to go you can start developing.</p>
+                        <p>To do this you just need to start a local development server</p>
+                        <h2 id="start-a-development-server">Start a development server</h2>
+                        <p>First make sure you have gulp installed globally</p>
+                        <p>npm -g install gulp</p>
+                        <p>Once you have bower packages and node modules installed you are ready to code. To start a development server just type.</p>
+                        <pre><code>gulp serve</code></pre>
+                        <p>This should automatically open up a browser window with the template running.</p>
+                        <h2 id="browsersync">Browsersync</h2>
+                        <p>Once the development server is up and running any changes you make to the HTML &amp; JS &amp; SASS files will be auto updated in your browser window.</p>
+                        <h1 id="creating-a-production-build">Creating a production build</h1>
+                        <h2 id="running-a-production-server">Running a production server</h2>
+                        <p>Before you run a production build you can test your production files first by running a local production server.</p>
+                        <p>Just run the command</p>
+                        <pre><code>gulp serve:dist</code></pre>
+                        <p>The local server that runs will now be running a built version of your site.</p>
+                        <h2 id="running-a-production-build">Running a production build</h2>
+                        <p>Once you are happy with your site you can initiate a build that will create a copy of the template that you can FTP to your web server.</p>
+                        <p>Just run the command</p>
+                        <pre><code>gulp build</code></pre>
+                        <p>This will initiate a build, once it has finished you will find your built files in a folder called dist that will have been created for you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="docs-footer" role="contentinfo">
+            <div class="container">
+                <ul class="bs-masthead-links pull-left">
+                    <li class="current-version">
+                        Currently v2.0.1
+                    </li>
+                    <li>
+                        <a href="changelog.html">Changelog</a>
+                    </li>
+                    <li>
+                        <a href="http://themeforest.net/user/oxygenna/portfolio" target="_blank">Our Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="http://www.oxygenna.com/contact" target="_blank">Contact Us</a>
+                    </li>
+                </ul>
+                <ul class="bs-masthead-links pull-right">
+                    <li>
+                        Made with <i class="fa fa-heart"></i> in Sitia, Greece
+                    </li>
+                </ul>
+                </li>
+        </footer>
+    </body>
+    <script src="assets/js/main.js"></script>
+</html>

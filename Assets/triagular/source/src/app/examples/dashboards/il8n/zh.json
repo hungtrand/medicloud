@@ -1,0 +1,71 @@
+{
+    "MENU": {
+        "DASHBOARDS": {
+            "DASHBOARDS": "仪表盘",
+            "GENERAL": "长",
+            "ANALYTICS": "析",
+            "SERVER": "服务器",
+            "WIDGETS": "东西",
+            "SOCIAL": "社会"
+        }
+    },
+    "DASHBOARDS": {
+        "GENERAL": {
+            "CONTACTS": "接触",
+            "CHAT": "聊天"
+        },
+        "ANALYTICS": {
+            "COMMENTS": "评论意见",
+            "TWEETS": "鸣叫",
+            "LIKES": "喜欢",
+            "REACH": "到达",
+            "PAGEVIEWS": "Pageviews&访问",
+            "REFERRALS": "转诊交通",
+            "SOCIAL": "网络的移交",
+            "LOCATION": "地点",
+            "DATE": "11/03/15-11/4/15"
+        },
+        "SERVER": {
+            "IP": "IP地址",
+            "MEMORY": "的记忆",
+            "DISK": "磁盘",
+            "LOCATION": "地点",
+            "REAL_TIME": "真正的时间",
+            "24HRS": "24小时",
+            "7DAYS": "7天",
+            "365DAYS": "365天",
+            "CPU": "中央处理器",
+            "BANDWIDTH": "宽带",
+            "DISKS": "磁盘",
+            "JOB": "东道工作队",
+            "STATUS": "服务器地位",
+            "CURRENTLY": "目前正在你的服务器",
+            "RUNNING": "跑",
+            "RESTART": "重新开始",
+            "SHUTDOWN": "关闭",
+            "USAGE": "每月的使用情况",
+            "LIMIT": "每月限制",
+            "TASKS": "目前的任务",
+            "DATE": "11/03/15-11/4/15",
+            "DISKUSAGE": "磁盘的使用"
+        },
+        "SOCIAL": {
+            "STATUS": {
+                "UPDATE": "更新你的地位",
+                "MIND": "什么你想什么呢?"
+            }
+        },
+        "WIDGETS": {
+            "MENU": {
+                "REFRESH": "刷新",
+                "DETAILS": "详细情况",
+                "SHARE": "分享",
+                "PRINT": "印"
+            },
+            "SALES": "销售",
+            "COMMENTS": "评论意见",
+            "SERVER_UPTIME": "服务器开始",
+            "FULLDATA": "全面的数据"
+        }
+    }
+}

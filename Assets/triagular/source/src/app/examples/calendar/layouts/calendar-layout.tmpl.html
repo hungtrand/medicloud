@@ -1,0 +1,15 @@
+<div layout="row" ng-controller="AdminController" flex class="full-height">
+    <!-- left sidebar -->
+    <md-sidenav layout class="admin-sidebar-left md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ui-view="sidebarLeft" ng-class="menuClass()" ng-mouseover="activateHover()" ng-mouseleave="removeHover()"></md-sidenav>
+
+    <!-- main content -->
+    <div layout="column" flex id="admin-panel" layout="column" flex>
+        <!-- loading animation -->
+        <tri-loader></tri-loader>
+
+        <!-- top toolbar -->
+        <md-toolbar class="admin-toolbar" md-theme="{{triSkin.elements.toolbar}}" ui-view="toolbar" ng-class="toolbarTypeClass()"></md-toolbar>
+
+        <div ui-view="content" layout="column" flex class="overflow-auto"></div>
+    </div>
+</div>

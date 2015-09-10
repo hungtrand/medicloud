@@ -1,0 +1,23 @@
+<div layout="row" ng-controller="AdminController" class="full-height">
+    <!-- left sidebar -->
+    <md-sidenav layout class="admin-sidebar-left md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ui-view="sidebarLeft" ng-class="menuClass()" ng-mouseover="activateHover()" ng-mouseleave="removeHover()"></md-sidenav>
+
+    <!-- main content -->
+    <div id="admin-panel" layout="column" flex>
+        <!-- loading animation -->
+        <tri-loader></tri-loader>
+
+        <!-- top toolbar -->
+        <md-toolbar ng-attr-md-scroll-shrink="{{toolbarShrink}}" class="admin-toolbar" md-theme="{{triSkin.elements.toolbar}}" ui-view="toolbar" ng-class="toolbarTypeClass()"></md-toolbar>
+        <!-- scrollable content -->
+        <md-content flex layout="column">
+            <!-- main view content  -->
+            <div admin-panel-content flex ui-view="content"></div>
+        </md-content>
+
+
+    </div>
+
+    <!-- right sidebar -->
+    <md-sidenav layout layout-fill class="md-sidenav-right md-whiteframe-z2" md-component-id="notifications" ui-view="sidebarRight"></md-sidenav>
+</div>
