@@ -1,0 +1,24 @@
+{
+    "MENU": {
+        "LAYOUTS": {
+            "TITLE": "Layouts",
+            "COMPOSER": "Compositor"
+        }
+    },
+    "EXAMPLES": {
+        "LAYOUTS": {
+            "OPTIONS": {
+                "SIDEMENU-SIZES": {
+                    "HIDDEN": "Escondido",
+                    "ICONS": "Ícones",
+                    "FULL": "Tamanho Completo"
+                },
+                "TOOLBAR-SIZES": {
+                    "DEFAULT": "Padrão",
+                    "MEDIUM": "Médio",
+                    "TALL": "De altura"
+                }
+            }
+        }
+    }
+}

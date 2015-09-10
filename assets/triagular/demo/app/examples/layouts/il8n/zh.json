@@ -1,0 +1,24 @@
+{
+    "MENU": {
+        "LAYOUTS": {
+            "TITLE": "布局",
+            "COMPOSER": "作曲家"
+        }
+    },
+    "EXAMPLES": {
+        "LAYOUTS": {
+            "OPTIONS": {
+                "SIDEMENU-SIZES": {
+                    "HIDDEN": "隐藏的",
+                    "ICONS": "偶像",
+                    "FULL": "全面规模"
+                },
+                "TOOLBAR-SIZES": {
+                    "DEFAULT": "违约",
+                    "MEDIUM": "中",
+                    "TALL": "高高的"
+                }
+            }
+        }
+    }
+}

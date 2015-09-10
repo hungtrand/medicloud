@@ -1,0 +1,71 @@
+{
+    "MENU": {
+        "DASHBOARDS": {
+            "DASHBOARDS": "Painéis",
+            "GENERAL": "Geral",
+            "ANALYTICS": "O google Analytics",
+            "SERVER": "Servidor",
+            "WIDGETS": "Widgets",
+            "SOCIAL": "Social"
+        }
+    },
+    "DASHBOARDS": {
+        "GENERAL": {
+            "CONTACTS": "Contactos",
+            "CHAT": "Bate-papo"
+        },
+        "ANALYTICS": {
+            "COMMENTS": "Comentários",
+            "TWEETS": "Tweets",
+            "LIKES": "Gosta de",
+            "REACH": "Chegar",
+            "PAGEVIEWS": "Page Views E Visitas",
+            "REFERRALS": "O Tráfego De Referência",
+            "SOCIAL": "Rede De Referências",
+            "LOCATION": "Localização",
+            "DATE": "11/03/15 - 11/4/15"
+        },
+        "SERVER": {
+            "IP": "Endereço IP",
+            "MEMORY": "Memória",
+            "DISK": "Disco",
+            "LOCATION": "Localização",
+            "REAL_TIME": "Tempo Real",
+            "24HRS": "24 Horas",
+            "7DAYS": "7 Dias",
+            "365DAYS": "365 Dias",
+            "CPU": "CPU",
+            "BANDWIDTH": "Largura de banda",
+            "DISKS": "Discos",
+            "JOB": "Host Fila De Trabalho",
+            "STATUS": "Status Do Servidor",
+            "CURRENTLY": "Seu servidor não está actualmente",
+            "RUNNING": "Execução",
+            "RESTART": "Reinicie",
+            "SHUTDOWN": "Encerrar",
+            "USAGE": "O Uso Mensal",
+            "LIMIT": "do limite mensal",
+            "TASKS": "Tarefas actuais",
+            "DATE": "11/03/15 - 11/4/15",
+            "DISKUSAGE": "O Uso Do Disco"
+        },
+        "SOCIAL": {
+            "STATUS": {
+                "UPDATE": "Atualize seu status",
+                "MIND": "O que está em sua mente?"
+            }
+        },
+        "WIDGETS": {
+            "MENU": {
+                "REFRESH": "Atualização",
+                "DETAILS": "Detalhes",
+                "SHARE": "Compartilhar",
+                "PRINT": "Imprimir"
+            },
+            "SALES": "Vendas",
+            "COMMENTS": "Comentários",
+            "SERVER_UPTIME": "Uptime Do Servidor",
+            "FULLDATA": "De Dados Completo"
+        }
+    }
+}
