@@ -1,0 +1,311 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Flat-Mate Website Template | Home :: w3layouts</title>
+		<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+		<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+		<link href="css/theme-style.css" rel='stylesheet' type='text/css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		</script>
+		<!----webfonts---->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Fauna+One' rel='stylesheet' type='text/css'>
+		<!----//webfonts---->
+		<!----requred-js-files---->
+	    <script src="js/jquery.min.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
+		<!----//requred-js-files---->
+	</head>
+	<body>
+		<!----start-bg---->
+		<div class="bg">
+			<!----start-container---->
+			<div class="container">
+				<!---- start-header---->
+				<div class="row header">
+					<div class="row">
+						<div class="col-md-6">
+							<!----start-logo---->
+							<div class="well logo">
+								<a href="#"><img src="images/logo.png" title="Flatmate" /></a>
+							</div>
+							<!----//End-logo---->
+						</div>
+						<div class="well col-md-6">
+							<!---start-header-right--->
+							<div class="login-info well header-right">
+								<p><i><a href="#">Have an Account ?</a></i><a class="login btn-primary" href="#">Login</a></p>
+							</div>
+							<!---//End-header-right--->
+						</div>
+					</div>
+				</div>
+					<!---- //End-header---->
+					<!-----slide-banner---->
+					<div class="well slide-banner row">
+						<div class="slide-banner-left col-md-8">
+							<span> </span>
+							<h1>Lorem ipsum dolor sit amet</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+							<p><a class="btn btn-primary btn-lg b-btn" href="#"> Read More</a></p>
+						</div>
+						<div class="well slide-banner-right col-md-4">
+							<img src="images/slider-img.png" class="img-responsive" alt="" /> 
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<!-----//slide-banner---->
+				</div>
+				</div>
+				<!----start-top-grids---->
+				<div class="top-grids">
+					<div class="container">
+						<div class="top-grid-left col-md-3">
+							<a href="#"><img src="images/icon2.png" class="img-responsive" title="doc" /></a>
+						</div>
+						<div class="top-grid-center col-md-7">
+							<h2>Lorem ipsum dolor sit amet</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						</div>
+						<div class="top-grid-right col-md-2">
+							<ul>
+								<li><a href="#"><span class="icon1"> </span></a></li>
+								<li><a href="#"><span class="icon2"> </span></a></li>
+								<div class="clearfix"> </div>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!----//End-top-grids---->
+				<!----start-mid-grids--->
+				<div class="mid-grids">
+					<div class="container">
+							<h3> The Modern Era of Web Designing </h3>
+							<p>We make wireframe ultra fast,leak proof</p>
+							<!-- Carousel -->
+					    	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+								<!-- Wrapper for slides -->
+								<div class="carousel-inner">
+								    <div class="item active">
+								    	<img src="images/slide2.png" alt="First slide">
+								    </div>
+								    <div class="item">
+								    	<img src="images/slide2.png" alt="Second slide">
+								    </div>
+								    <div class="item">
+								    	<img src="images/slide2.png" alt="three slide">
+								    </div>
+								</div>
+								<!-- Controls -->
+								<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+							    	<span class="glyphicon glyphicon-chevron-left"></span>
+								</a>
+								<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+							    	<span class="glyphicon glyphicon-chevron-right"></span>
+								</a>
+							</div><!-- /carousel -->
+					</div>
+				</div>
+				<!----start-mid-grids--->
+				<!---- start-add-light-box-script---->
+				<!-- Add fancyBox light-box -->
+				<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+						<script>
+							$(document).ready(function() {
+								$('.popup-with-zoom-anim').magnificPopup({
+									type: 'inline',
+									fixedContentPos: false,
+									fixedBgPos: true,
+									overflowY: 'auto',
+									closeBtnInside: true,
+									preloader: false,
+									midClick: true,
+									removalDelay: 300,
+									mainClass: 'my-mfp-zoom-in'
+							});
+						});
+				</script>
+				<!-----pop-up-grid---->
+								 <div id="small-dialog" class="mfp-hide">
+									<div class="pop_up">
+									 	<div class="payment-online-form-left">
+											<form>
+												<h4><span class="shipping"> </span>Shipping</h4>
+												<ul class="list-unstyled">
+													<li><input class="text-box-dark" type="text" value="Frist Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Frist Name';}"></li>
+													<li><input class="text-box-dark" type="text" value="Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Last Name';}"></li>
+												</ul>
+												<ul class="list-unstyled">
+													<li><input class="text-box-dark" type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"></li>
+													<li><input class="text-box-dark" type="text" value="Company Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Company Name';}"></li>
+												</ul>
+												<ul class="list-unstyled">
+													<li><input class="text-box-dark" type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}"></li>
+													<li><input class="text-box-dark" type="text" value="Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}"></li>
+													<div class="clear"> </div>
+												</ul>
+												<div class="clearfix"> </div>
+											<ul class="payment-type list-unstyled">
+												<h4><span class="payment"> </span> Payments</h4>
+												<li><span class="col_checkbox">
+													<input id="3" class="css-checkbox1" type="checkbox">
+													<label for="3" name="demo_lbl_1" class="css-label1"> </label>
+													<a class="visa" href="#"> </a>
+													</span>
+													
+												</li>
+												<li>
+													<span class="col_checkbox">
+														<input id="4" class="css-checkbox2" type="checkbox">
+														<label for="4" name="demo_lbl_2" class="css-label2"> </label>
+														<a class="paypal" href="#"> </a>
+													</span>
+												</li>
+												<div class="clearfix"> </div>
+											</ul>
+												<ul class="list-unstyled">
+													<li><input class="text-box-dark" type="text" value="Card Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Card Number';}"></li>
+													<li><input class="text-box-dark" type="text" value="Name on card" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name on card';}"></li>
+													<div class="clear"> </div>
+												</ul>
+												<ul class="list-unstyled">
+													<li><input class="text-box-light hasDatepicker" type="text" id="datepicker" value="Expiration Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Expiration Date';}"><em class="pay-date"> </em></li>
+													<li><input class="text-box-dark" type="text" value="Security Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Security Code';}"></li>
+													<div class="clear"> </div>
+												</ul>
+												<ul class="payment-sendbtns list-unstyled">
+													<li><input type="reset" value="Cancel"></li>
+													<li><input type="submit" value="Process order"></li>
+												</ul>
+												<div class="clearfix"> </div>
+											</form>
+										</div>
+						  			</div>
+								</div>
+								<!-----pop-up-grid---->
+				<!-- //End fancyBox light-box -->
+				<!---- //End-add-light-box-script---->
+				<!----start-price-tables----->
+				<div class="pricetables">
+					<div class="container">
+						<div class="pricetables-head">
+							<h2>A wireframe is the primitive skeleton of your website.</h2>
+							<p>Pick a plan from below to get started! Already 20000+ websites and webprojects have been successfully wireframed with HotGloo.</p>
+						</div>
+						<div class="col-md-4 pricetable">
+							<h3>Free</h3>
+							<ul>
+								<li><a class="frist-fea" href="#">$0/Month</a></li>
+								<li><a href="#">1 Project</a></li>
+								<li><a href="#">5 Members</a></li>
+								<li><a href="#">5 GB</a></li>
+							</ul>
+							<a class="price-btn1 popup-with-zoom-anim" href="#small-dialog">Sign Up</a>
+						</div>
+						<div class="col-md-4 pricetable pricetable1">
+							<h3>Professional</h3>
+							<span> </span>
+							<ul>
+								<li><a class="frist-fea" href="#">$50/Month</a></li>
+								<li><a href="#">20 Project</a></li>
+								<li><a href="#">50 Members</a></li>
+								<li><a href="#">100 GB</a></li>
+							</ul>
+							<a class="price-btn1 popup-with-zoom-anim" href="#small-dialog">Sign Up</a>
+						</div>
+						<div class="col-md-4 pricetable pricetable2">
+							<h3>Enterprise</h3>
+							<ul>
+								<li><a class="frist-fea" href="#">$90/Month</a></li>
+								<li><a href="#">1 Project</a></li>
+								<li><a href="#">5 Members</a></li>
+								<li><a href="#">5 GB</a></li>
+							</ul>
+							<a class="price-btn1 popup-with-zoom-anim" href="#small-dialog">Sign Up</a>
+						</div>
+					</div>
+				</div>
+				<!----//End-price-tables----->
+				<!---start-video----->
+				<div class="video">
+					<div class="container">
+						<h4>A wireframe is the primitive skeleton of your website.</h4>
+					</div>
+					<div class="video-bg">
+						<!----start-model-box---->
+						<a data-toggle="modal" data-target=".bs-example-modal-lg" href="#"> </a>
+						<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+						  <div class="modal-dialog modal-lg">
+						    <div class="modal-content light-box-info">
+						    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+						     <h3>Place Yours content here</h3>
+						     <iframe src="//player.vimeo.com/video/37191080" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+						    </div>
+						  </div>
+						</div>
+						<!----start-model-box---->
+					</div>
+				</div>
+				<!---//End-video----->
+				<!----start-contact---->
+				<div class="contact">
+					<div class="container">
+						<p><i> </i></p>
+						<div class="row">
+							<form>
+								<div class="col-md-6 contact-text-box">
+									<div>
+										<span>Name<label>*</label></span>
+										<input type="text" required/>
+									</div>
+									<div>
+										<span>Email<label>*</label></span>
+										<input type="text" required/>
+									</div>
+								</div>
+								<div class="col-md-6 contact-text-textarea">
+									<div>
+										<span>Message<label>*</label></span>
+										<textarea> </textarea>
+									</div>
+									<input class="btn btn-danger btn-lg" type="submit" Value="send" />
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!----//End-contact---->
+				<!----start-footer--->
+				<div class="footer">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 footer-left">
+								<ul>
+									<li><a href="#"><img src="images/footer-logo.png" title="logo" /></a></li>
+									<li><p>Template by <a href="http://w3layouts.com/">W3layouts</a></p></li>
+								</ul>
+							</div>
+							<div class="col-md-6 footer-right">
+								<ul>
+									<li><a class="twitter" href="#"><span> </span></a></li>
+									<li><a class="facebook" href="#"><span> </span></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!----//End-footer--->
+			<!----//End-container---->
+		
+	<!----start-bg---->
+	</body>
+</html>
+
