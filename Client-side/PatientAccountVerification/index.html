@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="hide-sidebar ls-bottom-footer" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Patient Account Verification</title>
+
+    <!-- Social  template CSS files -->
+    <link href="../Assets/Social/css/vendor.min.css" rel="stylesheet">
+
+    <link href="../Assets/Social/css/theme-core.min.css" rel="stylesheet">
+
+    <link href="../Assets/Social/css/module-essentials.min.css" rel="stylesheet" />
+    <link href="../Assets/Social/css/module-layout.min.css" rel="stylesheet" />
+    <link href="../Assets/Social/css/module-sidebar.min.css" rel="stylesheet" />
+    <link href="../Assets/Social/css/module-sidebar-skins.min.css" rel="stylesheet" />
+    <link href="../Assets/Social/css/module-navbar.min.css" rel="stylesheet" />
+    <!-- <link href="css/module-media.min.css" rel="stylesheet" /> -->
+    <link href="../Assets/Social/css/module-timeline.min.css" rel="stylesheet" />
+    <link href="../Assets/Social/css/module-cover.min.css" rel="stylesheet" />
+    <link href="../Assets/Social/css/module-chat.min.css" rel="stylesheet" />
+    <!-- <link href="css/module-charts.min.css" rel="stylesheet" /> -->
+    <link href="../Assets/Social/css/module-maps.min.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- If you don't need support for Internet Explorer <= 8 you can safely remove these -->
+    <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+    <!-- End of Social template CSS files -->
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" type="text/css" href="../Shared/css/branding.css">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body class="login">
+    <div id="content">
+        <div class="container-fluid">
+            <div class="formContainer">
+                <h1>Patient Account Verification</h1>
+                <div class="panel panel-default text-center">
+                    <div class="panel-header">
+                        <h3 class="logoMedicloud">
+                            <img src="../Assets/Logos/MediCloud_2_white_100x100.png" class="img-circle"><br />
+                            MEDICLOUD
+                        </h3>
+                    </div>
+                                        
+                    <div class="panel-body">
+                        <form role="form" class="form-horizontal text-left">
+                            <div class="box-body">
+                                Before we can set up your account. Please verify your identity: 
+                                <hr />
+                                <div class="form-group">
+                                    <label>Your Name: </label>
+                                    <br />
+                                    <label class="label label-info">{{ patient.FullName }}</label>
+                                    &nbsp;&nbsp;
+                                    <a href="#">This is not me <i class="fa fa-sign-out"></i></a>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="PatientBirthday">Birthday: </label>
+                                    <input type="date" name="PatientBirthday" class="form-control" id="PatientBirthday" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="PatientLast4SSN">Last 4 of Social Security Number: </label>
+                                    <input type="number" name="PatientLast4SSN" class="form-control" id="PatientLast4SSN" placeholder="Last 4 SSN"d required>
+                                </div>
+                            </div><!-- /.box-body -->
+
+                            <div class="box-footer text-center">
+                                <a href="index.html" class="btn btn-primary">Verify <i class="fa fa-fw fa-unlock-alt"></i></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <strong>Medicloud</strong> &copy; Copyright 2015
+    </footer>
+    <!-- // Footer -->
+    <!-- Inline Script for colors and config objects; used by various external scripts; -->
+    <script>
+    var colors = {
+        "danger-color": "#e74c3c",
+        "success-color": "#81b53e",
+        "warning-color": "#f0ad4e",
+        "inverse-color": "#2c3e50",
+        "info-color": "#2d7cb5",
+        "default-color": "#6e7882",
+        "default-light-color": "#cfd9db",
+        "purple-color": "#9D8AC7",
+        "mustard-color": "#d4d171",
+        "lightred-color": "#e15258",
+        "body-bg": "#f6f6f6"
+    };
+    var config = {
+        theme: "social-1",
+        skins: {
+            "default": {
+                "primary-color": "#16ae9f"
+            },
+            "orange": {
+                "primary-color": "#e74c3c"
+            },
+            "blue": {
+                "primary-color": "#4687ce"
+            },
+            "purple": {
+                "primary-color": "#af86b9"
+            },
+            "brown": {
+                "primary-color": "#c3a961"
+            }
+        }
+    };
+    </script>
+    <!-- Separate Vendor Script Bundles -->
+    <script src="../Assets/Social/js/vendor-core.min.js"></script>
+    <script src="../Assets/Social/js/vendor-forms.min.js"></script>
+
+    <!-- [social-1] Core Theme Script:
+        Includes the custom JavaScript for this theme/module;
+        The file has to be loaded in addition to the UI modules above;
+        module-bundle-main.js already includes theme-core.js so this should be loaded
+        ONLY when using the standalone modules; -->
+    <script src="../Assets/Social/js/theme-core.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+.formContainer {
+	margin: 100px 0;
+}
+
+h1 {
+	color: #fff;
+	text-align: center;
+}
+
+h3.logoMedicloud {
+	margin: 20px;
+	padding: 0;
+}
+
+form {
+	padding: 0px 25px;
+	margin: 0px 20px;
+}
