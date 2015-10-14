@@ -1,0 +1,16 @@
+#loginMedicloudLogo {
+	max-width: 500px;
+	height: 100px;
+	position: absolute;
+	top: 10%;
+	left: 40%;
+}
+.loginModal {
+	max-width: 500px;
+	padding: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -168.5px;
+	margin-left: -152.5px;
+}
