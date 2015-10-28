@@ -1,0 +1,64 @@
+.frb_clear {clear: both; display: block;}
+
+
+.frb_countdown.frb_countdown_clean-style {font-size: 60px; line-height: 60px; display: table; border-spacing: 20px;}
+.frb_countdown.frb_countdown_clean-style .frb_countdown_category_wrapper,.frb_countdown.frb_countdown_clean-style .frb_countdown_position {display: table-row;}
+.frb_countdown.frb_countdown_clean-style .frb_countdown_category {text-align: center; margin-bottom:10px; font-size:20px; line-height: 20px;}
+.frb_countdown.frb_countdown_clean-style .frb_countdown_category_wrapper > span,.frb_countdown.frb_countdown_clean-style .frb_countdown_digit,.frb_countdown.frb_countdown_clean-style .frb_countdown_separator  {display: table-cell;}
+
+
+
+.frb_countdown.frb_countdown_circle-style .frb_countdown_poition_wrap {display: inline-block;}
+.frb_countdown.frb_countdown_circle-style .frb_countdown_position, .frb_countdown.frb_countdown_circle-style .frb_countdown_category_wrapper {display: block;}
+.frb_countdown.frb_countdown_circle-style .frb_countdown_single_pos_wrap, .frb_countdown.frb_countdown_circle-style .frb_countdown_category {display: block; float: left;}
+.frb_countdown.frb_countdown_circle-style .frb_countdown_single_pos_wrap > span {position: relative;}
+.frb_countdown.frb_countdown_circle-style .frb_countdown_canvas_bg, .frb_countdown.frb_countdown_circle-style .frb_countdown_canvas_main {position: absolute; top:0px; left:0px; z-index:2;}
+.frb_countdown.frb_countdown_circle-style .frb_countdown_single_pos_wrap {min-width:200px; vertical-align: middle; min-height: 200px; margin:0 10px 0 10px;}
+
+ .frb_countdown.frb_countdown_circle-style { text-align: center;}
+ .frb_countdown.frb_countdown_circle-style .frb_countdown_category {display: block; float: none;}
+
+.frb_countdown_canvas_wrapper {display: table; width:200px; height: 200px;}
+.frb_countdown_canvas_wrapper > span {display: table-row;}
+.frb_countdown_canvas_wrapper > span > span {display: table-cell; vertical-align: middle;}
+.frb_countdown_canvas_wrapper > span > span > span {display: inline-block;}
+
+
+.frb_countdown.frb_countdown_flip-style {font-size: 60px; line-height: 60px; display: table; border-spacing: 20px;}
+.frb_countdown.frb_countdown_flip-style .frb_countdown_category_wrapper,.frb_countdown.frb_countdown_flip-style .frb_countdown_position {display: table-row;}
+.frb_countdown.frb_countdown_flip-style .frb_countdown_category {text-align: center; margin-bottom:10px; font-size:20px; line-height: 20px;}
+.frb_countdown.frb_countdown_flip-style .frb_countdown_category_wrapper > span,.frb_countdown.frb_countdown_flip-style .frb_countdown_single_pos_wrap  {display: table-cell;}
+.frb_countdown.frb_countdown_flip-style .frb_countdown_digit {border-spacing:0; position: absolute; top:0px; left:0px;  padding:15px 25px;}
+ .frb_countdown.frb_countdown_flip-style .frb_countdown_single_pos_wrap {-o-box-shadow: 0px 0px 5px 6px #000; -moz-box-shadow: 0px 0px 5px 6px #000; -webkit-box-shadow: 0px 0px 5px 6px #000; box-shadow: 2px 2px 8px 3px #999;}
+.frb_countdown.frb_countdown_flip-style .frb_countdown_flip_bg {position: relative; display: block;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; width:170px; height: 150px;  perspective: 1000px;}
+
+.frb_countdown.frb_countdown_flip-style .frb_countdown_flip_bg .frb_countdown_flip_bg .frb_countdown_flip_split {display: none;}
+[class^="frb_countdown_flip_floor"]{width:100%; display: block;}
+.frb_countdown_flip_floor_b1 {background: #000; opacity:0.2; filter:alpha(opacity = 20); height: 5px;}
+.frb_countdown_flip_floor_b2 {background: #fff; opacity:0.05; filter:alpha(opacity = 5); height:1px;}
+.frb_countdown_flip_floor_b3 {background: #000; opacity:0.3; filter:alpha(opacity = 30); height:3px;}
+.frb_countdown_flip_floor_b4 {background: #000; opacity:0.4; filter:alpha(opacity = 40); height:3px;}
+
+.frb_countdown_flip_split {display: block;position: absolute; top:50%; left: 0; width:100%; margin-top:-7px; z-index:50;}
+.frb_countdown_flip_split_box {display: block; height: 11px; border: transparent 1px solid; border-left:none; width:4px; position: absolute; top:0; left:0; z-index:50;}
+.frb_countdown_flip_split_box2 {display: block; height: 11px; border: transparent 1px solid; border-right:none; width:4px; position: absolute; top:0; right:0px; z-index:50;}
+.frb_countdown_flip_split_line {display: block; padding:0 5px; margin:6px 0; width:100%; height: 1px; width:100%; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+.frb_countdown_flip_split_line span {opacity:0.5; filter:alpha(opacity = 50); width:100%; display: block; height: 1px;}
+
+.frb_countdown_flip_card.frb_countdown_card_flipped {transform: rotateX( -180deg ); -moz-transform: rotateX( -180deg ); -webkit-transform: rotateX( -180deg ); -o-transform: rotateX( -180deg ); -ms-transform: rotateX( -180deg );}
+.frb_countdown_flip_card {position:absolute; top:0px; left:0px;  width:100%; height:100%; transform-style: preserve-3d; transform-origin: 0 50%; transform-style: preserve-3d; transition: transform 940ms; z-index:60;}
+.frb_countdown_flip_front {position: absolute; top:0; left:0px; height: 50%;  width:100%; backface-visibility: hidden; -moz-backface-visibility: hidden; -ms-backface-visibility: hidden; -webkit-backface-visibility: hidden; transform-style: preserve-3d; overflow:hidden; z-index: 54; }
+.frb_countdown_flip_back {position: absolute; top:50%; left:0px; height: 50%;  width:100%;  transform: rotateX( -180deg ); -moz-transform: rotateX( -180deg ); -webkit-transform: rotateX( -180deg ); -o-transform: rotateX( -180deg ); -ms-transform: rotateX( -180deg ); transform-origin: 0 0 0; backface-visibility: hidden;  -moz-backface-visibility: hidden; -ms-backface-visibility: hidden; -webkit-backface-visibility: hidden; transform-style: preserve-3d; z-index:55; overflow: hidden;}
+.frb_countdown_flip_holder {position: absolute; top:0; left:0px; height: 50%;  width:100%; transform-style: preserve-3d; overflow:hidden; z-index: 53;}
+
+.frb_countdown_flip_front > span:not(.frb_countdown_flip_split) {position: absolute; top:0; left: 0; width:100%; height:100%; padding: 15px 25px; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+.frb_countdown_flip_holder > span:not(.frb_countdown_flip_split) {position: absolute; top:0; left: 0; width:100%; height:100%; padding: 15px 25px; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+.frb_countdown_flip_back > span:not(.frb_countdown_flip_split) {position: absolute; top:-100%; left: 0; width:100%; height:100%; padding: 15px 25px; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+
+.frb_countdown_flip_holder .frb_countdown_flip_split {top:auto; bottom:-6px;}
+.frb_countdown_flip_front .frb_countdown_flip_split {top:auto; bottom:-6px;}
+.frb_countdown_flip_back .frb_countdown_flip_split {top:0;}
+
+

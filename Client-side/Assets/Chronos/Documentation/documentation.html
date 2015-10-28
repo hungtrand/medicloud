@@ -1,0 +1,727 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Documentation</title>
+<meta charset="UTF-8">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,400italic,300italic,300,800' rel='stylesheet' type='text/css'>
+<link href="style.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript">
+(function($){
+
+//		anchor-to-target scrolling
+
+$(document).on('click', '.sidebar .sidebar_block a[href^="#"]',function (e) {
+	e.preventDefault();
+	var target = this.hash,
+	$target = $(target);
+	$('html, body').stop().animate({'scrollTop': $target.offset().top}, 900);
+});
+
+})(jQuery);
+</script>
+
+</head>
+<body>
+	<div class="content_wrapper">
+			
+		<div class="sidebar">
+			<div class="sidebar-logo">
+				<img src="images/logo.jpg" alt="logo" />
+			</div>
+			<div class="sidebar_block">
+				<h5>1. General</h5>
+					<ul><li><a href="#fonts">1.1 Fonts</a></li>
+						<li><a href="#logo">1.2 Replacing the Logo</a></li>
+						<li><a href="#main_menu">1.3 Main Menu</a></li>
+						<li><a href="#footer">1.4 Footer</a></li>
+						</ul>
+				</div>
+			<div class="sidebar_block">
+				<h5>2. Home Page</h5>
+					<ul>
+						<li><a href="#home">2.1. Home - Slider</a></li>
+						<li><a href="#gallery">2.2. Gallery</a></li>
+						<li><a href="#guy">2.3. The Guy</a></li>
+						<li><a href="#port-hex">2.4. Portfolio - Hex</a></li>
+						<li><a href="#team">2.5. Our Team</a></li>
+						<li><a href="#history">2.6. History</a></li>
+						<li><a href="#slider">2.7. Video</a></li>
+						<li><a href="#testimonials">2.8. Testimonials</a></li>
+						<li><a href="#contact">2.9. Contact</a></li>
+					</ul>
+				</div>
+			<div class="sidebar_block">
+				<h5>3. Blog</h5>
+					<ul><li><a href="#blog">3.1 Blog Page</a></li>
+						<li><a href="#blogp">3.2 Blog Post</a></li>
+						<li><a href="#sidebar">3.3. Sidebar</a></li>
+						</ul>
+				</div>
+			</div> <!-- sidebar -->
+		
+		<div class="content">
+
+			<div class="content_element">
+				<h3 id="fonts">1.1 Fonts</h3>
+				<p>Fonts used in theme are:</p>
+				
+				<p>PT Sans<br />
+				 Font has been taken from <a href="http://www.google.com/fonts" target="_blank">Google Fons</a>, so feel free to replace it with any Google Font.<br />
+				</p>
+				
+				<p>Raleway<br />
+				 Font has been taken from <a href="http://www.google.com/fonts" target="_blank">Google Fons</a>, so feel free to replace it with any Google Font.<br />
+				</p>
+			</div><!-- Fonts -->
+				
+			<div class="content_element">
+				<h3 id="logo">1.2 Replacing the Logo</h3>
+				<p>To replace the default logo, you have to replace the image "<span class="mark">images/home/logo.png</span>" and "<span class="mark">images/home/logo2.png</span>" with your own image.</p>	
+			</div><!-- Replacing the Logo -->
+			
+			<div class="content_element">
+				<h3 id="main_menu">1.3 Main Menu</h3>
+				<p><b>To rename the main menu links</b> you have to open the html page that you want to change using some text editor software(notepad, wordpad, notepad++ etc.) and find<br />
+				<span class="mark">&lt;ul class="header_menu"&gt;&lt;ul&gt;</span> text.Beneath the text line you will find all of the menu items. Simply replace the text with your own.<br /><br />
+					Example:<br /><br />
+					Edit this: &lt;a href="index.html"&gt;<span class="mark">HOME</span>&lt;/a&gt;
+					</p>
+				<div class="separator margin-top margin-bottom"></div>
+			
+				<p><b>To change the page to where that item links</b> open the html page that you want to change using some text editor software (notepad, wordpad, notapad++ etc) and:<br /><br />
+				Example:<br /><br />
+				Edit this: &lt;a href="<span class="mark">index.html</span>"&gt;HOME&lt;/a&gt;
+					</p>
+				<div class="separator margin-top margin-bottom"></div>
+				
+				<p><b>To add a submenu to a link in the main menu</b> open the html page that you want to change using some text editor software (notepad, wordpad, notapad++ etc) and:<br /><br />
+				Example:<br /><br />
+				Add this:<br />
+<pre>
+&lt;li&gt;&lt;a href="index.html"&gt;HOME&lt;/a&gt;
+  <span class="mark">&lt;ul&gt;
+    &lt;li&gt;&lt;a href="yourlink.html"&gt;YOUR TITLE&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;</span>
+&lt;/li&gt;
+</pre>
+				If you want to add several links to the submenu, just copy<br /><span class="mark"> &lt;li&gt;&lt;a href="yourlink.html"&gt;YOUR TITLE&lt;/a&gt;&lt;/li&gt;</span><br /> between the &lt;ul&gt; elements that are marked mark in the example above.
+					</p>
+				</div><!-- Main Menu -->
+				
+			<div class="content_element">
+				<h3 id="footer">1.4 Footer</h3>
+								<p><b>To change elements in the first block</b>, open the html of the page you want to change using some text editor software (notepad, wordpad, notapad++ etc) and:<br /><br />
+					Example:<br /><br />
+					Edit this:<br /> 
+<pre>
+&lt;div class="col-md-4 pull-left"&gt;
+  &lt;div class="info_widget margin-bottom36 margin-right20"&gt;
+    &lt;h3 class="margin-bottom24 font-weight200 letters-white"&gt;<span class="mark">Chronos Info</span>&lt;/h3&gt;
+    &lt;p class="margin-bottom24"><span class="mark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna </span>&lt;a href="<span class="mark">#</span>"&gt;<span class="mark">aliqua</span>&lt;/a&gt;.&lt;/p&gt;
+    &lt;p&gt;<span class="mark">Lorem ipsum </span>&lt;a href="<span class="mark">#</span>"&gt;<span class="mark">dolor sit amet</span>&lt;/a&gt;<span class="mark">, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>&lt;/p&gt;
+  &lt;/div&gt;&lt;!-- info_widget --&gt;
+&lt;/div&gt;&lt;!-- span4 --&gt;
+</pre>
+Note that you have to replace "#" with appropriate link.
+					</p>	
+					
+				<div class="separator margin-top margin-bottom"></div>
+				
+				<p><b>To change elements in second block</b>, open the html of the page you want to change using some text editor software (notepad, wordpad, notapad++ etc) and:<br /><br />
+					Example:<br /><br />
+					Edit this:<br />
+<pre>
+&lt;div class="col-md-4 pull-left"&gt;
+  &lt;div class="info_widget margin-bottom36 margin-right10 margin-left10"&gt;
+    &lt;h3 class="margin-bottom24 font-weight200 letters-white"&gt;<span class="mark">Location</span>&lt;/h3&gt;
+    &lt;p class="margin-bottom24"&gt;<span class="mark">Cadbury road 172, 18000 </span>&lt;a href="<span class="mark">#</span>"&gt;<span class="mark">Brisbane</span>&lt;/a&gt;<span class="mark">, United Kingdom, Europe</span>&lt;/p&gt;
+    &lt;a href="<span class="mark">#</span>" class="block"&gt;<span class="mark">office@chronosblog.com</span>&lt;/a&gt;
+    &lt;a href="<span class="mark">#</span>" class="margin-bottom24 block"&gt;<span class="mark">http//www.chronosmag.org</span>&lt;/a&gt;
+    &lt;p&gt;&lt;a href="<span class="mark">#</span>"&gt;<span class="mark">Shindiri Studio</span>&lt;/a&gt;<span class="mark"> publishing Inc. 2013, </span>&lt;br /&gt;
+      <span class="mark">All rights reserved</span>
+      &lt;/p&gt;
+  &lt;/div&gt;&lt;!-- info_widget --&gt;
+&lt;/div&gt;&lt;!-- span4 --&gt;
+</pre><br /><br />
+Nothe trhat you have to link "#" with appropriate networks or services.<br /><br />
+					</p>
+				
+				<div class="separator margin-top margin-bottom"></div>
+				
+				<p><b>To change elements in third block</b>, open the html of the page you want to change using some text editor software (notepad, wordpad, notapad++ etc) and:<br /><br />
+					Example:<br /><br />
+					Edit this:<br />
+<pre>
+&lt;div class="margin-left24"&gt;
+  &lt;div class="flickr_widget margin-bottom12"&gt;
+    &lt;h3 class="font-weight200 margin-bottom24 letters-white"&gt;<span class="mark">Flickr</span>&lt;/h3&gt;
+    &lt;ul class="margin0 padding0 no-style flickr-feed"&gt;
+      
+    &lt;/ul&gt;
+    &lt;div class="clearfix"&gt;&lt;/div&gt;
+    &lt;/div&gt;&lt;!-- flickr_widget --&gt;
+&lt;/div&gt;
+</pre><br /><br />
+Note that you have to replace flicker script with your own, cince here is our default script.
+					</p>
+				
+
+				</div><!-- Footer -->
+
+			<div class="content_element">
+				<h3 id="home">Home - Slider</h3>
+
+				<p><b>To images and captions on slider</b>, open the html page and:<br /><br />
+				Example:<br /><br />
+				Edit this:<br />
+<pre>
+&lt;!-- slider --&gt; 
+&lt;div class="chr_slider relative" data-width="100%"&gt;
+  &lt;img src="<span class="mark">images/slider/1.jpg</span>" alt="<span class="mark">CHRONOS|ONE PAGE THEME</span>"&gt;
+  &lt;img src="<span class="mark">images/slider/2.jpg</span>" alt="<span class="mark">CHRONOS|ONE PAGE THEME</span>"&gt;
+  &lt;img src="<span class="mark">images/slider/3.jpg</span>" alt="<span class="mark">CHRONOS|ONE PAGE THEME</span>"&gt;
+  &lt;img src="<span class="mark">images/slider/2.jpg</span>" alt="<span class="mark">CHRONOS|ONE PAGE THEME</span>"&gt;
+&lt;/div&gt;
+ </pre>
+Note that "|" is divider for new row of text.<br />
+For more information about slider, visit <a href="http://fotoramajs.com/" target="_blank">developer page</a>.
+ </p>
+				<p><b>To edit thumbs</b>, open the html page and:<br /><br />
+				Example:<br /><br />
+				Edit this:<br />
+<pre>
+&lt;div class="nav-thumb-wrap text-left pull-left active-thumb"&gt;
+  &lt;a href="#" class="top-element border-box relative"&gt;
+    &lt;span class="t-image-top-left pull-left <span class="mark">iconcre-56</span> text-center"&gt;&lt;/span&gt;
+    &lt;span class="slide-description border-box"&gt;<span class="mark">LOREM IPSUM DOLOR SIT AMET EMPASIUM OWA RES</span>&lt;/span&gt;
+    &lt;span class="clearfix padding0"&gt;&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;div class="relative"&gt;
+    &lt;a href="#" class="bottom-element relative border-box"&gt;
+      &lt;span class="slide-title"&gt;<span class="mark">BRANDING &amp; DESIGN</span>&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="blogpost.html" class="arrow-image"&gt;&lt;img src="<span class="mark">images/home/arrow.png</span>" alt="" /&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+ </pre>
+ </p>
+Parallax effect for this slider is achieved with js file located in js/parallax_banner.js.<br />
+Overlay on slider (and used on many placves in theme), is added through class "pattern-overlay". Note that when you want to use it, you need its wrapper to have property "position : relative".
+					
+				</div><!-- Home  -->
+
+			<div class="content_element">
+				<h3 id="gallery">Portfolio Square</h3>	
+
+<p>
+To edit first blocks of text + icon, simply edit the following code:<br /><br />
+<pre>
+&lt;div class="col-md-4 padding-top48"&gt;
+  &lt;i class="<span class="mark">iconcre-svg12</span>"&gt;&lt;/i&gt;
+  &lt;h4 class="padding-top12"&gt;<span class="mark">Good Performance</span>&lt;/h4&gt;
+  &lt;div class="services-description padding-top12"&gt;
+    &lt;p&gt;<span class="mark">Tattooed art party reprehenderit, scenester pop-up hella vinyl. Mixtape kale chips anim, VHS skateboard fixie twee fanny pack fugiat veniam Tumblr.</span>&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</p>	
+<div class="separator margin-top margin-bottom"></div>
+				
+				<p><b>To change images in blocks</b>, open the html page and:<br /><br />
+				Example:<br /><br />
+				Edit this:<br />
+				<pre>
+&lt;li id="slide1"&gt;&lt;a href="#"&gt;
+  &lt;img class="image-static" src="<span class="mark">images/portfolio/1.jpg</span>" alt="" /&gt;
+  &lt;div class="image-double"&gt;&lt;img src="<span class="mark">images/portfolio/1-1.jpg</span>" alt="" /&gt;&lt;/div&gt;
+  &lt;div class="image-text"&gt;
+    &lt;h4&gt;<span class="mark">COCOBO</span>&lt;br /&gt;<span class="mark">WHAT YOU FEEL IS WHAT YOU DO</span>&lt;/h4&gt;
+    &lt;div class="gray-letters gray-border-top inline-block padding-bottom12 padding-top12"&gt;<span class="mark">Web design, logo, graphic</span>&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/a&gt;&lt;/li&gt;
+				</pre>
+</p>
+				
+<div class="separator margin-top margin-bottom"></div>
+
+<p><b>To edit elements on carousell</b>, open html page and:<br /><br />
+				Example:<br /><br />
+				Edit this:<br />
+<pre>
+&lt;div class="item active padding-top72" id="for1"&gt;
+  &lt;h2&gt;<span class="mark">Typography Tribute</span>&lt;/h2&gt;
+  &lt;p class="padding-top24"&gt;<span class="mark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</span>&lt;/p&gt;
+  &lt;div class="carousel-image-wrap pull-left col-md-8 padding-top48"&gt;
+    &lt;img src="<span class="mark">images/portfolio/1a.jpg</span>" alt="" /&gt;
+  &lt;/div&gt;
+  &lt;div class="carousel-description col-md-4 pull-left padding-top48 padding-left36"&gt;
+    &lt;ul class="margin0 no-style carousel-socials padding0"&gt;
+      &lt;li&gt;&lt;a class="fb-bg" href="<span class="mark">#</span>"&gt;&lt;img src="<span class="mark">images/portfolio/fb.png</span>" alt="" /&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class="tw-bg" href="<span class="mark">#</span>"&gt;&lt;img src="<span class="mark">images/portfolio/tw.png</span>" alt="" /&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class="yt-bg" href="<span class="mark">#</span>"&gt;&lt;img src="<span class="mark">images/portfolio/yt.png</span>" alt="" /&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class="pint-bg" href="<span class="mark">#</span>"&gt;&lt;img src="<span class="mark">images/portfolio/pint.png</span>" alt="" /&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class="clearfix"&gt;&lt;/div&gt;
+    &lt;div class="date-posted margin-top24"&gt;
+      &lt;i class="<span class="mark">icon-time icon-large</span> red-letters"&gt;&lt;/i&gt; &lt;span&gt;<span class="mark">23rd March, 2013</span>&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="post-category"&gt;
+      &lt;i class="<span class="mark">icon-tag icon-large</span> red-letters"&gt;&lt;/i&gt; &lt;a href="<span class="mark">#</span>"&gt;<span class="mark">Graphic, Stationary</span>&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="description-inner margin-top24"&gt;
+      &lt;p&gt;<span class="mark">Info:</span>&lt;/p&gt;
+      &lt;p&gt;<span class="mark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="margin-top24"&gt;<span class="mark">Download project: </span>&lt;a href="<span class="mark">#</span>"&gt;<span class="mark">project.rar</span>&lt;/a&gt;&lt;/div&gt;
+    &lt;div&gt;<span class="mark">Visit Website </span>&lt;a href="<span class="mark">#</span>"&gt;<span class="mark">http://www.typo.com</span>&lt;/a&gt;&lt;/div&gt;
+    
+  &lt;/div&gt;
+  &lt;div class="clearfix"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</p>
+			</div><!-- Gallery -->
+			
+			<div class="content_element">
+				<h3 id="guy">The Guy</h3>		
+				
+<p>
+	This whole page has pattern on its background. It has been added on page's ID through CSS. To replace pattern with your own, simply replace image in theguy folder.<br />
+	Additionaly, there is standard overlay pattern over it to make it darker.
+</p>
+
+					<p><b>To edit content</b>, open html page and:<br /><br />
+				Example:<br /><br />
+				Edit this:<br />
+<pre>
+&lt;div class="border-circle overflow-hidden margin-top48 margin-bottom48 relative"&gt;&lt;a class="inline-block border-circle" href="<span class="mark">images/theguy/1.jpg</span>" rel="prettyPhoto"&gt;
+  &lt;img class="border-circle inline-block" src="<span class="mark">images/theguy/1.jpg</span>" alt="" /&gt;
+  &lt;span class="hover-triangle"&gt;&lt;/span&gt;
+&lt;/a&gt;&lt;/div&gt;
+&lt;h2&gt;<span class="mark">Tomas McPhearson</span>&lt;/h2&gt;
+&lt;div class="text-caption"&gt;<span class="mark">web designer &amp; developer</span>&lt;/div&gt;
+&lt;div class="social-nets-icons margin-top24"&gt;
+  &lt;ul class="margin0 padding0 no-style gray-border-top"&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>"&gt;&lt;i class="<span class="mark">icon-facebook icon-large</span>"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>"&gt;&lt;i class="<span class="mark">icon-twitter icon-large</span>"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>"&gt;&lt;i class="<span class="mark">icon-linkedin icon-large</span>"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>"&gt;&lt;i class="<span class="mark">icon-youtube icon-large</span>"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="clearfix"&gt;&lt;/div&gt;
+  &lt;ul class="margin0 padding0 no-style gray-border-top"&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>"&gt;&lt;i class="<span class="mark">icon-phone icon-large</span>"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>"&gt;&lt;i class="<span class="mark">icon-mobile-phone icon-large</span>"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>"&gt;&lt;i class="<span class="mark">icon-picture icon-large</span>"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>"&gt;&lt;i class="<span class="mark">icon-envelope icon-large</span>"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+Note that you have to replace "#" with appropriate links to have it working.<br />
+				</p>
+					
+			</div><!-- The Guy -->
+			
+			<div class="content_element">
+				<h3 id="port-hex">Portfolio - Hex</h3>		
+				
+					<p><b>To change images and texts</b>, open html page and:<br /><br />
+				Example:<br /><br />
+				Edit this:<br />
+				<pre>
+&lt;div class="inline-block single-hexagon-element"&gt;
+  &lt;div class="hexagon pull-left"&gt;&lt;div class="hexagon-in1"&gt;&lt;div class="hexagon-in2 <span class="mark">first-element</span>"&gt;
+    &lt;a class="hover-effect" href="#" data-element="<span class="mark">2</span>"&gt;
+      &lt;div class="table-row full-width-container"&gt;
+        &lt;div class="table-cell full-width-container"&gt;
+          &lt;img src="images/general/more.png" alt="" /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+				</pre>
+				Note that image is inserted with class <span class="mark">first-element</span>. Best way to change it is to simply replace our image with your own.
+				<br /><br />
+Please note that opening for this element is same as on the Portfolio Square part of the page.
+
+
+				</p>
+
+			</div><!-- Portfolio hex -->
+
+			<div class="content_element">
+				<h3 id="team">Our Team</h3>
+				<p><b>To edit All Around Slider</b>, visit our page for information about the plugin on <a href="http://www.shindiristudio.com/content_slider/index.html" target="_blank">shindiristudio.com</a>.
+					</p>
+			<div class="separator margin-top margin-bottom"></div>
+				<p>
+<b>To edit simple team section</b>, in HTML edit the following:
+<pre>
+&lt;div class="col-md-4 padding-top24 padding-bottom24"&gt;
+  &lt;img src="<span class="mark">images/team/1.jpg</span>" alt="" /&gt;
+  &lt;div class="team-member-descript-wrap padding-top12"&gt;
+    &lt;div class="pull-left"&gt;
+      &lt;div class="margin-top12 team-member-name"&gt;<span class="mark">Joe Smith</span>&lt;/div&gt;
+      &lt;p&gt;<span class="mark">Graphic Designer</span>&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="pull-right"&gt;
+      &lt;div class="social-nets-wrap"&gt;
+        &lt;ul class="margin0 no-style team-socials padding0 padding-top12"&gt;
+          &lt;li&gt;&lt;a href="<span class="mark">#</span>"&gt;
+            &lt;img class="static" src="images/general/socials/fb.png" alt="" /&gt;&lt;img class="dynamic fb-bg" src="images/general/socials/white/fb.png" alt="" /&gt;
+          &lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="<span class="mark">#</span>"&gt;
+            &lt;img class="static" src="images/general/socials/tw.png" alt="" /&gt;&lt;img class="dynamic tw-bg" src="images/general/socials/white/tw.png" alt="" /&gt;
+          &lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="<span class="mark">#</span>"&gt;
+            &lt;img class="static" src="images/general/socials/in.png" alt="" /&gt;&lt;img class="dynamic in-bg" src="images/general/socials/white/in.png" alt="" /&gt;
+          &lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="<span class="mark">#</span>"&gt;
+            &lt;img class="static" src="images/general/socials/pin.png" alt="" /&gt;&lt;img class="dynamic pint-bg" src="images/general/socials/white/pin.png" alt="" /&gt;
+          &lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="<span class="mark">#</span>"&gt;
+            &lt;img class="static" src="images/general/socials/yt.png" alt="" /&gt;&lt;img class="dynamic yt-bg" src="images/general/socials/white/yt.png" alt="" /&gt;
+          &lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div class="clearfix"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="clearfix"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p class="padding-top12"&gt;<span class="mark">McSweeney's XOXO aliqua kale chips, salvia Bushwick mustache ut plaid tofu...</span>&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+				</p>
+				</div><!-- Team -->
+
+			<div class="content_element">
+				<h3 id="history">History</h3>
+				<p><b>To change texts and images,</b> open HTML and:<br /><br />
+				Example:<br /><br />
+				Edit this:<br />
+				<pre>
+&lt;div class="event-block-wrap border-box"&gt;
+  &lt;a class="relative border-box" href="<span class="mark">images/history/2.jpg</span>" rel="prettyPhoto"&gt;
+    &lt;img src="<span class="mark">images/history/2.jpg</span>" alt="" /&gt;
+    &lt;span class="magnifier"&gt;&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;div class="event-description"&gt;
+    &lt;h3&gt;&lt;span class="red-letters"&gt;<span class="mark">2004:</span>&lt;/span&gt; <span class="mark">What got us started</span>&lt;/h3&gt;
+    &lt;p class="text-left margin-top24"&gt;<span class="mark">Wolf slow-carb ethnic, 90's 3 wolf moon officia dolor banjo bitters excepteur selfies shabby chic...</span>&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="clearfix"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+	</p>				
+				</div><!-- History -->
+
+			<div class="content_element">
+				<h3 id="slider">Video</h3>
+				<p><b>Video section of page</b> contains several elements together, so we will get through theme here:<br /><br />
+
+First, to edit colors on counter, you'll have to go to script js/counter-shin.js and enter your colors.<br />
+Counter is set to be absolute and to be at the middle of the block. Its main wrapper is named "frb_countdown".<br />
+To edit time for counter, simply replace property: "data-end-date", with the date you want it to count to. Initial date is not important, it is there only if counter does not get info from server.<br />
+Underneath the counter, you have standard pattern-overlay to kae background darker.<br />
+On the bottom of layers, is wrapper named "yt-parallax-wrap-inner" in witch plugin makes youtube videos in background.<br />
+Visit <a href="http://pupunzi.com/#mb.components/mb.YTPlayer/YTPlayer.html" target="_blank">developer</a> page for more info about plugin.<br /><br />
+
+					</p>
+					
+				</div><!-- Slider - page -->
+
+			<div class="content_element">
+				<h3 id="testimonials">Testimonials</h3>
+				<p><b>To change elements in testimonial</b> open HTML and:<br /><br />
+				Example:<br /><br />
+				Edit this:<br />
+				<pre>
+&lt;div class="display-table testimonial-bottom-spacing"&gt;
+  &lt;div class="table-row"&gt;
+    &lt;div class="table-cell description text-right"&gt;<span class="mark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacinia ante a turpis accumsan comodo. Sed ut quam est. Duis at massa id sapien dignissim rutrum sed sagittis augue. Integer turpis enim, iaculis nec consequat sed, semper eget ligula. </span>&lt;/div&gt;
+    &lt;a class="table-cell image-round-wrap border-box" href="<span class="mark">images/testimonials/1.jpg</span>" rel="prettyPhoto"&gt;
+      &lt;div class="relative"&gt;
+        &lt;img class="image-rounded" src="<span class="mark">images/testimonials/1.jpg</span>" alt="" /&gt;
+        &lt;span class="hover-triangle"&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/a&gt;
+    &lt;div class="table-cell position-name-wrap text-left border-box relative"&gt;
+      &lt;a href="<span class="mark">#</span>"&gt;<span class="mark">Jane Smithsonian</span>&lt;/a&gt;
+      &lt;a href="<span class="mark">#</span>"&gt;<span class="mark">Web Developer</span>&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+					</pre>
+					Note that you have to replace "#" with the appropriate link where you want it to lead to.
+					</p>
+					
+				</div><!-- Testimonials -->
+
+			<div class="content_element">
+				<h3 id="contact">Contact</h3>
+				<p><b>To change map</b> open HTML and:<br /><br />
+				Example:<br /><br />
+				Edit this:<br />
+				<pre>
+&lt;div class="google-map-wrapper relative padding-top72"&gt;
+  <span class="mark">&lt;iframe width="100%" height="550" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Ojibway+Island&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=60.635244,135.263672&amp;ie=UTF8&amp;hq=&amp;hnear=&amp;ll=43.416273,-83.956565&amp;spn=0.006295,0.006295&amp;t=m&amp;iwloc=A&amp;output=embed"&gt;&lt;/iframe&gt;</span>
+  &lt;div class="contact-info letters-white"&gt;<span class="mark">Ojibway Island: Saginaw, MI 48601; (989) 759-2191</span>&lt;/div&gt;
+&lt;/div&gt;
+					</pre>
+					Note that iframe is complete link taken from google maps, and you have to simply replace complete code from google maps.
+					</p>
+
+					<div class="separator margin-top margin-bottom"></div>
+					
+					<p><b>To change elements in three colums</b> open HTML and:<br /><br />
+				Example:<br /><br />
+				Edit this:<br />
+				<pre>
+&lt;div class="iconic_column_element text-center margin-bottom48"&gt;
+  &lt;i class="<span class="mark">icon-comments</span> column_icon block margin-bottom12"&gt;&lt;/i&gt;
+  &lt;h3 class="block margin-bottom12 letter-spacing2 font-weight300"&gt;<span class="mark">Customer Support</span>&lt;/h3&gt;
+  &lt;div class="text"&gt;<span class="mark">E-mail: </span>&lt;a href="<span class="mark">#</span>"&gt;<span class="mark">support@anivia.com</span>&lt;/a&gt;&lt;/div&gt;&lt;!-- text --&gt;
+  &lt;div class="text"&gt;<span class="mark">Tel: +381 345 224 211</span>&lt;/div&gt;&lt;!-- text --&gt;
+  &lt;div class="clearfix"&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;!-- iconic_column_element --&gt;
+					</pre>
+				</p>
+				
+				<div class="separator margin-top margin-bottom"></div>
+					
+					<p><b>To adapt form</b> open HTML and:<br /><br />
+				Example:<br /><br />
+				Edit this:<br />
+				<pre>
+&lt;form class="contact-form margin-top24"&gt;
+  &lt;input type="text" placeholder="<span class="mark">NAME</span>" /&gt;
+  &lt;input type="text" placeholder="<span class="mark">E-MAIL ADRESS</span>" /&gt;
+  &lt;input type="text" placeholder="<span class="mark">SUBJECT</span>" /&gt;
+  &lt;textarea rows="9" placeholder="<span class="mark">MESSAGE (MAX 300 CHARS)</span>"&gt;&lt;/textarea&gt;
+  &lt;button type="submit" class="btn contact-btn pull-right"&gt;<span class="mark">SEND</span>&lt;/button&gt;
+  &lt;div class="clearfix"&gt;&lt;/div&gt;
+&lt;/form&gt;
+					</pre>
+				</p>
+								<div class="separator margin-top margin-bottom"></div>
+				
+				<p><b>To have Contact Form working properly for auto-reply</b>, open contact.php and<br /><br />
+				Example:<br /><br />
+				Edit this:<br />
+<pre>
+ $your_name = '<span class="mark">Bro</span>';
+ $your_mail = '<span class="mark">support@shindiri.com</span>';
+ $your_message = '<span class="mark">Auto-reply from who-ever</span>';
+</pre><br />
+					</p>
+				
+					<div class="separator margin-top margin-bottom"></div>			
+<h3>Twitter feed</h3>
+
+<p>Twitter feed requires twitter api keys, more on how to get those keys is written in the "Getting your Twitter API keys". Once you got them open the twitter.php file. On top of the file you will find:</p>
+
+<p>
+$user = 'twitter'; //user whose twits you want to display<br />
+$consumerkey = 'igMukP1KzexoMcGWCSfA'; // Customer key from twitter API<br />
+$consumersecret = '6goNB7yF9ItazqcWx0Viuck3E9T1SbD5nyUoMi6ys'; // Customer secret from twitter API<br />
+$accesstoken = '856858076-DYpXmC936ipQlL9zubgXrEkjAAuXJHWcWiY0OtVM';  // Access token from twitter API<br />
+$accesstokensecret = '4pyDlYhvGPLKvMJHrqhj2lOfraq3ZPruqwQOzJ68';  // Access secret from twitter API
+</p>
+
+<h4>Getting your Twitter API keys</h4>
+
+<p>a. After you sign in, you’ll be taken to your <a title="New Twitter App" href="http://twitter.com/apps/new">application creation page</a>. Be sure to fill in your application’s name, a description about your application and your Ning Network’s URL in the WebSite field. In the Callback URL field, enter your Ning Network’s URL again. This tells your app to return to this location after authenticating.</p>
+<p>b. Read and agree to Twitter’s “Developer Rules Of The Road”. Check the box next to “Yes, I agree”.</p>
+<p>c. In the space below, enter the characters you see in the CAPTCHA and click on the “Create your Twitter application” button.</p>
+<img src="images/1.jpg" alt="" />
+<p><strong>Name: </strong>Enter the name of your Ning Network. This will be displayed on each member’s Twitter update.</p>
+<p><strong>Description</strong>: Give a description of your Ning Network.</p>
+<p><strong>WebSite</strong>: Enter in the web address of your Ning Network, for example, http://yournetworkname.ning.com</p>
+<p><strong>Callback URL</strong>: Enter in the web address of your Ning Network, for example http://yournetworkname.ning.com</p>
+<p>d. Doing this will take you to your Twitter app’s detail page. Under the OAuth settings, you’ll see that your app’s Access level is set to “Read-only” by default. To enable members to post to Twitter, click on the Settings tab at the top to change the Access level from “Read-only” to “Read and Write”.</p>
+<p>The Application Icon and Organization fields are optional and can be left blank.</p>
+<img src="images/2.jpg" alt="" />
+<p>Click on the “Update this Twitter application’s settings” button at the bottom.</p>
+<p>e. Go back to your Twitter app’s detail page. You’ll need your Consumer key and Consumer secret, found here, to paste back into your network’s Twitter Integration page. Save these for the next step.</p>
+<img src="images/3.jpg" alt="" />
+					
+				</div><!-- Contact -->
+
+			<div class="content_element">
+				<h3 id="blog">Blog</h3>
+				<p>Basicly all of the blog elements are the same. Here is code sample to make it easier for editiong:<br /><br />
+				<pre>
+&lt;div class="margin-bottom48 row blog-post-wrapper"&gt;
+  &lt;div class="col-md-1 text-center"&gt;
+    &lt;div class="comments-wrapper relative red-background"&gt;
+      &lt;a class="block" href="<span class="mark">blogpost.html</span>"&gt;
+        &lt;i class="fa fa-comment-o"&gt;&lt;/i&gt;
+        &lt;span class="number-of-comments"&gt;<span class="mark">12</span>&lt;/span&gt;
+        &lt;div class="clearfix"&gt;&lt;/div&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="date-posted-wrap margin-top12 relative red-background"&gt;
+      &lt;i class="fa fa-comment-o"&gt;&lt;/i&gt;
+      &lt;div class="date-posted-data"&gt;
+        &lt;div class="vert_align_wrap_system"&gt;
+          &lt;div&gt;
+            &lt;div&gt;
+              &lt;div class="date-posted"&gt;<span class="mark">17</span>&lt;/div&gt;
+              &lt;div class="month-posted"&gt;<span class="mark">SEP</span>&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="clearfix"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="clearfix"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-md-11"&gt;
+    &lt;div class="post-container padding-bottom48"&gt;
+      &lt;img src="<span class="mark">images/blog/1.jpg</span>" alt="" /&gt;
+      &lt;div class="cathegory inline-block margin-top24"&gt;<span class="mark">Photography</span>&lt;/div&gt;;&nbsp;&lt;div class="author inline-block"&gt;<span class="mark">by Shindiri Studio</span>&lt;/div&gt;
+      &lt;h4&gt;&lt;a href="blogpost.html"&gt;<span class="mark">Regular post with image</span>&lt;/a&gt;&lt;/h4&gt;
+      &lt;p class="margin-top12"&gt;<span class="mark">Narwhal pour-over nihil post-ironic Bushwick, aliquip swag qui Austin Cosby...</span>&lt;/p&gt;
+      &lt;div class="padding-top12"&gt;&lt;a href="<span class="mark">blogpost.html</span>"&gt;<span class="mark">Read More</span>&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="clearfix"&gt;&lt;/div&gt;
+  &lt;div class="col-md-12"&gt;&lt;div class="small_separator"&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+					</pre>
+					</p>
+					
+	</div><!-- Blog -->
+
+			<div class="content_element">
+				<h3 id="blogp">Blog Post</h3>
+				<p>Generaly, post alone has same structure as on blog page. Only difference are comments, and here is what is their structure:<br /><br />
+				<pre>
+&lt;div class="comment-wrap"&gt;
+  &lt;div class="post-reply-wrap single_comment"&gt;
+    &lt;div class="post-reply relative padding-bottom24"&gt;
+      &lt;div class="image-author-wrap pull-left"&gt;&lt;img src="<span class="mark">images/blog/authors/2.jpg</span>" alt=""/&gt;&lt;/div&gt;
+      &lt;div class="pull-left comment-box-padding"&gt;
+        &lt;div class="posted-by"&gt;<span class="mark">Jane Doe</span>&lt;/div&gt;
+        &lt;div class="posted-on"&gt;<span class="mark">APRIL 09.2012</span>&lt;/div&gt;
+        &lt;div class="comment-txt border-box"&gt;<span class="mark">Lorem ut enim ad minim venia...</span>&lt;/div&gt;
+        &lt;div class="reply_button_wrapper"&gt;&lt;a class="open-form-trigger font-dosis font600 reply-blog-post open-form-trigger" href="#"&gt;<span class="mark">REPLY</span>&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="clearfix"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+					</pre>
+					</p>
+					
+				<div class="separator margin-top margin-bottom"></div>
+				
+				<p><b>To change form styling</b> open HTML and:
+				Example:<br /><br />
+				Edit this:<br />
+				<pre>
+&lt;form action="<span class="mark">#</span>" method="post" class="comment_form_wrapper margin-bottom24 margin-top48" id="comment_form_wrapper1"&gt;
+  &lt;input type="text" class="input_field text-color-pale background-color-passive margin-right24" placeholder="<span class="mark">NAME</span>" name="name" /&gt;
+  &lt;button class="close_button red-background"&gt;x&lt;/button&gt;
+  &lt;div class="clearfix"&gt;&lt;/div&gt;
+  &lt;textarea maxlength="300" class="textarea_field text-color-pale background-color-passive margin-top12" name="text"&gt;<span class="mark">MESSAGE GOES HERE (MAX 300 CHARS)</span>&lt;/textarea&gt;
+  &lt;button type="submit" class="submit_button letter-spacing2 red-background pull-right" name="submit_button border-box"&gt;<span class="mark">SEND</span>&lt;/button&gt;
+
+  &lt;div class="clearfix"&gt;&lt;/div&gt;
+&lt;/form&gt;&lt;!-- comment_form_wrapper --&gt;
+</pre><br />
+				</p>
+				</div><!-- Blogpost -->
+
+			<div class="content_element">
+				<h3 id="sidebar">Sidebar</h3>
+				<p><b>To edit search widget</b> open HTML and:<br /><br />
+				Example:<br /><br />
+				Edit this:<br />
+				<pre>
+&lt;div class="search_box margin-bottom48"&gt;
+  &lt;form action="<span class="mark">#</span>" method="post"&gt;
+    &lt;div class="margin-bottom12"&gt;<span class="mark">Search on Chronos Blog</span>&lt;/div&gt;
+    &lt;input type="text" placeholder="<span class="mark">e.g. Inspiration design</span>" class="input_field border-color-main padding-left12" /&gt;
+    &lt;input type="submit" class="submit_button background-color-main hover-background-color-lighter-main" value="<span class="mark">Search</span>" /&gt;
+    &lt;div class="clearfix"&gt;&lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;&lt;!-- search_box --&gt;
+					</pre>
+					</p>
+					
+					<div class="separator margin-top margin-bottom"></div>
+					
+					<p><b>To change categories widget</b> open HTML and:<br /><br />
+				Example:<br /><br />
+				Edit this:<br />
+				<pre>
+&lt;div class="categories margin-bottom48"&gt;
+  
+  &lt;a href="<span class="mark">#</span>" class="hover-text-color-main block margin-bottom12 text_color_default"&gt;<span class="mark">HTML</span>&lt;/a&gt;
+  &lt;div class="small_separator margin-bottom12"&gt;&lt;/div&gt;
+  
+  &lt;a href="<span class="mark">#</span>" class="hover-text-color-main block margin-bottom12 text_color_default"&gt;<span class="mark">CSS</span>&lt;/a&gt;
+  &lt;div class="small_separator margin-bottom12"&gt;&lt;/div&gt;
+  
+  &lt;a href="<span class="mark">#</span>" class="hover-text-color-main block margin-bottom12 text_color_default"&gt;<span class="mark">Joomla</span>&lt;/a&gt;
+  &lt;div class="small_separator margin-bottom12"&gt;&lt;/div&gt;
+  
+  &lt;a href="<span class="mark">#</span>" class="hover-text-color-main block margin-bottom12 text_color_default"&gt;<span class="mark">Wordpress</span>&lt;/a&gt;
+  &lt;div class="small_separator margin-bottom12"&gt;&lt;/div&gt;
+  
+  &lt;a href="<span class="mark">#</span>" class="hover-text-color-main block margin-bottom12 text_color_default"&gt;<span class="mark">JQuery</span>&lt;/a&gt;
+  
+&lt;/div&gt;&lt;!-- categories --&gt;
+					</pre>
+					</p>
+					
+				<div class="separator margin-top margin-bottom"></div>
+				
+			<p><b>To edit text widget</b> open HTML and:<br /><br />
+			Example:<br /><br />
+			Edit this:<br />
+			<pre>
+&lt;h4 class="blog_sidebar_title margin-bottom24"&gt;<span class="mark">Text Widget</span>&lt;/h4&gt;
+&lt;p class="fullwidth margin-bottom48"&gt;<span class="mark">Paleo +1 cillum put a bird on it irony, literally occupy cardigan tofu. Lo-fi Neutra assumenda minim nulla irony. Nesciunt fanny pack nihil magna consectetur Austin mustache Pitchfork sed. Id literally elit, ea eu narwhal occupy bicycle rights salvia sint nisi Thundercats.</span>&lt;/p&gt;
+				</pre>
+				</p>
+
+				<div class="separator margin-top margin-bottom"></div>
+
+				<p>Recent post widget  is basicly the same as the cathegories widget. It has same classes and stylings.</p>
+				
+				<div class="separator margin-top margin-bottom"></div>
+				
+			<p><b>To edit popular tags</b>, open HTML and:<br /><br />
+			Example:<br /><br />
+			Edit this:<br />
+			<pre>
+&lt;div class="tag_cloud margin-bottom24"&gt;
+  &lt;ul class="tag_list margin0 padding0 no-style"&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>" class="hover-background-color-main background-color-passive"&gt;<span class="mark">sport</span>&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>" class="hover-background-color-main background-color-passive"&gt;<span class="mark">economy</span>&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>" class="hover-background-color-main background-color-passive"&gt;<span class="mark">fun</span>&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>" class="hover-background-color-main background-color-passive"&gt;<span class="mark">parallax</span>&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>" class="hover-background-color-main background-color-passive"&gt;<span class="mark">abstract</span>&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>" class="hover-background-color-main background-color-passive"&gt;<span class="mark">entertainment</span>&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>" class="hover-background-color-main background-color-passive"&gt;<span class="mark">business</span>&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>" class="hover-background-color-main background-color-passive"&gt;<span class="mark">consumer</span>&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>" class="hover-background-color-main background-color-passive"&gt;<span class="mark">shopping</span>&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="<span class="mark">#</span>" class="hover-background-color-main background-color-passive"&gt;<span class="mark">fishing</span>&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="clearfix"&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;!-- tag_cloud --&gt;
+				</pre>
+				</p>
+					
+			</div><!-- Sidebar -->
+				
+		</div><!-- content -->
+	
+	</div><!-- content_wrapper -->
+
+</body>
+</html>
