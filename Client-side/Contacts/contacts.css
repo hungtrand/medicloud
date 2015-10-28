@@ -1,0 +1,19 @@
+/*.bootcards-list {
+  width: 312.5px;
+  float: left;
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.bootcards-card {
+  width: 437.5px;
+  float: right;
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.container {
+  width: 750px;
+}*/
