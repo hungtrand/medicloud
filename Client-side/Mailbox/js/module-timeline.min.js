@@ -1,0 +1,1 @@
+!function(a){"use strict";if(a(".share textarea").on("keyup",function(){a(".share button")[""===a(this).val()?"hide":"show"]()}),a("#scroll-spy").length){var b=a("#scroll-spy").offset().top;a("body").scrollspy({target:"#scroll-spy",offset:b})}}(jQuery);
