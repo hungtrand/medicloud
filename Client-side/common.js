@@ -170,9 +170,12 @@ $(document).ready(function(){
 		});			
 	});
 	$(window).load(function(){
-		$('.fotorama__wrap .fotorama__frame').each(function(){
-			$(this).append('<div class="pattern-overlay"></div>');
-		});
+		setTimeout(function() {
+			$('.fotorama__wrap .fotorama__frame').each(function(){
+				$(this).append('<div class="pattern-overlay"></div>');
+			});
+		}, 500);
+		
 	});
 	$(window).resize(function(){
 		fotoramaNavReset();

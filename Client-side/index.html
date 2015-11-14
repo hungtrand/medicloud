@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link href="Assets/Chronos/site/fonts/Br0-Font/alternative/style.css" rel="stylesheet" type="text/css" />
 <link href="Assets/Chronos/site/fonts/Br0-Font/creative/style.css" rel="stylesheet" type="text/css" />
-<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=all' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900&subset=all' rel='stylesheet' type='text/css'>
+<link href='Fonts/PTSans.css' rel='stylesheet' type='text/css'>
+<link href='Fonts/Raleway.css' rel='stylesheet' type='text/css'>
 <link rel="icon" type="image/png" href="Assets/Logos/favicon.png?v=1">
 
 <!--  YTPlayer CSS  -->
@@ -19,7 +19,7 @@
 <link href="Assets/Chronos/site/font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <!-- All Around Slider -->
 <link href="Assets/Chronos/site/content_slider/fonts/ostrich_sans/stylesheet.css" rel="stylesheet" type="text/css" />
-<link href='http://fonts.googleapis.com/css?family=Dosis:400,200,300,500,600,700,800' rel='stylesheet' type='text/css'>
+<link href='Fonts/Dosis.css' type='text/css'>
 <link href="Assets/Chronos/site/content_slider/css/content_slider_style.css" rel="stylesheet" type="text/css" />
 <!-- Theme css -->
 <link rel="stylesheet" type="text/css" href="Assets/Chronos/site/style.css" />
@@ -37,14 +37,13 @@
 		<div id="index" class="col-md-12 relative">
 			<div class="chr_slider relative" data-width="100%">
 				<img src="Images/Background/medicloudlogo_whitebg.jpg" alt="MEDICLOUD|EHR">
-				<img src="Images/Background/electronicdna.jpg" 
+				<img src="Images/Background/redheartstethoscope.jpg" 
 					alt="HEALTH PROFESSIONAL | 
-						<div class='col col-xs-12'>
-						<ul class='nav nav-tabs nav-justified'>
-						<li><a href='#'>Sign Up</a></li>
-						<li><a href='#'>Sign In</a></li>
-					</ul></div>">
-				<img src="Images/Background/bandaid.png" alt="SIGNIN|PATIENT">
+						<span><a href='HPSignUp/'>Sign Up</a></span>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<span><a href='HPSignIn/'>Sign In</a></span>" />
+				<img src="Images/Background/running.jpg" alt="PATIENT | 
+							<span><a href='PatientSignIn/'>Sign In</a></span>">
 			</div>
 			<div class="fotorama-nav-wrap-custom">
 				<div class="fotorama-thumbs-inner">
@@ -107,23 +106,19 @@
 				<div class="main-nav-wrap">
 					<ul class="margin0 padding0 no-style navigation-panel text-left inline-block">
 						<li class="active"><a href="#index">Home</a></li>
-						<li><a href="#port-sq">Portfolio Square</a></li>
-						<li><a href="#theguy">The Guy</a></li>
-						<li><a href="#port-hex">Portfolio Hex</a></li>
-						<li><a href="#team">Our Team</a></li>
-						<li><a href="#history">History</a></li>
-						<li><a href="#slider">Video</a></li>
-						<li><a href="#testimonials">Testimonials</a></li>
+						<li><a href="#what">What is it?</a></li>
+						<li><a href="#launch">Launch Date</a></li>
 						<li><a href="#contact">Contact</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="elements.html">Elements</a></li>
+						<li><a href="#foot">Mission</a></li>
+						<li><a href="PatientSignIn/">Patient Sign In</a></li>
+						<li><a href="HPSignIn/">HP Sign In</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
 				</div>
 			</div>
 		</nav><!-- navigation -->
-		<div class="full-width-countainer">
+		<div id="#what" class="full-width-countainer">
 			<div class="container padding-top48">
 				<div class="row">
 					<div class="col-md-12">
@@ -164,7 +159,7 @@
 		</div>
 
 		<div class="clearfix"></div>
-		<div id="slider" class="padding-bottom72">
+		<div id="launch" class="padding-bottom72">
 			<div class="yt-player-wrapper overflow-hidden">
 				<div class="yt-parallax-wrap-inner relative">
 					<div class="pattern-overlay"></div>
@@ -335,7 +330,7 @@
 				</div>
 			</div>
 			<div class="clearfix"></div>
-	<div class="footer_wrapper solid_box">	
+	<div id="foot" class="footer_wrapper solid_box">	
 		<div class="container">
 			<div class="row text-center">
 				<div class="col-md-6 pull-left">
@@ -403,28 +398,6 @@
 <script src="Assets/Chronos/site/content_slider/js/jquery.mousewheel.js" type="text/javascript"></script>
 <script src="Assets/Chronos/site/content_slider/js/jquery.animate-colors.js" type="text/javascript"></script>
 <script src="Assets/Chronos/site/content_slider/js/additional_content.js" type="text/javascript"></script>
-<script type="text/javascript">
-	(function($){
-		$(document).ready(function() {
-			var image_array = new Array();
-			image_array = [
-				{image: 'content/our_team/1.jpg', link_url: 'content/our_team/1big.jpg', link_rel: 'prettyPhoto'},
-					// image for the first layer, goes with the text from id="sw0"
-				{image: 'content/our_team/2.jpg', link_url: 'content/our_team/2big.jpg', link_rel: 'prettyPhoto'},
-					// image for the second layer, goes with the text from id="sw1"
-				{image: 'content/our_team/3.jpg', link_url: 'content/our_team/3big.jpg', link_rel: 'prettyPhoto'},
-					// image for the third layer, goes with the text from id="sw2"
-				{image: 'content/our_team/4.jpg', link_url: 'content/our_team/4big.jpg', link_rel: 'prettyPhoto'},
-					// ...
-				{image: 'content/our_team/5.jpg', link_url: 'content/our_team/5big.jpg', link_rel: 'prettyPhoto'},
-				{image: 'content/our_team/6.jpg', link_url: 'content/our_team/6big.jpg', link_rel: 'prettyPhoto'},
-				{image: 'content/our_team/7.jpg', link_url: 'content/our_team/7big.jpg', link_rel: 'prettyPhoto'}
-			];
-			
-			$("a[rel^='prettyPhoto']").prettyPhoto();
-		});
-	})(jQuery);
-</script>
 
 <!-- Theme JS Files files -->
 <script type="text/javascript" src="Assets/Chronos/site/js/counter-shin.js"></script>
@@ -438,6 +411,7 @@
 <script type="text/javascript" src="parallax_banner.js"></script>
 <script type="text/javascript" src="Assets/Chronos/site/js/gallery-carousell.js"></script>
 <script type="text/javascript">
+
 	$(function(){
 		$('.chr_slider').fotorama({
 			cropToFit: true,
@@ -455,6 +429,7 @@
 			}
 		});
 	});
+	
 </script>
 </footer>
 </body>
