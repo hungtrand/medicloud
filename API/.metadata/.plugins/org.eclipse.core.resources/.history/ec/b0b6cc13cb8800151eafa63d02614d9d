@@ -1,0 +1,37 @@
+package medicloudAPI;
+
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
+
+public class UserDao {
+	SessionFactory sessFac = HibernateUtil.getSessionFactory();
+	
+	public UserDao() {
+		
+	}
+	
+	public List<User> getUsers() {
+		Session s = sessFac.openSession();
+		
+		List users = s.createCriteria(User.class).list();
+		
+		s.close();
+		return users;
+	}
+	
+	public User getUser(int user_id) {
+		Session s = sessFac.openSession();
+		
+		Criteria cr = s.createCriteria(User.class);
+		cr.add(Restrictions.eq("user_id", user_id));
+		
+		User u = (User) cr.list().get(0);
+		
+		s.close();
+		return u;
+	}
+}

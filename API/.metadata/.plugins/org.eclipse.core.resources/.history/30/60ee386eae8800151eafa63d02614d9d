@@ -1,0 +1,12 @@
+package medicloudAPI;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user")
+public class User {
+	@Id
+	@GeneratedValue
+	@Column(name="user_id")
+}

@@ -1,0 +1,37 @@
+package medicloudAPI;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user")
+public class User {
+	@Id
+	@GeneratedValue
+	@Column(name="user_id")
+	int user_id;
+	
+	@Column(name="username", nullable=false, length=45)
+	String username;
+	
+	@Column(name="password", nullable=false, length=60)
+	String password;
+	
+	@Column(name="salt", nullable=false, length=60)
+	String salt;
+	
+	public int getUserID() {
+		return user_id;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+}

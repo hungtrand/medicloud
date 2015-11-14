@@ -1,0 +1,19 @@
+package medicloudAPI;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+public class UserDao {
+	SessionFactory sessFac = HibernateUtil.getSessionFactory();
+	
+	public UserDao() {
+		
+	}
+	
+	public List<User> getUsers() {
+		Session s = sessFac.openSession();
+		List<User> users = s.createCriteria(User.class).list();
+		
+		s.close();
+	}
+}

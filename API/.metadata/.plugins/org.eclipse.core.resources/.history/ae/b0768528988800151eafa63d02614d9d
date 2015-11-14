@@ -1,0 +1,6 @@
+package medicloudAPI;
+
+@Controller
+public class UserController {
+
+}

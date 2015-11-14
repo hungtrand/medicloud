@@ -1,0 +1,7 @@
+package medicloudAPI;
+import org.springframeworkd.*;
+
+
+public class UserController {
+
+}
