@@ -1,0 +1,15 @@
+package controller;
+import repositories.HPSignUp_repo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import model.HPSignUp;
+
+@RestController
+@RequestMapping("/HPSignUp")
+public class HPSignUpController {
+	private HPSignUp_repo hpsuRepo = new HPSignUp_repo();
+}

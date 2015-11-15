@@ -23,9 +23,16 @@ public class UserController {
 		return userd.getUsers();
 	}*/
 	
-	@RequestMapping(method=GET)
+	@RequestMapping(method=GET, value="/username")
 	public User user(@RequestParam("username") String username) {
 		User u = userRepository.findByUsername(username);
+		
+		return u;
+	}
+	
+	@RequestMapping(method=GET, value="/userID")
+	public User user(@RequestParam("userID") int userID) {
+		User u = userRepository.findByUserID(userID);
 		
 		return u;
 	}
