@@ -13,7 +13,7 @@ public class User {
 	@Id
 	@GeneratedValue
 	@Column(name="user_id")
-	private int user_id;
+	private int userID;
 	
 	@Column(name="username", nullable=false, length=45)
 	private String username;
@@ -38,9 +38,8 @@ public class User {
         return user;
 	}
         
-	
 	public int getUserID() {
-		return this.user_id;
+		return this.userID;
 	}
 	
 	public String getUsername() {

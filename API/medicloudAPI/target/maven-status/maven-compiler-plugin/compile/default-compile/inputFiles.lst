@@ -1,4 +1,7 @@
 /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/controller/Application.java
 /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/controller/UserController.java
+/mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/controller/HPSignUpController.java
+/mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/repositories/HPSignUp_repo.java
 /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/repositories/User_repo.java
+/mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/model/HPSignUp.java
 /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/model/User.java
