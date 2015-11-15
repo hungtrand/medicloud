@@ -40,7 +40,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!-- Page CSS -->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
-<body class="login">
+<body class="HPSignUp">
     <div id="content">
         <div class="container-fluid">
             <div class="formContainer">
@@ -62,6 +62,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 
                                 <div class="form-group">
                                     <label for="BusContact">Contact Person:</label>
+                                    <input type="text" name="BusContact" class="form-control" id="BusContact" placeholder="Contact Name" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="BusContact">Email:</label>
                                     <input type="text" name="BusContact" class="form-control" id="BusContact" placeholder="Contact Name" required>
                                 </div>
 
@@ -141,5 +146,6 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         module-bundle-main.js already includes theme-core.js so this should be loaded
         ONLY when using the standalone modules; -->
     <script src="../Assets/Social/js/theme-core.min.js"></script>
+    
 </body>
 </html>
