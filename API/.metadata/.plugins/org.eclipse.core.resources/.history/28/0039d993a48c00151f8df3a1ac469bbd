@@ -1,0 +1,32 @@
+package service;
+
+import repositories.HPSignUp_repo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import model.HPSignUp;
+
+@RestController
+@RequestMapping("/HPSignUp")
+public class HPSignUpService {
+	@Autowired
+	private HPSignUp_repo hpsuRepo;
+	
+	public HPSignUpService() {
+	}
+	
+	@RequestMapping(method=POST, value="/") 
+	public boolean createHPSignUp(@RequestBody HPSignUp signup) {
+		HPSignUp hpSU  = hpsuRepo.findByEmail(signup.getEmail());
+		if (hpSU == null) {
+			HPSignUp.createHPSignUp(signup.getName(), signup.getEmail(), signup.getBusinessName(), signup.getBusinessAddress(), signup.getBusinessPhone());
+			return true;
+		}
+		
+		return false;
+	}
+}

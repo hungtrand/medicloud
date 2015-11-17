@@ -1,7 +1,10 @@
 /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/controller/Application.java
-/mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/controller/UserController.java
-/mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/controller/HPSignUpController.java
 /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/repositories/HPSignUp_repo.java
+/mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/service/UserService.java
+/mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/controller/SessionIdentifierGenerator.java
 /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/repositories/User_repo.java
+/mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/controller/SimpleCORSFilter.java
+/mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/service/HPSignUpService.java
+/mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/controller/MessageResponse.java
 /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/model/HPSignUp.java
 /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/java/model/User.java

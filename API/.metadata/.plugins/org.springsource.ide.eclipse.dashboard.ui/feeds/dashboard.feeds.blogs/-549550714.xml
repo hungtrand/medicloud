@@ -5,7 +5,68 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2015-11-10T14:11:00Z</updated>
+  <updated>2015-11-16T12:36:28Z</updated>
+  <entry>
+    <title>Spring Boot 1.3.0 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/11/16/spring-boot-1-3-0-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Phil Webb</name>
+    </author>
+    <id>tag:spring.io,2015-11-15:2296</id>
+    <updated>2015-11-16T12:36:28Z</updated>
+    <content type="html">&lt;p&gt;One behalf of the Spring Boot team, and everyone that has contributed, I am pleased to announce that Spring Boot 1.3.0 has been released and is available now from &lt;a href="http://repo.spring.io/release/"&gt;repo.spring.io&lt;/a&gt;, &lt;a href="http://search.maven.org/#search|ga|1|g%3A%22org.springframework.boot%22"&gt;Maven Central&lt;/a&gt; and &lt;a href="https://bintray.com/bintray/jcenter/org.springframework.boot%3Aspring-boot/view"&gt;Bintray&lt;/a&gt;. This release adds a significant number of new features and improvements and builds on the latest release of the Spring Framework. For full &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.3-Release-Notes#upgrading-from-spring-boot-12"&gt;upgrade instructions&lt;/a&gt; and &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.3-Release-Notes#new-and-noteworthy"&gt;&amp;ldquo;new and noteworthy&amp;rdquo;&lt;/a&gt; features please see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.3-Release-Notes"&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here are some of the highlights of v1.3:&lt;/p&gt;&lt;h2&gt;&lt;a href="#developer-tools" class="anchor" name="developer-tools"&gt;&lt;/a&gt;Developer Tools&lt;/h2&gt;
+&lt;p&gt;A new &lt;code&gt;spring-boot-devtools&lt;/code&gt; module has been added which aims to improve the development-time experience. The module provides:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Sensible property defaults (for example disabling template caches)&lt;/li&gt;
+  &lt;li&gt;Automatic application restarts&lt;/li&gt;
+  &lt;li&gt;LiveReload support&lt;/li&gt;
+  &lt;li&gt;Remote development support (including remote updates and remote debug via an HTTP tunnel).&lt;/li&gt;
+  &lt;li&gt;Persistent HTTP sessions across restarts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you&amp;rsquo;ve got 10 minutes to spare, here&amp;rsquo;s a &lt;a href="https://www.youtube.com/watch?v=A70NMxV13TI"&gt;short introductory video&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#caching-auto-configuration" class="anchor" name="caching-auto-configuration"&gt;&lt;/a&gt;Caching Auto-configuration&lt;/h2&gt;
+&lt;p&gt;We now provide auto configuration for EhCache, Hazelcast, Infinispan, JCache (JSR 107) implementations, Redis and Guava.&lt;/p&gt;
+&lt;p&gt;In addition, simple Map based in-memory caching is also supported&lt;/p&gt;&lt;h2&gt;&lt;a href="#fully-executable-jars-and-service-support" class="anchor" name="fully-executable-jars-and-service-support"&gt;&lt;/a&gt;Fully executable JARs and service support&lt;/h2&gt;
+&lt;p&gt;The Maven and Gradle plugins can now generate fully executable archives for Linux/Unix that can be run by just typing:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;$ ./myapp.jar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Even better, they work as &lt;code&gt;init.d&lt;/code&gt; or &lt;code&gt;systemd&lt;/code&gt; services. To install as an &lt;code&gt;init.d&lt;/code&gt; service just create a symlink:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;$ sudo link -s /var/myapp/myapp.jar /etc/init.d/myapp
+&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a href="#color-banners" class="anchor" name="color-banners"&gt;&lt;/a&gt;Color banners&lt;/h2&gt;
+&lt;p&gt;Your &lt;code&gt;banner.txt&lt;/code&gt; files can now include ANSI color codes. You can do crazy things like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/philwebb/media/master/boot13/colorbanner.png" alt="Color Banner" /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a href="#support-for-webservlet-webfilter-and-weblistener-annotations" class="anchor" name="support-for-webservlet-webfilter-and-weblistener-annotations"&gt;&lt;/a&gt;Support for @WebServlet, @WebFilter and @WebListener annotations&lt;/h2&gt;
+&lt;p&gt;When using an embedded servlet container, automatic registration of &lt;code&gt;@WebServlet&lt;/code&gt;, &lt;code&gt;@WebFilter&lt;/code&gt; and &lt;code&gt;@WebListener&lt;/code&gt; annotated classes can now be enabled using &lt;code&gt;@ServletComponentScan&lt;/code&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#additional-auto-configurations" class="anchor" name="additional-auto-configurations"&gt;&lt;/a&gt;Additional auto-configurations&lt;/h2&gt;
+&lt;p&gt;Out-of-the-box auto-configurations are now provided for:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Cassandra&lt;/li&gt;
+  &lt;li&gt;OAuth2&lt;/li&gt;
+  &lt;li&gt;Spring Session&lt;/li&gt;
+  &lt;li&gt;jOOQ&lt;/li&gt;
+  &lt;li&gt;SendGrid&lt;/li&gt;
+  &lt;li&gt;Artemis&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;&lt;a href="#actuator-metrics" class="anchor" name="actuator-metrics"&gt;&lt;/a&gt;Actuator Metrics&lt;/h2&gt;
+&lt;p&gt;Metrics support has been extended to support export and aggregation. In addition, Java 8 specific &lt;code&gt;GaugeService&lt;/code&gt; and &lt;code&gt;CounterService&lt;/code&gt; implementations are now provided (and used when possible) which offer improved performance.&lt;/p&gt;&lt;h2&gt;&lt;a href="#update-endpoints-and-health-indicators" class="anchor" name="update-endpoints-and-health-indicators"&gt;&lt;/a&gt;Update Endpoints and Health Indicators&lt;/h2&gt;
+&lt;p&gt;We now include &lt;code&gt;/logfile&lt;/code&gt;, &lt;code&gt;/flyway&lt;/code&gt; and &lt;code&gt;/liquibase&lt;/code&gt; actuator endpoints as well as support for Elasticsearch, Email and JMS health indicators.&lt;/p&gt;&lt;h2&gt;&lt;a href="#other-changes" class="anchor" name="other-changes"&gt;&lt;/a&gt;Other changes&lt;/h2&gt;
+&lt;p&gt;There&amp;rsquo;s a whole host of other changes and improvements that are documented in the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.3-Release-Notes"&gt;Release Notes&lt;/a&gt;. You can also find a list of deprecated classes and methods that we plan to remove in the next version.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;Thanks so much to everyone that has supported Spring Boot. This release alone has seen 128 contributors join the effort. If you&amp;rsquo;re interested in helping out check out the &lt;a href="https://github.com/spring-projects/spring-boot/issues?q=is%3Aopen+is%3Aissue+label%3A%22ideal+for+contribution%22"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask at &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Finally, if you&amp;rsquo;ve yet to see Spring Boot in action, you might want to check out &lt;a href="https://www.youtube.com/watch?v=7cemYpV1fNI"&gt;this Devoxx talk&lt;/a&gt; by &lt;a href="https://spring.io/team/snicoll"&gt;Stéphane Nicoll&lt;/a&gt; and &lt;a href="https://spring.io/team/bclozel"&gt;Brian Clozel&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Framework 4.2.3 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/11/16/spring-framework-4-2-3-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Stéphane Nicoll</name>
+    </author>
+    <id>tag:spring.io,2015-11-16:2298</id>
+    <updated>2015-11-16T10:45:03Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team I am pleased to announce that Spring Framework 4.2.3 is now available from repo.spring.io and Maven Central. This third maintenance release in the 4.2 line contains &lt;a href="https://jira.spring.io/secure/ReleaseNote.jspa?projectId=10000&amp;version=15296"&gt;over 60 fixes and improvements&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We strongly recommend an immediate upgrade to 4.2.3 for all 4.x users. This release is the foundation for the upcoming Spring Boot 1.3 GA release coming up &lt;em&gt;very&lt;/em&gt; soon.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-framework/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework"&gt;GitHub&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/SPR"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/htmlsingle/"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring - November, 10, 2015</title>
     <link rel="alternate" href="https://spring.io/blog/2015/11/10/this-week-in-spring-november-10-2015" />
@@ -1087,28 +1148,5 @@ You updated the UI to show an employee&amp;#8217;s manager and also display erro
     <id>tag:spring.io,2015-10-20:2278</id>
     <updated>2015-10-19T19:46:00Z</updated>
     <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015&lt;br/&gt;Speaker: Will Tran&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/securing-microservices-with-spring-cloud-security-53170178"&gt;http://www.slideshare.net/SpringCentral/securing-microservices-with-spring-cloud-security-53170178&lt;/a&gt;&lt;br/&gt;This talk will walk through the authentication and authorization scenarios that you may encounter once you start building out microservices. We&amp;rsquo;ll go over OAuth2, OpenID Connect, and how to leverage those standards with Spring Cloud Security, so you can build out secure services that can be easily consumed by both Spring and non-Spring clients.&lt;br/&gt;&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/USMl2GNg2r0" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne2GX 2015 replay: Spring Boot Micro-services, Containers, and Kubernetes - How To</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-spring-boot-micro-services-containers-and-kubernetes-how-to" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2015-10-20:2277</id>
-    <updated>2015-10-19T19:44:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015&lt;br/&gt;Speaker: Ray Tsang, Google&lt;br/&gt;Slides: &lt;a href="https://speakerdeck.com/saturnism/2015-springone-2gx-java-based-microservices-and-kubernetes-how-to"&gt;https://speakerdeck.com/saturnism/2015-springone-2gx-java-based-microservices-and-kubernetes-how-to&lt;/a&gt;&lt;br/&gt;Join this session to learn how to create a Java-based microservice using Spring Boot, containerize it using Maven plugins, and subsequently deploy a fleet of microservices and dependent components such as Redis using Kubernetes. Spring Boot makes creating microservices fast and easy - when it comes to running a single instance. Like most Java application, the harder part is usually the clustering and fail-over configurations. First, we&amp;rsquo;ll go over how get started with Spring Boot, and, subsequently, using Maven plugins to generate and create Docker images during the build process. Next, we&amp;rsquo;ll go over some basic architecture and configurations, such as: - Configuring Spring Session - Using Redis as the session store - Testing the configuration locally with container linking - Tips and tricks for faster startup (/dev/./urandom is your friend) Finally, with the images, we&amp;rsquo;ll deploy the microservice into Kubernetes: - Defining pods and services - Linking microservices to Redis using Kubernetes - Perform rolling upgrades of the application - Canary new versions of the microservices into the fleet Best part - we can visualize all of these activities happening in Kubernetes.&lt;/p&gt;
-&lt;p&gt;Join this session to learn how to create a Java-based microservice using Spring Boot, containerize it using Maven plugins, and subsequently deploy a fleet of microservices and dependent components such as Redis using Kubernetes. Spring Boot makes creating microservices fast and easy - when it comes to running a single instance. Like most Java application, the harder part is usually the clustering and fail-over configurations. First, we&amp;rsquo;ll go over how get started with Spring Boot, and, subsequently, using Maven plugins to generate and create Docker images during the build process. Next, we&amp;rsquo;ll go over some basic architecture and configurations, such as: - Configuring Spring Session - Using Redis as the session store - Testing the configuration locally with container linking - Tips and tricks for faster startup (/dev/./urandom is your friend) Finally, with the images, we&amp;rsquo;ll deploy the microservice into Kubernetes: - Defining pods and services - Linking microservices to Redis using Kubernetes - Perform rolling upgrades of the application - Canary new versions of the microservices into the fleet Best part - we can visualize all of these activities happening in Kubernetes.&lt;br/&gt;&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/Bcs-inRnLDc" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne2GX 2015 replay: Spring Boot for DevOps</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-spring-boot-for-devops" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2015-10-20:2276</id>
-    <updated>2015-10-19T19:43:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015&lt;br/&gt;Speaker: Nicholas Frankel&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/spring-boot-for-devops"&gt;http://www.slideshare.net/SpringCentral/spring-boot-for-devops&lt;/a&gt;&lt;br/&gt;Spring Boot is a product from Spring, that provides many configuration defaults for a new Spring project, so that one can set up a project in minutes. However, this is only one of the many features of Spring Boot. One of its module also provides many important Non-Functional Requirements out-of-the-box: monitoring, metrics, exposing those over HTTP, etc. In this presentation, I&amp;rsquo;ll demo some of those, that will make DevOps more than a little happy.&lt;br/&gt;Comments: DevOps that don&amp;rsquo;t know about Spring Boot should. Out-of-the-box features are priceless and include metrics, healthchecks, hearbeat and more.&lt;br/&gt;&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/Qzjs18pJQeU" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

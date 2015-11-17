@@ -1,0 +1,7 @@
+package controller;
+
+public class MessageResponse {
+	private boolean success;
+	private String error;
+	private String message;
+}
