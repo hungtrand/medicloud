@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import controller.SessionIdentifierGenerator;
+import provider.SessionIdentifierGenerator;
 
 @Entity
 @Table(name="hp_signup")
@@ -66,6 +66,10 @@ public class HPSignUp {
 	
 	public boolean getIsVerified() {
 		return this.isVerified;
+	}
+	
+	public String getVerificationKey() {
+		return this.verificationKey;
 	}
 	
 	public boolean verify(String email, String token) {

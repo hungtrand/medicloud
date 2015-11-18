@@ -1,0 +1,11 @@
+package provider;
+
+import java.util.List;
+
+public class Mailer {
+	private List<String> recipients;
+	private String from;
+	private String replyTo;
+	private List<String> CCs;
+	private List<String> BCCs;
+}

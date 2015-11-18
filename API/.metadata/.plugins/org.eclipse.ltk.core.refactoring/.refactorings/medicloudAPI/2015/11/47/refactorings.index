@@ -3,3 +3,13 @@
 1447703826176	Move compilation unit
 1447703858414	Rename type 'HPSignUpController'
 1447703874712	Rename type 'UserController'
+1447747372164	Move compilation unit
+1447747383511	Move compilation unit
+1447747391280	Move compilation unit
+1447747464924	Rename package 'controller'
+1447747558131	Rename type 'EmailConfiguration'
+1447748526079	Rename type 'Email'
+1447748542804	Rename type 'MailMessage'
+1447748560128	Rename type 'MailCreator'
+1447869598668	Delete element
+1447876758842	Move file

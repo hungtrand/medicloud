@@ -1,0 +1,8 @@
+mail.protocol=smtp
+mail.host=localhost
+mail.port=465
+mail.smtp.auth=true
+mail.smtp.starttls.enable=true
+mail.from=medicloud.sjsu@gmail.com
+mail.username=medicloud.sjsu@gmail.com
+mail.password=medicloud@ehr#2016

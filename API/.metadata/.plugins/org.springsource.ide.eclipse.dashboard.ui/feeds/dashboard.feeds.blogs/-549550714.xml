@@ -5,7 +5,88 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2015-11-16T12:36:28Z</updated>
+  <updated>2015-11-18T11:35:00Z</updated>
+  <entry>
+    <title>Spring IO Platform 2.0.0.RELEASE</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/11/18/spring-io-platform-2-0-0-release" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Andy Wilkinson</name>
+    </author>
+    <id>tag:spring.io,2015-11-18:2302</id>
+    <updated>2015-11-18T11:35:00Z</updated>
+    <content type="html">&lt;p&gt;Spring IO Platform 2.0.0.RELEASE is now available from the &lt;a href="https://repo.spring.io/release"&gt;Spring release repository&lt;/a&gt; and Maven Central.&lt;/p&gt;
+&lt;p&gt;Additions:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring REST Docs 1.0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Major upgrades:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Reactor 2.0&lt;/li&gt;
+  &lt;li&gt;Spring Security 4.0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Minor upgrades:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring AMQP 1.5&lt;/li&gt;
+  &lt;li&gt;Spring Boot 1.3&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Connectors 1.2&lt;/li&gt;
+  &lt;li&gt;Spring Data Gosling&lt;/li&gt;
+  &lt;li&gt;Spring Framework 4.2&lt;/li&gt;
+  &lt;li&gt;Spring HATEOAS 0.19&lt;/li&gt;
+  &lt;li&gt;Spring Integration 4.2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A number of other Spring projects and their dependencies have also been updated to their latest maintenance releases.&lt;/p&gt;
+&lt;p&gt;Please note that a number of dependencies that were previously part of the Platform have been removed or replaced in this release. Please refer to &lt;a href="http://docs.spring.io/platform/docs/2.0.0.RELEASE/reference/htmlsingle/#upgrading-dependency-management"&gt;the documentation&lt;/a&gt; for further details.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://platform.spring.io/platform"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-io/platform"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-io/platform/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/platform/docs/2.0.0.RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Session 1.1.0.M1 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/11/17/spring-session-1-1-0-m1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Rob Winch</name>
+    </author>
+    <id>tag:spring.io,2015-11-17:2301</id>
+    <updated>2015-11-17T20:50:57Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the community, I&amp;rsquo;m pleased to announce the release of Spring Session 1.1.0.M1. &lt;a href="https://repo.spring.io/milestone/org/springframework/session/spring-session-data-redis/1.1.0.M1/"&gt;The release&lt;/a&gt; can be found in the &lt;a href="https://github.com/spring-projects/spring-framework/wiki/Spring-repository-FAQ#what-repositories-are-available"&gt;Spring Milestone Repository&lt;/a&gt; (&lt;a href="https://repo.spring.io/milestone/)"&gt;https://repo.spring.io/milestone/)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This release contains lots of fixes and new features. You can find a complete list in the &lt;a href="https://github.com/spring-projects/spring-session/issues?utf8=%E2%9C%93&amp;q=milestone%3A%221.1.0+M1%22"&gt;changelog&lt;/a&gt;. The highlights have been included below:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Support for &lt;a href="http://docs.spring.io/spring-session/docs/1.1.0.M1/reference/html5/guides/findbyusername.html"&gt;search for session by username&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Support &lt;a href="http://docs.spring.io/spring-session/docs/1.1.0.M1/reference/html5/guides/custom-cookie.html"&gt;Customize Cookie Creation&lt;/a&gt;. Thanks to everyone who provided PRs and feedback for this feature!&lt;/li&gt;
+  &lt;li&gt;Add &lt;a href="http://docs.spring.io/spring-session/docs/1.1.0.M1/reference/html5/#httpsession-httpsessionlistener"&gt;HttpSessionListener&lt;/a&gt; support&lt;/li&gt;
+  &lt;li&gt;Allow &lt;a href="https://github.com/spring-projects/spring-session/issues/283"&gt;override default RedisSerializer&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Added comprehensive &lt;a href="http://docs.spring.io/spring-session/docs/1.1.0.M1/reference/html5/guides/hazelcast-spring.html"&gt;Hazelcast and configuration support&lt;/a&gt;. Thanks &lt;a href="https://twitter.com/_mark_a"&gt;@_mark_a&lt;/a&gt; and &lt;a href="https://twitter.com/tommyludwig"&gt;@tommyludwig&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/issues/271"&gt;Performance improvements&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Allow scoping the session in Redis using &lt;a href="http://docs.spring.io/spring-session/docs/1.1.0.M1/reference/html5/#api-redisoperationssessionrepository-config"&gt;redisNamespace&lt;/a&gt;. Thanks &lt;a href="https://github.com/fstegmann"&gt;fstegmann&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;Add &lt;a href="https://github.com/spring-projects/spring-session/issues/272"&gt;ExpiringSession.setLastAccessedTime(long)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-session/"&gt;Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-session/docs/1.1.0.M1/reference/html5/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-session/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-session"&gt;Help&lt;/a&gt; &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - November 17, 2015</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/11/17/this-week-in-spring-november-17-2015" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2015-11-17:2300</id>
+    <updated>2015-11-17T08:28:45Z</updated>
+    <content type="html">&lt;p&gt;My goodness the time has flown! We&amp;rsquo;re already staring down the beginning of 2016!&lt;/p&gt;
+&lt;p&gt;Welcome to another installation of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in beautiful Casablanca, Morocco for Devoxx Morocco! This is the fifth Devoxx this year - with events in Belgium, UK, France, Poland and now Morocco - and I have the rare honor of having spoken at all of them! #fullDevoxx&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ve got a lot to cover this week so let&amp;rsquo;s get to it!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="http://spring.io/blog/2015/11/16/spring-boot-1-3-0-released"&gt;&lt;strong&gt;Spring Boot 1.3 has just been released&lt;/strong&gt;&lt;/a&gt;! This is the most epic release of Spring Boot yet and I won&amp;rsquo;t even &lt;em&gt;try&lt;/em&gt; to do the release notes! Just go check it out and visit the &lt;a href="http://start.spring.io"&gt;Spring Initialzr&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://spring.io/blog/2015/11/16/spring-framework-4-2-3-available-now"&gt;Spring framework 4.2.3 has just been released&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;Netflix have just announced the open-sourcing &lt;a href="http://techblog.netflix.com/2015/11/global-continuous-delivery-with.html"&gt;of their build-and-bake pipeline for continuous delivery - project Spinnaker&lt;/a&gt;. It&amp;rsquo;s interesting for lots of reasons, but one of them is that it&amp;rsquo;s written using Spring Boot!&lt;/li&gt;
+  &lt;li&gt;I&amp;rsquo;ll be coming &lt;a href="http://www.meetup.com/DC-Cloud-Native-Meetup/events/226775603/?a=socialmedia"&gt;to Washington DC with several of my cloudiest friends&lt;/a&gt; - join us!&lt;/li&gt;
+  &lt;li&gt;There&amp;rsquo;s a new checkbox on &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt; to enable the &lt;a href="https://github.com/dsyer/spring-boot-ratpack"&gt;Ratpack&lt;/a&gt; &lt;a href="http://ratpack.io/manual/current/spring.html"&gt;Spring Boot integration&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;There&amp;rsquo;s also a new checkbox on &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt; to enable &lt;a href="https://spring.io/blog/2015/03/08/getting-started-with-activiti-and-spring-boot"&gt;Activiti&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=7cemYpV1fNI"&gt;Stephane Nicoll and Brian Clozel gave a great talk&lt;/a&gt; introducing Spring Boot at last week&amp;rsquo;s Devoxx BE&lt;/li&gt;
+  &lt;li&gt;I gave a talk introducing &lt;a href="https://www.youtube.com/watch?v=SFDYdslOvu8"&gt;Spring Cloud&lt;/a&gt; at the same show&lt;/li&gt;
+  &lt;li&gt;and the amazing Oliver Gierke &lt;a href="https://www.youtube.com/watch?v=NVB2AmMRUBI"&gt;gave a talk introducing the latest-and-greatest in Spring Data&lt;/a&gt;, also at Devoxx BE&lt;/li&gt;
+  &lt;li&gt;our pal Matti Tahvonen, from Vaadin, has put together &lt;a href="https://www.liferay.com/web/matti/blog/-/blogs/using-spring-data-jpa-with-a-liferay-portlet"&gt;a very cool post on using Spring Boot, Spring Data, etc., with Vaadin and Portlets&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>Spring Boot 1.3.0 released</title>
     <link rel="alternate" href="https://spring.io/blog/2015/11/16/spring-boot-1-3-0-released" />
@@ -1115,38 +1196,5 @@ You updated the UI to show an employee&amp;#8217;s manager and also display erro
     <id>tag:spring.io,2015-10-20:2282</id>
     <updated>2015-10-19T19:55:00Z</updated>
     <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015&lt;br/&gt;Speakers: Juergen Holler, Stephane Nicoll&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/modern-java-component-design-with-spring-framework-42"&gt;http://www.slideshare.net/SpringCentral/modern-java-component-design-with-spring-framework-42&lt;/a&gt;&lt;br/&gt;Spring&amp;rsquo;s programming and configuration model has a strong design philosophy with respect to application components and configuration artifacts. Spring&amp;rsquo;s annotation-based component story is fine-tuned for source code readability as well as consistency across an entire application&amp;rsquo;s codebase. This session presents selected Spring Framework 4 component model highlights, with a focus on the upcoming Spring Framework 4.2 and a selection of Java 8 enabled features, illustrated with many code examples and noteworthy design considerations.&lt;br/&gt;&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/7uii6osglDg" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne2GX 2015 replay: Spring Cloud *: Exploring Alternative Spring Cloud Implementations</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-spring-cloud-exploring-alternative-spring-cloud-implementations" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2015-10-20:2281</id>
-    <updated>2015-10-19T19:52:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015&lt;br/&gt;Speaker: Spencer Gibb&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/spring-cloud-alternative-implementations-of-discovery-config-bus"&gt;http://www.slideshare.net/SpringCentral/spring-cloud-alternative-implementations-of-discovery-config-bus&lt;/a&gt;&lt;br/&gt;In this session we will discuss the Spring Cloud abstractions and interfaces that an implementation might choose to implement: DiscoveryClient, LoadBalancerClient, Configuration and Bus. We will compare and contrast some target technologies and discus the tradeoffs and nuances of each, such as: netflix, consul, etcd, zookeeper and lattice. We will then show and demonstrate Spring Cloud implementations of those technologies.&lt;br/&gt;&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/NV6qHLEzteQ" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne2GX 2015 replay: A How to Guide to Security in the PAAS Cloud</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-a-how-to-guide-to-security-in-the-paas-cloud" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2015-10-20:2280</id>
-    <updated>2015-10-19T19:50:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015&lt;br/&gt;Speaker: John Field, Shawn McKinney&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/a-how-to-guide-to-security-in-the-paas-cloud"&gt;http://www.slideshare.net/SpringCentral/a-how-to-guide-to-security-in-the-paas-cloud&lt;/a&gt;&lt;br/&gt;Most developers still deal with application security issues in isolation, without understanding the security of the &amp;quot;&amp;ldquo;full stack&amp;rdquo;&amp;quot;. As a result, security is sometimes inconsistent, and can be seen as a barrier to moving applications to the cloud. The session will examine the security of a typical Java Web application in an enterprise deployment. We will then look at what needs to change when that secure Java application is “forklifted” into Cloud Foundry. Finally, we will look at the benefits of adopting cloud native security protocols, such as OAuth2 and SAML2. The journey will cover 5 common application security architecture patterns taken from real world customer problems. We will compare how the security integration patterns differ between a standalone application and a cloud native application. From legacy enterprise identity management integration to security for microservices, this technical session includes practical, hands-on guidance to properly implementing authentication, authorization, and confidentiality controls using Spring and Cloud Foundry. We have all heard of the idea of the “Full Stack” developer — someone who can understand the application up and down the whole stack. The goal of this session is to describe the full security stack and show how it differs between standalone deployments and a PAAS deployment.&lt;br/&gt;&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/FIyJBoq8cBc" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne2GX 2015 replay: Securing Microservices with Spring Cloud Security</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-securing-microservices-with-spring-cloud-security" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2015-10-20:2278</id>
-    <updated>2015-10-19T19:46:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015&lt;br/&gt;Speaker: Will Tran&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/securing-microservices-with-spring-cloud-security-53170178"&gt;http://www.slideshare.net/SpringCentral/securing-microservices-with-spring-cloud-security-53170178&lt;/a&gt;&lt;br/&gt;This talk will walk through the authentication and authorization scenarios that you may encounter once you start building out microservices. We&amp;rsquo;ll go over OAuth2, OpenID Connect, and how to leverage those standards with Spring Cloud Security, so you can build out secure services that can be easily consumed by both Spring and non-Spring clients.&lt;br/&gt;&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/USMl2GNg2r0" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

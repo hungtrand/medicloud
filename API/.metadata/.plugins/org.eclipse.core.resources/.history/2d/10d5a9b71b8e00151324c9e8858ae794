@@ -1,0 +1,32 @@
+package provider;
+
+import java.util.List;
+
+import javax.mail.internet.MimeMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+
+@Service("mailService")
+public class Mailer {
+	private List<String> recipients;
+	private String from;
+	private String replyTo;
+	private List<String> CCs;
+	private List<String> BCCs;
+	private String subject;
+	private String body;
+	private List<String> attachments;
+	
+	@Autowired
+	private JavaMailSender jSender;
+	
+	public Mailer(JavaMailSender newSender) {
+		jSender = newSender;
+	}
+	
+	public boolean send(MimeMessage mailMessage) {
+		return true;
+	}
+}

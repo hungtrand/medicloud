@@ -1,0 +1,27 @@
+package provider;
+
+import java.util.List;
+
+import javax.mail.internet.MimeMessage;
+
+import org.springframework.mail.javamail.JavaMailSender;
+
+public class Mailer {
+	private List<String> recipients;
+	private String from;
+	private String replyTo;
+	private List<String> CCs;
+	private List<String> BCCs;
+	private String subject;
+	private String body;
+	private List<String> attachments;
+	private JavaMailSender jSender;
+	
+	public Mailer(JavaMailSender newSender) {
+		jSender = newSender;
+	}
+	
+	public Mailer) {
+		jSender = new JavaMailSender();
+	}
+}
