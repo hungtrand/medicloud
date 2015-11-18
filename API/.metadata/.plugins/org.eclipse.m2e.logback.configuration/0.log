@@ -2997,3 +2997,8 @@ Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: in comment 
 2015-11-18 15:28:44,939 [Worker-93] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
 2015-11-18 15:28:44,941 [Worker-93] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2015-11-18 15:28:44,941 [Worker-93] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
+2015-11-18 15:40:21,637 [Worker-103] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 15:40:21,637 [Worker-103] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 15:40:21,637 [Worker-103] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 15:40:21,638 [Worker-103] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 15:40:21,638 [Worker-103] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
