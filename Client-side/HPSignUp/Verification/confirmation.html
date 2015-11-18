@@ -1,0 +1,22 @@
+<div class="container-fluid">
+	<div ng-if="state=='success'" class="alert alert-success">
+		<h3>Account is verified successfully!</h3>
+
+		<p>
+			Please <a href="../HPSignIn">sign in</a> to access your account
+		</p>
+	</div>
+
+	<div ng-if="state=='warning'" class="alert alert-warning">
+		{{ response }}
+		<a ng-if="response.indexOf('been verified')" href="../HPSignIn">Click here to sign in.</a>
+	</div>
+
+	<div ng-if="state=='error'" class="alert alert-danger">
+		{{ response }}
+	</div>
+
+	<div ng-if="state=='waiting'" class="alert alert-info">
+		<h1 class="text-primary">Verifying... <i class="fa fa-spin fa-spinner"></i></h1>
+	</div>
+</div>

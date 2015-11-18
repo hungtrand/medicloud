@@ -1,0 +1,45 @@
+<form role="form" class="form-horizontal text-left" action="#" sign-up-form-dir>
+    <div class="box-body">
+        To get started, please provide your business information below: 
+        <hr />
+
+        <div class="form-group">
+            <label for="BusContact">Contact Person:</label>
+            <input type="text" name="contactName" class="form-control" id="BusContact" placeholder="Contact Name" required ng-model='model.name'>
+        </div>
+
+        <div class="form-group">
+            <label for="BusContact">Email:</label>
+            <input type="email" name="contactEmail" class="form-control" id="BusContact" placeholder="Email" required ng-model='model.email'>
+        </div>
+
+        <div class="form-group">
+            <label for="BusName">Business Name:</label>
+            <input type="text" name="BusName" class="form-control" id="BusName" placeholder="Business Name" required ng-model="model.businessName">
+        </div>
+
+        <div class="form-group">
+            <label for="BusAddress">Business Address:</label>
+            <input type="text" name="BusAddress" class="form-control" id="BusAddress" placeholder="Address" required ng-model="model.businessAddress">
+        </div>
+
+        <div class="form-group">
+            <label for="BusPhone">Business Phone:</label>
+            <input type="text" name="BusPhone" class="form-control" id="BusPhone" placeholder="Phone" required ng-model="model.businessPhone">
+        </div>
+    </div><!-- /.box-body -->
+
+    <div class="box-footer text-center">
+        <div class="alert" 
+            ng-class="{ 'invisible': response=='', 'alert-warning': state=='warning', 'alert-danger': state=='error' }">
+            {{ response }}
+        </div>
+        <button type="submit" class="btn btn-primary" 
+            btn-submit-dir 
+            ng-click="resetState()"
+            ng-class="{'disabled': state=='waiting'}">
+            <span ng-if="state!='waiting'">GO <i class="fa fa-fw fa-send"></i></span>
+            <span ng-if="state=='waiting'"><i class="fa fa-spin fa-spinner"></i></span>
+        </button>
+    </div>
+</form>

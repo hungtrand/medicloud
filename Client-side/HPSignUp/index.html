@@ -21,7 +21,6 @@
     <!-- <link href="css/module-media.min.css" rel="stylesheet" /> -->
     <link href="../Assets/Social/css/module-timeline.min.css" rel="stylesheet" />
     <link href="../Assets/Social/css/module-cover.min.css" rel="stylesheet" />
-    <link href="../Assets/Social/css/module-chat.min.css" rel="stylesheet" />
     <!-- <link href="css/module-charts.min.css" rel="stylesheet" /> -->
     <link href="../Assets/Social/css/module-maps.min.css" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -40,7 +39,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!-- Page CSS -->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
-<body class="HPSignUp">
+<body class="login" ng-app="HPSignUp">
+    <base href="../HPSignUp/" />
     <div id="content">
         <div class="container-fluid">
             <div class="formContainer">
@@ -54,42 +54,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         </h3>
                     </div>
                                         
-                    <div class="panel-body">
-                        <form role="form" class="form-horizontal text-left">
-                            <div class="box-body">
-                                Let's up your account! Please provide your business information below: 
-                                <hr />
-
-                                <div class="form-group">
-                                    <label for="BusContact">Contact Person:</label>
-                                    <input type="text" name="BusContact" class="form-control" id="BusContact" placeholder="Contact Name" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="BusContact">Email:</label>
-                                    <input type="text" name="BusContact" class="form-control" id="BusContact" placeholder="Contact Name" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="BusName">Business Name:</label>
-                                    <input type="text" name="BusName" class="form-control" id="BusName" placeholder="Business Name" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="BusAddress">Business Address:</label>
-                                    <input type="text" name="BusAddress" class="form-control" id="BusAddress" placeholder="Address" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="BusPhone">Business Phone:</label>
-                                    <input type="text" name="BusPhone" class="form-control" id="BusPhone" placeholder="Phone" required>
-                                </div>
-                            </div><!-- /.box-body -->
-
-                            <div class="box-footer text-center">
-                                <a href="index.html" class="btn btn-primary">GO <i class="fa fa-fw fa-send"></i></a>
-                            </div>
-                        </form>
+                    <div class="panel-body" ng-view>
+                        
                     </div>
                 </div>
             </div>
@@ -146,6 +112,16 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         module-bundle-main.js already includes theme-core.js so this should be loaded
         ONLY when using the standalone modules; -->
     <script src="../Assets/Social/js/theme-core.min.js"></script>
+    <script src="../Lib/AngularJS/angular.min.js"></script>
+    <script src="../Lib/AngularJS/angular-route.min.js"></script>
+    <script src="../Lib/AngularJS/angular-resource.min.js"></script>
+    <script src="SignUpForm/signUpForm.controller.js"></script>
+    <script src="SignUpForm/signUp.service.js"></script>
+    <script src="SignUpForm/signUpForm.directive.js"></script>
+    <script src="Verification/verification.controller.js"></script>
+    <script src="Verification/verification.service.js"></script>
+    <script src="configuration.js"></script>
+    <script src="app.js"></script>
     
 </body>
 </html>
