@@ -3017,3 +3017,18 @@ Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: in comment 
 2015-11-18 16:27:29,700 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
 2015-11-18 16:27:29,703 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2015-11-18 16:27:29,703 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
+2015-11-18 16:53:20,224 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 16:53:20,227 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 16:53:20,228 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 16:53:20,237 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 16:53:20,238 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
+2015-11-18 17:26:10,409 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 17:26:10,410 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 17:26:10,410 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 17:26:10,412 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 17:26:10,416 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
+2015-11-18 19:25:44,162 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:25:44,177 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:25:44,177 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:25:44,180 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:25:44,181 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
