@@ -1,0 +1,250 @@
+textarea {
+	resize: none;
+}
+#message-form-header {
+	margin-top: 3.2%;
+}
+#ConnectionsHeader {
+	position: fixed;
+	margin-left:50px; 
+}
+#remove-trash {
+	display: none;
+	margin-top: -51px;
+	margin-bottom: 17px
+}
+#loading-main {
+	display: none;nav
+	position: static;
+	margin-left: calc(50% - 32px);
+	top: 50%;
+}
+#nav-container {
+	margin-bottom: -5px;
+}
+#loading-sent {
+	display: none;
+	position: static;
+	margin-left: calc(50% - 32px);
+	top: 50%;
+}
+.user {
+	width: auto;
+    text-align: center;
+}
+.message-content ul {
+	width: 40%;
+}
+.topper {
+  background-color: #EEEEEE;
+  border-bottom-style: solid;
+  border-width: 1px;
+  border-color: rgb(212, 212, 212);
+  color: rgb(125, 125, 125);
+  height: 80px;
+  width: 100%;
+  /* border-radius: 10px; */
+  margin-top: -8px;
+  /* margin-left: 5px; */
+  margin-left: 0px;
+}
+.user img {
+	float:left;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+}
+.alert-danger {
+	margin-left: 13px;
+	width: 96%;
+}
+
+#footers {
+	margin-left: 10px;
+}
+
+.footer-buttons {
+	width: 20px;
+}
+
+.ConnectionName {
+	margin-top: 5px;	
+}
+.message-subject {
+	margin-top: -5px;
+}
+.new-message-btn {
+	margin-bottom: 15px;
+}
+.message-time {
+	margin-top: -5px;
+	margin-bottom: -10px;
+}
+
+.message-text {
+	overflow: auto;
+	height: auto;
+}
+
+.ConnectionName {
+	margin-top: 5px;	
+}
+.message-subject {
+	margin-top: -5px;
+}
+
+.message-time {
+	margin-top: -5px;
+	margin-bottom: -10px;
+}
+
+.message-text {
+	overflow: auto;
+	height: auto;
+}
+
+.sidebar-icon {
+	float: right;
+	color: black;
+}
+.dropdown-menu-nav {
+	padding-top: 20px;
+	right: 26px;
+}
+#fixed-right-section {
+	margin-top: 5%;
+	position: fixed;
+	width: 30%;
+	height: 80%;
+	overflow: auto;
+	right: 37px;
+}
+
+#message-content {
+	border-color: #D4D4D4;
+}
+
+#message-div {
+	position: relative;
+	overflow: hidden;
+	width: 75%;
+	margin-left: 22%;
+	background-color: #FFFFFF;
+}
+
+#message-form {
+	list-style-type: none;
+}
+
+#btnAddConnection {
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	font-size: 20px;
+}
+
+#sidebar {
+	background-color: #FFFFFF;
+	position: relative;
+	height: 73%;
+	width: 10%;
+}
+
+#sidebar-content {
+	margin-top: 5%;
+}
+
+#sidebar li {
+  list-style: none;
+}
+#sidebar ul {
+	width: 100%;
+	height: 500%;
+	overflow: auto;
+}
+
+#message-view ul {
+	width: 94%;
+	height: 38%;
+	overflow: auto;	
+}
+#searching {
+	width: auto;
+}
+#sidebar {
+	position: fixed;
+	width: 18%;
+	margin-right: -16%;
+}
+#sidebar a {
+  display: block;
+  text-decoration: none;
+  font-weight: normal;
+}
+.sender-name {
+	color: #606060;
+}
+.sender-href img {
+	max-width: 50px;
+	max-height: 50px;
+	border-radius: 25px;
+}
+
+#sidebar input {
+  display: block;
+  margin: 0;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+@media only screen and (max-width: 860px) {
+	#fixed-right-section {
+		display: none;
+	}
+	#sidebar {
+		width: 100%;
+		height: auto;
+		position: static;
+	}
+	#small-navigator li:hover > ul {
+		display: block;
+	}
+	#small-navigator li:hover #sidebar {
+		height: 100%;
+	}
+	#message-form {
+  		display: none;
+  		height: auto;
+  		filter: alpha(opacity=95);
+  		opacity: 0.95;
+  		position: relative;
+  		width: auto;
+  		z-index: 200;
+	}
+	#message-form a {
+		background-color: #EEEEEE;
+	}
+	#message-form a:hover {
+		background-color: #DDDDDD;
+	}
+	#message-div {
+		margin-left: 0px;
+		width: 100%;
+	}
+}
+
+label.recipient {
+	border: 1px solid #999;
+	color: #333;
+}
+
+label.recipient a {
+	color: #999;
+}
+
+.box {
+  -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.25); // iOS <4.3 & Android <4.1
+          box-shadow: 5px 5px 10px rgba(0,0,0,.25);
+}

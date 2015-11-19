@@ -1,0 +1,354 @@
+body {
+	overflow: hidden;
+}
+/*hr {
+	border-top: 1px solid #ddd !important;
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+*/
+/*h3 {
+	margin-top: 12px;
+}*/
+
+.ao-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 24px;
+}
+
+#ao-main-box {
+	width: 340px;
+	padding: 19px !important;
+	border: 1px solid #e3e3e3 !important;
+	max-height: 500px;
+	overflow: scroll;
+	overflow-x: hidden;
+	background-color: #FFFFFF;
+}
+
+#ao-main-box h3{
+	margin-top: 0px !important;
+}
+
+#ao-regular-div {
+	width: 100%;
+	/*border: 1px solid red;*/
+}
+
+/*.ao-group-search-btn li:not(:last-child){
+	border-right: 0px !important;
+}*/
+
+#ao-search-btn-grp:hover {
+	cursor: pointer;
+}
+
+.attention-icon {
+	color: #FCFCFC;
+}
+
+.badge:empty {
+  display: none !important;
+}
+
+.box {
+  -webkit-box-shadow: 2px 1px 12px rgba(0,0,0,.25); // iOS <4.3 & Android <4.1
+          box-shadow: 2px 1px 12px rgba(0,0,0,.25);
+}
+
+.custom-media-body, .custom-media-body *{
+	max-width: 220px;
+	text-overflow: ellipsis;
+ 	overflow: hidden;
+}
+
+.custom-media-item:hover {
+	cursor: pointer;
+}
+
+.custom-pc-pymk {
+	position: fixed;
+	padding-left: 20px
+}
+
+.iam-loading {
+    position: relative; 
+    width: 100%;
+    min-height: 50px;
+    height: 100%;
+    display: none;
+}
+
+.iam-loading div {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	-webkit-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+}
+
+/*.navi-menu {
+	padding-left: 16px !important;
+	padding-right: 16px !important;
+	#4A4A4A     on feed page, show the text field right away like tempalte, dont need name htere and banner, emphasis on job advertisement
+	edit profile page turns into 2 columns
+}*/
+
+.ls-bottom-footer .st-container {
+	padding-bottom: 0px;
+}
+
+.ls-bottom-footer .st-container>.sidebar {
+	bottom: 0;
+}
+
+.main-nav-search-btn {
+	/*border-right: 0px;*/
+}
+
+.mobile-notification-list {
+	border-bottom: 1px solid #ebebeb;
+	margin-bottom: 0 !important;
+}
+
+.mobile-notification-list a {
+	color: #4F4F4F;
+	position: relative;
+}
+
+.mobile-notification-list a:hover {
+	color: #1565c0;
+}
+
+.mobile-notification-list .navbar {
+	margin-bottom: 0 !important;
+}
+
+/*.mobile-notification-list li {
+}*/
+
+.nav-dropdown-menu {
+	max-height: 424px;
+	overflow: scroll;
+}
+
+#nav-right-links .dropdown-header {
+	background-color:black;
+	color: #E8E8E8;
+	margin-bottom:5px;
+	padding-left:5px;
+}
+
+#nav-right-links .dropdown-menu{
+	padding-top: 0px;
+	max-height: 450px;
+	overflow: scroll;
+}
+
+#nav-right-links .media-list li {
+	min-width: 300px;
+}
+
+#nav-right-links a.landing-destination{
+	padding: 10px 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+#nav-right-links li:last-child a.landing-destination{
+	border-bottom: 0px;
+}
+
+#nav-right-links .media-body, #nav-right-links .media-body p{
+	overflow: hidden;
+	text-overflow: ellipsis; 
+	max-width: 200px;
+}
+
+#nav-right-links .media-list .media-right{
+	text-align: right;
+}
+
+.new-item {
+	background-color: #dfedfd;
+}
+
+.new-item a:hover {
+	background-color: #C4DFFD;
+}
+
+.notification-list .media {
+	margin-top: 0px;
+}
+
+.notification-number{
+	margin-left: 0px !important;
+	position: absolute;
+	bottom: 50%;
+	left: 50%;
+}
+
+.notification-red {
+	padding: 2px 5px !important;
+	background-color: #dc0d17 !important;
+	background-image: -webkit-linear-gradient(#fa3c45, #dc0d17) !important;
+	background-image: -moz-linear-gradient(#fa3c45, #dc0d17) !important;
+	background-image: -o-linear-gradient(#fa3c45, #dc0d17) !important;
+	background-image: linear-gradient(#fa3c45, #dc0d17) !important;
+}
+
+
+.main-search-bar {
+	width: 300px !important;
+}
+
+#mobile-view-main-nav-btn {
+ 	margin-right: 0px !important;
+}
+
+.open-custom {
+	color: red;
+	background-color: #080808;
+	-webkit-transition: background-color 500ms linear;
+	-moz-transition: background-color 500ms linear;
+	-o-transition: background-color 500ms linear;
+	-ms-transition: background-color 500ms linear;
+	transition: background-color 500ms linear;
+}
+
+.st-content-inner {
+	background-color: #e7e9ec !important;
+}
+
+/*.sidebar-menu li.active>a:hover {
+	background-color: #f4f4f4;
+}*/
+
+/*.snippet-zone {
+	text-overflow: ellipsis;
+ 	overflow: hidden;
+  	max-width: 170px;
+}*/
+
+/*
+.subNav a { 
+	color: #ccc !important;  
+	z-index: 0;
+}
+*/
+/*
+.time-ago {
+	position: relative;
+	padding-left: 0px !important;
+}*/
+
+@media (min-width: 768px){
+/*	 .navbar>.container-fluid .navbar-brand {
+	  	margin-left: 30px;
+	}*/
+	/*.navbar-right {
+		margin-right: 30px;
+	    margin-top: 10px;
+	}*/
+/*	.nav {
+	    padding-left: 50px;
+	}*/
+	/*.navbar-left {
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%,0);
+		margin-top:15px;
+	}*/
+
+}
+
+@media (max-width: 767px){
+	
+
+	.notification-number{
+		/*margin-left: 0px !important;
+		position: absolute;
+		bottom: inherit;
+		left: 6%;
+	    top: 20%;*/
+	    color: #FFFFFF;
+	}
+
+	.notification-red {
+		color: #FFFFFF !important;
+	}
+
+	.sidebar [data-scrollable] { 
+		top: 5px !important;
+	}
+	/*#advance-option-div {
+		max-width: 360px;
+		max-width: 400px;
+		/*width: 100%;*/
+	/*.nav {
+		padding-left: 0px;
+	}*/
+	/*.main-search-bar {
+		width: 100% !important;
+	}*/
+}
+/*.navbar-brand>img {
+  width: 225px;
+  margin-top: -5px;
+}*/
+
+
+/* custom mobile search button */
+/*.search-form .form-group {
+  float: right !important;
+  transition: all 0.35s, border-radius 0s;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+.search-form .form-group input.form-control {
+  padding-right: 20px;
+  border: 0 none;
+  background: transparent;
+  box-shadow: none;
+  display:block;
+}
+.search-form .form-group input.form-control::-webkit-input-placeholder {
+  display: none;
+}
+.search-form .form-group input.form-control:-moz-placeholder {
+   Firefox 18- 
+  display: none;
+}
+.search-form .form-group input.form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  display: none;
+}
+.search-form .form-group input.form-control:-ms-input-placeholder {
+  display: none;
+}
+.search-form .form-group.showSB {
+  width: 50%;
+  border-radius: 4px 25px 25px 4px;
+}
+.search-form .form-group span.form-control-feedback {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  color: #3596e0;
+  left: initial;
+  font-size: 14px;
+}*/
