@@ -3037,3 +3037,66 @@ Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: in comment 
 2015-11-18 19:37:02,339 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
 2015-11-18 19:37:02,341 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2015-11-18 19:37:02,341 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
+2015-11-18 19:48:25,438 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:48:25,439 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:48:25,439 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:48:25,442 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:48:25,442 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
+2015-11-18 19:49:45,912 [Worker-43] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.medicloud.api:medicloudAPI:0.0.1-SNAPSHOT @ /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/pom.xml.
+2015-11-18 19:49:46,361 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:49:46,361 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:49:46,361 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:49:46,364 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:49:46,365 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
+2015-11-18 19:50:11,757 [Worker-51] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.medicloud.api:medicloudAPI:0.0.1-SNAPSHOT @ /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/pom.xml.
+2015-11-18 19:50:12,052 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:50:12,053 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:50:12,053 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:50:12,056 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:50:12,057 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
+2015-11-18 19:50:33,671 [Worker-51] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/2.5.1/maven-assembly-plugin-2.5.1.jar
+2015-11-18 19:50:34,080 [Worker-51] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/2.5.1/maven-assembly-plugin-2.5.1.jar
+2015-11-18 19:50:34,349 [Worker-51] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.medicloud.api:medicloudAPI:0.0.1-SNAPSHOT @ /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/pom.xml.
+2015-11-18 19:50:34,760 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:50:34,761 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:50:34,761 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:50:34,764 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:50:34,765 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
+2015-11-18 19:50:34,873 [Worker-51] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/2.5.1/maven-assembly-plugin-2.5.1.pom
+2015-11-18 19:50:34,976 [Worker-51] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/2.5.1/maven-assembly-plugin-2.5.1.pom
+2015-11-18 19:50:36,617 [Worker-48] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.medicloud.api:medicloudAPI:0.0.1-SNAPSHOT @ /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/pom.xml.
+2015-11-18 19:50:37,110 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:50:37,116 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:50:37,116 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:50:37,123 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:50:37,124 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
+2015-11-18 19:52:43,503 [Worker-45] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.medicloud.api:medicloudAPI:0.0.1-SNAPSHOT @ /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/pom.xml.
+2015-11-18 19:52:44,075 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:52:44,076 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:52:44,076 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:52:44,079 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:52:44,080 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
+2015-11-18 19:53:17,704 [Worker-52] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.medicloud.api:medicloudAPI:0.0.1-SNAPSHOT @ /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/pom.xml.
+2015-11-18 19:53:18,238 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:53:18,238 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:53:18,238 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:53:18,241 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:53:18,242 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
+2015-11-18 19:53:25,618 [Worker-52] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.medicloud.api:medicloudAPI:0.0.1-SNAPSHOT @ /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/pom.xml.
+2015-11-18 19:53:26,011 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:53:26,011 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:53:26,012 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:53:26,014 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:53:26,014 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
+2015-11-18 19:53:29,635 [Worker-45] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.medicloud.api:medicloudAPI:0.0.1-SNAPSHOT @ /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/pom.xml.
+2015-11-18 19:53:29,992 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:53:29,992 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:53:29,992 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:53:29,994 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:53:29,994 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
+2015-11-18 19:54:33,409 [Worker-45] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.medicloud.api:medicloudAPI:0.0.1-SNAPSHOT @ /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/pom.xml.
+2015-11-18 19:54:33,892 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:54:33,892 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:54:33,892 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/main/resources
+2015-11-18 19:54:33,895 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-18 19:54:33,895 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /mnt/Lindows/Projects/Medicloud/API/medicloudAPI/src/test/resources
