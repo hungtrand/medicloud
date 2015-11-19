@@ -1,0 +1,9 @@
+CREATE TABLE `mailbox` (
+  `mailid` int(11) NOT NULL DEFAULT '0',
+  `mailsubject` varchar(1000) DEFAULT NULL,
+  `mailsender` varchar(1000) DEFAULT NULL,
+  `mailstatus` varchar(80) DEFAULT NULL,
+  `maildate` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`mailid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+select * from testing;
