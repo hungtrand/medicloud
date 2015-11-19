@@ -2644,3 +2644,16 @@ Java Model Exception: Java Model Status [repositories [in src/main/java [in medi
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
 !SUBENTRY 1 org.eclipse.jdt.core 4 969 2015-11-18 15:40:21.578
 !MESSAGE repositories [in src/main/java [in medicloudAPI]] does not exist
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-11-18 16:06:00.969
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2015-11-18 16:06:02.890 -----------------------------------------------
+eclipse.buildId=3.7.1.201510041213-RELEASE-e45
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.springsource.sts.ide
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.springsource.sts.ide
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-11-18 16:06:08.632
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
