@@ -1,7 +1,0 @@
-package medicloudAPI;
-
-import org.hibernate.SessionFactory;
-
-public class UserDao {
-	SessionFactory sessFac = HibernateUtil.getSessionFactory();
-}
