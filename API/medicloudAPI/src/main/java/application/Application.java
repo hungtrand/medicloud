@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"application", "controller", "service"})
-@EnableJpaRepositories(basePackages = "repositories")
+@EnableJpaRepositories(basePackages = "repository")
 @EntityScan(basePackages = "model")
 public class Application {
 

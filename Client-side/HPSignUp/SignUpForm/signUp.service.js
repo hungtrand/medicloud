@@ -20,7 +20,7 @@ function signUp_serv($resourceProvider, $rootScope) {
 			var that = this;
 			$rootScope.$broadcast( 'signup.submitting' );
 
-			var resourceLoc = 'http://localhost\\:8080/HPSignUp/';
+			var resourceLoc = 'http://'+window.location.hostname+'\\:8080/HPSignUp/';
 			var postData = {
 				name 			: 	this.name,
 				email 			: 	this.email,
