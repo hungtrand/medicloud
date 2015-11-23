@@ -6,11 +6,15 @@ function verification_ctrl($scope, verificationServ) {
 
 	setTimeout(function() {
 		verificationServ.verify();
-	}, 2000);
+	}, 1000);
 	
 
 	$scope.$on('verification.verified', function() {
 		$scope.state = "success";
+		setTimeout(function() {
+			window.location.hash = '#/security?email=' + $scope.model.email + '&token=' + $scope.model.token;
+			window.location.reload();
+		}, 2000);
 	});
 
 	$scope.$on('verification.failed', function() {
