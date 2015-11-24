@@ -22,22 +22,12 @@
     <link href="../Assets/Social/css/module-maps.min.css" rel="stylesheet" />
     <link href="index.css" rel="stylesheet" />
 </head>
-<body class="login">
+<body class="login" ng-app="HPSignIn">
+    <base href="../HPSignIn/" />
     <div id="content">
         <div class="container-fluid">
-            <div class="lock-container">
-                <h1>Health Professional Sign In</h1>
-                <div class="panel panel-default text-center">
-                    <a href="/">
-                        <img src="../Assets/Logos/MediCloud_2_transparent.png" id="LogoPatientLogin" class="img-circle">
-                    </a>
-                    <div class="panel-body">
-                        <input class="form-control" type="text" placeholder="Email Address">
-                        <input class="form-control" type="password" placeholder="Password">
-                        <a href="index.html" class="btn btn-primary">Login <i class="fa fa-fw fa-unlock-alt"></i></a>
-                        <a href="#" class="forgot-password">Forgot password?</a>
-                    </div>
-                </div>
+            <div class="lock-container" ng-view>
+                
             </div>
         </div>
     </div>
@@ -82,6 +72,13 @@
         }
     };
     </script>
+
+    <script src="../Lib/AngularJS/angular.min.js"></script>
+    <script src="../Lib/AngularJS/angular-route.min.js"></script>
+    <script src="../Lib/AngularJS/angular-resource.min.js"></script>
+    <script src="SignInForm/signInForm.controller.js"></script>
+    <script src="SignInForm/signIn.service.js"></script>
+    <script src="SignInForm/signInForm.directive.js"></script>
     
 </body>
 </html>
