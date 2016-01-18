@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="contactsApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,15 +19,11 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../Assets/AdminLTE-2.3.0/dist/css/skins/_all-skins.min.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="../Lib/AngularJS/angular.min.js"></script>
+    <script src="../Lib/AngularJS/angular-route.min.js"></script>
   </head>
-  <body class="hold-transition skin-blue sidebar-mini">
+  <body ng-controller="patientsListController" class="hold-transition skin-blue sidebar-mini">
+
     <div class="wrapper">
 
       <header class="main-header">
@@ -366,45 +362,7 @@
                 <small class="label pull-right bg-yellow">12</small>
               </a>
             </li>
-            <!-- <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i> <span>Examples</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-                <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-                <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-                <li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-                <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-                <li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-                <li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-                <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-share"></i> <span>Multilevel</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                    <li>
-                      <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
-                      <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-              </ul>
-            </li>-->
+
             <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             <li class="header">LABELS</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
@@ -433,14 +391,16 @@
                 </div>
               </div>
               <div class="col-xs-3">
-                <a class="btn btn-primary btn-block" href="#">
+                <a ng-click='toggleModal()' class="btn btn-primary btn-block" href="#">
                   <i class="fa fa-plus"></i>
                   Add
                 </a>
               </div>
             </div>
+            <modal-dialog show='modalShown' width='750px' height='60%'></modal-dialog>
           </form>
         </div>
+        <h1>{{test}}</h1>
         <div class="list-group">
           <a class="list-group-item" href="#">
             <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user6-128x128.jpg" class="image img-rounded pull-left"/>
@@ -452,57 +412,6 @@
             <h4 class="list-group-item-heading">Tsui, Helen</h4>
             <p class="list-group-item-text">Aquarist</p>
           </a>
-          <a class="list-group-item" href="#">
-            <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user8-128x128.jpg" class="image img-rounded pull-left"/>
-            <h4 class="list-group-item-heading">Win, Kyaw</h4>
-            <p class="list-group-item-text">Shrimp</p>
-          </a>
-          <a class="list-group-item" href="#">
-            <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user6-128x128.jpg" class="image img-rounded pull-left"/>
-            <h4 class="list-group-item-heading">Tran, Hung</h4>
-            <p class="list-group-item-text">Fish</p>
-          </a>
-          <a class="list-group-item" href="#">
-            <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user7-128x128.jpg" class="image img-rounded pull-left"/>
-            <h4 class="list-group-item-heading">Tsui, Helen</h4>
-            <p class="list-group-item-text">Aquarist</p>
-          </a>
-          <a class="list-group-item" href="#">
-            <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user8-128x128.jpg" class="image img-rounded pull-left"/>
-            <h4 class="list-group-item-heading">Win, Kyaw</h4>
-            <p class="list-group-item-text">Shrimp</p>
-          </a>
-          <a class="list-group-item" href="#">
-            <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user6-128x128.jpg" class="image img-rounded pull-left"/>
-            <h4 class="list-group-item-heading">Tran, Hung</h4>
-            <p class="list-group-item-text">Fish</p>
-          </a>
-          <a class="list-group-item" href="#">
-            <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user7-128x128.jpg" class="image img-rounded pull-left"/>
-            <h4 class="list-group-item-heading">Tsui, Helen</h4>
-            <p class="list-group-item-text">Aquarist</p>
-          </a>
-          <a class="list-group-item" href="#">
-            <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user8-128x128.jpg" class="image img-rounded pull-left"/>
-            <h4 class="list-group-item-heading">Win, Kyaw</h4>
-            <p class="list-group-item-text">Shrimp</p>
-          </a>
-          <a class="list-group-item" href="#">
-            <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user6-128x128.jpg" class="image img-rounded pull-left"/>
-            <h4 class="list-group-item-heading">Tran, Hung</h4>
-            <p class="list-group-item-text">Fish</p>
-          </a>
-          <a class="list-group-item" href="#">
-            <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user7-128x128.jpg" class="image img-rounded pull-left"/>
-            <h4 class="list-group-item-heading">Tsui, Helen</h4>
-            <p class="list-group-item-text">Aquarist</p>
-          </a>
-          <a class="list-group-item" href="#">
-            <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user8-128x128.jpg" class="image img-rounded pull-left"/>
-            <h4 class="list-group-item-heading">Win, Kyaw</h4>
-            <p class="list-group-item-text">Shrimp</p>
-          </a>
-          
         </div>
       </div>
     </div>
@@ -738,5 +647,8 @@
     <script src="../Assets/AdminLTE-2.3.0/dist/js/pages/dashboard2.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../Assets/AdminLTE-2.3.0/dist/js/demo.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
   </body>
 </html>
