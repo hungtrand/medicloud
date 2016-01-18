@@ -18,6 +18,15 @@ app.directive('modalDialog', function() {
         scope.show = false;
       };
     },
-    templateUrl: 'addContactForm.html'
+    templateUrl: 'addContactForm.html',
+    controller: ['$scope', function($scope) {
+      $scope.testing='qwerty';
+      $scope.addPatient = function() {
+        $.ajax({
+          method: 'POST',
+          data: $('#AddPatientForm').serialize()
+        });
+      };
+    }],
   };
 });
