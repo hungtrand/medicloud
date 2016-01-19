@@ -23,9 +23,9 @@
   margin-right: 15px;
 }
 
-.ng-modal-overlay {
+/*.ng-modal-overlay {*/
   /* A dark translucent div that covers the whole screen */
-  position:absolute;
+/*  position:absolute;
   z-index:9999;
   top:0;
   left:0;
@@ -36,12 +36,12 @@
 }
 .ng-modal-dialog {
   /* A centered div above the overlay with a box shadow. */
-  z-index:10000;
+/*  z-index:10000;
   position: absolute;
-  width: 50%; /* Default */
+  width: 50%; *//* Default */
 
   /* Center the dialog */
-  top: 50%;
+/*  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
@@ -65,3 +65,4 @@
   font-weight: bold;
   font-family: 'arial', 'sans-serif';
 }
+*/

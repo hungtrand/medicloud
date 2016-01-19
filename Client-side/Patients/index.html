@@ -16,13 +16,15 @@
     <link rel="stylesheet" href="../Assets/AdminLTE-2.3.0/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../Assets/AdminLTE-2.3.0/dist/css/AdminLTE.min.css">
+
+    <link href="styles.css" rel="stylesheet" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../Assets/AdminLTE-2.3.0/dist/css/skins/_all-skins.min.css">
     <script src="../Lib/AngularJS/angular.min.js"></script>
     <script src="../Lib/AngularJS/angular-route.min.js"></script>
   </head>
-  <body ng-controller="patientsListController" class="hold-transition skin-blue sidebar-mini">
+  <body ng-controller="patientsList_ctrl" class="hold-transition skin-blue sidebar-mini">
 
     <div class="wrapper">
 
@@ -312,7 +314,7 @@
               </a>
             </li>
             <li>
-              <a href="../Contacts/contacts.html">
+              <a href="patientsList/patientsList.html">
                 <i class="fa fa-th"></i> <span>Patients</span> <small class="label pull-right bg-green">new</small>
               </a>
             </li>
@@ -375,7 +377,7 @@
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-            <link href="contacts.css" rel="stylesheet" />
+            
 <div class="container">
 <div class="row">
   <div class="col col-xs-6">
@@ -397,7 +399,7 @@
                 </a>
               </div>
             </div>
-            <modal-dialog show='modalShown' width='750px' height='60%'></modal-dialog>
+            <modal-dialog show='modalShown'></modal-dialog>
           </form>
         </div>
         <h1>{{test}}</h1>
@@ -623,7 +625,6 @@
       <!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
       <div class="control-sidebar-bg"></div>
-
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
@@ -648,7 +649,9 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../Assets/AdminLTE-2.3.0/dist/js/demo.js"></script>
 
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
+    <script src="patientsList/patientsList.controller.js"></script>
+    <script src="formAddPatient/formAddPatient.directive.js"></script>
+    <script src="app.js"></script>
+
   </body>
 </html>
