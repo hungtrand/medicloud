@@ -1,12 +1,6 @@
-function patientsList_ctrl($scope) {
+function patientsList_ctrl($scope, service) {
     $scope.test = "testing12";
-    $scope.patientList = [{
-        lastName: 'Tran',
-        firstName: 'Hung'
-    }, {
-        lastName: 'Tsui',
-        firstName: 'Helen'
-    }]
+    $scope.patientList = service.patients;
     $scope.modalShown = false;
     $scope.patient = {};
     $scope.toggleModal = function() {

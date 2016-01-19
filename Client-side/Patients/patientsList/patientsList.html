@@ -23,21 +23,11 @@
             </div>
           </form>
         </div>
-        <div class="list-group">
+        <div class="list-group" ng-repeat="patient in patientList">
           <a class="list-group-item" href="#">
             <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user6-128x128.jpg" class="image img-rounded pull-left"/>
-            <h4 class="list-group-item-heading">Tran, Hung</h4>
+            <h4 class="list-group-item-heading">{{patient.firstName}}</h4>
             <p class="list-group-item-text">Fish</p>
-          </a>
-          <a class="list-group-item" href="#">
-            <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user7-128x128.jpg" class="image img-rounded pull-left"/>
-            <h4 class="list-group-item-heading">Tsui, Helen</h4>
-            <p class="list-group-item-text">Aquarist</p>
-          </a>
-          <a class="list-group-item" href="#">
-            <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user8-128x128.jpg" class="image img-rounded pull-left"/>
-            <h4 class="list-group-item-heading">Win, Kyaw</h4>
-            <p class="list-group-item-text">Shrimp</p>
           </a>
         </div>
       </div>
