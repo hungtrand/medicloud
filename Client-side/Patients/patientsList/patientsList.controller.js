@@ -6,4 +6,11 @@ function patientsList_ctrl($scope, service) {
     $scope.toggleModal = function() {
         $scope.modalShown = !$scope.modalShown;
     };
+    $scope.contactClicked = false;
+    $scope.selectedPatient;
+    $scope.clicked = function(patientIndex) {
+      $scope.contactClicked = true;
+      $scope.patientIndex = patientIndex;
+      $scope.selectedPatient = this.patientList[$scope.patientIndex];
+    }
 }

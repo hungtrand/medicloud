@@ -1,8 +1,8 @@
 function patientsListService($rootScope) {
   var service = {
     patients: [
-      {firstName: "Peter", lastName: "Parker"},
-      {firstName: "Bruce", lastName: "Wayne"}
+      {firstName: "Peter", lastName: "Parker", email: "peterparker@gmail.com"},
+      {firstName: "Bruce", lastName: "Wayne", email: "brucewayne@gmail.com"}
     ],
 
     addPatient: function (patient) {

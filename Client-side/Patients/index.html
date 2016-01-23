@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="../Assets/AdminLTE-2.3.0/dist/css/AdminLTE.min.css">
 
     <link href="styles.css" rel="stylesheet" />
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../Assets/AdminLTE-2.3.0/dist/css/skins/_all-skins.min.css">
     <script src="../Lib/AngularJS/angular.min.js"></script>
     <script src="../Lib/AngularJS/angular-route.min.js"></script>
@@ -29,13 +27,9 @@
     <div class="wrapper">
 
       <header class="main-header">
-
         <!-- Logo -->
         <a href="index2.html" class="logo">
-          <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>M</b></span>
-          <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><img width="32" src="../Assets/Logos/MediCloud_2_transparent_64x64.gif" /> <b>MEDICLOUD</b></span>
+          <span class="logo-lg"><img width="32" src="../Assets/Logos/MediCloud_2_transparent_64x64.gif" /><b>MEDICLOUD</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -352,18 +346,6 @@
                 <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
               </ul>
             </li>
-            <li>
-              <a href="pages/calendar.html">
-                <i class="fa fa-calendar"></i> <span>Calendar</span>
-                <small class="label pull-right bg-red">3</small>
-              </a>
-            </li>
-            <li>
-              <a href="pages/mailbox/mailbox.html">
-                <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                <small class="label pull-right bg-yellow">12</small>
-              </a>
-            </li>
 
             <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             <li class="header">LABELS</li>
@@ -404,20 +386,20 @@
         </div>
         <h1>{{test}}</h1>
         <div class="list-group">
-          <a class="list-group-item" href="#" ng-repeat="patient in patientList">
+          <a class="list-group-item" href="#" ng-repeat="patient in patientList" ng-click="clicked($index)">
             <img src="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/dist/img/user6-128x128.jpg" class="image img-rounded pull-left"/>
             <h4 class="list-group-item-heading">{{patient.lastName}}, {{patient.firstName}}</h4>
-            <p class="list-group-item-text">Fish</p>
+            <p class="list-group-item-text">{{patient.email}}</p>
           </a>
         </div>
       </div>
     </div>
   </div>
-  <div class="col col-xs-5 col-xs-offset-1">
+  <div ng-show="contactClicked" class="col col-xs-5 col-xs-offset-1">
     <div class="bootcards-card">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
-        <h3 class="panel-title pull-left">Base Card Title</h3>
+        <h3 class="panel-title pull-left">Patient Information</h3>
           <a class="btn btn-primary pull-right" href="#">
             <i class="fa fa-pencil"></i>
             Edit
@@ -426,25 +408,32 @@
         <div class="list-group">
           <div class="list-group-item">
             <p class="list-group-item-text">Name</p>
-            <h4 class="list-group-item-heading">John Smith</h4>
+            <h4 class="list-group-item-heading">{{selectedPatient.firstName}} {{selectedPatient.lastName}}</h4>
           </div>
           <div class="list-group-item">
-            <p class="list-group-item-text">Occupation</p>
-            <h4 class="list-group-item-heading">Web Developer</h4>
+            <p class="list-group-item-text">Email</p>
+            <h4 class="list-group-item-heading">{{selectedPatient.email}}</h4>
           </div>
           <div class="list-group-item">
             <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris tellus, vehicula ut tellus id, suscipit dapibus tortor. Integer viverra turpis ac fringilla hendrerit. Sed faucibus posuere felis et pellentesque. Cras varius tortor vitae molestie tempor. Proin ut viverra elit, ac gravida tortor.</p>
           </div>
         </div>
+
+
+
       <div class="panel-footer">
-        <small>Built with Bootcards - Base Card</small>
+        <a href="pages/calendar.html">
+          <i class="fa fa-fw fa-calendar"></i>
+        </a>
+        <a href="pages/mailbox/mailbox.html">
+          <i class="fa fa-fw fa-envelope"></i>
+        </a>
       </div>
+
     </div>
     </div>
   </div>
 </div>
-
-
 
 </div>
       </div><!-- /.content-wrapper -->
@@ -639,9 +628,6 @@
     <script src="../Assets/AdminLTE-2.3.0/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- ChartJS 1.0.1 -->
     <script src="../Assets/AdminLTE-2.3.0/plugins/chartjs/Chart.min.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../Assets/AdminLTE-2.3.0/dist/js/pages/dashboard2.js"></script>
-    <!-- AdminLTE for demo purposes -->
     <script src="../Assets/AdminLTE-2.3.0/dist/js/demo.js"></script>
 
     <script src="patientsList/patientsList.controller.js"></script>
