@@ -5,6 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import repository.PersonDao;
@@ -19,6 +23,13 @@ public class PersonServiceImpl {
 	
 	@Autowired
 	private PersonDao personDao;
+	
+	@RequestMapping(method=GET, value="/persons")
+	public Iterable<Person> loadPersons() {
+		Iterable<Person> people = new ArrayList<Person>();
+		people = personDao.findAll();
+		return people;
+	}
 	
 	@RequestMapping(method=GET, value="/personId")
 	public Person loadPersonByPersonId(@RequestParam("personId") int personId) {
