@@ -11,11 +11,11 @@ import javax.persistence.Table;
 public class Person {
 	
 	@Id
-	@Column(name="personId")
+	@Column(name="person_id")
 	@GeneratedValue
 	private int personId = 0;
 	
-	@Column(name="firstName")
+	@Column(name="first_name")
 	private String firstName;
 
 	public int getPersonId() {

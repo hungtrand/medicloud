@@ -1,5 +1,6 @@
 var app = angular.module('contactsApp', []);
-app.service('patientsListService', patientsListService);
+app.service('patientsListService', ["$http", "$rootScope", patientsListService]);
+
 // directives
 app.directive('modalDialog', formAddPatient_dir);
 
