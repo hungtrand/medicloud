@@ -1,69 +1,71 @@
 (function() {
-	var timerStart = Date.now();
+	// this is the main application
+	// the object is not initiated until all dependent scripts and modules are loaded
+	var scripts = [];
 
-	/***************** Loading dependencies *******************/
-	var scripts = [
-		"route.js"
-	];
+	// if there's any script in array scripts JQuery.getScript to load them
+	var status = includeScripts(scripts);
 
-	var loaded = [];
-	var failed = [];
-	var count = scripts.length;
+	var hpCenter = {
+		timerStart: Date.now(),
+		ngModules : ['ngRoute'],
+		modules: { 'patientsApp': patients_module },
+		module_ready_count: 0,
+		module_ready: function() {
+			this.module_ready_count++;
+			if (this.module_ready_count === Object.keys(this.modules).length) {
+				this.init();
+			}
+		},
 
-	var loadDependencies = function() {
-		if (scripts.length === 0) return;
-
-		var url = scripts.pop();
-		$
-			.getScript(
-				url,
-				function(data, textStatus, jqxhr) {
-					console.log('Loaded ' + url);
-					loaded.push(url);
-				})
-			.fail(function(jqxhr, settings, exception) {
-				console.log("***Error***: Failed to load " + url);
-				failed.push(url);
-				console.log(exception);
-				console.log(settings);
-				if (jqxhr.status == '404') {
-					alert("Connection error. Server or internet connection problem.");
+		init: function() {
+			if (!status.ready) {
+				if (status.timeElapsed % 10000 == 0 && status.timeElapsed > 10000) {
+					var conf = confirm('The application takes too long to load. Continue waiting?');
+					if (!conf) {
+						return false;
+					}
 				}
-			});
+				setTimeout(init, 100);
+				return false;
+			};
 
-		loadDependencies();
+			console.log("*** Initializing hp-center application...");
+
+			var allModules = angular.extend([], this.ngModules, Object.keys(this.modules));
+
+			var app = new angular.module("hp-center", allModules);
+
+			// routing and navigation configuration
+			app.config(['$routeProvider', function($routeProvider) {
+				'use strict';
+				$routeProvider
+					.when('/', {
+						templateUrl: 'dashboard/'
+					})
+					.otherwise({
+						redirectTo: '/'
+					});
+
+			}]);
+
+			// directives
+
+
+			// services and factories
+
+			// controllers
+
+			// initiate
+			angular.bootstrap(window.document, ['hp-center']);
+
+			console.log('*** Finished loading hp-center. Application loading time: ' + (Date.now() - this.timerStart));
+		}
 	}
-	loadDependencies();
-	console.log('Dependencies loading time: ' + (Date.now() - timerStart));
 
-	/********************** End of loading dependencies *******************/
-
-	/********************** Initialize application ************************/
-	var init = function() {
-		if (loaded.length < count) {
-			setTimeout(init, 100);
-			return false;
-		};
-
-		console.log("*** Initializing application...");
-		var app = new angular.module("hp-center", ['ngRoute']);
-
-		// routing and navigation configuration
-		app
-			.config(['$routeProvider', route]);
-
-		// directives
-		
-
-		// services and factories
-		
-		// controllers
-
-		// initiate
-		angular.bootstrap(window.document, ['hp-center']);
-
-		console.log('*** Finished loading. Application loading time: ' + (Date.now() - timerStart));
-	}
-
-	init();
+	// initialize modules. Each module will report back when it's ready by calling this.module_ready()
+	// when everything is ready, hpCenter will init()
+	angular.forEach(hpCenter.modules, function(fnModule, moduleName) {
+		fnModule.call(hpCenter);
+	});
 })();

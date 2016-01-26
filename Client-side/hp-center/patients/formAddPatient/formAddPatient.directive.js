@@ -1,5 +1,4 @@
 function formAddPatient_dir() {
-    console.log('e');
     return {
         restrict: 'E',
         scope: {
@@ -18,7 +17,7 @@ function formAddPatient_dir() {
             })
             
         },
-        templateUrl: 'formAddPatient/formAddPatient.html',
+        templateUrl: 'patients/formAddPatient/formAddPatient.html',
         controller: ['$scope', function($scope) {
             $scope.testing = 'qwerty';
             $scope.addPatient = function() {
