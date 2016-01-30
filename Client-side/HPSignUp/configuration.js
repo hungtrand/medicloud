@@ -13,6 +13,10 @@ function configuration($routeProvider, $resourceProvider) {
 		.when('/verification', {
 			templateUrl : "Verification/confirmation.html",
 			controller : 'verificationCtrl'
+		})
+		.when('/security', {
+			templateUrl : "AccountSetup/securitySetupForm.html",
+			controller : 'securityCtrl'
 		});
 
 	/* config ngResource for REST API*/
