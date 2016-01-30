@@ -38,7 +38,7 @@ function patients_module() {
 		app.directive('modalDialog', formAddPatient_dir);
 
 		// controllers
-		app.controller("patientsList_ctrl", ['$scope', 'patientsListService', patientsList_ctrl]);
+		app.controller("patientsList_ctrl", ['$scope', '$rootScope', 'patientsListService', patientsList_ctrl]);
 
 		console.log('*** Finished loading patients module. Module loading time: ' + (Date.now() - timerStart));
 
