@@ -11,7 +11,8 @@ function profileService($resourceProvider) {
 
 			encounters: {
 				lastVisitDate: '01/12/2012',
-				patientSince: '01/02/2003'
+				patientSince: '01/02/2003',
+				history: []
 			},
 
 			notes: ['A very long notes']
