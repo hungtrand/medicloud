@@ -1,0 +1,499 @@
+2016-01-24 18:47:15,171 [Worker-10] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.medicloud.api:medicloudAPI:0.0.1-SNAPSHOT @ /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/pom.xml.
+2016-01-24 18:47:17,499 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-24 18:47:17,500 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-24 18:47:17,500 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-24 18:47:17,504 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-24 18:47:17,505 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-24 18:47:23,076 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-24 18:47:23,076 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-24 18:47:23,077 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-24 18:47:23,079 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-24 18:47:23,080 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-24 18:47:23,963 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-24 18:47:23,964 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-24 18:47:23,964 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-24 18:47:23,966 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-24 18:47:23,966 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-24 18:47:24,838 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-24 18:47:24,838 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-24 18:47:24,839 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-24 18:47:24,841 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-24 18:47:24,841 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-24 18:47:25,672 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-24 18:47:25,672 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-24 18:47:25,672 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-24 18:47:25,675 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-24 18:47:25,675 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-24 18:47:26,299 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-24 18:47:26,300 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-24 18:47:26,300 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-24 18:47:26,302 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-24 18:47:26,302 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-24 18:47:35,959 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-24 18:47:35,959 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-24 18:47:35,959 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-24 18:47:35,962 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-24 18:47:35,962 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 04:05:40,235 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 04:05:40,239 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 04:05:40,240 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 04:05:40,244 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 04:05:40,244 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 16:24:25,361 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 16:24:25,364 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 16:24:25,365 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 16:24:25,368 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 16:24:25,368 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 16:29:21,665 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 16:29:21,666 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 16:29:21,666 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 16:29:21,669 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 16:29:21,669 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 16:29:48,398 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 16:29:48,398 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 16:29:48,398 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 16:29:48,400 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 16:29:48,400 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 16:36:44,827 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 16:36:44,827 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 16:36:44,827 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 16:36:44,829 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 16:36:44,830 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 16:55:05,866 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 16:55:05,866 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 16:55:05,866 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 16:55:05,868 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 16:55:05,868 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 16:55:29,169 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 16:55:29,173 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 16:55:29,173 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 16:55:29,176 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 16:55:29,176 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:10:19,024 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:10:19,026 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:10:19,026 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:10:19,028 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:10:19,029 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:17:10,365 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:17:10,366 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:17:10,366 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:17:10,372 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:17:10,372 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:18:04,321 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:18:04,321 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:18:04,325 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:18:04,327 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:18:04,327 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:22:06,960 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:22:06,961 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:22:06,961 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:22:06,963 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:22:06,963 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:25:08,239 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:25:08,239 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:25:08,239 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:25:08,242 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:25:08,245 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:25:10,355 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:25:10,355 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:25:10,355 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:25:10,362 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:25:10,362 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:26:04,567 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:26:04,568 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:26:04,569 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:26:04,572 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:26:04,575 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:27:53,713 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:27:53,713 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:27:53,713 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:27:53,718 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:27:53,719 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:41:37,081 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:41:37,081 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:41:37,081 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:41:37,083 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:41:37,083 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:41:52,903 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:41:52,903 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:41:52,903 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:41:52,911 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:41:52,912 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:42:05,770 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:42:05,770 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:42:05,770 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:42:05,772 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:42:05,773 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:43:31,545 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:43:31,545 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:43:31,546 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:43:31,547 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:43:31,548 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:44:36,934 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:44:36,934 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:44:36,934 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:44:36,938 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:44:36,938 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:48:26,659 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:48:26,659 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:48:26,659 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:48:26,661 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:48:26,661 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:53:22,603 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:53:22,603 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:53:22,604 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:53:22,607 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:53:22,607 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 17:58:14,639 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:58:14,639 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:58:14,639 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 17:58:14,642 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 17:58:14,642 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:14:18,146 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:14:18,146 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:14:18,146 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:14:18,149 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:14:18,149 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:14:24,317 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:14:24,323 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:14:24,324 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:14:24,329 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:14:24,329 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:15:34,046 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:15:34,046 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:15:34,046 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:15:34,051 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:15:34,052 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:16:50,230 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:16:50,230 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:16:50,230 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:16:50,232 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:16:50,232 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:16:58,045 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:16:58,046 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:16:58,046 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:16:58,047 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:16:58,047 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:17:46,234 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:17:46,235 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:17:46,235 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:17:46,237 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:17:46,237 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:20:49,454 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:20:49,454 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:20:49,454 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:20:49,456 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:20:49,456 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:20:56,234 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:20:56,234 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:20:56,234 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:20:56,236 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:20:56,237 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:21:20,504 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:21:20,505 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:21:20,505 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:21:20,509 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:21:20,509 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:23:56,155 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:23:56,155 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:23:56,155 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:23:56,156 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:23:56,156 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:26:32,961 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:26:32,961 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:26:32,961 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:26:32,963 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:26:32,963 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:27:05,172 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:27:05,172 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:27:05,172 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:27:05,174 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:27:05,175 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:28:01,074 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:28:01,074 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:28:01,075 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:28:01,076 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:28:01,077 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:32:15,155 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:32:15,155 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:32:15,156 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:32:15,160 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:32:15,161 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:33:18,187 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:33:18,188 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:33:18,188 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:33:18,191 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:33:18,192 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:35:28,155 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:35:28,155 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:35:28,155 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:35:28,158 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:35:28,158 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:38:27,535 [Worker-36] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.medicloud:testing:0.0.1-SNAPSHOT @ /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/pom.xml.
+2016-01-29 18:38:27,717 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-data-rest/1.3.2.RELEASE/spring-boot-starter-data-rest-1.3.2.RELEASE.pom
+2016-01-29 18:38:27,942 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-data-rest/1.3.2.RELEASE/spring-boot-starter-data-rest-1.3.2.RELEASE.pom
+2016-01-29 18:38:28,127 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-rest-webmvc/2.4.2.RELEASE/spring-data-rest-webmvc-2.4.2.RELEASE.pom
+2016-01-29 18:38:28,139 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-rest-webmvc/2.4.2.RELEASE/spring-data-rest-webmvc-2.4.2.RELEASE.pom
+2016-01-29 18:38:28,147 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-rest-parent/2.4.2.RELEASE/spring-data-rest-parent-2.4.2.RELEASE.pom
+2016-01-29 18:38:28,155 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-rest-parent/2.4.2.RELEASE/spring-data-rest-parent-2.4.2.RELEASE.pom
+2016-01-29 18:38:28,163 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/data/build/spring-data-parent/1.7.2.RELEASE/spring-data-parent-1.7.2.RELEASE.pom
+2016-01-29 18:38:28,182 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/data/build/spring-data-parent/1.7.2.RELEASE/spring-data-parent-1.7.2.RELEASE.pom
+2016-01-29 18:38:28,195 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/data/build/spring-data-build/1.7.2.RELEASE/spring-data-build-1.7.2.RELEASE.pom
+2016-01-29 18:38:28,202 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/data/build/spring-data-build/1.7.2.RELEASE/spring-data-build-1.7.2.RELEASE.pom
+2016-01-29 18:38:28,228 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/spring-framework-bom/4.1.9.RELEASE/spring-framework-bom-4.1.9.RELEASE.pom
+2016-01-29 18:38:28,239 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/spring-framework-bom/4.1.9.RELEASE/spring-framework-bom-4.1.9.RELEASE.pom
+2016-01-29 18:38:28,249 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-rest-core/2.4.2.RELEASE/spring-data-rest-core-2.4.2.RELEASE.pom
+2016-01-29 18:38:28,259 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-rest-core/2.4.2.RELEASE/spring-data-rest-core-2.4.2.RELEASE.pom
+2016-01-29 18:38:28,273 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/spring-tx/4.2.4.RELEASE/spring-tx-4.2.4.RELEASE.pom
+2016-01-29 18:38:28,280 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/spring-tx/4.2.4.RELEASE/spring-tx-4.2.4.RELEASE.pom
+2016-01-29 18:38:28,290 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/hateoas/spring-hateoas/0.19.0.RELEASE/spring-hateoas-0.19.0.RELEASE.pom
+2016-01-29 18:38:28,300 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/hateoas/spring-hateoas/0.19.0.RELEASE/spring-hateoas-0.19.0.RELEASE.pom
+2016-01-29 18:38:28,310 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-commons/1.11.2.RELEASE/spring-data-commons-1.11.2.RELEASE.pom
+2016-01-29 18:38:28,319 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-commons/1.11.2.RELEASE/spring-data-commons-1.11.2.RELEASE.pom
+2016-01-29 18:38:28,328 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/plugin/spring-plugin-core/1.2.0.RELEASE/spring-plugin-core-1.2.0.RELEASE.pom
+2016-01-29 18:38:28,336 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/plugin/spring-plugin-core/1.2.0.RELEASE/spring-plugin-core-1.2.0.RELEASE.pom
+2016-01-29 18:38:28,344 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/plugin/spring-plugin/1.2.0.RELEASE/spring-plugin-1.2.0.RELEASE.pom
+2016-01-29 18:38:28,353 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/plugin/spring-plugin/1.2.0.RELEASE/spring-plugin-1.2.0.RELEASE.pom
+2016-01-29 18:38:28,363 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/atteo/evo-inflector/1.2.1/evo-inflector-1.2.1.pom
+2016-01-29 18:38:28,372 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/atteo/evo-inflector/1.2.1/evo-inflector-1.2.1.pom
+2016-01-29 18:38:28,381 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/atteo/parent/1.11/parent-1.11.pom
+2016-01-29 18:38:28,390 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/atteo/parent/1.11/parent-1.11.pom
+2016-01-29 18:38:28,467 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-data-rest/1.3.2.RELEASE/spring-boot-starter-data-rest-1.3.2.RELEASE.jar
+2016-01-29 18:38:28,476 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-data-rest/1.3.2.RELEASE/spring-boot-starter-data-rest-1.3.2.RELEASE.jar
+2016-01-29 18:38:28,483 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-rest-webmvc/2.4.2.RELEASE/spring-data-rest-webmvc-2.4.2.RELEASE.jar
+2016-01-29 18:38:28,530 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-rest-webmvc/2.4.2.RELEASE/spring-data-rest-webmvc-2.4.2.RELEASE.jar
+2016-01-29 18:38:28,537 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-rest-core/2.4.2.RELEASE/spring-data-rest-core-2.4.2.RELEASE.jar
+2016-01-29 18:38:28,562 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-rest-core/2.4.2.RELEASE/spring-data-rest-core-2.4.2.RELEASE.jar
+2016-01-29 18:38:28,568 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/spring-tx/4.2.4.RELEASE/spring-tx-4.2.4.RELEASE.jar
+2016-01-29 18:38:29,565 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/spring-tx/4.2.4.RELEASE/spring-tx-4.2.4.RELEASE.jar
+2016-01-29 18:38:29,571 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/hateoas/spring-hateoas/0.19.0.RELEASE/spring-hateoas-0.19.0.RELEASE.jar
+2016-01-29 18:38:30,321 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/hateoas/spring-hateoas/0.19.0.RELEASE/spring-hateoas-0.19.0.RELEASE.jar
+2016-01-29 18:38:30,328 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-commons/1.11.2.RELEASE/spring-data-commons-1.11.2.RELEASE.jar
+2016-01-29 18:38:32,278 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-commons/1.11.2.RELEASE/spring-data-commons-1.11.2.RELEASE.jar
+2016-01-29 18:38:32,284 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/plugin/spring-plugin-core/1.2.0.RELEASE/spring-plugin-core-1.2.0.RELEASE.jar
+2016-01-29 18:38:32,302 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/plugin/spring-plugin-core/1.2.0.RELEASE/spring-plugin-core-1.2.0.RELEASE.jar
+2016-01-29 18:38:32,309 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/atteo/evo-inflector/1.2.1/evo-inflector-1.2.1.jar
+2016-01-29 18:38:32,320 [Worker-36] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/atteo/evo-inflector/1.2.1/evo-inflector-1.2.1.jar
+2016-01-29 18:38:33,132 [Worker-36] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.medicloud.api:medicloudAPI:0.0.1-SNAPSHOT @ /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/pom.xml.
+2016-01-29 18:38:33,840 [Worker-36] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /com.medicloud.org/src/main/java
+2016-01-29 18:38:33,841 [Worker-36] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /com.medicloud.org/src/main/resources
+2016-01-29 18:38:33,844 [Worker-36] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /com.medicloud.org/src/main/resources
+2016-01-29 18:38:33,851 [Worker-36] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /com.medicloud.org/src/test/java
+2016-01-29 18:38:34,230 [Worker-36] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 8 sec
+2016-01-29 18:38:34,233 [Worker-36] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2016-01-29 18:38:34,463 [Worker-36] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.medicloud:testing:0.0.1-SNAPSHOT @ /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/pom.xml.
+2016-01-29 18:38:34,937 [Worker-36] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /com.medicloud.org/src/main/java
+2016-01-29 18:38:34,937 [Worker-36] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /com.medicloud.org/src/main/resources
+2016-01-29 18:38:34,940 [Worker-36] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /com.medicloud.org/src/main/resources
+2016-01-29 18:38:34,944 [Worker-36] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /com.medicloud.org/src/test/java
+2016-01-29 18:38:35,030 [Worker-36] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 0 sec
+2016-01-29 18:38:35,754 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:38:35,762 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 18:38:35,784 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 18:38:35,786 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:38:35,786 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 18:38:36,085 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:38:36,085 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:38:36,085 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 18:38:36,087 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:38:36,087 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-29 18:38:37,334 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:38:37,336 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 18:38:37,336 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 18:38:37,338 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:38:37,338 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 18:39:19,076 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:39:19,079 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 18:39:19,080 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 18:39:19,081 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:39:19,081 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 18:39:35,099 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:39:35,100 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 18:39:35,100 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 18:39:35,102 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:39:35,103 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 18:39:45,225 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:39:45,225 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 18:39:45,226 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 18:39:45,236 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:39:45,236 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 18:40:13,413 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:40:13,414 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 18:40:13,415 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 18:40:13,417 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:40:13,417 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 18:42:06,740 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:42:06,741 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 18:42:06,742 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 18:42:06,744 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:42:06,744 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 18:46:36,401 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:46:36,402 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 18:46:36,402 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 18:46:36,404 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:46:36,404 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 18:48:00,773 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:48:00,773 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 18:48:00,774 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 18:48:00,777 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:48:00,777 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 18:51:09,282 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:51:09,283 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 18:51:09,283 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 18:51:09,291 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:51:09,291 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 18:56:11,034 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:56:11,035 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 18:56:11,035 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 18:56:11,038 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 18:56:11,038 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:16:35,197 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:16:35,197 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:16:35,206 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:16:35,208 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:16:35,217 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:16:44,207 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:16:44,211 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:16:44,211 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:16:44,213 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:16:44,213 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:18:21,605 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:18:21,605 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:18:21,606 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:18:21,610 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:18:21,610 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:18:39,533 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:18:39,534 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:18:39,534 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:18:39,536 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:18:39,536 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:19:19,995 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:19:19,995 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:19:19,996 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:19:19,999 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:19:19,999 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:20:43,831 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:20:43,831 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:20:43,833 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:20:43,837 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:20:43,837 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:20:49,970 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:20:49,971 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:20:49,975 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:20:49,979 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:20:49,980 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:21:02,642 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:21:02,644 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:21:02,653 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:21:02,663 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:21:02,663 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:21:07,937 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:21:07,938 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:21:07,939 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:21:07,942 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:21:07,942 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:21:35,512 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:21:35,512 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:21:35,513 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:21:35,514 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:21:35,514 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:24:55,137 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:24:55,137 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:24:55,138 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:24:55,139 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:24:55,140 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:25:47,003 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:25:47,003 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:25:47,004 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:25:47,011 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:25:47,011 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:26:19,215 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:26:19,216 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:26:19,216 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:26:19,218 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:26:19,218 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:27:26,784 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:27:26,784 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:27:26,785 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:27:26,787 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:27:26,787 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:28:32,590 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:28:32,591 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:28:32,591 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:28:32,592 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:28:32,593 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:28:56,196 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:28:56,196 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:28:56,197 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:28:56,199 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:28:56,199 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:30:35,923 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:30:35,924 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:30:35,925 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:30:35,926 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:30:35,927 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:30:49,576 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:30:49,577 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-01-29 20:30:49,577 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-01-29 20:30:49,579 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:30:49,579 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/com.medicloud.org/src/test/resources
+2016-01-29 20:32:48,956 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:32:48,957 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 20:32:48,957 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-29 20:32:48,959 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-29 20:32:48,959 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-30 03:46:11,220 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:46:11,221 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:46:11,221 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:46:11,222 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:46:11,222 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-30 03:47:47,199 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:47:47,200 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:47:47,200 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:47:47,202 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:47:47,202 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-30 03:48:36,713 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:48:36,713 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:48:36,713 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:48:36,715 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:48:36,715 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-30 03:49:32,552 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:49:32,552 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:49:32,552 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:49:32,554 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:49:32,554 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-30 03:50:15,364 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:50:15,364 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:50:15,364 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:50:15,365 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:50:15,365 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-30 03:50:50,745 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:50:50,746 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:50:50,746 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:50:50,747 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:50:50,747 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-30 03:51:38,941 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:51:38,941 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:51:38,942 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:51:38,943 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:51:38,943 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-30 03:53:10,277 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:53:10,277 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:53:10,278 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:53:10,280 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:53:10,280 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-30 03:55:05,920 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:55:05,921 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:55:05,921 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:55:05,922 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:55:05,922 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-30 03:55:36,356 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:55:36,356 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:55:36,356 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:55:36,358 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:55:36,358 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources
+2016-01-30 03:56:54,457 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:56:54,457 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:56:54,457 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/main/resources
+2016-01-30 03:56:54,460 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-01-30 03:56:54,461 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/keon_win8/Documents/medicloud/medicloud/API/medicloudAPI/src/test/resources

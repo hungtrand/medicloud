@@ -5,11 +5,15 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.repository.config.RepositoryConfiguration;
 
+@Configuration
 @SpringBootApplication
 @EnableAutoConfiguration
-@ComponentScan(basePackages = {"application", "controller", "service"})
+@ComponentScan(basePackages = {"application","model", "repository","provider", "service"})
 @EnableJpaRepositories(basePackages = "repository")
 @EntityScan(basePackages = "model")
 public class Application {

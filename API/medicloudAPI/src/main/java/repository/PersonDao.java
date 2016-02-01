@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Qualifier(value="PersonDao")
 public interface PersonDao extends CrudRepository<Person,String> {
 	public Person findByPersonId(int personId);
+	public Person findByFirstName(String name);
+	
 }

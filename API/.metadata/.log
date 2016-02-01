@@ -1,0 +1,1455 @@
+!SESSION 2016-01-29 03:45:26.682 -----------------------------------------------
+eclipse.buildId=3.7.1.201510041213-RELEASE-e45
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.springsource.sts.ide
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.springsource.sts.ide
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2016-01-29 15:49:57.902
+!MESSAGE Connection to http://dist.springsource.com/release/STS/doc/updates.xml failed on dist.springsource.com: unknown error. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: dist.springsource.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2016-01-29 15:49:57.915
+!MESSAGE Connection to https://spring.io/blog.atom failed on spring.io: unknown error. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: spring.io: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.recommenders.rcp 2 15 2016-01-29 15:49:57.944
+!MESSAGE Failed to parse news feed
+!STACK 0
+java.net.UnknownHostException: www.codetrails.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:102)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.recommenders.internal.rcp.news.CheckForProjectNewsJob.getRSSFeed(CheckForProjectNewsJob.java:138)
+	at org.eclipse.recommenders.internal.rcp.news.CheckForProjectNewsJob.doRun(CheckForProjectNewsJob.java:89)
+	at org.eclipse.recommenders.internal.rcp.news.CheckForProjectNewsJob.run(CheckForProjectNewsJob.java:62)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2016-01-29 16:20:35.489 -----------------------------------------------
+eclipse.buildId=3.7.1.201510041213-RELEASE-e45
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.springsource.sts.ide
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.springsource.sts.ide
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-29 16:21:44.295
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.springframework.ide.eclipse.boot 4 0 2016-01-29 17:26:04.542
+!MESSAGE Testing.java [in model [in src/main/java [in medicloudAPI]]] does not exist
+!STACK 1
+Java Model Exception: Java Model Status [Testing.java [in model [in src/main/java [in medicloudAPI]]] does not exist]
+	at org.eclipse.jdt.internal.core.JavaElement.newJavaModelException(JavaElement.java:566)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:247)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:579)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:316)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:302)
+	at org.eclipse.jdt.internal.core.JavaElement.getChildren(JavaElement.java:257)
+	at org.eclipse.jdt.internal.core.JavaElement.getChildrenOfType(JavaElement.java:271)
+	at org.eclipse.jdt.internal.core.CompilationUnit.getTypes(CompilationUnit.java:923)
+	at org.eclipse.jdt.internal.core.CompilationUnit.getAllTypes(CompilationUnit.java:608)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule$ValidationVisitor.visit(MissingConfigurationProcessorRule.java:130)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule.validate(MissingConfigurationProcessorRule.java:200)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule.validate(MissingConfigurationProcessorRule.java:1)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator$ValidationVisitor.visit(AbstractValidator.java:280)
+	at org.springframework.ide.eclipse.core.model.AbstractModelElement.accept(AbstractModelElement.java:131)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator.validate(AbstractValidator.java:142)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator.validate(AbstractValidator.java:104)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager$7.execute(SpringProjectContributionManager.java:260)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager$9.run(SpringProjectContributionManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.execute(SpringProjectContributionManager.java:294)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.runValidator(SpringProjectContributionManager.java:257)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.build(SpringProjectContributionManager.java:131)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:205)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:245)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:359)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:382)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2016-01-29 17:26:04.544
+!MESSAGE Testing.java [in model [in src/main/java [in medicloudAPI]]] does not exist
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2016-01-29 18:38:36.152
+!MESSAGE Project facet grails.app has not been defined. It is used in plugin com.vmware.vfabric.ide.eclipse.tcserver.core.
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2016-01-29 18:38:36.153
+!MESSAGE Project facet grails.app has not been defined. It is used in plugin org.cloudfoundry.ide.eclipse.server.branding.
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 18:39:45.185
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 18:39:45.191
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 18:40:13.394
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 18:40:13.395
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 18:42:06.728
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 18:42:06.729
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 18:46:36.379
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 18:46:36.379
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 18:51:09.270
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 18:51:09.271
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 18:56:11.022
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 18:56:11.023
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 20:16:35.151
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 20:16:35.151
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.boot 4 0 2016-01-29 20:16:35.169
+!MESSAGE Model.java [in com.medicloud.org.model [in src/main/java [in com.medicloud.org]]] does not exist
+!STACK 1
+Java Model Exception: Java Model Status [Model.java [in com.medicloud.org.model [in src/main/java [in com.medicloud.org]]] does not exist]
+	at org.eclipse.jdt.internal.core.JavaElement.newJavaModelException(JavaElement.java:566)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:247)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:579)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:316)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:302)
+	at org.eclipse.jdt.internal.core.JavaElement.getChildren(JavaElement.java:257)
+	at org.eclipse.jdt.internal.core.JavaElement.getChildrenOfType(JavaElement.java:271)
+	at org.eclipse.jdt.internal.core.CompilationUnit.getTypes(CompilationUnit.java:923)
+	at org.eclipse.jdt.internal.core.CompilationUnit.getAllTypes(CompilationUnit.java:608)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule$ValidationVisitor.visit(MissingConfigurationProcessorRule.java:130)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule.validate(MissingConfigurationProcessorRule.java:200)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule.validate(MissingConfigurationProcessorRule.java:1)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator$ValidationVisitor.visit(AbstractValidator.java:280)
+	at org.springframework.ide.eclipse.core.model.AbstractModelElement.accept(AbstractModelElement.java:131)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator.validate(AbstractValidator.java:142)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator.validate(AbstractValidator.java:104)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager$7.execute(SpringProjectContributionManager.java:260)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager$9.run(SpringProjectContributionManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.execute(SpringProjectContributionManager.java:294)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.runValidator(SpringProjectContributionManager.java:257)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.build(SpringProjectContributionManager.java:131)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:205)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:245)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:359)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:382)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2016-01-29 20:16:35.173
+!MESSAGE Model.java [in com.medicloud.org.model [in src/main/java [in com.medicloud.org]]] does not exist
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 20:16:44.177
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 20:16:44.178
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.boot 4 0 2016-01-29 20:16:44.188
+!MESSAGE Controller.java [in con.medicloud.org.controller [in src/main/java [in com.medicloud.org]]] does not exist
+!STACK 1
+Java Model Exception: Java Model Status [Controller.java [in con.medicloud.org.controller [in src/main/java [in com.medicloud.org]]] does not exist]
+	at org.eclipse.jdt.internal.core.JavaElement.newJavaModelException(JavaElement.java:566)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:247)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:579)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:316)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:302)
+	at org.eclipse.jdt.internal.core.JavaElement.getChildren(JavaElement.java:257)
+	at org.eclipse.jdt.internal.core.JavaElement.getChildrenOfType(JavaElement.java:271)
+	at org.eclipse.jdt.internal.core.CompilationUnit.getTypes(CompilationUnit.java:923)
+	at org.eclipse.jdt.internal.core.CompilationUnit.getAllTypes(CompilationUnit.java:608)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule$ValidationVisitor.visit(MissingConfigurationProcessorRule.java:130)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule.validate(MissingConfigurationProcessorRule.java:200)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule.validate(MissingConfigurationProcessorRule.java:1)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator$ValidationVisitor.visit(AbstractValidator.java:280)
+	at org.springframework.ide.eclipse.core.model.AbstractModelElement.accept(AbstractModelElement.java:131)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator.validate(AbstractValidator.java:142)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator.validate(AbstractValidator.java:104)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager$7.execute(SpringProjectContributionManager.java:260)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager$9.run(SpringProjectContributionManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.execute(SpringProjectContributionManager.java:294)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.runValidator(SpringProjectContributionManager.java:257)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.build(SpringProjectContributionManager.java:131)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:205)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:245)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:359)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:382)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2016-01-29 20:16:44.188
+!MESSAGE Controller.java [in con.medicloud.org.controller [in src/main/java [in com.medicloud.org]]] does not exist
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 20:19:19.987
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 20:19:19.987
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 20:20:43.808
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 20:20:43.808
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 20:20:49.952
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 20:20:49.952
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 20:21:02.606
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 20:21:02.608
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.boot 4 0 2016-01-29 20:21:02.623
+!MESSAGE Controller.java [in com.medicloud.org [in src/main/java [in com.medicloud.org]]] does not exist
+!STACK 1
+Java Model Exception: Java Model Status [Controller.java [in com.medicloud.org [in src/main/java [in com.medicloud.org]]] does not exist]
+	at org.eclipse.jdt.internal.core.JavaElement.newJavaModelException(JavaElement.java:566)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:247)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:579)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:316)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:302)
+	at org.eclipse.jdt.internal.core.JavaElement.getChildren(JavaElement.java:257)
+	at org.eclipse.jdt.internal.core.JavaElement.getChildrenOfType(JavaElement.java:271)
+	at org.eclipse.jdt.internal.core.CompilationUnit.getTypes(CompilationUnit.java:923)
+	at org.eclipse.jdt.internal.core.CompilationUnit.getAllTypes(CompilationUnit.java:608)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule$ValidationVisitor.visit(MissingConfigurationProcessorRule.java:130)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule.validate(MissingConfigurationProcessorRule.java:200)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule.validate(MissingConfigurationProcessorRule.java:1)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator$ValidationVisitor.visit(AbstractValidator.java:280)
+	at org.springframework.ide.eclipse.core.model.AbstractModelElement.accept(AbstractModelElement.java:131)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator.validate(AbstractValidator.java:142)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator.validate(AbstractValidator.java:104)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager$7.execute(SpringProjectContributionManager.java:260)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager$9.run(SpringProjectContributionManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.execute(SpringProjectContributionManager.java:294)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.runValidator(SpringProjectContributionManager.java:257)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.build(SpringProjectContributionManager.java:131)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:205)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:245)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:359)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:382)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2016-01-29 20:21:02.624
+!MESSAGE Controller.java [in com.medicloud.org [in src/main/java [in com.medicloud.org]]] does not exist
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 20:21:07.906
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 20:21:07.906
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.boot 4 0 2016-01-29 20:21:07.921
+!MESSAGE Model.java [in com.medicloud.org [in src/main/java [in com.medicloud.org]]] does not exist
+!STACK 1
+Java Model Exception: Java Model Status [Model.java [in com.medicloud.org [in src/main/java [in com.medicloud.org]]] does not exist]
+	at org.eclipse.jdt.internal.core.JavaElement.newJavaModelException(JavaElement.java:566)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:247)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:579)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:316)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:302)
+	at org.eclipse.jdt.internal.core.JavaElement.getChildren(JavaElement.java:257)
+	at org.eclipse.jdt.internal.core.JavaElement.getChildrenOfType(JavaElement.java:271)
+	at org.eclipse.jdt.internal.core.CompilationUnit.getTypes(CompilationUnit.java:923)
+	at org.eclipse.jdt.internal.core.CompilationUnit.getAllTypes(CompilationUnit.java:608)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule$ValidationVisitor.visit(MissingConfigurationProcessorRule.java:130)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule.validate(MissingConfigurationProcessorRule.java:200)
+	at org.springframework.ide.eclipse.boot.validation.MissingConfigurationProcessorRule.validate(MissingConfigurationProcessorRule.java:1)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator$ValidationVisitor.visit(AbstractValidator.java:280)
+	at org.springframework.ide.eclipse.core.model.AbstractModelElement.accept(AbstractModelElement.java:131)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator.validate(AbstractValidator.java:142)
+	at org.springframework.ide.eclipse.core.model.validation.AbstractValidator.validate(AbstractValidator.java:104)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager$7.execute(SpringProjectContributionManager.java:260)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager$9.run(SpringProjectContributionManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.execute(SpringProjectContributionManager.java:294)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.runValidator(SpringProjectContributionManager.java:257)
+	at org.springframework.ide.eclipse.core.internal.project.SpringProjectContributionManager.build(SpringProjectContributionManager.java:131)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:205)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:245)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:359)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:382)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2016-01-29 20:21:07.922
+!MESSAGE Model.java [in com.medicloud.org [in src/main/java [in com.medicloud.org]]] does not exist
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 20:28:32.548
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 20:28:32.548
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 20:28:56.183
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 20:28:56.183
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 20:30:35.910
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 20:30:35.911
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2016-01-29 20:30:49.563
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 0 2016-01-29 20:30:49.563
+!MESSAGE Internal Error
+!STACK 0
+java.lang.IllegalAccessError: tried to access method org.springframework.core.convert.support.DefaultConversionService.addCollectionConverters(Lorg/springframework/core/convert/converter/ConverterRegistry;)V from class org.springframework.boot.bind.RelaxedConversionService
+	at org.springframework.boot.bind.RelaxedConversionService.<init>(RelaxedConversionService.java:52)
+	at org.springframework.boot.bind.RelaxedDataBinder.modifyProperties(RelaxedDataBinder.java:148)
+	at org.springframework.boot.bind.RelaxedDataBinder.doBind(RelaxedDataBinder.java:128)
+	at org.springframework.validation.DataBinder.bind(DataBinder.java:691)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(EnableAutoConfigurationImportSelector.java:161)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.getExclusions(EnableAutoConfigurationImportSelector.java:152)
+	at org.springframework.boot.autoconfigure.EnableAutoConfigurationImportSelector.selectImports(EnableAutoConfigurationImportSelector.java:80)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:185)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:328)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2016-01-30 01:17:57.708
+!MESSAGE Connection to http://dist.springsource.com/release/STS/doc/updates.xml failed on dist.springsource.com: unknown error. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: dist.springsource.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2016-01-30 01:17:57.708
+!MESSAGE Connection to https://spring.io/blog.atom failed on spring.io: unknown error. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: spring.io: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2016-01-31 18:21:43.735
+!MESSAGE Connection to http://dist.springsource.com/release/STS/doc/updates.xml failed on dist.springsource.com: unknown error. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: dist.springsource.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2016-01-31 18:21:48.702
+!MESSAGE Connection to https://spring.io/blog.atom failed on spring.io: unknown error. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: spring.io: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2016-01-31 18:25:59.821 -----------------------------------------------
+eclipse.buildId=3.7.1.201510041213-RELEASE-e45
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.springsource.sts.ide
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.springsource.sts.ide
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-31 18:26:30.463
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2016-01-31 18:27:00.155
+!MESSAGE Connection to http://download.springsource.com/release/TOOLS/update/e4.5/p2.index failed on download.springsource.com: unknown error. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: download.springsource.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2016-01-31 18:27:00.403
+!MESSAGE Unknown Host: http://download.springsource.com/release/TOOLS/update/e4.5/compositeContent.xml
+!STACK 0
+java.net.UnknownHostException: download.springsource.com
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:304)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:259)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2016-01-31 18:27:25.705
+!MESSAGE Connection to http://download.springsource.com/release/TOOLS/cloudfoundry/p2.index failed on download.springsource.com: unknown error. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: download.springsource.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2016-01-31 18:27:25.913
+!MESSAGE Unknown Host: http://download.springsource.com/release/TOOLS/cloudfoundry/content.xml
+!STACK 0
+java.net.UnknownHostException: download.springsource.com
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:304)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:259)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
