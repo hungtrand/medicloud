@@ -9,7 +9,7 @@
 	var hpCenter = {
 		timerStart: Date.now(),
 		ngModules : ['ngRoute'],
-		modules: { 'patientsApp': patients_module },
+		modules: { 'patientsApp': patients_module, 'patient': patient_module },
 		module_ready_count: 0,
 		module_ready: function() {
 			this.module_ready_count++;
