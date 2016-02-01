@@ -81,6 +81,10 @@ public class HPSignUp {
 		}
 	}
 	
+	public void changeVerificationKey() {
+		this.verificationKey = SessionIdentifierGenerator.nextSessionId();
+	}
+	
 	public static HPSignUp createHPSignUp(String name, String email, String busName, String busAddress, String busPhone) {
 		Date dt = new Date();
 		SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

@@ -18,22 +18,25 @@ USE `medicloud`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `cdo_contact`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `cdo_contact`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(45) NOT NULL,
-  `password` char(60) DEFAULT NULL,
-  `salt` char(60) DEFAULT NULL,
-  `email` varchar(45) NOT NULL,
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_id_UNIQUE` (`user_id`),
-  UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+CREATE TABLE `cdo_contact` (
+  `cdo_contact_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cdo_id` int(11) NOT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `state` varchar(45) DEFAULT NULL,
+  `zip` varchar(45) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`cdo_contact_id`),
+  UNIQUE KEY `cdo_contact_id_UNIQUE` (`cdo_contact_id`),
+  KEY `fk_cdo_contact_cdo_idx` (`cdo_id`),
+  CONSTRAINT `fk_cdo_contact_cdo` FOREIGN KEY (`cdo_id`) REFERENCES `cdo` (`cdo_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -45,4 +48,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-23 15:23:30
+-- Dump completed on 2015-11-23 15:25:56

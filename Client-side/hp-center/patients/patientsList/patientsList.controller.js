@@ -1,4 +1,4 @@
-function patientsList_ctrl($scope, service) {
+function patientsList_ctrl($scope, $rootScope, service) {
     $scope.patientList;
     getPatients();
     $scope.status;
@@ -16,13 +16,17 @@ function patientsList_ctrl($scope, service) {
       $scope.selectedPatient = this.patientList[$scope.patientIndex];
     }
 
+    $rootScope.$on('patientAdded', function() {
+      $scope.modalShown = false;
+    });
+
     function getPatients() {
-      service.getPatients().success(function(patient) {
-        $scope.patientList = patient;
+      service.getPatients().onSuccess(function(patient) {
+        $scope.patientList = service.patients;
       })
-      .error(function(error) {
-        $scope.status = 'Error';
-      })
+      .onFailure(function(error) {
+        console.log(error);
+      });
     }
 
 

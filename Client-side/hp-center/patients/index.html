@@ -13,7 +13,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-3">
-                                    <a ng-click='toggleModal()' class="btn btn-primary btn-block" href="#">
+                                    <a ng-click='toggleModal()' class="btn btn-primary btn-block">
                                         <i class="fa fa-plus"></i>
                                         Add
                                     </a>
@@ -24,8 +24,7 @@
                     </div>
                     <h1>{{test}}</h1>
                     <div class="list-group">
-                        <a class="list-group-item" href="#" ng-repeat="patient in patientList" ng-click="clicked($index)">
-                            <img src="../AdminLTE-2.3.0/../../Assets/AdminLTE-2.3.0/dist/img/user6-128x128.jpg" class="image img-rounded pull-left"/>
+                        <a class="list-group-item" ng-repeat="patient in patientList" ng-click="clicked($index)">
                             <h4 class="list-group-item-heading">{{patient.lastName}}, {{patient.firstName}}</h4>
                             <p class="list-group-item-text">{{patient.email}}</p>
                         </a>

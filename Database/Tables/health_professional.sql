@@ -18,22 +18,21 @@ USE `medicloud`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `health_professional`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `health_professional`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(45) NOT NULL,
-  `password` char(60) DEFAULT NULL,
-  `salt` char(60) DEFAULT NULL,
-  `email` varchar(45) NOT NULL,
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_id_UNIQUE` (`user_id`),
-  UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+CREATE TABLE `health_professional` (
+  `hp_id` int(11) NOT NULL,
+  `title` varchar(100) DEFAULT NULL,
+  `license` varchar(100) DEFAULT NULL,
+  `date_changed` datetime DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  PRIMARY KEY (`hp_id`),
+  UNIQUE KEY `hp_id_UNIQUE` (`hp_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -45,4 +44,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-23 15:23:30
+-- Dump completed on 2015-11-23 15:24:48

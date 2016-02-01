@@ -17,6 +17,9 @@ public class Person {
 	
 	@Column(name="first_name")
 	private String firstName;
+	
+	@Column(name="last_name")
+	private String lastName;
 
 	public int getPersonId() {
 		return personId;
@@ -39,6 +42,16 @@ public class Person {
 		return "Person [pId = " + this.personId + ", PersonName = " + this.firstName + " ]";
 	}
 
+<<<<<<< HEAD
+=======
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+>>>>>>> 975c9800cead23fa22accf6c879649e9f56b84c7
 	
 }
 

@@ -18,22 +18,24 @@ USE `medicloud`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `cdo_health_professional`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `cdo_health_professional`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(45) NOT NULL,
-  `password` char(60) DEFAULT NULL,
-  `salt` char(60) DEFAULT NULL,
-  `email` varchar(45) NOT NULL,
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_id_UNIQUE` (`user_id`),
-  UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+CREATE TABLE `cdo_health_professional` (
+  `cdo_id` int(11) NOT NULL,
+  `hp_id` int(11) NOT NULL,
+  `relationship_type` varchar(45) DEFAULT NULL,
+  `date_started` datetime DEFAULT NULL,
+  `date_stopped` datetime DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  KEY `fk_cdo_health_professional_hp_id_idx` (`hp_id`),
+  KEY `fk_cdo_health_professional_cdo_id_idx` (`cdo_id`),
+  CONSTRAINT `fk_cdo_health_professional_cdo_id` FOREIGN KEY (`cdo_id`) REFERENCES `cdo` (`cdo_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cdo_health_professional_hp_id` FOREIGN KEY (`hp_id`) REFERENCES `health_professional` (`hp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -45,4 +47,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-23 15:23:30
+-- Dump completed on 2015-11-23 15:25:18
