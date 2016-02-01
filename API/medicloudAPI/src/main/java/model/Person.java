@@ -17,6 +17,9 @@ public class Person {
 	
 	@Column(name="first_name")
 	private String firstName;
+	
+	@Column(name="last_name")
+	private String lastName;
 
 	public int getPersonId() {
 		return personId;
@@ -34,6 +37,14 @@ public class Person {
 		this.firstName = firstName;
 	}
 
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
 }
 
 
