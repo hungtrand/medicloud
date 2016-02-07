@@ -1,0 +1,141 @@
+package service;
+
+
+import org.apache.catalina.startup.ClassLoaderFactory.Repository;
+import org.hibernate.mapping.Collection;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.mysql.fabric.Response;
+
+import jointModels.PersonJoint;
+import repository.NoteDao;
+import repository.PersonDao;
+//import tempClasses.personInfo;
+
+import model.Person;
+import model.Encounters;
+import model.Note;
+
+@RestController
+@RequestMapping(value="/person")
+public class PersonServiceImpl {
+	public PersonServiceImpl() {
+		
+	};
+	
+	@Autowired
+	private PersonDao personDao;
+	
+//	@Autowired
+//	private repository.personal personal;
+//	
+	@Autowired
+	private NoteDao noteDao;
+	
+	@RequestMapping(value = "/api/persons", method=RequestMethod.GET, produces =MediaType.APPLICATION_JSON_VALUE)
+	public List<Person> getPerson(){
+		Iterable<Person> persons = new ArrayList<Person>();
+		persons = personDao.findAll();
+		return (List<Person>) persons;
+	}
+	
+	
+//	@RequestMapping(value="/api/personinfo/{id}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+//	public personInfo getPersonalInfo(@PathVariable("id") int id){
+//		
+//		return personal.findByPersonId(id);
+//		
+//		
+//	}
+	
+	@RequestMapping(value="/api/persons/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Person getPersonByID(@PathVariable("id") int id){
+		
+	
+		
+		
+		return personDao.findByPersonId(id);
+		
+	}
+	class Profile{
+		public Note note(){
+			Note note = new Note();
+			return note;
+		}
+		public Profile(){
+			
+		}
+		public Person person(){
+			Person person = new Person();
+			person.getFirstName();
+			person.getLastName();
+			return person;
+		}
+		
+		public Encounters encounters(){
+			Encounters encounter = new Encounters();
+				
+			return encounter;
+		}
+		
+	}
+	
+	@RequestMapping(value="/dc/{id}", method=RequestMethod.GET)
+	public Profile testing(@PathVariable("id")int aa){
+		
+		
+		Profile b= null;
+		return b;
+	}
+	
+	@RequestMapping(value="/api/persons/note/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Note getPersonalNote(@PathVariable("id") int id){
+		
+		return noteDao.findByNoteId(id);
+	}
+	
+	@RequestMapping(value="/api/news/{id}")
+	public PersonJoint getPersonal(@PathVariable("id") int id){
+		PersonJoint pj = new PersonJoint(id);
+		
+		return pj;
+	}
+	
+	
+	
+	
+	
+	@RequestMapping(method=GET, value="/persons")
+	public Iterable<Person> loadPersons() {
+		Iterable<Person> people = new ArrayList<Person>();
+		people = personDao.findAll();
+		return people;
+	}
+	
+	@RequestMapping(method=GET, value="/personId")
+	public Person loadPersonByPersonId(@RequestParam("personId") int personId) {
+		return personDao.findByPersonId(personId);
+	}
+	
+	@RequestMapping(method=GET, value="/whatever")
+	public String whateverIWant() {
+		return "Whatever I want";
+	}
+}
+

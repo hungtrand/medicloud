@@ -1,0 +1,13 @@
+package jointModels;
+
+import model.Person;
+import model.Encounters;
+import model.Note;
+public class Profile {
+
+	public Profile(){
+		Person personal = new Person();
+		
+	}
+	
+}

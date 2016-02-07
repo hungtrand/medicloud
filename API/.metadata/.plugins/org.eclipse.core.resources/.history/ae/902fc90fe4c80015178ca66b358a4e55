@@ -1,0 +1,45 @@
+package tempClasses;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="person"+"note")
+public class personInfo {
+
+	@Id
+	@GeneratedValue
+	@Column(name="person_id")
+	private int personId;
+	
+	@Column(name="first_name")
+	private String firstname;
+	
+	@Column(name="text")
+	private String text;
+	
+	@Column(name="creator")
+	private String creator;
+	
+	public personInfo(){
+		
+	}
+	
+	public int getId(){
+		return this.personId;
+	}
+	
+	public String getFirstName(){
+		return this.firstname;
+	}
+	
+	public String getCreator(){
+		return this.creator;
+	}
+	public String getText(){
+		return this.text;
+	}
+}

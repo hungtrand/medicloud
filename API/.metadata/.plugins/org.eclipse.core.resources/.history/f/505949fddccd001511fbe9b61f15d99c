@@ -1,0 +1,50 @@
+package model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="personalView")
+public class PersonalView {
+
+	
+	@Column(name="person_id")
+	private int personId;
+	
+	@Column(name="first_name")
+	private String firstname;
+	
+	@Column(name="email")
+	private String email;
+	
+	@Column(name="contact_id")
+	private int contactId;
+	
+	public int getContactId(){
+		return this.contactId;
+	}
+	public void setContactId(int newContactId){
+		this.contactId = newContactId;
+	}
+	public int getPersonId(){
+		return this.personId;
+	}
+	public String getFirstName(){
+		return this.firstname;
+	}
+	public String getEmail(){
+		return this.email;
+	}
+	
+	public void setPersonId(int newId){
+		this.personId = newId;
+	}
+	public void setFirstName(String newFirstName){
+		this.firstname = newFirstName;
+	}
+	public void setEmail(String newEmail){
+		this.email = newEmail;
+	}
+}

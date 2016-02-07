@@ -10,6 +10,7 @@ import javax.persistence.Table;
 @Table(name="person")
 public class Person {
 	
+	
 	@Id
 	@Column(name="person_id")
 	@GeneratedValue
@@ -21,6 +22,8 @@ public class Person {
 	@Column(name="last_name")
 	private String lastName;
 
+	
+	
 	public int getPersonId() {
 		return personId;
 	}
@@ -42,8 +45,6 @@ public class Person {
 		return "Person [pId = " + this.personId + ", PersonName = " + this.firstName + " ]";
 	}
 
-<<<<<<< HEAD
-=======
 	public String getLastName() {
 		return lastName;
 	}
@@ -51,7 +52,6 @@ public class Person {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
->>>>>>> 975c9800cead23fa22accf6c879649e9f56b84c7
 	
 }
 

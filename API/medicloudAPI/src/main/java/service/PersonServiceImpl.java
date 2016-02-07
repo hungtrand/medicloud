@@ -2,12 +2,14 @@ package service;
 
 
 import org.apache.catalina.startup.ClassLoaderFactory.Repository;
+
 import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,8 +21,21 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.mysql.fabric.Response;
+
+
+import repository.NoteDao;
 import repository.PersonDao;
+//import tempClasses.personInfo;
+import repository.PersonalViewRepo;
+
+import model.PersonalView;
 import model.Person;
+import model.Encounter;
+import model.Note;
+import model.Contact;
+import repository.ContactRepo;
 
 @RestController
 @RequestMapping(value="/person")
@@ -32,6 +47,14 @@ public class PersonServiceImpl {
 	@Autowired
 	private PersonDao personDao;
 	
+	@Autowired
+	private ContactRepo contactRepo;
+	
+//	@Autowired
+//	private repository.personal personal;
+//	
+	@Autowired
+	private NoteDao noteDao;
 	
 	@RequestMapping(value = "/api/persons", method=RequestMethod.GET, produces =MediaType.APPLICATION_JSON_VALUE)
 	public List<Person> getPerson(){
@@ -39,21 +62,54 @@ public class PersonServiceImpl {
 		persons = personDao.findAll();
 		return (List<Person>) persons;
 	}
-	
-	
-	
-	@RequestMapping(value="api/persons/test", method = GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String person(){
-		return "This is testing and it is working!";
-	}
-	
-	
-	
+
+		
 	@RequestMapping(value="/api/persons/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Person getPersonByID(@PathVariable("id") int id){
-		
+
 		return personDao.findByPersonId(id);
+		
 	}
+	class Profile{
+		public Note noteClass = new Note();
+		public void setNote(Note note){
+			this.noteClass = note;
+		}
+		public Person personClass = new Person();
+		public void setPerson(Person person){
+			this.personClass = person;
+		}
+	}
+	
+	@RequestMapping(value="/api/personalInfo/{id}", method=RequestMethod.GET)
+	public Profile testing(@PathVariable("id")int id){
+		
+		Profile p = new Profile();
+				p.setPerson(personDao.findByPersonId(id));
+				p.setNote(noteDao.findByNoteId(id));
+		
+		return p;
+	}
+	
+	@Autowired
+	private PersonalViewRepo personalViewRepo;
+	
+	@RequestMapping(value="/api/personalViewinfo/{id}", method=RequestMethod.GET)
+	public List<PersonalView> getPersonalView(@PathVariable("id")List<Integer> id){
+		List<PersonalView> pv = new ArrayList<PersonalView>();
+		pv = personalViewRepo.findByPersonId(id);
+		return pv;
+	}
+	
+	@RequestMapping(value="/api/persons/note/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Note getPersonalNote(@PathVariable("id") int id){
+		
+		return noteDao.findByNoteId(id);
+	}
+	
+	
+	
+	
 	
 	
 	

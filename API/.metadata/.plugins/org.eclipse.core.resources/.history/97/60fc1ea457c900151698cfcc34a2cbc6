@@ -1,0 +1,7 @@
+package jointModels;
+
+import model.Person;
+
+public class PersonJoint {
+
+}
