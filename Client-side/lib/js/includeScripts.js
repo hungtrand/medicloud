@@ -18,25 +18,28 @@ function includeScripts(scripts) {
 		}
 
 		var url = files.pop();
-		$
-			.getScript(
-				url,
-				function(data, textStatus, jqxhr) {
-					console.log('Loaded ' + url);
-					loaded.push(url);
-					trackingReceipt.loaded++;
+		if (typeof url === 'string') {
+			$
+				.getScript(
+					url,
+					function(data, textStatus, jqxhr) {
+						console.log('Loaded ' + url);
+						loaded.push(url);
+						trackingReceipt.loaded++;
+						trackingReceipt.timeElapsed = Date.now() - timerStart;
+					})
+				.fail(function(jqxhr, settings, exception) {
+					console.log("***Error***: Failed to load " + url);
+					failed.push(url);
+					console.log(exception);
+					console.log(settings);
 					trackingReceipt.timeElapsed = Date.now() - timerStart;
-				})
-			.fail(function(jqxhr, settings, exception) {
-				console.log("***Error***: Failed to load " + url);
-				failed.push(url);
-				console.log(exception);
-				console.log(settings);
-				trackingReceipt.timeElapsed = Date.now() - timerStart;
-				if (jqxhr.status == '404') {
-					alert("Connection error. Server or internet connection problem.");
-				}
-			});
+					if (jqxhr.status == '404') {
+						alert("Connection error. Server or internet connection problem.");
+					}
+				});
+		}
+
 
 		setTimeout(loadDependencies, 10);
 	}

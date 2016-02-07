@@ -1,4 +1,4 @@
-function profileService($resourceProvider) {
+function profile_serv($resourceProvider) {
 	return {
 		data: {
 			personal: {
