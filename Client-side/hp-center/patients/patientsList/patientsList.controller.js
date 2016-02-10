@@ -20,6 +20,12 @@ function patientsList_ctrl($scope, $rootScope, service) {
       $scope.modalShown = false;
     });
 
+    $scope.addPatient = function(newPatientData) {
+      service.addPatient(newPatientData);
+      debugger;
+      console.log(newPatientData);
+    }
+
     function getPatients() {
       service.getPatients().onSuccess(function(patient) {
         $scope.patientList = service.patients;
