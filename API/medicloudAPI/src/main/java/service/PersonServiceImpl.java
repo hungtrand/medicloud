@@ -63,13 +63,6 @@ public class PersonServiceImpl {
 		return (List<Person>) persons;
 	}
 
-		
-	@RequestMapping(value="/api/persons/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Person getPersonByID(@PathVariable("id") int id){
-
-		return personDao.findByPersonId(id);
-		
-	}
 	class Profile{
 		public Note noteClass = new Note();
 		public void setNote(Note note){
@@ -118,6 +111,23 @@ public class PersonServiceImpl {
 		Iterable<Person> people = new ArrayList<Person>();
 		people = personDao.findAll();
 		return people;
+	}
+	
+	@RequestMapping(method=GET, value="/addPerson")
+	public Person addPerson() {
+		Person personToAdd = new Person();
+		personToAdd.setFirstName("Justin");
+		personToAdd.setLastName("Bieber");
+		personDao.save(personToAdd);
+		return personToAdd;
+	}
+	
+	@RequestMapping(method=GET, value="/deletePerson")
+	public Person deletePerson(@RequestParam("personId") int personId) {
+		Person personToDelete = new Person();
+		personToDelete = personDao.findByPersonId(personId);
+		personDao.delete(personToDelete);
+		return personToDelete;
 	}
 	
 	@RequestMapping(method=GET, value="/personId")
