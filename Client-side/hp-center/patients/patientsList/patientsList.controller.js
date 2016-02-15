@@ -22,8 +22,6 @@ function patientsList_ctrl($scope, $rootScope, service) {
 
     $scope.addPatient = function(newPatientData) {
       service.addPatient(newPatientData);
-      debugger;
-      console.log(newPatientData);
     }
 
     function getPatients() {

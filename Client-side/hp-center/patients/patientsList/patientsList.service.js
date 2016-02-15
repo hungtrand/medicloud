@@ -1,4 +1,4 @@
-function patientsListService($http, $rootScope) {
+function patientsListService($http, $rootScope, $resource) {
   var onSuccessFn;
   var onFailureFn;
   var service = {
@@ -10,18 +10,19 @@ function patientsListService($http, $rootScope) {
 
     getPatients: function () {
       var that = this;
-      var promise = $http.get('http://'+window.location.hostname+':8080/person/persons');
-      promise.success(function(patient) {
+      var client = $resource('http://'+window.location.hostname+':8080/person/persons');
+      var promise = client.query().$promise;
+      promise.then(function(patient) {
         that.patients = patient;
         (onSuccessFn || angular.noop)();
         onSuccessFn = null;
         onFailureFn = null;
-      })
-      .error(function(error) {
+      },function(error) {
         (onFailureFn || angular.noop)(error);
         onSuccessFn = null;
         onFailureFn = null;
-      })
+      });
+
       return this;
     },
 
@@ -38,6 +39,11 @@ function patientsListService($http, $rootScope) {
     addPatient: function (patient) {
       service.patients.push(patient);
       $rootScope.$broadcast('patients.update');
+      var client = $resource('http://'+window.location.hostname+':8080/person/addPerson');
+      client.save(patient);
+      console.log("Patient is " + patient);
+      //var promise = client.save().$promise;
+      //console.log(promise);
     }
   }
   return service;

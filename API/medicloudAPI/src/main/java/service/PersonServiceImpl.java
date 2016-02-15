@@ -11,6 +11,7 @@ import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -113,11 +114,8 @@ public class PersonServiceImpl {
 		return people;
 	}
 	
-	@RequestMapping(method=GET, value="/addPerson")
-	public Person addPerson() {
-		Person personToAdd = new Person();
-		personToAdd.setFirstName("Justin");
-		personToAdd.setLastName("Bieber");
+	@RequestMapping(method=POST, value="/addPerson")
+	public Person addPerson(@RequestBody Person personToAdd) {
 		personDao.save(personToAdd);
 		return personToAdd;
 	}
