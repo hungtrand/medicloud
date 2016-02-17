@@ -11,6 +11,7 @@ import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,13 +64,6 @@ public class PersonServiceImpl {
 		return (List<Person>) persons;
 	}
 
-		
-	@RequestMapping(value="/api/persons/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Person getPersonByID(@PathVariable("id") int id){
-
-		return personDao.findByPersonId(id);
-		
-	}
 	class Profile{
 		public Note noteClass = new Note();
 		public void setNote(Note note){
@@ -120,6 +114,20 @@ public class PersonServiceImpl {
 		Iterable<Person> people = new ArrayList<Person>();
 		people = personDao.findAll();
 		return people;
+	}
+	
+	@RequestMapping(method=POST, value="/addPerson")
+	public Person addPerson(@RequestBody Person personToAdd) {
+		personDao.save(personToAdd);
+		return personToAdd;
+	}
+	
+	@RequestMapping(method=GET, value="/deletePerson")
+	public Person deletePerson(@RequestParam("personId") int personId) {
+		Person personToDelete = new Person();
+		personToDelete = personDao.findByPersonId(personId);
+		personDao.delete(personToDelete);
+		return personToDelete;
 	}
 	
 	@RequestMapping(method=GET, value="/personId")

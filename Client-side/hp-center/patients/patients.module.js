@@ -32,7 +32,7 @@ function patients_module() {
 		}])
 
 		// services
-		app.service('patientsListService', ["$http", "$rootScope", patientsListService]);
+		app.service('patientsListService', ["$http", "$rootScope", "$resource", patientsListService]);
 
 		// directives
 		app.directive('modalDialog', formAddPatient_dir);
