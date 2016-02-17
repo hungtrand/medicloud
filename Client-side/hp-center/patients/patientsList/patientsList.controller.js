@@ -1,5 +1,5 @@
 function patientsList_ctrl($scope, $rootScope, service) {
-    $scope.patientList;
+    $scope.patientList = [];
     getPatients();
     $scope.status;
     $scope.test = "testing12";

@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +26,9 @@ public class Person {
 
 	@Column(name="email")
 	private String email;
+	
+	@Column(name="birthdate")
+	private Date birthdate;
 	
 	public int getPersonId() {
 		return personId;
@@ -55,6 +60,15 @@ public class Person {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+
+	public Date getBirthdate() {
+		return birthdate;
+	}
+
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
 	}
 
 	@Override
