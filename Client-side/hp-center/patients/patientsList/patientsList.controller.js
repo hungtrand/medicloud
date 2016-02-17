@@ -22,6 +22,8 @@ function patientsList_ctrl($scope, $rootScope, service) {
 
     $scope.addPatient = function(newPatientData) {
       service.addPatient(newPatientData);
+      $scope.modalShown = false;
+      $('#AddPatientForm')[0].reset();
     }
 
     function getPatients() {
