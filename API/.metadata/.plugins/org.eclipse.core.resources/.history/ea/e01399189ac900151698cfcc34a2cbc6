@@ -1,8 +1,0 @@
-package jointModels;
-
-import model.Person;
-import model.Note;
-
-public class PersonJoint {
-	
-}

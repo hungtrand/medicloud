@@ -1,0 +1,39 @@
+package service;
+
+import java.awt.PageAttributes.MediaType;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import model.Contact;
+import model.Patient;
+import repository.PatientRepo;
+import repository.PersonDao;
+
+@RestController
+@RequestMapping(value="/patient")
+public class PatientService {
+	
+	public PatientService(){
+		
+	};
+	
+	@Autowired
+	private PatientRepo patientRepo;
+	
+	@RequestMapping(value="/api/contact", method = RequestMethod.POST)
+	public Patient setContact(@RequestBody Patient patient){
+		
+		Patient p = patientRepo.saveCdoId(patient);
+		
+		
+				
+		return p;
+		
+	}
+	
+	
+}

@@ -1,10 +1,12 @@
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +22,9 @@ public class Contact {
 	@Column(name="contact_id")
 	private int contactId = 0;
 	
-	@Column(name="personId")
-	private int personId;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="person_id")
+	private Person personId;
 	
 	@Column(name="email")
 	private String email;
@@ -44,7 +47,7 @@ public class Contact {
 	public int getContactId(){
 		return this.contactId;
 	}
-	public int getPersonId(){
+	public Person getPersonId(){
 		return this.personId;
 	}
 	public String getEmail(){
@@ -69,7 +72,7 @@ public class Contact {
 	public void setContactId(int newContactID){
 		this.contactId = newContactID;
 	}
-	public void setPersonId(int newPersonID){
+	public void setPersonId(Person newPersonID){
 		this.personId = newPersonID;
 	}
 	public void setEmail(String newEmail){

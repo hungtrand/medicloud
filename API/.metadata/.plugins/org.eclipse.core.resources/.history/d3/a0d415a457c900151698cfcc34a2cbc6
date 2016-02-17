@@ -1,7 +1,0 @@
-package jointModels;
-
-import model.person;
-
-public class personJoint {
-
-}

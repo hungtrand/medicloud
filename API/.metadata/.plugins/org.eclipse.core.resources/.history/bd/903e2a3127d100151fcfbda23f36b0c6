@@ -1,0 +1,56 @@
+package service;
+
+import java.awt.PageAttributes.MediaType;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import model.Cdo;
+import repository.CdoRepo;
+
+import repository.PersonDao;
+
+
+@RestController
+@RequestMapping(value="/patient")
+public class PatientService {
+	
+	public PatientService(){
+		
+	};
+	
+	@Autowired
+	private CdoRepo cdoRepo;
+	
+	@RequestMapping(value="/api/cdo/{id}", method = RequestMethod.GET)
+	public @ResponseBody Cdo getCdoById(@PathVariable("id") int id){
+		
+		Cdo p = cdoRepo.findByCdoId(id);
+		
+		return p;
+		
+	}
+	@RequestMapping(value="/api/cdos", method =RequestMethod.GET)
+	public Iterable<Cdo> getAllCDO(){
+		return cdoRepo.findAll();
+	}
+	
+	@RequestMapping(value="/api/")
+	public Observation getAllObservation(){
+		return null;
+	}
+	
+	@RequestMapping(value="/api/cdo", method=RequestMethod.POST)
+	public void setCdo(@RequestBody Cdo c){
+	
+		cdoRepo.save(c);
+	}
+	
+	
+}

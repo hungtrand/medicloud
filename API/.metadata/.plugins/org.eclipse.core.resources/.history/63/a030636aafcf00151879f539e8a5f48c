@@ -1,0 +1,17 @@
+package repository;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import model.Cdo;
+
+@Repository
+@Qualifier(value="PatientRepo")
+public interface PatientRepo extends CrudRepository<Cdo, String> {
+
+	public Cdo delete(int cdoId);
+
+	
+	
+}
