@@ -102,12 +102,7 @@ public class PersonServiceImpl {
 		
 		return noteDao.findByNoteId(id);
 	}
-	
-	
-	
-	
-	
-	
+		
 	
 	@RequestMapping(method=GET, value="/persons")
 	public Iterable<Person> loadPersons() {
@@ -133,11 +128,6 @@ public class PersonServiceImpl {
 	@RequestMapping(method=GET, value="/personId")
 	public Person loadPersonByPersonId(@RequestParam("personId") int personId) {
 		return personDao.findByPersonId(personId);
-	}
-	
-	@RequestMapping(method=GET, value="/whatever")
-	public String whateverIWant() {
-		return "Whatever I want";
 	}
 }
 

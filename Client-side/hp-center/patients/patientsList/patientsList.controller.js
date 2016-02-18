@@ -1,5 +1,5 @@
 function patientsList_ctrl($scope, $rootScope, service) {
-    $scope.patientList;
+    $scope.patientList = [];
     getPatients();
     $scope.status;
     $scope.test = "testing12";
@@ -22,6 +22,8 @@ function patientsList_ctrl($scope, $rootScope, service) {
 
     $scope.addPatient = function(newPatientData) {
       service.addPatient(newPatientData);
+      $scope.modalShown = false;
+      $('#AddPatientForm')[0].reset();
     }
 
     function getPatients() {

@@ -41,9 +41,6 @@ function patientsListService($http, $rootScope, $resource) {
       $rootScope.$broadcast('patients.update');
       var client = $resource('http://'+window.location.hostname+':8080/person/addPerson');
       client.save(patient);
-      console.log("Patient is " + patient);
-      //var promise = client.save().$promise;
-      //console.log(promise);
     }
   }
   return service;
