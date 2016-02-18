@@ -1,7 +1,10 @@
-function main_ctrl($scope) {
+function main_ctrl($scope, patient_serv) {
 	/* include files */
 	$scope.incConditionList = "patient/conditions/conditionList.html";
 	$scope.incObservationList = "patient/observations/observationList.html";
+
+	/***** fetch inital data from services ******/
+	patient_serv.fetch();
 
 	$scope.modalMessage = {
 		show: false,

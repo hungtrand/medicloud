@@ -3,9 +3,8 @@ function patient_module() {
 	var scripts = [
 		"patient/main.controller.js",
 		"share/modal.directive.js",
-		"patient/profile/profile.service.js",
+		"patient/patient.service.js",
 		"patient/profile/profile.controller.js",
-		"patient/observations/observations.service.js",
 		"patient/observations/observations.controller.js"
 	];
 
@@ -35,16 +34,15 @@ function patient_module() {
 		}]);
 
 		// services
-		app.service('profile_serv', ['$resource', profile_serv]);
-		app.service('observations_serv', ['$resource', observations_serv])
+		app.service('patient_serv', ['$resource', '$rootScope', patient_serv]);
 
 		// directives
 		app.directive('mcModal', mc_modal_dir);
 
 		// controllers
-		app.controller("profile_ctrl", ['$scope', 'profile_serv', profile_ctrl]);
-		app.controller("observations_ctrl", ['$scope', 'observations_serv', observations_ctrl])
-		app.controller("main_ctrl", ['$scope', main_ctrl])
+		app.controller("profile_ctrl", ['$scope', 'patient_serv', profile_ctrl]);
+		app.controller("observations_ctrl", ['$scope', 'patient_serv', observations_ctrl])
+		app.controller("main_ctrl", ['$scope', 'patient_serv', main_ctrl])
 		console.log('*** Finished loading patient module. Module loading time: ' + (Date.now() - timerStart));
 
 		that.module_ready();
