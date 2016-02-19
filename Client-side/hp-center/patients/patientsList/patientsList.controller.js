@@ -10,10 +10,9 @@ function patientsList_ctrl($scope, $rootScope, service) {
     };
     $scope.contactClicked = false;
     $scope.selectedPatient;
-    $scope.clicked = function(patientIndex) {
+    $scope.clicked = function(patient) {
       $scope.contactClicked = true;
-      $scope.patientIndex = patientIndex;
-      $scope.selectedPatient = this.patientList[$scope.patientIndex];
+      $scope.selectedPatient = patient;
     }
 
     $rootScope.$on('patientAdded', function() {
@@ -29,6 +28,7 @@ function patientsList_ctrl($scope, $rootScope, service) {
     function getPatients() {
       service.getPatients().onSuccess(function(patient) {
         $scope.patientList = service.patients;
+        console.log($scope.patientList);
       })
       .onFailure(function(error) {
         console.log(error);

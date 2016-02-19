@@ -24,7 +24,7 @@
                     </div>
                     <h1>{{test}}</h1>
                     <div class="list-group">
-                        <a class="list-group-item" ng-repeat="patient in patientList | orderBy: 'lastName'" ng-click="clicked($index)">
+                        <a class="list-group-item" ng-repeat="patient in patientList | orderBy: 'lastName'" ng-click="clicked(patient)">
                             <h4 class="list-group-item-heading">{{patient.lastName}}, {{patient.firstName}}</h4>
                             <p class="list-group-item-text">{{patient.email}}</p>
                         </a>
