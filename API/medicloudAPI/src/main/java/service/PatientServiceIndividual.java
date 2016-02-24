@@ -55,6 +55,9 @@ public class PatientServiceIndividual {
 		updateCondition1 = conditionRepo.save(updateCondition);
 	}
 	
-	
+	@RequestMapping(value="")
+	public void setNewObservation(){
+		
+	}
 	
 }
