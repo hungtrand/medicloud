@@ -1,14 +1,13 @@
 package model;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-=======
+
 import java.sql.Date;
 
->>>>>>> 9999a77d0437323b46902b66a89e3b6cdddc3b3c
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
