@@ -40,7 +40,17 @@ function patientsListService($http, $rootScope, $resource) {
       service.patients.push(patient);
       $rootScope.$broadcast('patients.update');
       var client = $resource('http://'+window.location.hostname+':8080/person/addPerson');
-      client.save(patient);
+      client.save(patient, 
+        function(response) {
+          debugger;
+          if (response.personId) {
+            $('#patientSuccessAlert').fadeIn(100);
+          }
+          else {
+            $('#patientFailureAlert').show();
+          }
+          console.log(response);
+      });
     }
   }
   return service;

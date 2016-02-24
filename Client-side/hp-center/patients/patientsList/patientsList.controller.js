@@ -10,6 +10,10 @@ function patientsList_ctrl($scope, $rootScope, service) {
     };
     $scope.contactClicked = false;
     $scope.selectedPatient;
+    var validBirthdate = false;
+    var validEmail = false;
+    $('#patientSuccessAlert').hide();
+    $('#patientFailureAlert').hide();
     $scope.clicked = function(patient) {
       $scope.contactClicked = true;
       $scope.selectedPatient = patient;
@@ -20,7 +24,15 @@ function patientsList_ctrl($scope, $rootScope, service) {
     });
 
     $scope.addPatient = function(newPatientData) {
-      service.addPatient(newPatientData);
+      birthdateCheck(newPatientData.birthdate);
+      emailCheck(newPatientData.email);
+      if (validBirthdate && validEmail) {
+        service.addPatient(newPatientData);
+      }
+      else {
+        console.log("email" + validEmail);
+        console.log("birthdate" + validBirthdate);
+      }
       $scope.modalShown = false;
       $('#AddPatientForm')[0].reset();
     }
@@ -33,6 +45,27 @@ function patientsList_ctrl($scope, $rootScope, service) {
       .onFailure(function(error) {
         console.log(error);
       });
+    }
+
+    function birthdateCheck(birthdate) {
+      var birthdateRE = /^\d{4}\/\d{1,2}\/\d{1,2}$/;
+      if (!birthdate.match(birthdateRE)) {
+        validBirthdate = false;
+        console.log("Invalid birthday.");
+      }
+      else {
+        validBirthdate = true;
+        console.log("Valid birthdate.");
+      }
+    }
+
+    function emailCheck(patientEmail) {
+      if (patientEmail.indexOf('@') >= 0 && patientEmail.indexOf('.') >= 0) {
+        validEmail = true;
+      }
+      else {
+        validEmail = false;
+      }
     }
 
 
