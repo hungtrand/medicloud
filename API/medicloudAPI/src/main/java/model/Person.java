@@ -1,9 +1,14 @@
 package model;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+=======
+import java.sql.Date;
+
+>>>>>>> 9999a77d0437323b46902b66a89e3b6cdddc3b3c
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,6 +48,9 @@ public class Person {
 	
 	@Column(name="email")
 	private String email;
+	
+	@Column(name="birthdate")
+	private Date birthdate;
 	
 	public int getPersonId() {
 		return personId;
@@ -90,6 +98,15 @@ public class Person {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+
+	public Date getBirthdate() {
+		return birthdate;
+	}
+
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
 	}
 
 	@Override

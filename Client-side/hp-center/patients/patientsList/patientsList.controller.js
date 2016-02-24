@@ -1,5 +1,5 @@
 function patientsList_ctrl($scope, $rootScope, service) {
-    $scope.patientList;
+    $scope.patientList = [];
     getPatients();
     $scope.status;
     $scope.test = "testing12";
@@ -10,10 +10,9 @@ function patientsList_ctrl($scope, $rootScope, service) {
     };
     $scope.contactClicked = false;
     $scope.selectedPatient;
-    $scope.clicked = function(patientIndex) {
+    $scope.clicked = function(patient) {
       $scope.contactClicked = true;
-      $scope.patientIndex = patientIndex;
-      $scope.selectedPatient = this.patientList[$scope.patientIndex];
+      $scope.selectedPatient = patient;
     }
 
     $rootScope.$on('patientAdded', function() {
@@ -22,11 +21,14 @@ function patientsList_ctrl($scope, $rootScope, service) {
 
     $scope.addPatient = function(newPatientData) {
       service.addPatient(newPatientData);
+      $scope.modalShown = false;
+      $('#AddPatientForm')[0].reset();
     }
 
     function getPatients() {
       service.getPatients().onSuccess(function(patient) {
         $scope.patientList = service.patients;
+        console.log($scope.patientList);
       })
       .onFailure(function(error) {
         console.log(error);

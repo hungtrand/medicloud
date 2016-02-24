@@ -112,9 +112,13 @@ public class PersonServiceImpl {
 	}
 	
 	@RequestMapping(method=POST, value="/addPerson")
-	public Person addPerson(@RequestBody Person personToAdd) {
-		personDao.save(personToAdd);
-		return personToAdd;
+	public void addPerson(@RequestBody Person personToAdd) {
+		if (personDao.findByFirstName(personToAdd.getFirstName()) != null) {
+			System.out.println("Patient already in database.\n");
+		}
+		else {
+			personDao.save(personToAdd);
+		}
 	}
 	
 	@RequestMapping(method=GET, value="/deletePerson")
