@@ -25,13 +25,12 @@ import repository.PersonDao;
 
 
 
-@Controller
 @RestController
 @RequestMapping(value="/patient")
 public class PatientService {
 	
 	@Autowired
-	private CdoRepo cdoRepo;
+	private CdoRepo cdoRepo;	
 	
 	@Autowired
 	private ObservationRepo obsRepo;
@@ -57,34 +56,17 @@ public class PatientService {
 	@Autowired
 	private PersonDao personDao;
 	
-//	@RequestMapping(value="/api/persons/{id}/obs", method = RequestMethod.POST)
-//	public void setPersonById(@PathVariable("id") int id, @RequestBody Observation newObs){
-//		Person tempPerson = new Person();
-//		tempPerson =  personDao.findByPersonId(id);
-//		
-//		Observation tempObservation = new Observation();
-//		tempObservation.setObsId(id);
-//		tempObservation = obsRepo.save(newObs);
-//	
-//	}
-	
-	
 	@RequestMapping(value="/api/observation/{id}", method=RequestMethod.GET)
 	public Observation getObservationById(@PathVariable("id") int id){
 		Observation tempObs = new Observation();
 		
-//		this.setObservation(newOBss);
 		return obsRepo.findByObsId(id);
 	}
 	@RequestMapping(value="/api/{id}/obs",method=RequestMethod.POST)
 	public void setObservation(@PathVariable("id")int id,@RequestBody Observation newObservation){
 		Observation ob = new Observation();
 		
-//		System.out.println("testing:id" + id);
-//		ob.setPersonId(id);
-//		
-//		System.out.println(1);
-		newObservation.setPersonId(id);
+//		newObservation.setPersonId(id);
 		ob=obsRepo.save(newObservation);
 		
 		
@@ -97,10 +79,6 @@ public class PatientService {
 		
 		return patientRepo.findByPatientId(id);
 	}
-	
-	
-	
-
 	
 	
 	class helloworld{
@@ -123,11 +101,8 @@ public class PatientService {
 		return hw;
 	}
 	
-	
-	
 	@RequestMapping(value="/api/cdo", method=RequestMethod.POST)
-	public void setCdo(@RequestBody Cdo c){
-	
+	public void setCdo(@RequestBody Cdo c){	
 		cdoRepo.save(c);
 	}
 	

@@ -35,8 +35,8 @@ import model.PersonalView;
 import model.Person;
 import model.Encounter;
 import model.Note;
-import model.Contact;
-import repository.ContactRepo;
+//import model.Contact;
+//import repository.ContactRepo;
 
 @RestController
 @RequestMapping(value="/person")
@@ -48,8 +48,8 @@ public class PersonServiceImpl {
 	@Autowired
 	private PersonDao personDao;
 	
-	@Autowired
-	private ContactRepo contactRepo;
+//	@Autowired
+//	private ContactRepo contactRepo;
 	
 //	@Autowired
 //	private repository.personal personal;

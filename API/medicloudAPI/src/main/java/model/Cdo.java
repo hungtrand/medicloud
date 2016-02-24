@@ -21,6 +21,8 @@ public class Cdo {
 	@Column(name="name")
 	private String name;
 	
+	
+	
 	@Column(name="bussiness_id")
 	private int businessID;
 	

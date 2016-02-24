@@ -27,16 +27,19 @@ public class Contact {
 	private Person personId;
 	
 	@Column(name="email")
-	private String email;
+	private String primaryEmail;
 	
 	@Column(name="phone")
-	private String phone;
+	private String primaryPhone;
 	
 	@Column(name="address")
 	private String address;
 	
 	@Column(name="city")
 	private String city;
+	
+	@Column(name="country")
+	private String country;
 	
 	@Column(name="state")
 	private String state;
@@ -47,14 +50,14 @@ public class Contact {
 	public int getContactId(){
 		return this.contactId;
 	}
-	public Person getPersonId(){
-		return this.personId;
-	}
+//	public Person getPersonId(){
+//		return this.personId;
+//	}
 	public String getEmail(){
-		return this.email;
+		return this.primaryEmail;
 	}
 	public String getPhone(){
-		return this.phone;
+		return this.primaryPhone;
 	}
 	public String getAddress(){
 		return this.address;
@@ -72,17 +75,17 @@ public class Contact {
 	public void setContactId(int newContactID){
 		this.contactId = newContactID;
 	}
-	public void setPersonId(Person newPersonID){
-		this.personId = newPersonID;
-	}
+//	public void setPersonId(Person newPersonID){
+//		this.personId = newPersonID;
+//	}
 	public void setEmail(String newEmail){
-		this.email = newEmail;
+		this.primaryEmail = newEmail;
 	}
 	public void setAddress(String newAddress){
 		this.address = newAddress;
 	}
 	public void setPhone(String newPhone){
-		this.phone = newPhone;
+		this.primaryPhone = newPhone;
 	}
 	public void setCity(String newCity){
 		this.city = newCity;
