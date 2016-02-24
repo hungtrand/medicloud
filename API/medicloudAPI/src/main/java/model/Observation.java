@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import repository.PersonDao;
 
 @Entity
 @Table(name="observation")
@@ -31,13 +30,6 @@ public class Observation {
 	
 //	@ManyToOne(fetch=FetchType.LAZY)
 	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="person_id", insertable = false, updatable = false, referencedColumnName="person_id")
-	private Person person;
-	
-	
-	@Column(name="person_id")
-	private int person_id;
 	
 	@Column(name="encounter_id")
 	private int encounterId;
@@ -52,20 +44,18 @@ public class Observation {
 	private String state;
 	
 	
-//	@Column(name="date_changed")
-//	private Timestamp dateChanged;
-//	
-//	@Column(name="date_created")
-//	private Timestamp dateCreated;
-//	
+	@Column(name="date_changed")
+	private Timestamp updated;
+	
+	@Column(name="date_created")
+	private Timestamp timestamp;
+	
 	public int getObsId(){
 		return this.obsId;
 	}
 	
 	
-	public int getPersonId(){
-		return this.person.getPersonId();
-	}
+
 	
 	public int getEncounterId(){
 		return this.encounterId;
@@ -88,9 +78,6 @@ public class Observation {
 	
 	public void setObsId(int newObsId){
 		this.obsId = newObsId;
-	}
-	public void setPersonId(int newPersonId){
-		this.person_id = newPersonId;
 	}
 
 	public void setEncounterId(int newEncounterId){

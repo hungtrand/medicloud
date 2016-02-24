@@ -10,7 +10,7 @@ import model.Observation;
 @Qualifier(value="ObservationRepo")
 public interface ObservationRepo extends CrudRepository<Observation, String> {
 	
-	public Observation findByObsId(int obsId);
+	public Observation findByObsId(int obs_id);
 //	public Observation findByPersonId(int person);
 	
 

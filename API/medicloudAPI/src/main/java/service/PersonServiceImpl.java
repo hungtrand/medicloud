@@ -48,8 +48,8 @@ public class PersonServiceImpl {
 	@Autowired
 	private PersonDao personDao;
 	
-	@Autowired
-	private ContactRepo contactRepo;
+//	@Autowired
+//	private ContactRepo contactRepo;
 	
 //	@Autowired
 //	private repository.personal personal;

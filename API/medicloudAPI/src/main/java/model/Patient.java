@@ -27,16 +27,110 @@ public class Patient {
 	@Column(name="patient_id")
 	private int patientId;
 	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="person_id", insertable=false, updatable=false, referencedColumnName= "person_id")
+	private Person person;
+	
+	@Column(name="person_id" )
+	private int personId;
+	
+
+	
+	/**
+	 * Get all condition of a patient. This will create a patient id in condition table. Use patient id to access condition.
+	 */
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="patient_id")
+	private List<Condition> condition = new ArrayList<Condition>();
+	
+	/**
+	 * Get all observations of a patient.
+	 * 
+	 */
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="patient_id")
 	private List<Observation> observation = new ArrayList<Observation>();
 	
+	
+	/**
+	 * Get all notes of a patient.
+	 * @annotation(One to many) - It has one to many relation with patient and note table.
+	 * @annotation(JoinColumn) this is the owner of relationship.
+	 * Join column create a relation column in note table.
+	 * @para patient_id - name of the relationship column which is a primary key of patient table.
+	 * 
+	 */
+	@OneToMany(cascade= CascadeType.ALL)
+	@JoinColumn(name="patient_id")
+	private List<Note> note = new ArrayList<Note>();
+	
+	/**
+	 * Create a column which foreign key constraint in encounter table.
+	 * @annotation(One to many) - It has one to many relation with patient and encounter table.
+	 * @annotation(JoinColumn)  - This is the owner of relationship.
+	 * Join Column create a relation column in encounter table.
+	 * @para patient_id - name of the relationship column which is a primary key of patient table.
+	 */
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="patient_id")
+	private List<Encounter> encounter = new ArrayList<Encounter>();
+	
+	
+	
+	
+	
+	/**
+	 * Get all the encounters of a patient.
+	 * @return - list of encounter.
+	 */
+	public List<Encounter> getEncounters() {
+		return this.encounter;
+	}
+	
+	
+	/**
+	 * 
+	 * @param newEncounter
+	 */
+	public void setEncounters(Encounter newEncounter){
+		this.encounter.add(newEncounter);
+	}
+	
+	
+
+	
+	public void setPersonId(int newPersonId){
+		this.patientId = newPersonId;
+	}
+	
+	/**
+	 * Get the first name of the patient. 
+	 * @return
+	 */
+	public String getFirstName(){
+		return this.person.getFirstName();
+	}
+	
+	public String getLastName(){
+		return this.person.getLastName();
+	}
+	
+	public List<Note> getNotes(){
+		return this.note;
+	}
 	public List<Observation> getObservation(){
 		return this.observation;
+	}
+	public List<Condition> getConditions(){
+		return this.condition;
+	}
+	public void setConditions(Condition condition){
+		this.condition.add(condition);
 	}
 	public void setObservation(Observation obs){
 		this.observation.add(obs);
 	}
+	
 	
 //	@Column(name="patient_name")
 //	private String name;
