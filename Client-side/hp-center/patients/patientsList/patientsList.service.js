@@ -42,7 +42,6 @@ function patientsListService($http, $rootScope, $resource) {
       var client = $resource('http://'+window.location.hostname+':8080/person/addPerson');
       client.save(patient, 
         function(response) {
-          debugger;
           if (response.personId) {
             $('#patientSuccessAlert').show();
             $('#patientSuccessAlert').fadeIn(100);

@@ -13,6 +13,7 @@ function patientsList_ctrl($scope, $rootScope, service) {
     var validEmail = false;
     $('#patientSuccessAlert').hide();
     $('#patientFailureAlert').hide();
+      
     $scope.clicked = function(patient) {
       $scope.contactClicked = true;
       $scope.selectedPatient = patient;
@@ -26,7 +27,8 @@ function patientsList_ctrl($scope, $rootScope, service) {
       birthdateCheck(newPatientData.birthdate);
       emailCheck(newPatientData.email);
       if (validBirthdate && validEmail) {
-        service.addPatient(newPatientData);
+        console.log("Valid birthdate and email.");
+        //service.addPatient(newPatientData);
       }
       else {
         console.log("email" + validEmail);
@@ -48,11 +50,23 @@ function patientsList_ctrl($scope, $rootScope, service) {
 
     function birthdateCheck(birthdate) {
       var birthdateRE = /^\d{4}\/\d{1,2}\/\d{1,2}$/;
+      var today = new Date();
+      var year = today.getFullYear();
+      var month = today.getMonth() + 1;
+      var day = today.getDate();
+      console.log("Year: " + year + " Month: " + month + " Day: " + day);
       if (!birthdate.match(birthdateRE)) {
         validBirthdate = false;
         console.log("Invalid birthday.");
       }
       else {
+        var dateSplit = birthdate.split('/');
+        console.log(dateSplit);
+        var yearInt = parseInt(dateSplit[0]);
+        if (yearInt > year) {
+          console.log("Year is incorrect" + yearInt);
+          validBirthdate = false;
+        }
         validBirthdate = true;
         console.log("Valid birthdate.");
       }
