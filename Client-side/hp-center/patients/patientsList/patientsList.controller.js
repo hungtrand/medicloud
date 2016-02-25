@@ -19,15 +19,16 @@ function patientsList_ctrl($scope, $rootScope, service) {
       $scope.selectedPatient = patient;
     }
 
-    $rootScope.$on('patientAdded', function() {
+    /*$rootScope.$on('patientAdded', function() {
       $scope.modalShown = false;
-    });
+    });*/
 
     $scope.addPatient = function(newPatientData) {
       birthdateCheck(newPatientData.birthdate);
       emailCheck(newPatientData.email);
       if (validBirthdate && validEmail) {
         console.log("Valid birthdate and email.");
+        $scope.modalShown = false;
         //service.addPatient(newPatientData);
       }
       else {
@@ -49,26 +50,36 @@ function patientsList_ctrl($scope, $rootScope, service) {
     }
 
     function birthdateCheck(birthdate) {
-      var birthdateRE = /^\d{4}\/\d{1,2}\/\d{1,2}$/;
+      var birthdateRE = /^\d{4}\/\d{2}\/\d{2}$/;
       var today = new Date();
       var year = today.getFullYear();
       var month = today.getMonth() + 1;
       var day = today.getDate();
-      console.log("Year: " + year + " Month: " + month + " Day: " + day);
+
       if (!birthdate.match(birthdateRE)) {
         validBirthdate = false;
-        console.log("Invalid birthday.");
+        console.log("Birthday entered in incorrect format.");
       }
+      
       else {
         var dateSplit = birthdate.split('/');
         console.log(dateSplit);
         var yearInt = parseInt(dateSplit[0]);
+        var monthInt = parseInt(dateSplit[1]);
+        var dayInt = parseInt(dateSplit[2]);
+        
         if (yearInt > year) {
-          console.log("Year is incorrect" + yearInt);
           validBirthdate = false;
         }
-        validBirthdate = true;
-        console.log("Valid birthdate.");
+        else if (yearInt == year && monthInt > month) {
+          validBirthdate = false;
+        }
+        else if (yearInt == year && monthInt == month && dayInt > day) {
+          validBirthdate = false;
+        }
+        else {
+          validBirthdate = true;
+        } 
       }
     }
 
