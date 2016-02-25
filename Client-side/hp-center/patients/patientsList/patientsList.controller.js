@@ -2,7 +2,6 @@ function patientsList_ctrl($scope, $rootScope, service) {
     $scope.patientList = [];
     getPatients();
     $scope.status;
-    $scope.test = "testing12";
     $scope.modalShown = false;
     $scope.patient = {};
     $scope.toggleModal = function() {

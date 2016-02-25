@@ -2,39 +2,40 @@
     <div class="row">
         <div id="patientSuccessAlert" class="alert alert-success" role="alert">Patient successfully added!</div>
         <div id="patientFailureAlert" class="alert alert-danger" role="alert">Patient unsuccessfully added!</div>
-        <div class="col col-xs-6">
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
             <div class="bootcards-list">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <form>
                             <div class="row">
-                                <div class="col-xs-9">
-                                    <div class="form-group">
-                                        <i class="fa fa-search" id="SearchIcon"></i>
-                                        <input type="text" class="form-control" placeholder="Search Contacts...">
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search" id="SearchIcon"></i></span>
+                                        <input type="text" class="form-control" placeholder="Search Patients..." aria-describedby="basic-addon1">
                                     </div>
                                 </div>
-                                <div class="col-xs-3">
-                                    <a ng-click='toggleModal()' class="btn btn-primary btn-block">
-                                        <i class="fa fa-plus"></i>
-                                        Add
-                                    </a>
+                                <div class="col-lg-3">
+                                    <div class="input-group">                                       
+                                        <a ng-click='toggleModal()' class="btn btn-primary btn-block">
+                                            <i class="fa fa-plus"></i>Add
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <modal-dialog show='modalShown' submit="addPatient"></modal-dialog>
                         </form>
                     </div>
-                    <h1>{{test}}</h1>
                     <div class="list-group">
                         <a class="list-group-item" ng-repeat="patient in patientList | orderBy: 'lastName'" ng-click="clicked(patient)">
                             <h4 class="list-group-item-heading">{{patient.lastName}}, {{patient.firstName}}</h4>
-                            <p class="list-group-item-text">{{patient.email}}</p>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-        <div ng-show="contactClicked" class="col col-xs-5 col-xs-offset-1">
+        <div ng-show="contactClicked" class="col col-xs-4">
             <div class="bootcards-card">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
@@ -54,8 +55,10 @@
                             <h4 class="list-group-item-heading">{{selectedPatient.email}}</h4>
                         </div>
                         <div class="list-group-item">
-                            <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris tellus, vehicula ut tellus id, suscipit dapibus tortor. Integer viverra turpis ac fringilla hendrerit. Sed faucibus posuere felis et pellentesque. Cras varius tortor vitae molestie tempor. Proin ut viverra elit, ac gravida tortor.</p>
+                            <p class="list-group-item-text">Birthdate</p>
+                            <h4 class="list-group-item-heading">{{selectedPatient.birthdate}}</h4>
                         </div>
+                        
                     </div>
                     <div class="panel-footer">
                         <a href="pages/calendar.html">

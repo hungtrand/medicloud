@@ -35,7 +35,6 @@ import model.Person;
 import model.Encounter;
 import model.Note;
 import model.Contact;
-import repository.ContactRepo;
 import provider.MessageResponse;
 
 @RestController

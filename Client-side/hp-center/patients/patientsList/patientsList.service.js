@@ -44,6 +44,7 @@ function patientsListService($http, $rootScope, $resource) {
         function(response) {
           debugger;
           if (response.personId) {
+            $('#patientSuccessAlert').show();
             $('#patientSuccessAlert').fadeIn(100);
           }
           else {
