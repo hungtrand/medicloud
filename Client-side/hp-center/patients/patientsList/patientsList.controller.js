@@ -2,7 +2,6 @@ function patientsList_ctrl($scope, $rootScope, service) {
     $scope.patientList = [];
     getPatients();
     $scope.status;
-    $scope.test = "testing12";
     $scope.modalShown = false;
     $scope.patient = {};
     $scope.toggleModal = function() {
@@ -10,17 +9,32 @@ function patientsList_ctrl($scope, $rootScope, service) {
     };
     $scope.contactClicked = false;
     $scope.selectedPatient;
+    var validBirthdate = false;
+    var validEmail = false;
+    $('#patientSuccessAlert').hide();
+    $('#patientFailureAlert').hide();
+      
     $scope.clicked = function(patient) {
       $scope.contactClicked = true;
       $scope.selectedPatient = patient;
     }
 
-    $rootScope.$on('patientAdded', function() {
+    /*$rootScope.$on('patientAdded', function() {
       $scope.modalShown = false;
-    });
+    });*/
 
     $scope.addPatient = function(newPatientData) {
-      service.addPatient(newPatientData);
+      birthdateCheck(newPatientData.birthdate);
+      emailCheck(newPatientData.email);
+      if (validBirthdate && validEmail) {
+        console.log("Valid birthdate and email.");
+        $scope.modalShown = false;
+        //service.addPatient(newPatientData);
+      }
+      else {
+        console.log("email" + validEmail);
+        console.log("birthdate" + validBirthdate);
+      }
       $scope.modalShown = false;
       $('#AddPatientForm')[0].reset();
     }
@@ -33,6 +47,49 @@ function patientsList_ctrl($scope, $rootScope, service) {
       .onFailure(function(error) {
         console.log(error);
       });
+    }
+
+    function birthdateCheck(birthdate) {
+      var birthdateRE = /^\d{4}\/\d{2}\/\d{2}$/;
+      var today = new Date();
+      var year = today.getFullYear();
+      var month = today.getMonth() + 1;
+      var day = today.getDate();
+
+      if (!birthdate.match(birthdateRE)) {
+        validBirthdate = false;
+        console.log("Birthday entered in incorrect format.");
+      }
+      
+      else {
+        var dateSplit = birthdate.split('/');
+        console.log(dateSplit);
+        var yearInt = parseInt(dateSplit[0]);
+        var monthInt = parseInt(dateSplit[1]);
+        var dayInt = parseInt(dateSplit[2]);
+        
+        if (yearInt > year) {
+          validBirthdate = false;
+        }
+        else if (yearInt == year && monthInt > month) {
+          validBirthdate = false;
+        }
+        else if (yearInt == year && monthInt == month && dayInt > day) {
+          validBirthdate = false;
+        }
+        else {
+          validBirthdate = true;
+        } 
+      }
+    }
+
+    function emailCheck(patientEmail) {
+      if (patientEmail.indexOf('@') >= 0 && patientEmail.indexOf('.') >= 0) {
+        validEmail = true;
+      }
+      else {
+        validEmail = false;
+      }
     }
 
 

@@ -1,6 +1,5 @@
 package model;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +48,7 @@ public class Person {
 	private String email;
 	
 	@Column(name="birthdate")
-	private Date birthdate;
+	private String birthdate;
 	
 	public int getPersonId() {
 		return personId;
@@ -100,11 +99,11 @@ public class Person {
 	}
 	
 
-	public Date getBirthdate() {
+	public String getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(Date birthdate) {
+	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
 

@@ -28,15 +28,14 @@ import com.mysql.fabric.Response;
 
 import repository.NoteDao;
 import repository.PersonDao;
-//import tempClasses.personInfo;
 import repository.PersonalViewRepo;
 
 import model.PersonalView;
 import model.Person;
 import model.Encounter;
 import model.Note;
-//import model.Contact;
-//import repository.ContactRepo;
+import model.Contact;
+import provider.MessageResponse;
 
 @RestController
 @RequestMapping(value="/person")
@@ -112,13 +111,21 @@ public class PersonServiceImpl {
 	}
 	
 	@RequestMapping(method=POST, value="/addPerson")
-	public void addPerson(@RequestBody Person personToAdd) {
-		if (personDao.findByFirstName(personToAdd.getFirstName()) != null) {
-			System.out.println("Patient already in database.\n");
+	public Person addPerson(@RequestBody Person personToAdd) {
+		MessageResponse mr = new MessageResponse();
+		System.out.println(personToAdd.getBirthdate());
+		if (personDao.findByFirstName(personToAdd.getFirstName()) != null && personDao.findByLastName(personToAdd.getLastName()) != null && personDao.findByBirthdate(personToAdd.getBirthdate()) != null) {
+			mr.success = false;
+			mr.message = "Patient already exists in database.";
+			System.out.println("\n\n\n" + mr.message + "\n\n\n");
 		}
 		else {
 			personDao.save(personToAdd);
+			mr.success = true;
+			mr.message = "Patient successfully added.";
+			System.out.println("\n\n\n" + mr.message + "\n\n\n");
 		}
+		return personToAdd;
 	}
 	
 	@RequestMapping(method=GET, value="/deletePerson")
