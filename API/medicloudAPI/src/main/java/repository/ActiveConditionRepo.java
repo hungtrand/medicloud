@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import model.Condition;
+import model.ActiveCondition;
+
 
 @Repository
-@Qualifier(value="ConditionRepo")
-public interface ConditionRepo extends CrudRepository<Condition, String> {
+@Qualifier(value="ActiveConditionRepo")
+public interface ActiveConditionRepo extends CrudRepository<ActiveCondition, String> {
 
+	
 }
