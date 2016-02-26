@@ -29,7 +29,7 @@ function patientsList_ctrl($scope, $rootScope, service) {
       if (validBirthdate && validEmail) {
         console.log("Valid birthdate and email.");
         $scope.modalShown = false;
-        //service.addPatient(newPatientData);
+        service.addPatient(newPatientData);
       }
       else {
         console.log("email" + validEmail);
