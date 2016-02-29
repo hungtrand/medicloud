@@ -37,14 +37,18 @@ function patientsListService($http, $rootScope, $resource) {
     },
 
     addPatient: function (patient) {
-      service.patients.push(patient);
-      $rootScope.$broadcast('patients.update');
+      
+      $rootScope.$broadcast('patientAdded');
       var client = $resource('http://'+window.location.hostname+':8080/person/addPerson');
       client.save(patient, 
         function(response) {
           if (response.personId) {
+            service.patients.push(patient);
             $('#patientSuccessAlert').show();
-            $('#patientSuccessAlert').fadeIn(100);
+            setTimeout(function() {
+              $('#patientSuccessAlert').fadeOut('slow');
+            }, 3000);
+            
           }
           else {
             $('#patientFailureAlert').show();
