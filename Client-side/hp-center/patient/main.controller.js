@@ -1,7 +1,7 @@
 function main_ctrl($scope, patient_serv) {
 	/* include files */
-	$scope.incConditionList = "patient/conditions/conditionList.html";
-	$scope.incObservationList = "patient/observations/observationList.html";
+	$scope.incConditionList = "patient/conditions/conditions.html";
+	$scope.incObservationList = "patient/observations/observations.html";
 
 	/***** fetch inital data from services ******/
 	patient_serv.fetch();
