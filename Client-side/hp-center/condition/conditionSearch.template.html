@@ -1,0 +1,11 @@
+<div class="input-group">
+	<input type="text" class="form-control inputSearch" placeholder="Search condition database"
+	ng-model="searchInput"
+	ng-disabled="waiting" />
+	<span class="input-group-btn">
+		<button type="submit" class="btn btn-primary btnSearch"
+		ng-disabled="waiting" style="font-size: 15px;">
+		<i ng-class="{ 'glyphicon glyphicon-search': !waiting, 'fa fa-spin fa-spinner': waiting }"></i>
+		</button>
+	</span>
+</div>

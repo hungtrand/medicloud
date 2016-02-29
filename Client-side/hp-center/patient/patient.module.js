@@ -5,6 +5,11 @@ function patient_module() {
 		"share/modal.directive.js",
 		"patient/patient.service.js",
 		"patient/profile/profile.controller.js",
+		"patient/conditions/condition.directive.js",
+		"patient/conditions/newCondition.directive.js",
+		"patient/conditions/conditions.controller.js",
+		"condition/conditionSearch.directive.js",
+		"condition/infermedicaConditions.service.js",
 		"patient/observations/observations.controller.js"
 	];
 
@@ -34,15 +39,24 @@ function patient_module() {
 		}]);
 
 		// services
-		app.service('patient_serv', ['$resource', '$rootScope', patient_serv]);
+		app
+			.service('infermedicaConditions_serv', ['$resource', '$rootScope', infermedicaConditions_serv])
+			.service('patient_serv', ['$resource', '$rootScope', patient_serv]);
 
 		// directives
-		app.directive('mcModal', mc_modal_dir);
+		app
+			.directive('mcConditionSearch', conditionSearch_dir)
+			.directive('mcCondition', condition_dir)
+			.directive('mcNewCondition', newCondition_dir)
+			.directive('mcModal', modal_dir);
 
 		// controllers
-		app.controller("profile_ctrl", ['$scope', 'patient_serv', profile_ctrl]);
-		app.controller("observations_ctrl", ['$scope', 'patient_serv', observations_ctrl])
-		app.controller("main_ctrl", ['$scope', 'patient_serv', main_ctrl])
+		app
+			.controller("profile_ctrl", ['$scope', 'patient_serv', profile_ctrl])
+			.controller("conditions_ctrl", ['$scope', 'patient_serv', conditions_ctrl])
+			.controller("observations_ctrl", ['$scope', 'patient_serv', observations_ctrl])
+			.controller("main_ctrl", ['$scope', 'patient_serv', main_ctrl]);
+
 		console.log('*** Finished loading patient module. Module loading time: ' + (Date.now() - timerStart));
 
 		that.module_ready();

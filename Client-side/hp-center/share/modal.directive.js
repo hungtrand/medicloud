@@ -1,4 +1,4 @@
-function mc_modal_dir() {
+function modal_dir() {
 	return {
 		templateUrl: 'share/modal.template.html',
 		scope: {
