@@ -16,16 +16,26 @@ function formAddPatient_dir() {
                     $(element[0]).modal('hide');
                 }
             });
-            element.find('#AddPatient').on('click', function() {
+            /*element.find('#AddPatient').on('click', function() {
               element.submit();
-            });
+            });*/
             element.on('submit', function(){
-              scope.submit(scope.patient);
+                var elements = element[0].querySelectorAll('input,select,textarea'); 
+                for (var i = elements.length; i--;) { 
+                    elements[i].addEventListener('invalid', function() { 
+                        this.scrollIntoView(false); 
+                    }); 
+                }
+               var data = scope.patient;
+               data = angular.extend({}, scope.patient);
+               data.birthdate = element.find('[type=date]').val();
+               scope.submit(data);
             });
 
         },
         templateUrl: 'patients/formAddPatient/formAddPatient.html',
         controller: ['$scope', function($scope) {
+          $('[data-toggle="tooltip"]').tooltip('disable');
           $scope.patient = {
             firstName: "", lastName: ""
           };
