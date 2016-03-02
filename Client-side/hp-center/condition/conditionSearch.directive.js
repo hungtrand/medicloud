@@ -16,12 +16,23 @@ function conditionSearch_dir() {
 			}, 10);
 		});
 
-		$scope.$on('infermedicaConditionsService.data.updated', function() {
+		var initializeBloodhound = function() {
 			$scope.suggestions = new Bloodhound({
-				datumTokenizer: Bloodhound.tokenizers.whitespace,
+				datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
 				queryTokenizer: Bloodhound.tokenizers.whitespace,
-				local: infermedicaConditionsService.data
+				identify: function(obj) { return obj.id; },
+				local: infermedicaConditionsService.data.conditions
 			});
+
+			$scope.$broadcast('conditionSearch.suggestions.updated');
+		}
+
+		if (infermedicaConditionsService.data.conditions) {
+			initializeBloodhound();
+		}
+
+		$scope.$on('infermedicaConditions_serv.data.updated', function() {
+			initializeBloodhound();
 		});
 	}
 
@@ -31,7 +42,8 @@ function conditionSearch_dir() {
 
 		,
 		link: function($scope, $element, $attrs) {
-			$scope.$watch('suggestions', function() {
+			$scope.$on('conditionSearch.suggestions.updated', function() {
+
 				$element.find('.inputSearch').typeahead({
 					hint: true,
 					highlight: true,
@@ -39,6 +51,7 @@ function conditionSearch_dir() {
 				}, {
 					name: 'conditions',
 					source: $scope.suggestions,
+					displayKey: 'name',
 					templates: {
 						empty: [
 							'<div class="text-muted">',
@@ -48,7 +61,7 @@ function conditionSearch_dir() {
 						suggestion: function(data) {
 							var templ = '<div class="list-group-item">{{data}}</div>';
 
-							return templ.replace(/{{data}}/g, data);
+							return templ.replace(/{{data}}/g, data.name);
 						}
 					}
 				});

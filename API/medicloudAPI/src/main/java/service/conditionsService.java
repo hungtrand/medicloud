@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
@@ -42,10 +43,10 @@ public class conditionsService {
 	private String appKey;
 	
 	@RequestMapping(value="/conditions", method=GET)
-	public Iterable<Condition> lookupConditions() 
+	public String lookupConditions() 
 	{
 		String sURL = "https://api.infermedica.com/v2/conditions"; //just a string
-
+		JsonArray arrConditions = new JsonArray();
 	    // Connect to the URL using java's native library
 	    URL url;
 		try {
@@ -63,8 +64,8 @@ public class conditionsService {
 		    JsonElement root;
 		    
 			root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
-			JsonObject rootobj = root.getAsJsonObject(); //May be an array, may be an object. 
-			System.out.println(rootobj.toString());
+			arrConditions = root.getAsJsonArray(); //May be an array, may be an object. 
+
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,10 +75,7 @@ public class conditionsService {
 		}
 		
 	    
-	    //zipcode = rootobj.get("zip_code").getAsString(); //just grab the zipcode
-	    
-		Iterable<Condition> listConditions = condRepo.findAll();
-		return listConditions;
+		return arrConditions.toString();
 		
 	}
 }
