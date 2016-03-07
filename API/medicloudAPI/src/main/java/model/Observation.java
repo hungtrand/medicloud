@@ -9,15 +9,15 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Entity
@@ -29,69 +29,98 @@ public class Observation {
 	}
 	
 	@Id
-	@Column(name="obs_id")
 	@GeneratedValue
-	private int obsId = 0;
+	@Column(name="obs_id")
+	private int obsId=0;
+	
 	
 //	@OneToMany(cascade=CascadeType.ALL)
-//	@JoinColumn(name="obs_id", insertable = false, nullable = false, updatable = false)
+//	@JoinColumn(name="obs_id")
 //	private List<Note> note = new ArrayList<Note>();
 	
+	@Column(name="encounter_id")
+	private int encounterId;
+	
 	@Column(name="comments")
-	private String text;
+	private String comments;
 	
 	@Column(name="creators")
 	private String creators;
 	
-	@Column(name="date_Created")
-	private String create;
-
-	
-	@Column(name="date_Updated")
-	private String update;
-	
 	@Column(name="state")
 	private String state;
+	
+	
+	@Column(name="date_changed")
+	private String updated;
+	
+	@Column(name="date_created")
+	private String createNew;
 	
 	public int getObsId(){
 		return this.obsId;
 	}
-	
-	public String getDateCreated(){
-		return this.create;
+	public int getEncounterId(){
+		return this.encounterId;
 	}
-	
-	
-	public void setObsId(int newId){
-		this.obsId = newId;
+	public String getComments(){
+		return this.comments;
 	}
-	
-	public String getText(){
-		return this.text;  
-	}
-	public void setText(String newText){
-		this.text = newText;
-	}
-	
 	public String getCreator(){
 		return this.creators;
 	}
+	public String getState(){
+		return this.state;
+	}
+	
+//	public List<Note> getAllNote(){
+//		return this.note;
+//	}
+	
+	public String getDateChanged(){
+		
+		
+		return this.updated;
+		
+	
+	}
+	public String getDateCreated(){
+		
+		return this.createNew;
+	}
+	
+	public void setObsId(int newObsId){
+		this.obsId = newObsId;
+	}
 
+	public void setEncounterId(int newEncounterId){
+		this.encounterId = newEncounterId;
+	}
+	public void setComments(String newComments){
+		this.comments = newComments;
+	}
+	
 	public void setState(String newState){
 		this.state = newState;
 	}
-	
-	public void setCreator(String newCreatorName){
-		this.creators = newCreatorName;
+	public void setCreators(String newCreator){
+		this.creators = newCreator;
 	}
 	public void setDateCreated(){
-		if(this.create != null){
-			this.create = this.create;
+		if(this.createNew != null){
+			this.createNew = this.createNew;
 		}else{
-		
-			this.create = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
+			this.createNew = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
+		}
+	}
+	public void setDateUpdated(){
+		if(this.updated != null){
+			this.updated = this.updated;
+		}else {
+			this.updated = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
 		}
 		
 	}
-	
+
+
 }

@@ -86,16 +86,17 @@ public class PatientServiceInitial {
 		
 	}
 	
-	@RequestMapping(value="/observations/{obs_id}/notes", method=RequestMethod.POST)
-	public void setNewNote(@PathVariable("patient_id")int patientId, @PathVariable("obs_id") int obsId){
-		
+//	@RequestMapping(value="/observations/{obs_id}/notes", method=RequestMethod.POST)
+//	public void setNewNote(@PathVariable("patient_id")int patientId, @PathVariable("obs_id") int obsId, 
+//			@RequestBody Note newNote){
+//		
 //		Note note = new Note();
 //		newNote.setDateCreated();
-//		newNote.setObsId(obsId);
+////		newNote.setObsId(obsId);
 //		note = noteRepo.save(newNote);
-		
-	}
-	
+//		
+//	}
+//	
 	
 	
 }

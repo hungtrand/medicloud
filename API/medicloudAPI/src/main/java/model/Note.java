@@ -30,12 +30,12 @@
 //	private int noteId = 0;
 //	
 //
-//	@ManyToOne(cascade=CascadeType.ALL)
-//	@JoinColumn(name="obs_id", insertable = false, updatable=false)
-//	private Observation observation;
-//	
-//	@Column(name = "obs_id")
-//	private int obsId;
+////	@ManyToOne(cascade=CascadeType.ALL)
+////	@JoinColumn(name="obs_id", insertable = false, updatable=false)
+////	private Observation observation;
+////	
+////	@Column(name = "obs_id")
+////	private int obsId;
 //	
 //	
 //	@Column(name="text")
@@ -45,14 +45,14 @@
 //	private String creator;
 //	
 //	@Column(name="date_Created")
-//	private String datecreated;
+//	private String create;
 //
 //	public int getNoteId(){
 //		return this.noteId;
 //	}
 //	
 //	public String getDateCreated(){
-//		return this.datecreated;
+//		return this.create;
 //	}
 //	
 ////	public Timestamp setDateCreated(){
@@ -60,9 +60,9 @@
 ////		return this.create = new Timestamp(now.getTime());
 ////	}
 //
-//	public int getObservationId(){
-//		return this.observation.getObsId();
-//	}
+////	public int getObservationId(){
+////		return this.observation.getObsId();
+////	}
 //	
 //	public void setNoteId(int newId){
 //		this.noteId = newId;
@@ -79,19 +79,19 @@
 //		return this.creator;
 //	}
 //	
-//	public void setObsId(int newObsId){
-//		this.obsId = newObsId;
-//	}
+////	public void setObsId(int newObsId){
+////		this.obsId = newObsId;
+////	}
 //	
 //	public void setCreator(String newCreatorName){
 //		this.creator = newCreatorName;
 //	}
 //	public void setDateCreated(){
-//		if(this.datecreated != null){
-//			this.datecreated = this.datecreated;
+//		if(this.create != null){
+//			this.create = this.create;
 //		}else{
 //		
-//			this.datecreated = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
+//			this.create = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
 //		}
 //		
 //	}
