@@ -1,0 +1,45 @@
+<div class="panel panel-warning form-horizontal">
+	<div class="panel-heading text-right">
+		<button type="button" class="btn btn-default btn-xs" ng-click="cancel()">
+		<i class="fa fa-remove"></i> CANCEL
+		</button>
+		&nbsp;&nbsp;
+		<button type="button" 
+			class="btn btn-success btn-xs" 
+			ng-class="{ 'disabled': mode!='confirm' }" ng-click="save()">
+		<i class="fa fa-save"></i> SAVE
+		</button>
+		
+		<label class="label label-warning pull-left">NEW</label>
+	</div>
+	<div class="panel-body">
+		<form class="selectCondition" ng-show="mode=='search'">
+			<div class="form-group" mc-condition-search model="model.suggestion"></div>
+		</form>
+
+		<form class="createNewCondition" ng-if="mode=='create' || mode=='confirm'">
+			<div class='form-group'>
+				<div class="col-xs-6 col-sm-8">
+					<input type="text" class="form-control" 
+						ng-model="condition.name"
+						ng-readonly="mode=='confirm'"
+						placeholder="Condition Name" required />
+				</div>
+				
+				<div class="col-xs-6 col-sm-4">
+					<select class="form-control" ng-model="condition.severity" ng-if="mode=='create'" required>
+						<option value="">Severity</option>
+						<option ng-repeat="level in severityOptions" value="{{ level }}">{{ level }}</option>
+					</select>
+
+					<input type="text" class="form-control" readonly ng-model="condition.severity" required />
+				</div>
+			</div>
+
+			<div class="text-right">
+				<a href="javascript:void(0);" ng-click="showSearch()">Search again</a>
+			</div>
+		</form>
+	</div>
+	
+</div>

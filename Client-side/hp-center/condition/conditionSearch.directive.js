@@ -20,15 +20,21 @@ function conditionSearch_dir() {
 			$scope.suggestions = new Bloodhound({
 				datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
 				queryTokenizer: Bloodhound.tokenizers.whitespace,
-				identify: function(obj) { return obj.id; },
+				identify: function(obj) {
+					return obj.id;
+				},
 				local: infermedicaConditionsService.data.conditions
 			});
 
-			$scope.$broadcast('conditionSearch.suggestions.updated');
+			setTimeout(function() {
+				$scope.$broadcast('conditionSearch.suggestions.updated');
+			}, 200);
+			
 		}
 
+
 		if (infermedicaConditionsService.data.conditions) {
-			initializeBloodhound();
+			initializeBloodhound(); 
 		}
 
 		$scope.$on('infermedicaConditions_serv.data.updated', function() {
@@ -38,12 +44,13 @@ function conditionSearch_dir() {
 
 	return {
 		templateUrl: '/hp-center/condition/conditionSearch.template.html',
-		model: '='
+		scope: {
+			model: '='
+		}
 
-		,
-		link: function($scope, $element, $attrs) {
+		, link: function($scope, $element, $attrs) {
 			$scope.$on('conditionSearch.suggestions.updated', function() {
-
+				$element.find('.inputSearch').typeahead('destroy');
 				$element.find('.inputSearch').typeahead({
 					hint: true,
 					highlight: true,
@@ -59,11 +66,28 @@ function conditionSearch_dir() {
 							'</div>'
 						].join('\n'),
 						suggestion: function(data) {
-							var templ = '<div class="list-group-item">{{data}}</div>';
+							var templ = '<div class="list-group-item">'
+										+ '<dl>'
+										+ '<dt>{{name}}<label class="label label-info pull-right">{{severity}}</label></dt>'
+										+ '<dd>'
+										+ '{{categories}}'
+										+ '</dd>'
+										+ '</div>';
+							var item = templ
+										.replace(/{{name}}/g, data.name)
+										.replace(/{{severity}}/g, data.severity)
+										.replace(/{{categories}}/g, data.categories.join(', '))
 
-							return templ.replace(/{{data}}/g, data.name);
+							return item;
 						}
 					}
+				});
+
+				console.log('###');
+
+				$element.find('.inputSearch').bind('typeahead:select', function(ev, suggestion) {
+					$scope.model = suggestion;
+					setTimeout(function() { $scope.$apply(); }, 100);
 				});
 			});
 
