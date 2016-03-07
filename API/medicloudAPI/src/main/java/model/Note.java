@@ -1,83 +1,99 @@
-package model;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-
-
-@Entity
-@Table(name="note")
-public class Note {
-
-	@Id
-	@Column(name="note_id")
-	@GeneratedValue
-	private int noteId = 0;
-	
-//	@ManyToOne
-//	@JoinColumn(name="")
+//package model;
+//
+//import java.sql.Timestamp;
+//import java.text.SimpleDateFormat;
+//import java.util.ArrayList;
+//import java.util.Date;
+//import java.util.List;
+//
+//import javax.persistence.CascadeType;
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.Id;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.ManyToOne;
+//import javax.persistence.OneToMany;
+//import javax.persistence.Table;
+//import javax.persistence.Temporal;
+//import javax.persistence.TemporalType;
+//
+//
+//
+//@Entity
+//@Table(name="note")
+//public class Note {
+//
+//	@Id
+//	@Column(name="note_id")
+//	@GeneratedValue
+//	private int noteId = 0;
 //	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="patient_id", insertable = false, updatable=false, referencedColumnName="patient_id")
-	private Patient patient;
-	
-	@Column(name="patient_id")
-	private int patientId;
-	
-	@Column(name="text")
-	private String text;
-	
-	@Column(name="creator")
-	private String creator;
-	
-//	@OneToMany(cascade=CascadeType.ALL)
-//	@JoinColumn(name="encounter_id")
-//	private List<Encounter> encounter = new ArrayList<Encounter>();
-	
-
-	public int getNoteId(){
-		return this.noteId;
-	}
-//	public List<Encounter> getEncounter(){
-//		return this.encounter;
+//
+//	@ManyToOne(cascade=CascadeType.ALL)
+//	@JoinColumn(name="obs_id", insertable = false, updatable=false)
+//	private Observation observation;
+//	
+//	@Column(name = "obs_id")
+//	private int obsId;
+//	
+//	
+//	@Column(name="text")
+//	private String text;
+//	
+//	@Column(name="creator")
+//	private String creator;
+//	
+//	@Column(name="date_Created")
+//	private String datecreated;
+//
+//	public int getNoteId(){
+//		return this.noteId;
 //	}
-	
-	public int getPatientId(){
-		return this.patient.getPatientId();
-	}
-	
-	public void setPatientId(int newPatientId){
-		this.patientId = newPatientId;
-	}
-	
-//	public void setEncounter(Encounter newEncounter){
-//		this.encounter.add(newEncounter);
+//	
+//	public String getDateCreated(){
+//		return this.datecreated;
 //	}
-	public void setNoteId(int newId){
-		this.noteId = newId;
-	}
-	
-	public String getText(){
-		return this.text;  
-	}
-	public void setText(String newText){
-		this.text = newText;
-	}
-	
-	public String getCreator(){
-		return this.creator;
-	}
-	public void setCreator(String newCreatorName){
-		this.creator = newCreatorName;
-	}
-}
+//	
+////	public Timestamp setDateCreated(){
+////		Date now = new Date();
+////		return this.create = new Timestamp(now.getTime());
+////	}
+//
+//	public int getObservationId(){
+//		return this.observation.getObsId();
+//	}
+//	
+//	public void setNoteId(int newId){
+//		this.noteId = newId;
+//	}
+//	
+//	public String getText(){
+//		return this.text;  
+//	}
+//	public void setText(String newText){
+//		this.text = newText;
+//	}
+//	
+//	public String getCreator(){
+//		return this.creator;
+//	}
+//	
+//	public void setObsId(int newObsId){
+//		this.obsId = newObsId;
+//	}
+//	
+//	public void setCreator(String newCreatorName){
+//		this.creator = newCreatorName;
+//	}
+//	public void setDateCreated(){
+//		if(this.datecreated != null){
+//			this.datecreated = this.datecreated;
+//		}else{
+//		
+//			this.datecreated = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
+//		}
+//		
+//	}
+//	
+//}

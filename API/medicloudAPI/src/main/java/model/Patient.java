@@ -43,14 +43,18 @@ public class Patient {
 	@JoinColumn(name="patient_id")
 	private List<Condition> condition = new ArrayList<Condition>();
 	
-	/**
-	 * Get all observations of a patient.
-	 * 
-	 */
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="patient_id")
-	private List<Observation> observation = new ArrayList<Observation>();
+	private List<ActiveCondition> activeCondition = new ArrayList<ActiveCondition>();
 	
+//	/**
+//	 * Get all observations of a patient.
+//	 * 
+//	 */
+//	@OneToMany(cascade=CascadeType.ALL)
+//	@JoinColumn(name="patient_id")
+//	private List<Observation> observation = new ArrayList<Observation>();
+//	
 	
 	/**
 	 * Get all notes of a patient.
@@ -60,10 +64,10 @@ public class Patient {
 	 * @para patient_id - name of the relationship column which is a primary key of patient table.
 	 * 
 	 */
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="patient_id")
-	private List<Note> note = new ArrayList<Note>();
-	
+//	@OneToMany(cascade= CascadeType.ALL)
+//	@JoinColumn(name="patient_id")
+//	private List<Note> note = new ArrayList<Note>();
+//	
 	/**
 	 * Create a column which foreign key constraint in encounter table.
 	 * @annotation(One to many) - It has one to many relation with patient and encounter table.
@@ -76,7 +80,9 @@ public class Patient {
 	private List<Encounter> encounter = new ArrayList<Encounter>();
 	
 	
-	
+	public List<ActiveCondition> getActiveCondition(){
+		return this.activeCondition;
+	}
 	
 	
 	/**
@@ -115,22 +121,25 @@ public class Patient {
 		return this.person.getLastName();
 	}
 	
-	public List<Note> getNotes(){
-		return this.note;
-	}
-	public List<Observation> getObservation(){
-		return this.observation;
-	}
+//	public List<Note> getNotes(){
+//		return this.note;
+//	}
+//	public List<Observation> getObservation(){
+//		return this.observation;
+//	}
 	public List<Condition> getConditions(){
 		return this.condition;
 	}
 	public void setConditions(Condition condition){
 		this.condition.add(condition);
 	}
-	public void setObservation(Observation obs){
-		this.observation.add(obs);
-	}
+//	public void setObservation(Observation obs){
+//		this.observation.add(obs);
+//	}
 	
+	public void setActiveCondition(ActiveCondition activeCondtion){
+		this.activeCondition.add(activeCondtion);
+	}
 	
 //	@Column(name="patient_name")
 //	private String name;
