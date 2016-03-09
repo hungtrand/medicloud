@@ -34,8 +34,7 @@ import repository.PersonDao;
 @RequestMapping(value="/patient")
 public class PatientService {
 	
-	@Autowired
-	private CdoRepo cdoRepo;	
+		
 
 	@Autowired
 	private ObservationRepo obsRepo;
@@ -58,30 +57,7 @@ public class PatientService {
 	@Autowired
 	private NoteRepo noteRepo;
 	
-	/**
-	 * Getting resource.
-	 * Get individual's CDO information. 
-	 * 
-	 * @param id - CDO Id 
-	 * @return
-	 */
-	@RequestMapping(value="/api/cdo/{id}", method = RequestMethod.GET)
-	public @ResponseBody Cdo getCdoById(@PathVariable("id") int id){
-		
-		Cdo p = cdoRepo.findByCdoId(id);
-		
-		return p;
-		
-	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	@RequestMapping(value="/api/cdos", method =RequestMethod.GET)
-	public Iterable<Cdo> getAllCDO(){
-		return cdoRepo.findAll();
-	}
 	
 	@RequestMapping(value="/api/")
 	public Observation getAllObservation(){
@@ -104,26 +80,6 @@ public class PatientService {
 		return patientRepo.findByPatientId(id);
 	}
 	
-	
-	class helloworld{
-	
-			public Person tempPerson = new Person();
-			public Observation temObs = new Observation();
-			public void setPerson(Person p){
-				this.tempPerson = p;
-			}
-			public void setObs(Observation o){
-				this.temObs = o;
-			}
-		
-	}
-	@RequestMapping(value="/api/getinfo/{id}", method=RequestMethod.GET)
-	public helloworld getTesting(@PathVariable("id")int id){
-		helloworld hw = new helloworld();
-		hw.setPerson(personDao.findByPersonId(id));
-		hw.setObs(obsRepo.findByObsId(id));
-		return hw;
-	}
 	
 	
 	
@@ -153,9 +109,10 @@ public class PatientService {
 	 * @param id - patient's id.
 	 * @param newCondition - JSON object for new condition's data.
 	 */
-	@RequestMapping(value="/activeconditions", method=RequestMethod.POST)
+	@RequestMapping(value="/{patient_id}/activeconditions", method=RequestMethod.POST)
 	public void setNewActiveCondition(@PathVariable("patient_id")int id, @RequestBody ActiveCondition newCondition ){
 		ActiveCondition addcondition = new ActiveCondition();
+		
 		newCondition.setPatientId(id);
 		addcondition = activeConditionRepo.save(newCondition);
 		
@@ -163,10 +120,10 @@ public class PatientService {
 	
 	
 	/**
-	 * 
+	 * Crate new patient in database.
 	 * @param patientId
 	 */
-	@RequestMapping(value="/condition", method=RequestMethod.POST)
+	@RequestMapping(value="/{patient_id}/condition", method=RequestMethod.POST)
 	public void setNewCondition(@PathVariable("patient_id")int patientId){
 		Condition newCondition = new Condition();	
 	}
@@ -175,10 +132,11 @@ public class PatientService {
 	
 	/**
 	 * 
+	 * 
 	 * @param patientId
 	 * @param newObservation
 	 */
-	@RequestMapping(value="/observations", method=RequestMethod.POST)
+	@RequestMapping(value="/{patient_id}/observations", method=RequestMethod.POST)
 	public void setNewObservation(@PathVariable("patient_id")int patientId, @RequestBody Observation newObservation){
 		
 		Observation observation = new Observation();
@@ -190,11 +148,12 @@ public class PatientService {
 	
 	/**
 	 * 
+	 * 
 	 * @param patientId
 	 * @param obsId
 	 * @param newNote
 	 */
-	@RequestMapping(value="/observations/{obs_id}/notes", method=RequestMethod.POST)
+	@RequestMapping(value="/{patient_id}/observations/{obs_id}/notes", method=RequestMethod.POST)
 	public void setNewNote(@PathVariable("patient_id")int patientId, @PathVariable("obs_id") int obsId, 
 			@RequestBody Note newNote){
 		
@@ -213,7 +172,7 @@ public class PatientService {
 	 * @param conditionId - condition's id.
 	 * @param updateCondition - JSON object for update/changes.
 	 */
-	@RequestMapping(value="/activeconditions/{active_condition_id}", method=RequestMethod.PUT)
+	@RequestMapping(value="/{patient_id}/activeconditions/{active_condition_id}", method=RequestMethod.PUT)
 	public void updateActiveCondition(@PathVariable("patient_id") int patientId, @PathVariable("condition_id") int conditionId, @RequestBody ActiveCondition updateCondition){
 		ActiveCondition updateCondition1 = new ActiveCondition();
 		updateCondition.setActiveConditionId(conditionId);

@@ -71,6 +71,11 @@ public class PersonServiceImpl {
 	@Autowired
 	private JavaMailSender mailer;
 	
+	
+	
+//	------------------------------------------------------------GET-----------------------------------------------------------------------------------------------------------------------------
+	
+	
 	@RequestMapping(value = "/api/persons", method=RequestMethod.GET, produces =MediaType.APPLICATION_JSON_VALUE)
 	public List<Person> getPerson(){
 		Iterable<Person> persons = new ArrayList<Person>();
@@ -200,5 +205,12 @@ public class PersonServiceImpl {
 	public Person loadPersonByPersonId(@RequestParam("personId") int personId) {
 		return personDao.findByPersonId(personId);
 	}
+	
+//	----------------------------------------------------------POST-----------------------------------------------------------------------------------------------------------------------------
+	
+//	----------------------------------------------------------PUT------------------------------------------------------------------------------------------------------------------------------
+	
+	
+	
 }
 
