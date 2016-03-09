@@ -13,12 +13,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import model.ActiveCondition;
 import model.Cdo;
+import model.Condition;
+import model.Note;
 import model.Observation;
 import model.Patient;
 import model.Person;
+import repository.ActiveConditionRepo;
 import repository.CdoRepo;
+import repository.ConditionRepo;
+import repository.NoteRepo;
 import repository.ObservationRepo;
 import repository.PatientRepo;
 import repository.PersonDao;
@@ -31,12 +36,35 @@ public class PatientService {
 	
 	@Autowired
 	private CdoRepo cdoRepo;	
-	@Autowired
-	private PersonDao personDao;
+
 	@Autowired
 	private ObservationRepo obsRepo;
+	
+	@Autowired
+	private PersonDao personDao;
+	
 	@Autowired
 	private PatientRepo patientRepo;
+	
+	@Autowired
+	private ActiveConditionRepo activeConditionRepo;
+	
+	@Autowired
+	private ConditionRepo conditionRepo;
+	
+	@Autowired
+	private ObservationRepo observationRepo;
+	
+	@Autowired
+	private NoteRepo noteRepo;
+	
+	/**
+	 * Getting resource.
+	 * Get individual's CDO information. 
+	 * 
+	 * @param id - CDO Id 
+	 * @return
+	 */
 	@RequestMapping(value="/api/cdo/{id}", method = RequestMethod.GET)
 	public @ResponseBody Cdo getCdoById(@PathVariable("id") int id){
 		
@@ -45,6 +73,11 @@ public class PatientService {
 		return p;
 		
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	@RequestMapping(value="/api/cdos", method =RequestMethod.GET)
 	public Iterable<Cdo> getAllCDO(){
 		return cdoRepo.findAll();
@@ -112,5 +145,80 @@ public class PatientService {
 //		cdoRepo.save(c);
 //	}
 //	
+	
+	//-----------------------------------------------------------------------------------------------POST------------------------------------------------------------------------------------------
+	
+	/**
+	 * Save new Active Condition of a patient.
+	 * @param id - patient's id.
+	 * @param newCondition - JSON object for new condition's data.
+	 */
+	@RequestMapping(value="/activeconditions", method=RequestMethod.POST)
+	public void setNewActiveCondition(@PathVariable("patient_id")int id, @RequestBody ActiveCondition newCondition ){
+		ActiveCondition addcondition = new ActiveCondition();
+		newCondition.setPatientId(id);
+		addcondition = activeConditionRepo.save(newCondition);
+		
+	}
+	
+	
+	/**
+	 * 
+	 * @param patientId
+	 */
+	@RequestMapping(value="/condition", method=RequestMethod.POST)
+	public void setNewCondition(@PathVariable("patient_id")int patientId){
+		Condition newCondition = new Condition();	
+	}
+	
+//	@RequestMapping(value="/condition/{condition_id}", method=RequestMethod.POST)
+	
+	/**
+	 * 
+	 * @param patientId
+	 * @param newObservation
+	 */
+	@RequestMapping(value="/observations", method=RequestMethod.POST)
+	public void setNewObservation(@PathVariable("patient_id")int patientId, @RequestBody Observation newObservation){
+		
+		Observation observation = new Observation();
+		newObservation.setDateCreated();
+		newObservation.setDateUpdated();
+		observation = observationRepo.save(newObservation);
+		
+	}
+	
+	/**
+	 * 
+	 * @param patientId
+	 * @param obsId
+	 * @param newNote
+	 */
+	@RequestMapping(value="/observations/{obs_id}/notes", method=RequestMethod.POST)
+	public void setNewNote(@PathVariable("patient_id")int patientId, @PathVariable("obs_id") int obsId, 
+			@RequestBody Note newNote){
+		
+		Note note = new Note();
+		newNote.setDateCreated();
+		newNote.setObsId(obsId);
+		note = noteRepo.save(newNote);
+		
+	}
+	
+	//----------------------------------------------------------------------------------PUT------------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Update patient's condition.
+	 * @param patientId - patient's id.
+	 * @param conditionId - condition's id.
+	 * @param updateCondition - JSON object for update/changes.
+	 */
+	@RequestMapping(value="/activeconditions/{active_condition_id}", method=RequestMethod.PUT)
+	public void updateActiveCondition(@PathVariable("patient_id") int patientId, @PathVariable("condition_id") int conditionId, @RequestBody ActiveCondition updateCondition){
+		ActiveCondition updateCondition1 = new ActiveCondition();
+		updateCondition.setActiveConditionId(conditionId);
+		updateCondition.setPatientId(patientId);
+		updateCondition1 = activeConditionRepo.save(updateCondition);
+	}
 	
 }
