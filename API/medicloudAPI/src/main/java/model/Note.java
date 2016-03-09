@@ -1,6 +1,9 @@
 package model;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 
@@ -24,15 +29,14 @@ public class Note {
 	@GeneratedValue
 	private int noteId = 0;
 	
-//	@ManyToOne
-//	@JoinColumn(name="")
-//	
+
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="patient_id", insertable = false, updatable=false, referencedColumnName="patient_id")
-	private Patient patient;
+	@JoinColumn(name="obs_id", insertable = false, updatable=false)
+	private Observation observation;
 	
-	@Column(name="patient_id")
-	private int patientId;
+	@Column(name = "obs_id")
+	private int obsId;
+	
 	
 	@Column(name="text")
 	private String text;
@@ -40,29 +44,26 @@ public class Note {
 	@Column(name="creator")
 	private String creator;
 	
-//	@OneToMany(cascade=CascadeType.ALL)
-//	@JoinColumn(name="encounter_id")
-//	private List<Encounter> encounter = new ArrayList<Encounter>();
-	
+	@Column(name="date_Created")
+	private String create;
 
 	public int getNoteId(){
 		return this.noteId;
 	}
-//	public List<Encounter> getEncounter(){
-//		return this.encounter;
-//	}
 	
-	public int getPatientId(){
-		return this.patient.getPatientId();
+	public String getDateCreated(){
+		return this.create;
 	}
 	
-	public void setPatientId(int newPatientId){
-		this.patientId = newPatientId;
+//	public Timestamp setDateCreated(){
+//		Date now = new Date();
+//		return this.create = new Timestamp(now.getTime());
+//	}
+
+	public int getObservationId(){
+		return this.observation.getObsId();
 	}
 	
-//	public void setEncounter(Encounter newEncounter){
-//		this.encounter.add(newEncounter);
-//	}
 	public void setNoteId(int newId){
 		this.noteId = newId;
 	}
@@ -77,7 +78,22 @@ public class Note {
 	public String getCreator(){
 		return this.creator;
 	}
+	
+	public void setObsId(int newObsId){
+		this.obsId = newObsId;
+	}
+	
 	public void setCreator(String newCreatorName){
 		this.creator = newCreatorName;
 	}
+	public void setDateCreated(){
+		if(this.create != null){
+			this.create = this.create;
+		}else{
+		
+			this.create = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
+		}
+		
+	}
+	
 }

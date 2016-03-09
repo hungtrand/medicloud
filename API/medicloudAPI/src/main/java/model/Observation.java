@@ -1,6 +1,10 @@
 package model;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +31,12 @@ public class Observation {
 	@Id
 	@GeneratedValue
 	@Column(name="obs_id")
-	private int obsId=0;
+	private int obsId=1;
 	
-//	@ManyToOne(fetch=FetchType.LAZY)
 	
+//	@OneToMany(cascade=CascadeType.ALL)
+//	@JoinColumn(name="obs_id")
+//	private List<Note> note = new ArrayList<Note>();
 	
 	@Column(name="encounter_id")
 	private int encounterId;
@@ -45,18 +52,14 @@ public class Observation {
 	
 	
 	@Column(name="date_changed")
-	private Timestamp updated;
+	private String updated;
 	
 	@Column(name="date_created")
-	private Timestamp timestamp;
+	private String createNew;
 	
 	public int getObsId(){
 		return this.obsId;
 	}
-	
-	
-
-	
 	public int getEncounterId(){
 		return this.encounterId;
 	}
@@ -69,12 +72,22 @@ public class Observation {
 	public String getState(){
 		return this.state;
 	}
-//	public Timestamp getDateChanged(){
-//		return this.dateChanged;
+	
+//	public List<Note> getAllNote(){
+//		return this.note;
 //	}
-////	public Timestamp getDateCreated(){
-//		return this.dateCreated;
-//	}
+	
+	public String getDateChanged(){
+		
+		
+		return this.updated;
+		
+	
+	}
+	public String getDateCreated(){
+		
+		return this.createNew;
+	}
 	
 	public void setObsId(int newObsId){
 		this.obsId = newObsId;
@@ -93,12 +106,18 @@ public class Observation {
 	public void setCreators(String newCreator){
 		this.creators = newCreator;
 	}
-//	public void setDateChanged(Timestamp newDateChanged){
-//		this.dateChanged = newDateChanged;
-//	}
-//	public void setDateCreatedf(Timestamp newDateCreated){
-//		this.dateCreated = newDateCreated;
-//	}
-	
-	
+	public void setDateCreated(){
+		if(this.createNew != null){
+			this.createNew = this.createNew;
+		}else{
+			this.createNew = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
+		}
+	}
+	public void setDateUpdated(){
+		
+			this.updated = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
+		
+	}
+
+
 }

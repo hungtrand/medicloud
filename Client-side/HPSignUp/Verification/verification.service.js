@@ -15,7 +15,7 @@ function verification_serv($resourceProvider, $rootScope, $location) {
 				return false;
 			}
 			
-			var resourceLoc = 'http://'+window.location.hostname+'\\:8080/HPSignUp/verify/:email/:token';
+			var resourceLoc = 'http://'+window.location.host+'\\:8080/HPSignUp/verify/:email/:token';
 			var resource = $resourceProvider(resourceLoc, { email: '@email', token: '@token' });
 			resource.get(
 				{ email: that.email, token: that.token }, 

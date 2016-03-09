@@ -29,6 +29,12 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RestController;
 import repository.NoteDao;
+
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.mysql.fabric.Response;
+
+
+import repository.NoteRepo;
 import repository.PersonDao;
 import repository.PersonalViewRepo;
 
@@ -58,7 +64,7 @@ public class PersonServiceImpl {
 //	private repository.personal personal;
 //	
 	@Autowired
-	private NoteDao noteDao;
+	private NoteRepo noteRepo;
 	
 	@Value("${client.root}")
 	private String clientRoot;
@@ -89,7 +95,7 @@ public class PersonServiceImpl {
 		
 		Profile p = new Profile();
 				p.setPerson(personDao.findByPersonId(id));
-				p.setNote(noteDao.findByNoteId(id));
+				p.setNote(noteRepo.findByNoteId(id));
 		
 		return p;
 	}
@@ -139,7 +145,7 @@ public class PersonServiceImpl {
 	@RequestMapping(value="/api/persons/note/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Note getPersonalNote(@PathVariable("id") int id){
 		
-		return noteDao.findByNoteId(id);
+		return noteRepo.findByNoteId(id);
 	}
 		
 	
@@ -154,6 +160,7 @@ public class PersonServiceImpl {
 	public Person addPerson(@RequestBody Person personToAdd) {
 		personToAdd.setVerificationKey(SessionIdentifierGenerator.nextSessionId());
 		MessageResponse mr = new MessageResponse();
+<<<<<<< HEAD
 		if (personDao.findByFirstName(personToAdd.getFirstName()) != null && personDao.findByLastName(personToAdd.getLastName()) != null && personDao.findByBirthdate(personToAdd.getBirthdate()) != null) {
 			mr.success = false;
 			mr.message = "Patient already exists in database.";
@@ -168,6 +175,20 @@ public class PersonServiceImpl {
 				System.out.println("\n\n\n" + mr.message + "\n\n\n");
 			}
 		}
+=======
+		System.out.println(personToAdd.getBirthdate());
+//		if (personDao.findByFirstName(personToAdd.getFirstName()) != null && personDao.findByLastName(personToAdd.getLastName()) != null && personDao.findByBirthdate(personToAdd.getBirthdate()) != null) {
+//			mr.success = false;
+//			mr.message = "Patient already exists in database.";
+//			System.out.println("\n\n\n" + mr.message + "\n\n\n");
+//		}
+//		else {
+//			personDao.save(personToAdd);
+//			mr.success = true;
+//			mr.message = "Patient successfully added.";
+//			System.out.println("\n\n\n" + mr.message + "\n\n\n");
+//		}
+>>>>>>> 1db4133ad577b32449cbe416e7ef3bf97c85fa76
 		return personToAdd;
 	}
 	

@@ -4,15 +4,26 @@ function infermedicaConditions_serv($resource, $rootScope) {
 
 	var client = $resource(url_single, { condition_id: '@c_id'});
 	var service = {
-		data: {}
+		data: {
+			conditions: []
+		}
 		
-		, fetchAll: function(fnSuccess, fnFailure) {
-			this.data = client.query({}, fnSuccess);
-			$rootScope.$broadcast('infermedicaConditions_serv.data.updated');
+		, fetchAll: function() {
+			var self = this;
 
-			return this;
+			self.data.conditions = client.query(
+				{}
+				, function() {
+					$rootScope.$broadcast('infermedicaConditions_serv.data.updated');
+				}
+				, function(response) {
+					$rootScope.$broadcast('infermedicaConditions_serv.data.error', response);
+				}
+			 );
+			
+			return client.$promise;
 		}
 	}
-
-	return service.fetchAll();
+	service.fetchAll();	
+	return service;
 }

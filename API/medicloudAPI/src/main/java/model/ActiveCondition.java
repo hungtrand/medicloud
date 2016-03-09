@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,9 +28,7 @@ public class ActiveCondition {
 	@Column(name="active_condition_id")
 	private int activeConditionId = 0;
 	
-	@Column(name="name")
-	private String name;
-
+	
 	@ManyToOne(cascade= CascadeType.ALL)
 	@JoinColumn(name="patient_id", insertable=false, updatable=false)
 	private Patient patient;
@@ -38,21 +37,33 @@ public class ActiveCondition {
 	private int patientId;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="start_obs", nullable= true, insertable=false, updatable=false, unique = true)
+	@JoinColumn(name="start_obs_id",nullable = true, insertable=false, updatable=false)
 	private Observation sObservation;
 	
-	@Column(name="start_obs")
-	private int startObs;
+	@Column(name="start_obs_id")
+	private int startObsId;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="end_obs", nullable= true, insertable=false, updatable=false)
-	private Observation eObservation;
-	
-	@Column(name="end_obs")
-	private int endObs;
+//	@OneToOne(cascade=CascadeType.ALL)
+//	@JoinColumn(name="end_obs", nullable= true, insertable=false, updatable=false, unique = true)
+//	private Observation eObservation;
+//	
+//	@Column(name="end_obs_id")
+//	private int endObsId;
 	
 	@Column(name="description")
 	private String description;
+	
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="condition_id", nullable=true, insertable=false, updatable=false)
+//	private Condition condtion;
+//	
+//	@Column(name="condition_id")
+//	private int conditionId;
+	
+	
+//	public int getConditionId(){
+//		return this.condtion.getConditionId();
+//	}
 	
 	public String getDescription(){
 		return this.description;
@@ -61,26 +72,26 @@ public class ActiveCondition {
 	public int getActiveConditionId(){
 		return this.activeConditionId;
 	}
-	public String getName(){
-		return this.name;
-	}
-	public Observation getStartObs(){
+	
+	public Observation getStartObsId(){
 		return this.sObservation;
 	}
 	
-	public Observation getEndObs(){
-		return this.eObservation;
+//	public int getEndObsId(){
+//		return this.eObservation.getObsId();
+//	}
+	
+//	public void setConditionId(int newConditionId){
+//		this.conditionId = newConditionId;
+//	}
+	
+	public void setStarObsId(int newStartObsId){
+		this.startObsId = newStartObsId;
 	}
 	
-	
-	
-	public void setStarObs(int newStartObsId){
-		this.startObs = newStartObsId;
-	}
-	
-	public void setEndObs(int newEndObsId){
-		this.endObs = newEndObsId;
-	}
+//	public void setEndObsId(int newEndObsId){
+//		this.endObsId = newEndObsId;
+//	}
 	
 	public void setPatientId(int newPatientId){
 		this.patientId = newPatientId;
@@ -92,10 +103,7 @@ public class ActiveCondition {
 	public void setActiveConditionId(int newConditionId){
 		this.activeConditionId = newConditionId;
 	}
-	public void setName(String newName){
-		this.name = newName;
-	}
-
+	
 	
 	
 }

@@ -16,22 +16,41 @@ function conditionSearch_dir() {
 			}, 10);
 		});
 
-		$scope.$on('infermedicaConditionsService.data.updated', function() {
+		var initializeBloodhound = function() {
 			$scope.suggestions = new Bloodhound({
-				datumTokenizer: Bloodhound.tokenizers.whitespace,
+				datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
 				queryTokenizer: Bloodhound.tokenizers.whitespace,
-				local: infermedicaConditionsService.data
+				identify: function(obj) {
+					return obj.id;
+				},
+				local: infermedicaConditionsService.data.conditions
 			});
+
+			setTimeout(function() {
+				$scope.$broadcast('conditionSearch.suggestions.updated');
+			}, 200);
+			
+		}
+
+
+		if (infermedicaConditionsService.data.conditions) {
+			initializeBloodhound(); 
+		}
+
+		$scope.$on('infermedicaConditions_serv.data.updated', function() {
+			initializeBloodhound();
 		});
 	}
 
 	return {
 		templateUrl: '/hp-center/condition/conditionSearch.template.html',
-		model: '='
+		scope: {
+			model: '='
+		}
 
-		,
-		link: function($scope, $element, $attrs) {
-			$scope.$watch('suggestions', function() {
+		, link: function($scope, $element, $attrs) {
+			$scope.$on('conditionSearch.suggestions.updated', function() {
+				$element.find('.inputSearch').typeahead('destroy');
 				$element.find('.inputSearch').typeahead({
 					hint: true,
 					highlight: true,
@@ -39,6 +58,7 @@ function conditionSearch_dir() {
 				}, {
 					name: 'conditions',
 					source: $scope.suggestions,
+					displayKey: 'name',
 					templates: {
 						empty: [
 							'<div class="text-muted">',
@@ -46,11 +66,28 @@ function conditionSearch_dir() {
 							'</div>'
 						].join('\n'),
 						suggestion: function(data) {
-							var templ = '<div class="list-group-item">{{data}}</div>';
+							var templ = '<div class="list-group-item">'
+										+ '<dl>'
+										+ '<dt>{{name}}<label class="label label-info pull-right">{{severity}}</label></dt>'
+										+ '<dd>'
+										+ '{{categories}}'
+										+ '</dd>'
+										+ '</div>';
+							var item = templ
+										.replace(/{{name}}/g, data.name)
+										.replace(/{{severity}}/g, data.severity)
+										.replace(/{{categories}}/g, data.categories.join(', '))
 
-							return templ.replace(/{{data}}/g, data);
+							return item;
 						}
 					}
+				});
+
+				console.log('###');
+
+				$element.find('.inputSearch').bind('typeahead:select', function(ev, suggestion) {
+					$scope.model = suggestion;
+					setTimeout(function() { $scope.$apply(); }, 100);
 				});
 			});
 

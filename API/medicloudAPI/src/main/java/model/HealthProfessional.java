@@ -1,4 +1,5 @@
 package model;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,6 +29,17 @@ public class HealthProfessional {
 	@Column(name="license")
 	private String license;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="person_id",insertable=false, updatable=false, referencedColumnName= "person_id")
+	private Person person;
+	
+	@Column(name="person_id")
+	private int personId;
+	
+	
+	public int getPersonId(){
+		return this.person.getPersonId();
+	}
 	public int getHpId(){
 		return this.hpId;
 	}
@@ -38,6 +50,9 @@ public class HealthProfessional {
 		return this.license;
 	}
 	
+	public void setPersonId(int newPersonId){
+		this.personId = newPersonId;
+	}
 	public void setHpId(int newHpId){
 		this.hpId = newHpId;
 	}
