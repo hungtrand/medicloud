@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "infermedica.appId",
+    "type": "java.lang.String",
+    "description": "A description for 'infermedica.appId'"
+  },
+  {
+    "name": "infermedica.appKey",
+    "type": "java.lang.String",
+    "description": "A description for 'infermedica.appKey'"
+  }
+]}

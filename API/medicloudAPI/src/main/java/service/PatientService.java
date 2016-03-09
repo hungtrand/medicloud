@@ -31,7 +31,7 @@ import repository.PersonDao;
 
 
 @RestController
-@RequestMapping(value="/patient")
+@RequestMapping(value="api/patient/{id}")
 public class PatientService {
 	
 	@Autowired
@@ -154,10 +154,19 @@ public class PatientService {
 	 * @param newCondition - JSON object for new condition's data.
 	 */
 	@RequestMapping(value="/activeconditions", method=RequestMethod.POST)
-	public void setNewActiveCondition(@PathVariable("patient_id")int id, @RequestBody ActiveCondition newCondition ){
+	public void setNewActiveCondition(@PathVariable("patient_id")int id, @RequestBody Condition newCondition ){
+		if (!conditionRepo.existsByInferCId(newCondition.getInferCId()) && !conditionRepo.existsByName(newCondition.getName())) {
+			newCondition = conditionRepo.save(newCondition);
+		} else if (newCondition.getConditionId() > 0) {
+			newCondition = conditionRepo.findByConditionId(newCondition.getConditionId());
+		} else {
+			newCondition = conditionRepo.findByName(newCondition.getName());
+		}
+		
 		ActiveCondition addcondition = new ActiveCondition();
-		newCondition.setPatientId(id);
-		addcondition = activeConditionRepo.save(newCondition);
+		addcondition.setPatientId(id);
+		addcondition.setConditionId(newCondition.getConditionId());
+		addcondition = activeConditionRepo.save(addcondition);
 		
 	}
 	
@@ -216,7 +225,7 @@ public class PatientService {
 	@RequestMapping(value="/activeconditions/{active_condition_id}", method=RequestMethod.PUT)
 	public void updateActiveCondition(@PathVariable("patient_id") int patientId, @PathVariable("condition_id") int conditionId, @RequestBody ActiveCondition updateCondition){
 		ActiveCondition updateCondition1 = new ActiveCondition();
-		updateCondition.setActiveConditionId(conditionId);
+		updateCondition.setConditionId(conditionId);
 		updateCondition.setPatientId(patientId);
 		updateCondition1 = activeConditionRepo.save(updateCondition);
 	}

@@ -53,12 +53,12 @@ public class ActiveCondition {
 	@Column(name="description")
 	private String description;
 	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="condition_id", nullable=true, insertable=false, updatable=false)
-//	private Condition condtion;
-//	
-//	@Column(name="condition_id")
-//	private int conditionId;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="condition_id", nullable=true, insertable=false, updatable=false)
+	private Condition condition;
+	
+	@Column(name="condition_id")
+	private int conditionId;
 	
 	
 //	public int getConditionId(){
@@ -100,8 +100,8 @@ public class ActiveCondition {
 	public void setDescription(String newDescription){
 		this.description = newDescription;
 	}
-	public void setActiveConditionId(int newConditionId){
-		this.activeConditionId = newConditionId;
+	public void setConditionId(int newConditionId){
+		this.conditionId = newConditionId;
 	}
 	
 	
