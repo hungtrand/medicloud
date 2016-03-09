@@ -160,7 +160,6 @@ public class PersonServiceImpl {
 	public Person addPerson(@RequestBody Person personToAdd) {
 		personToAdd.setVerificationKey(SessionIdentifierGenerator.nextSessionId());
 		MessageResponse mr = new MessageResponse();
-<<<<<<< HEAD
 		if (personDao.findByFirstName(personToAdd.getFirstName()) != null && personDao.findByLastName(personToAdd.getLastName()) != null && personDao.findByBirthdate(personToAdd.getBirthdate()) != null) {
 			mr.success = false;
 			mr.message = "Patient already exists in database.";
@@ -175,7 +174,6 @@ public class PersonServiceImpl {
 				System.out.println("\n\n\n" + mr.message + "\n\n\n");
 			}
 		}
-=======
 		System.out.println(personToAdd.getBirthdate());
 //		if (personDao.findByFirstName(personToAdd.getFirstName()) != null && personDao.findByLastName(personToAdd.getLastName()) != null && personDao.findByBirthdate(personToAdd.getBirthdate()) != null) {
 //			mr.success = false;
@@ -188,7 +186,6 @@ public class PersonServiceImpl {
 //			mr.message = "Patient successfully added.";
 //			System.out.println("\n\n\n" + mr.message + "\n\n\n");
 //		}
->>>>>>> 1db4133ad577b32449cbe416e7ef3bf97c85fa76
 		return personToAdd;
 	}
 	
