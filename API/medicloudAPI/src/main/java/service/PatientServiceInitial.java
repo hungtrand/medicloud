@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import model.ActiveCondition;
 import model.Condition;
 import model.Observation;
-//import model.Note;
-//import repository.NoteRepo;
+import model.Note;
+import repository.NoteRepo;
 import repository.ObservationRepo;
 import repository.PatientRepo;
 import repository.PersonDao;
@@ -40,8 +40,8 @@ public class PatientServiceInitial {
 	@Autowired
 	private ObservationRepo observationRepo;
 	
-//	@Autowired
-//	private NoteRepo noteRepo;
+	@Autowired
+	private NoteRepo noteRepo;
 	
 	/**
 	 * Save new Active Condition of a patient.
@@ -52,6 +52,7 @@ public class PatientServiceInitial {
 	public void setNewActiveCondition(@PathVariable("patient_id")int id, @RequestBody ActiveCondition newCondition ){
 		ActiveCondition addcondition = new ActiveCondition();
 		newCondition.setPatientId(id);
+		
 		addcondition = activeConditionRepo.save(newCondition);
 		
 	}
@@ -82,21 +83,23 @@ public class PatientServiceInitial {
 	public void setNewObservation(@PathVariable("patient_id")int patientId, @RequestBody Observation newObservation){
 		
 		Observation observation = new Observation();
+		newObservation.setDateCreated();
+		newObservation.setDateUpdated();
 		observation = observationRepo.save(newObservation);
 		
 	}
 	
-//	@RequestMapping(value="/observations/{obs_id}/notes", method=RequestMethod.POST)
-//	public void setNewNote(@PathVariable("patient_id")int patientId, @PathVariable("obs_id") int obsId, 
-//			@RequestBody Note newNote){
-//		
-//		Note note = new Note();
-//		newNote.setDateCreated();
-////		newNote.setObsId(obsId);
-//		note = noteRepo.save(newNote);
-//		
-//	}
-//	
+	@RequestMapping(value="/observations/{obs_id}/notes", method=RequestMethod.POST)
+	public void setNewNote(@PathVariable("patient_id")int patientId, @PathVariable("obs_id") int obsId, 
+			@RequestBody Note newNote){
+		
+		Note note = new Note();
+		newNote.setDateCreated();
+		newNote.setObsId(obsId);
+		note = noteRepo.save(newNote);
+		
+	}
+	
 	
 	
 }

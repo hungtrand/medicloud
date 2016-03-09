@@ -26,14 +26,14 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.mysql.fabric.Response;
 
 
-//import repository.NoteRepo;
+import repository.NoteRepo;
 import repository.PersonDao;
 import repository.PersonalViewRepo;
 
 import model.PersonalView;
 import model.Person;
 import model.Encounter;
-//import model.Note;
+import model.Note;
 import model.Contact;
 import provider.MessageResponse;
 
@@ -53,8 +53,8 @@ public class PersonServiceImpl {
 //	@Autowired
 //	private repository.personal personal;
 //	
-//	@Autowired
-//	private NoteRepo noteRepo;
+	@Autowired
+	private NoteRepo noteRepo;
 	
 	@RequestMapping(value = "/api/persons", method=RequestMethod.GET, produces =MediaType.APPLICATION_JSON_VALUE)
 	public List<Person> getPerson(){
@@ -64,10 +64,10 @@ public class PersonServiceImpl {
 	}
 
 	class Profile{
-//		public Note noteClass = new Note();
-//		public void setNote(Note note){
-//			this.noteClass = note;
-//		}
+		public Note noteClass = new Note();
+		public void setNote(Note note){
+			this.noteClass = note;
+		}
 		public Person personClass = new Person();
 		public void setPerson(Person person){
 			this.personClass = person;
@@ -79,7 +79,7 @@ public class PersonServiceImpl {
 		
 		Profile p = new Profile();
 				p.setPerson(personDao.findByPersonId(id));
-//				p.setNote(noteRepo.findByNoteId(id));
+				p.setNote(noteRepo.findByNoteId(id));
 		
 		return p;
 	}
@@ -96,11 +96,11 @@ public class PersonServiceImpl {
 		return pv;
 	}
 	
-//	@RequestMapping(value="/api/persons/note/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-//	public Note getPersonalNote(@PathVariable("id") int id){
-//		
-//		return noteRepo.findByNoteId(id);
-//	}
+	@RequestMapping(value="/api/persons/note/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Note getPersonalNote(@PathVariable("id") int id){
+		
+		return noteRepo.findByNoteId(id);
+	}
 		
 	
 	@RequestMapping(method=GET, value="/persons")

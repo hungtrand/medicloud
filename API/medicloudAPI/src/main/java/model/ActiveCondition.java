@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -39,8 +40,8 @@ public class ActiveCondition {
 	@JoinColumn(name="start_obs_id",nullable = true, insertable=false, updatable=false)
 	private Observation sObservation;
 	
-//	@Column(name="start_obs_id")
-//	private int startObsId;
+	@Column(name="start_obs_id")
+	private int startObsId;
 	
 //	@OneToOne(cascade=CascadeType.ALL)
 //	@JoinColumn(name="end_obs", nullable= true, insertable=false, updatable=false, unique = true)
@@ -84,9 +85,9 @@ public class ActiveCondition {
 //		this.conditionId = newConditionId;
 //	}
 	
-//	public void setStarObsId(int newStartObsId){
-//		this.startObsId = newStartObsId;
-//	}
+	public void setStarObsId(int newStartObsId){
+		this.startObsId = newStartObsId;
+	}
 	
 //	public void setEndObsId(int newEndObsId){
 //		this.endObsId = newEndObsId;

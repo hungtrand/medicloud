@@ -31,7 +31,7 @@ public class Observation {
 	@Id
 	@GeneratedValue
 	@Column(name="obs_id")
-	private int obsId=0;
+	private int obsId=1;
 	
 	
 //	@OneToMany(cascade=CascadeType.ALL)
@@ -114,11 +114,8 @@ public class Observation {
 		}
 	}
 	public void setDateUpdated(){
-		if(this.updated != null){
-			this.updated = this.updated;
-		}else {
+		
 			this.updated = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
-		}
 		
 	}
 
