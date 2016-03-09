@@ -1,12 +1,9 @@
 package model;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
-
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,9 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cascade;
 import model.Contact;
+
 
 @Entity
 @Table(name="person")
@@ -41,14 +37,15 @@ public class Person {
 	
 	@Column(name="last_name")
 	private String lastName;
-
-	
 	
 	@Column(name="email")
 	private String email;
 	
 	@Column(name="birthdate")
 	private String birthdate;
+	
+	@Column(name="verification_key", nullable=false, length=32)
+	private String verificationKey;
 	
 	public int getPersonId() {
 		return personId;
@@ -107,6 +104,14 @@ public class Person {
 		this.birthdate = birthdate;
 	}
 
+	public String getVerificationKey() {
+		return verificationKey;
+	}
+
+	public void setVerificationKey(String verificationKey) {
+		this.verificationKey = verificationKey;
+	}
+	
 	@Override
 	public String toString(){
 		return "Person [pId = " + this.personId + ", PersonName = " + this.firstName + " ]";

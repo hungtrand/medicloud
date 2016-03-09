@@ -5,10 +5,14 @@ import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 
 import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailException;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,16 +20,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
+import provider.SessionIdentifierGenerator;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.mysql.fabric.Response;
-
-
 import repository.NoteDao;
 import repository.PersonDao;
 import repository.PersonalViewRepo;
@@ -33,9 +35,11 @@ import repository.PersonalViewRepo;
 import model.PersonalView;
 import model.Person;
 import model.Encounter;
+import model.HPSignUp;
 import model.Note;
 import model.Contact;
 import provider.MessageResponse;
+import provider.SessionIdentifierGenerator;
 
 @RestController
 @RequestMapping(value="/person")
@@ -55,6 +59,12 @@ public class PersonServiceImpl {
 //	
 	@Autowired
 	private NoteDao noteDao;
+	
+	@Value("${client.root}")
+	private String clientRoot;
+	
+	@Autowired
+	private JavaMailSender mailer;
 	
 	@RequestMapping(value = "/api/persons", method=RequestMethod.GET, produces =MediaType.APPLICATION_JSON_VALUE)
 	public List<Person> getPerson(){
@@ -82,6 +92,36 @@ public class PersonServiceImpl {
 				p.setNote(noteDao.findByNoteId(id));
 		
 		return p;
+	}
+	
+	private boolean sendVerificationEmailForNewPatient(Person personSU) {
+		String vMsg = "Please click on the following link (or copy & paste it to your browser's address bar): \n";
+		try {
+			vMsg += "http://" + this.clientRoot + "/HPSignUp/#/verification/?email=" 
+					+ URLEncoder.encode(personSU.getEmail(), "UTF-8") 
+					+  "&token=" + personSU.getVerificationKey();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			System.out.println("Unsupported Encoding UTF-8");
+		}
+		
+		
+		SimpleMailMessage msg = new SimpleMailMessage();
+		msg.setTo(personSU.getEmail());
+		msg.setCc("medicloud.sjsu@gmail.com");
+		msg.setSubject("Verify your Medicloud account.");
+		msg.setText(vMsg);
+		
+		try {
+			mailer.send(msg);
+			
+			return true;
+		} catch (MailException ex) {
+            // simply log it and go on...
+            System.err.println(ex.getMessage());
+            System.out.println(ex.getMessage());
+            return false;
+        }
 	}
 	
 	@Autowired
@@ -112,8 +152,8 @@ public class PersonServiceImpl {
 	
 	@RequestMapping(method=POST, value="/addPerson")
 	public Person addPerson(@RequestBody Person personToAdd) {
+		personToAdd.setVerificationKey(SessionIdentifierGenerator.nextSessionId());
 		MessageResponse mr = new MessageResponse();
-		System.out.println(personToAdd.getBirthdate());
 		if (personDao.findByFirstName(personToAdd.getFirstName()) != null && personDao.findByLastName(personToAdd.getLastName()) != null && personDao.findByBirthdate(personToAdd.getBirthdate()) != null) {
 			mr.success = false;
 			mr.message = "Patient already exists in database.";
@@ -124,6 +164,9 @@ public class PersonServiceImpl {
 			mr.success = true;
 			mr.message = "Patient successfully added.";
 			System.out.println("\n\n\n" + mr.message + "\n\n\n");
+			if (this.sendVerificationEmailForNewPatient(personToAdd)) {
+				System.out.println("\n\n\n" + mr.message + "\n\n\n");
+			}
 		}
 		return personToAdd;
 	}
