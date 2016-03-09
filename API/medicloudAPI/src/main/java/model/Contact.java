@@ -50,9 +50,7 @@ public class Contact {
 	public int getContactId(){
 		return this.contactId;
 	}
-//	public Person getPersonId(){
-//		return this.personId;
-//	}
+
 	public String getEmail(){
 		return this.primaryEmail;
 	}
