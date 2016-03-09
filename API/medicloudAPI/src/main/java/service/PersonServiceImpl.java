@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.RestController;
-import repository.NoteDao;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.mysql.fabric.Response;
