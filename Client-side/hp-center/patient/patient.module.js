@@ -7,7 +7,7 @@ function patient_module() {
 		"patient/profile/profile.controller.js",
 		"patient/conditions/conditions.controller.js",
 		"condition/condition.directive.js",
-		"condition/newCondition.directive.js",
+		"patient/conditions/newActiveCondition.directive.js",
 		"condition/condition.factory.js",
 		"condition/conditionSearch.directive.js",
 		"condition/infermedicaConditions.service.js",
