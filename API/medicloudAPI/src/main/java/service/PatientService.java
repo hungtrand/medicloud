@@ -110,10 +110,27 @@ public class PatientService {
 	 * @param newCondition - JSON object for new condition's data.
 	 */
 	@RequestMapping(value="/{patient_id}/activeconditions", method=RequestMethod.POST)
-	public void setNewActiveCondition(@PathVariable("patient_id")int id, @RequestBody ActiveCondition newCondition ){
+	public void setNewActiveCondition(@PathVariable("patient_id")int id, @RequestBody ActiveCondition newCondition){
 		ActiveCondition addcondition = new ActiveCondition();
-		
+		int temp = 0;
+		while(temp < 2){
+			Observation addObservation = new Observation();
+			addObservation.setDateCreated();
+			addObservation.setDateUpdated();
+			addObservation = obsRepo.save(addObservation);
+//			addObservation.getObsId();
+			temp++;
+			if(temp == 1){
+				newCondition.setStarObsId(addObservation.getObsId());
+			}else{
+				newCondition.setEndObsId(addObservation.getObsId());
+			}
+		}
 		newCondition.setPatientId(id);
+//		newCondition.setStarObsId(209);
+//		newCondition.setEndObsId(211);
+//		newCondition.setStarObsId(0);
+//		newCondition.setEndObsId(0);
 		addcondition = activeConditionRepo.save(newCondition);
 		
 	}

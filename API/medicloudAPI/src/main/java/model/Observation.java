@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +35,14 @@ public class Observation {
 	private int obsId=1;
 	
 	
+	
 //	@OneToMany(cascade=CascadeType.ALL)
 //	@JoinColumn(name="obs_id")
 //	private List<Note> note = new ArrayList<Note>();
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="start_obs_id")
+	private List<ActiveCondition> activeCondition = new ArrayList<ActiveCondition>();
 	
 	@Column(name="encounter_id")
 	private int encounterId;

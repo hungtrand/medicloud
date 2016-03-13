@@ -37,18 +37,18 @@ public class ActiveCondition {
 	private int patientId;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="start_obs_id",nullable = true, insertable=false, updatable=false)
+	@JoinColumn(name="start_obs_id",nullable = false, insertable=false, updatable=false)
 	private Observation sObservation;
 	
 	@Column(name="start_obs_id")
-	private int startObsId;
+	private int startObsId =0;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="end_obs_id", nullable= true, insertable=false, updatable=false)
+	@JoinColumn(name="end_obs_id", nullable= false, insertable=false, updatable=false)
 	private Observation eObservation;
 	
 	@Column(name="end_obs_id")
-	private int endObsId;
+	private int endObsId=0;
 	
 	@Column(name="description")
 	private String description;

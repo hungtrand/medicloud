@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import org.apache.activemq.filter.function.makeListFunction;
 
+
 @Entity
 @Table(name="patient")
 public class Patient {
@@ -64,10 +65,7 @@ public class Patient {
 	 * @para patient_id - name of the relationship column which is a primary key of patient table.
 	 * 
 	 */
-//	@OneToMany(cascade= CascadeType.ALL)
-//	@JoinColumn(name="patient_id")
-//	private List<Note> note = new ArrayList<Note>();
-//	
+
 	/**
 	 * Create a column which foreign key constraint in encounter table.
 	 * @annotation(One to many) - It has one to many relation with patient and encounter table.
