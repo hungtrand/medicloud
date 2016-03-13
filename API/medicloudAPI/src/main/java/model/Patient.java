@@ -22,6 +22,7 @@ public class Patient {
 	public Patient(){
 		
 	}
+	
 	@Id
 	@GeneratedValue
 	@Column(name="patient_id")
@@ -34,7 +35,9 @@ public class Patient {
 	@Column(name="person_id" )
 	private int personId;
 	
-
+	@Column(name="hp_id")
+	private int hpId;
+	
 	
 	/**
 	 * Get all condition of a patient. This will create a patient id in condition table. Use patient id to access condition.
@@ -173,5 +176,13 @@ public class Patient {
 //	}
 	public void setPatientId(int newPatientId){
 		this.patientId = newPatientId;
+	}
+	
+	public static Patient create(Person p, HealthProfessional hp) {
+		Patient newPatient = new Patient();
+		newPatient.personId = p.getPersonId();
+		newPatient.hpId = hp.getHpId();
+		
+		return newPatient;
 	}
 }

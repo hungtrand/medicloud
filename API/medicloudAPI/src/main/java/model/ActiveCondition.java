@@ -43,12 +43,12 @@ public class ActiveCondition {
 	@Column(name="start_obs_id")
 	private int startObsId;
 	
-//	@OneToOne(cascade=CascadeType.ALL)
-//	@JoinColumn(name="end_obs", nullable= true, insertable=false, updatable=false, unique = true)
-//	private Observation eObservation;
-//	
-//	@Column(name="end_obs_id")
-//	private int endObsId;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="end_obs_id", nullable= true, insertable=false, updatable=false)
+	private Observation eObservation;
+	
+	@Column(name="end_obs_id")
+	private int endObsId;
 	
 	@Column(name="description")
 	private String description;
@@ -73,6 +73,10 @@ public class ActiveCondition {
 		return this.activeConditionId;
 	}
 	
+	public Observation getEndObsId(){
+		return this.eObservation;
+	}
+	
 	public Observation getStartObsId(){
 		return this.sObservation;
 	}
@@ -87,6 +91,10 @@ public class ActiveCondition {
 	
 	public void setStarObsId(int newStartObsId){
 		this.startObsId = newStartObsId;
+	}
+	
+	public void setEndObsId(int newEndObsId){
+		this.endObsId = newEndObsId;
 	}
 	
 //	public void setEndObsId(int newEndObsId){

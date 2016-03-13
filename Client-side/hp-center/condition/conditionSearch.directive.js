@@ -69,9 +69,9 @@ function conditionSearch_dir() {
 							var templ = '<div class="list-group-item">'
 										+ '<dl>'
 										+ '<dt>{{name}}<label class="label label-info pull-right">{{severity}}</label></dt>'
-										+ '<dd>'
+										+ '<dd><em>'
 										+ '{{categories}}'
-										+ '</dd>'
+										+ '</em></dd>'
 										+ '</div>';
 							var item = templ
 										.replace(/{{name}}/g, data.name)
@@ -82,8 +82,6 @@ function conditionSearch_dir() {
 						}
 					}
 				});
-
-				console.log('###');
 
 				$element.find('.inputSearch').bind('typeahead:select', function(ev, suggestion) {
 					$scope.model = suggestion;

@@ -40,12 +40,15 @@ public class HealthProfessional {
 	public int getPersonId(){
 		return this.person.getPersonId();
 	}
+	
 	public int getHpId(){
 		return this.hpId;
 	}
+	
 	public String getTitle(){
 		return this.title;
 	}
+	
 	public String getLicense(){
 		return this.license;
 	}
@@ -53,12 +56,15 @@ public class HealthProfessional {
 	public void setPersonId(int newPersonId){
 		this.personId = newPersonId;
 	}
+	
 	public void setHpId(int newHpId){
 		this.hpId = newHpId;
 	}
+	
 	public void setTitle(String newTitle){
 		this.title = newTitle;
 	}
+	
 	public void setLicense(String newLicense){
 		this.license = newLicense;
 	}
