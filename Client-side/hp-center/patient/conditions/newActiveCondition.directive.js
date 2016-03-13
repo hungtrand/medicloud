@@ -14,7 +14,12 @@ function newCondition_dir() {
 
 		$scope.save = function() {
 			$scope.waiting = true;
-			condition_fact.insert({ condition_id: 0 }, $scope.condition);
+			var data {
+				name: $scope.condition.name
+				, severity: $scope.condition.severity
+				, infer_c_id: $scope.condition.id
+			}
+			condition_fact.insert({ condition_id: 0 }, data);
 		}
 
 		$scope.cancel = function() {

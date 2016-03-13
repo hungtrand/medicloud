@@ -33,9 +33,6 @@ import repository.ConditionRepo;
 @PropertySource("classpath:client-side.properties")
 @RestController
 public class conditionsService {
-	@Autowired
-	private ConditionRepo condRepo;
-	
 	@Value("${infermedica.appId}")
 	private String appId;
 	

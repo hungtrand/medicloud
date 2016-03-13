@@ -9,5 +9,7 @@ import model.Condition;
 @Repository
 @Qualifier(value="ConditionRepo")
 public interface ConditionRepo extends CrudRepository<Condition, String> {
-
+	public Condition findByConditionId(int conditionId);
+	public Condition findByInferCId(int inferCId);
+	public Condition findByName(String conditionName);
 }
