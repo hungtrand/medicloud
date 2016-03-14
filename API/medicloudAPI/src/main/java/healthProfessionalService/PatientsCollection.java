@@ -2,7 +2,9 @@ package healthProfessionalService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -36,7 +38,7 @@ import provider.MessageResponse;
 
 @RestController
 @RequestMapping(value="/api/hp/{hpId}/patients")
-public class patients {
+public class PatientsCollection {
 	
 	@Autowired
 	private PersonDao personDao;
@@ -53,7 +55,7 @@ public class patients {
 	@Autowired
 	private JavaMailSender mailer;
 	
-	public patients() {
+	public PatientsCollection() {
 		
 	}
 	
@@ -68,32 +70,30 @@ public class patients {
 	
 	// POST: /api/hp/hpId/patients
 	@RequestMapping(value = "/", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public MessageResponse addPatient(@PathVariable("hpId") int hpId, @RequestBody Person personToAdd) {
+	public ResponseEntity<?> addPatient(@PathVariable("hpId") int hpId, @RequestBody Person personToAdd) {
 		HealthProfessional hp = hpRepo.findByHpId(hpId);
-		
-		
 		personToAdd.setVerificationKey(SessionIdentifierGenerator.nextSessionId());
-		MessageResponse mr = new MessageResponse();
+		
+		
 		if (personDao.findByFirstName(personToAdd.getFirstName()) != null && personDao.findByLastName(personToAdd.getLastName()) != null && personDao.findByBirthdate(personToAdd.getBirthdate()) != null) {
+			MessageResponse mr = new MessageResponse();
 			mr.success = false;
-			mr.message = "Patient already exists in database.";
-			System.out.println("\n\n\n" + mr.message + "\n\n\n");
+			mr.error = "Person Exists";
+			
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.BAD_REQUEST);
 		}
 		else {
 			Person personPatient = personDao.save(personToAdd);
 			
 			Patient newPatient = Patient.create(personPatient, hp);
-			mr.success = true;
-			mr.message = "Patient successfully added.";
-			System.out.println("\n\n\n" + mr.message + "\n\n\n");
-			if (this.sendVerificationEmailForNewPatient(personToAdd)) {
-				System.out.println("\n\n\n" + mr.message + "\n\n\n");
-			}
+			this.sendVerificationEmailForNewPatient(personToAdd);
+			
+			return new ResponseEntity<Patient>(newPatient, HttpStatus.OK);
 		}
 		
-		return mr;
 	}
 	
+	//	helpers
 	private boolean sendVerificationEmailForNewPatient(Person personSU) {
 		String vMsg = "Please click on the following link (or copy & paste it to your browser's address bar): \n";
 		try {
