@@ -1,4 +1,4 @@
-function observations_ctrl($scope, patient_serv) {
+module.exports = function($scope, patient_serv) {
 	$scope.modal = {
 		show: false,
 		addObservationForm: 'patient/observations/addObservationForm.html',

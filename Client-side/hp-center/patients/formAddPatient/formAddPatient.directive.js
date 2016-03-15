@@ -1,4 +1,4 @@
-function formAddPatient_dir() {
+module.exports = function() {
     return {
         restrict: 'E',
         scope: {

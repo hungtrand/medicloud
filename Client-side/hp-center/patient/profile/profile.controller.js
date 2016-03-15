@@ -1,4 +1,4 @@
-function profile_ctrl($scope, patient_serv) {
+module.exports = function($scope, patient_serv) {
 	
 	var sync_patient_data = function() {
 		var patient_data = patient_serv.data;

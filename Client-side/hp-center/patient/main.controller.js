@@ -1,4 +1,4 @@
-function main_ctrl($scope, patient_serv) {
+module.exports = function($scope, patient_serv) {
 	/* include files */
 	$scope.incConditionList = "patient/conditions/conditions.html";
 	$scope.incObservationList = "patient/observations/observations.html";

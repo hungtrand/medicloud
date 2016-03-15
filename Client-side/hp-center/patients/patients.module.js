@@ -1,4 +1,4 @@
-function patients_module() {
+module.exports = function() {
 	var timerStart = Date.now();
 	var scripts = [
 		"patients/formAddPatient/formAddPatient.directive.js",

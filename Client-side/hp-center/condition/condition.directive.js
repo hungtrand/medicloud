@@ -1,4 +1,4 @@
-function condition_dir() {
+module.exports = function() {
 	var controller = function($scope) {
 		$scope.formatDate = function(d) {
 			return new Date(d);

@@ -1,4 +1,4 @@
-function conditionSearch_dir() {
+module.exports = function() {
 	var controller = function($scope, infermedicaConditionsService) {
 		$scope.waiting = false;
 		$scope.$on("status.waiting", function() {
