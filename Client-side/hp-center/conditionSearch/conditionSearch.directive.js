@@ -43,7 +43,7 @@ module.exports = function() {
 	}
 
 	return {
-		templateUrl: '/hp-center/condition/conditionSearch.template.html',
+		templateUrl: 'conditionSearch/conditionSearch.template.html',
 		scope: {
 			model: '='
 		}

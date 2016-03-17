@@ -1,9 +1,12 @@
 (function() {
 	// patients_module = require("./patients/patients.module");
 	var patient_module = require("./patient/patient.module");
-	patient_module();
+	var hpPatientList_module = require("./patients/patients.module");
 
-	var app = new angular.module("hp-center", ['ngRoute', 'hpPatient']);
+	patient_module();
+	hpPatientList_module();
+
+	var app = new angular.module("hp-center", ['ngRoute', 'hpPatient', 'hpPatientList']);
 
 	// routing and navigation configuration
 	app.config(['$routeProvider', function($routeProvider) {
@@ -19,7 +22,6 @@
 	}]);
 
 	// directives
-
 
 	// services and factories
 

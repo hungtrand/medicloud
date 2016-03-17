@@ -3,7 +3,8 @@ module.exports = function($resource, $rootScope) {
 	var client = $resource(
 		url, {
 			patientId: '@id'
-		});
+		}
+	);
 
 	return {
 		data: { contact_info: {}, encounters: [], notes: [] },

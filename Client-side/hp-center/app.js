@@ -2,9 +2,12 @@
 (function() {
 	// patients_module = require("./patients/patients.module");
 	var patient_module = require("./patient/patient.module");
-	patient_module();
+	var hpPatientList_module = require("./patients/patients.module");
 
-	var app = new angular.module("hp-center", ['ngRoute', 'hpPatient']);
+	patient_module();
+	hpPatientList_module();
+
+	var app = new angular.module("hp-center", ['ngRoute', 'hpPatient', 'hpPatientList']);
 
 	// routing and navigation configuration
 	app.config(['$routeProvider', function($routeProvider) {
@@ -21,7 +24,6 @@
 
 	// directives
 
-
 	// services and factories
 
 	// controllers
@@ -30,40 +32,7 @@
 	angular.bootstrap(window.document, ['hp-center']);
 
 })();
-},{"./patient/patient.module":10}],2:[function(require,module,exports){
-module.exports = function() {
-	var controller = function($scope) {
-		$scope.formatDate = function(d) {
-			return new Date(d);
-		}
-	}
-
-	return {
-		templateUrl: "patient/conditions/condition.template.html",
-
-		scope: {
-			condition: "=condData"
-		},
-
-		link: function() {
-
-		},
-
-		controller: ['$scope', controller]
-	}
-}
-},{}],3:[function(require,module,exports){
-module.exports = function($resource, $rootScope) {
-	var url = "http://" + location.host + '/condition/:condition_id';
-
-	var client = $resource(url, { condition_id: '@id' }, 
-		{
-			insert: { method: "POST" }
-		});
-
-	return client;
-}
-},{}],4:[function(require,module,exports){
+},{"./patient/patient.module":9,"./patients/patients.module":13}],2:[function(require,module,exports){
 module.exports = function() {
 	var controller = function($scope, infermedicaConditionsService) {
 		$scope.waiting = false;
@@ -109,7 +78,7 @@ module.exports = function() {
 	}
 
 	return {
-		templateUrl: '/hp-center/condition/conditionSearch.template.html',
+		templateUrl: 'conditionSearch/conditionSearch.template.html',
 		scope: {
 			model: '='
 		}
@@ -161,7 +130,7 @@ module.exports = function() {
 		controller: ['$scope', 'infermedicaConditions_serv', controller]
 	}
 }
-},{}],5:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 module.exports = function($resource, $rootScope) {
 	var url_list = 'http://'+window.location.hostname+'\\:8080/conditions';
 	var url_single = 'http://'+window.location.hostname+'\\:8080/conditions/:condition_id';
@@ -191,7 +160,18 @@ module.exports = function($resource, $rootScope) {
 	service.fetchAll();	
 	return service;
 }
-},{}],6:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
+module.exports = function($resource, $rootScope) {
+	var url = "http://" + location.host + '/condition/:condition_id';
+
+	var client = $resource(url, { condition_id: '@id' }, 
+		{
+			insert: { method: "POST" }
+		});
+
+	return client;
+}
+},{}],5:[function(require,module,exports){
 module.exports = function($scope, patient_serv) {
 	$scope.conditions = patient_serv.data.conditions;
 	$scope.newConditions = [];
@@ -223,7 +203,7 @@ module.exports = function($scope, patient_serv) {
 		console.log('saved');
 	});
 }
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports = function() {
 	var controller = function($scope, condition_fact) {
 		$scope.mode = 'search';
@@ -277,10 +257,10 @@ module.exports = function() {
 		controller: ['$scope', 'condition_fact', controller]
 	}
 }
-},{}],8:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 module.exports = function($scope, patient_serv) {
 	/* include files */
-	$scope.incConditionList = "patient/conditions/conditions.html";
+	$scope.incConditionList = "patient/conditions/activeConditionList.html";
 	$scope.incObservationList = "patient/observations/observations.html";
 
 	/***** fetch inital data from services ******/
@@ -298,7 +278,7 @@ module.exports = function($scope, patient_serv) {
 		}
 	}
 }
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 module.exports = function($scope, patient_serv) {
 	$scope.modal = {
 		show: false,
@@ -318,18 +298,18 @@ module.exports = function($scope, patient_serv) {
 		$scope.modal.show = true;
 	}
 }
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = function() {
 	var main_ctrl = require(".//main.controller");
 	var modal_dir = require("./../share/modal.directive");
 	var patient_serv = require("./patient.service");
 	var profile_ctrl = require("./profile/profile.controller");
-	var conditions_ctrl = require("./conditions/conditions.controller");
-	var condition_dir = require("./../condition/condition.directive");
+	var conditionList_ctrl = require("./conditions/activeConditionList.controller");
+	// var condition_dir = require("./../condition/condition.directive");
 	var newActiveCondition_dir = require("./conditions/newActiveCondition.directive");
-	var condition_fact = require("./../condition/condition.factory");
-	var conditionSearch_dir = require("./../condition/conditionSearch.directive");
-	var infermedicaConditions_serv = require("./../condition/infermedicaConditions.service");
+	var condition_fact = require("./conditions/activeCondition.factory");
+	var conditionSearch_dir = require("./../conditionSearch/conditionSearch.directive");
+	var infermedicaConditions_serv = require("./../conditionSearch/infermedicaConditions.service");
 	var observations_ctrl = require("./observations/observations.controller");
 
 	var app = angular.module('hpPatient', ['ngRoute', 'ngResource']);
@@ -352,7 +332,6 @@ module.exports = function() {
 	// directives
 	app
 		.directive('mcConditionSearch', conditionSearch_dir)
-		.directive('mcCondition', condition_dir)
 		.directive('mcNewActiveCondition', newActiveCondition_dir)
 		.directive('mcModal', modal_dir)
 	;
@@ -360,18 +339,19 @@ module.exports = function() {
 	// controllers
 	app
 		.controller("profile_ctrl", ['$scope', 'patient_serv', profile_ctrl])
-		.controller("conditions_ctrl", ['$scope', 'patient_serv', conditions_ctrl])
+		.controller("conditionList_ctrl", ['$scope', 'patient_serv', conditionList_ctrl])
 		.controller("observations_ctrl", ['$scope', 'patient_serv', observations_ctrl])
 		.controller("main_ctrl", ['$scope', 'patient_serv', main_ctrl])
 	;
 }
-},{"./../condition/condition.directive":2,"./../condition/condition.factory":3,"./../condition/conditionSearch.directive":4,"./../condition/infermedicaConditions.service":5,"./../share/modal.directive":13,".//main.controller":8,"./conditions/conditions.controller":6,"./conditions/newActiveCondition.directive":7,"./observations/observations.controller":9,"./patient.service":11,"./profile/profile.controller":12}],11:[function(require,module,exports){
+},{"./../conditionSearch/conditionSearch.directive":2,"./../conditionSearch/infermedicaConditions.service":3,"./../share/modal.directive":16,".//main.controller":7,"./conditions/activeCondition.factory":4,"./conditions/activeConditionList.controller":5,"./conditions/newActiveCondition.directive":6,"./observations/observations.controller":8,"./patient.service":10,"./profile/profile.controller":11}],10:[function(require,module,exports){
 module.exports = function($resource, $rootScope) {
 	var url = 'http://'+window.location.hostname+'\\:8080/api/hp/:hpId/patients/:patientId';
 	var client = $resource(
 		url, {
 			patientId: '@id'
-		});
+		}
+	);
 
 	return {
 		data: { contact_info: {}, encounters: [], notes: [] },
@@ -389,7 +369,7 @@ module.exports = function($resource, $rootScope) {
 		}
 	}
 }
-},{}],12:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports = function($scope, patient_serv) {
 	
 	var sync_patient_data = function() {
@@ -415,8 +395,186 @@ module.exports = function($scope, patient_serv) {
 		sync_patient_data();
 	});
 }
+},{}],12:[function(require,module,exports){
+module.exports = function() {
+    return {
+        restrict: 'E',
+        scope: {
+            show: '=',
+            submit: '='
+        },
+        replace: true, // Replace with the template below
+        transclude: true, // we want to insert custom content inside the directive
+        link: function(scope, element, attrs) {
+
+            scope.$watch('show', function(newValue) {
+                if (newValue) {
+                    $(element[0]).modal('show');
+                } else {
+                    $(element[0]).modal('hide');
+                }
+            });
+            /*element.find('#AddPatient').on('click', function() {
+              element.submit();
+            });*/
+            element.on('submit', function(){
+                var elements = element[0].querySelectorAll('input,select,textarea'); 
+                for (var i = elements.length; i--;) { 
+                    elements[i].addEventListener('invalid', function() { 
+                        this.scrollIntoView(false); 
+                    }); 
+                }
+               var data = scope.patient;
+               data = angular.extend({}, scope.patient);
+               data.birthdate = element.find('[type=date]').val();
+               scope.submit(data);
+            });
+
+        },
+        templateUrl: 'patients/formAddPatient/formAddPatient.html',
+        controller: ['$scope', function($scope) {
+          $('[data-toggle="tooltip"]').tooltip('disable');
+          $scope.patient = {
+            firstName: "", lastName: ""
+          };
+        }],
+    };
+}
+
 },{}],13:[function(require,module,exports){
-function modal_dir() {
+module.exports = function() {
+	var patientsList_ctrl = require("./patientsList/patientsList.controller");
+	var patientsListService = require("./patientsList/patientsList.service");
+	var formAddPatient_dir = require("./formAddPatient/formAddPatient.directive");
+	
+	var app = angular.module('hpPatientList', ['ngRoute']);
+	app.config(['$routeProvider', function($routeProvider) {
+		'use strict';
+		$routeProvider
+			.when('/patients/', {
+				templateUrl: 'patients/',
+				controller: 'patientsList_ctrl'
+			});
+	}])
+
+	// services
+	app.service('patientsListService', ["$http", "$rootScope", "$resource", patientsListService]);
+
+	// directives
+	app.directive('modalDialog', formAddPatient_dir);
+
+	// controllers
+	app.controller("patientsList_ctrl", ['$scope', '$rootScope', 'patientsListService', patientsList_ctrl]);
+
+}
+
+},{"./formAddPatient/formAddPatient.directive":12,"./patientsList/patientsList.controller":14,"./patientsList/patientsList.service":15}],14:[function(require,module,exports){
+module.exports = function($scope, $rootScope, service) {
+    $scope.patientList = [];
+    getPatients();
+    $scope.status;
+    $scope.modalShown = false;
+    $scope.patient = {};
+    $scope.toggleModal = function() {
+        $scope.modalShown = !$scope.modalShown;
+    };
+    $scope.contactClicked = false;
+    $scope.selectedPatient;
+    var validBirthdate = false;
+    var validEmail = false;
+    $('#patientSuccessAlert').hide();
+    $('#patientFailureAlert').hide();
+      
+    $scope.clicked = function(patient) {
+      $scope.contactClicked = true;
+      $scope.selectedPatient = patient;
+    }
+
+    $rootScope.$on('patientAdded', function() {
+      $scope.modalShown = false;
+    });
+
+    $scope.addPatient = function(newPatientData) {
+      service.addPatient(newPatientData);
+      $('#AddPatientForm')[0].reset();
+    }
+
+    function getPatients() {
+      service.getPatients().onSuccess(function(patient) {
+        $scope.patientList = service.patients;
+        console.log($scope.patientList);
+      })
+      .onFailure(function(error) {
+        console.log(error);
+      });
+    }
+}
+
+},{}],15:[function(require,module,exports){
+module.exports = function($http, $rootScope, $resource) {
+  var onSuccessFn;
+  var onFailureFn;
+  var service = {
+
+    patients: [
+      {firstName: "Peter", lastName: "Parker", email: "peterparker@gmail.com"},
+      {firstName: "Bruce", lastName: "Wayne", email: "brucewayne@gmail.com"}
+    ],
+
+    getPatients: function () {
+      var that = this;
+      var client = $resource('http://'+window.location.hostname+':8080/person/persons');
+      var promise = client.query().$promise;
+      promise.then(function(patient) {
+        that.patients = patient;
+        (onSuccessFn || angular.noop)();
+        onSuccessFn = null;
+        onFailureFn = null;
+      },function(error) {
+        (onFailureFn || angular.noop)(error);
+        onSuccessFn = null;
+        onFailureFn = null;
+      });
+
+      return this;
+    },
+
+    onSuccess: function(fn) {
+      onSuccessFn = fn;
+      return this;
+    },
+
+    onFailure: function(fn) {
+      onFailureFn = fn;
+      return this;
+    },
+
+    addPatient: function (patient) {
+      
+      $rootScope.$broadcast('patientAdded');
+      var client = $resource('http://'+window.location.hostname+':8080/person/addPerson');
+      client.save(patient, 
+        function(response) {
+          if (response.personId) {
+            service.patients.push(patient);
+            $('#patientSuccessAlert').show();
+            setTimeout(function() {
+              $('#patientSuccessAlert').fadeOut('slow');
+            }, 3000);
+            
+          }
+          else {
+            $('#patientFailureAlert').show();
+          }
+          console.log(response);
+      });
+    }
+  }
+  return service;
+}
+
+},{}],16:[function(require,module,exports){
+module.exports = function() {
 	return {
 		templateUrl: 'share/modal.template.html',
 		scope: {
