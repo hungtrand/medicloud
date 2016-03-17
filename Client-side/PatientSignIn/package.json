@@ -1,0 +1,13 @@
+{
+  "name": "patientSignIn",
+  "version": "0.0.0",
+  "dependencies": {
+        
+  },
+  "devDependencies": {
+    "grunt-browserify": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest"
+  }
+  
+}
