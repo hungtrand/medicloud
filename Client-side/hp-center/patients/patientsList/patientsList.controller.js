@@ -1,4 +1,4 @@
-function patientsList_ctrl($scope, $rootScope, service) {
+module.exports = function($scope, $rootScope, service) {
     $scope.patientList = [];
     getPatients();
     $scope.status;

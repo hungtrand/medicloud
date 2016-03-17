@@ -1,4 +1,4 @@
-function conditions_ctrl($scope, patient_serv) {
+module.exports = function($scope, patient_serv) {
 	$scope.conditions = patient_serv.data.conditions;
 	$scope.newConditions = [];
 

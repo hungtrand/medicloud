@@ -1,0 +1,11 @@
+{
+  "name": "hp-center",
+  "version": "0.0.1",
+  "author": "medicloud",
+  "description": "Health Professional center to manage patient information",
+  "devDependencies": {
+    "grunt-browserify": "~5.0.0",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest"
+  }
+}

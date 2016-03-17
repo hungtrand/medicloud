@@ -1,4 +1,4 @@
-function newCondition_dir() {
+module.exports = function() {
 	var controller = function($scope, condition_fact) {
 		$scope.mode = 'search';
 		$scope.model = { suggestion: null };
