@@ -2,7 +2,8 @@ module.exports = function($resource, $rootScope) {
 	var url = 'http://'+window.location.hostname+'\\:8080/api/hp/:hpId/patients/:patientId';
 	var client = $resource(
 		url, {
-			patientId: '@id'
+		    hpId: '@hpId'
+		    , patientId: '@pId'
 		}
 	);
 
