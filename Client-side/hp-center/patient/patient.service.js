@@ -1,8 +1,11 @@
-function patient_serv($resource, $rootScope) {
+module.exports = function($resource, $rootScope) {
+	var url = 'http://'+window.location.hostname+'\\:8080/api/hp/:hpId/patients/:patientId';
 	var client = $resource(
-		'http://private-be2dd-medicloud2.apiary-mock.com/patient/:patient_id', {
-			patient_id: '@id'
-		});
+		url, {
+		    hpId: '@hpId'
+		    , patientId: '@pId'
+		}
+	);
 
 	return {
 		data: { contact_info: {}, encounters: [], notes: [] },

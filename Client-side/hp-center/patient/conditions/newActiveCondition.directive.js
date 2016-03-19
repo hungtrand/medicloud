@@ -1,4 +1,4 @@
-function newCondition_dir() {
+module.exports = function() {
 	var controller = function($scope, condition_fact) {
 		$scope.mode = 'search';
 		$scope.model = { suggestion: null };
@@ -14,7 +14,7 @@ function newCondition_dir() {
 
 		$scope.save = function() {
 			$scope.waiting = true;
-			var data {
+			var data = {
 				name: $scope.condition.name
 				, severity: $scope.condition.severity
 				, infer_c_id: $scope.condition.id
@@ -38,7 +38,7 @@ function newCondition_dir() {
 	}
 
 	return {
-		templateUrl: 'condition/newCondition.template.html',
+		templateUrl: 'patient/conditions/newActiveCondition.template.html',
 		
 		scope: {
 			condition: "=condData"

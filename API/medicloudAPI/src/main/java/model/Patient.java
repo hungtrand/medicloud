@@ -39,36 +39,11 @@ public class Patient {
 	@Column(name="hp_id")
 	private int hpId;
 	
-	
-	/**
-	 * Get all condition of a patient. This will create a patient id in condition table. Use patient id to access condition.
-	 */
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="patient_id")
-	private List<Condition> condition = new ArrayList<Condition>();
-	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="patient_id")
 	private List<ActiveCondition> activeCondition = new ArrayList<ActiveCondition>();
 	
-//	/**
-//	 * Get all observations of a patient.
-//	 * 
-//	 */
-//	@OneToMany(cascade=CascadeType.ALL)
-//	@JoinColumn(name="patient_id")
-//	private List<Observation> observation = new ArrayList<Observation>();
-//	
 	
-	/**
-	 * Get all notes of a patient.
-	 * @annotation(One to many) - It has one to many relation with patient and note table.
-	 * @annotation(JoinColumn) this is the owner of relationship.
-	 * Join column create a relation column in note table.
-	 * @para patient_id - name of the relationship column which is a primary key of patient table.
-	 * 
-	 */
-
 	/**
 	 * Create a column which foreign key constraint in encounter table.
 	 * @annotation(One to many) - It has one to many relation with patient and encounter table.
@@ -122,56 +97,15 @@ public class Patient {
 		return this.person.getLastName();
 	}
 	
-//	public List<Note> getNotes(){
-//		return this.note;
-//	}
-//	public List<Observation> getObservation(){
-//		return this.observation;
-//	}
-	public List<Condition> getConditions(){
-		return this.condition;
-	}
-	public void setConditions(Condition condition){
-		this.condition.add(condition);
-	}
-//	public void setObservation(Observation obs){
-//		this.observation.add(obs);
-//	}
 	
-	public void setActiveCondition(ActiveCondition activeCondtion){
+	public void addActiveCondition(ActiveCondition activeCondtion){
 		this.activeCondition.add(activeCondtion);
 	}
 	
-//	@Column(name="patient_name")
-//	private String name;
-//	
-//	public String getName(){
-//		return this.name;
-//	}
-//	
-//	public void setName(String newName){
-//		this.name = newName;
-//	}
-	
-//	@OneToOne(cascade=CascadeType.ALL)
-//	@JoinColumn(name="person_id", referencedColumnName="person_id", insertable = false, updatable = false)
-//	private Person person;
-//	
-//	@Column(name="person_id")
-//	private int person_id;
-//	
-//	public int getPersonId(){
-//		return this.person.getPersonId();
-//	}
 	public int getPatientId(){
 		return this.patientId;
 	}
 	
-	
-//	
-//	public void setPersonId(int newPersonId){
-//		this.person_id = newPersonId;
-//	}
 	public void setPatientId(int newPatientId){
 		this.patientId = newPatientId;
 	}

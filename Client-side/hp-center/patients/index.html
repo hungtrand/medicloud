@@ -1,41 +1,46 @@
-<div class="container">
+<div class="container-fluid">
+    <h3 class="text-primary">Patients</h3>
+
     <div class="row">
         <div id="patientSuccessAlert" class="alert alert-success" role="alert">Patient successfully added!</div>
         <div id="patientFailureAlert" class="alert alert-danger" role="alert">Patient unsuccessfully added!</div>
     </div>
+
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col col-xs-6">
+            <form class="row">
+                <div class="col col-xs-9">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search" id="SearchIcon"></i></span>
+                        <input type="text" ng-model="patientSearchText" class="form-control" placeholder="Search Patients..." aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="col col-xs-3 text-center">
+                    <button ng-click='toggleModal()' class="btn btn-danger">
+                        <i class="fa fa-plus"></i> Add Patient
+                    </button>
+                </div>
+                <modal-dialog show='modalShown' submit="addPatient"></modal-dialog>
+            </form>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+        <div class="col-xs-6">
             <div class="bootcards-list">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form>
-                            <div class="row">
-                                <div class="col-lg-9">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search" id="SearchIcon"></i></span>
-                                        <input type="text" class="form-control" placeholder="Search Patients..." aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="input-group">                                       
-                                        <a ng-click='toggleModal()' class="btn btn-primary btn-block">
-                                            <i class="fa fa-plus"></i>Add
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <modal-dialog show='modalShown' submit="addPatient"></modal-dialog>
-                        </form>
-                    </div>
-                    <div class="list-group">
-                        <a class="list-group-item" ng-repeat="patient in patientList | orderBy: 'lastName'" ng-click="clicked(patient)">
-                            <h4 class="list-group-item-heading">{{patient.lastName}}, {{patient.firstName}}</h4>
-                        </a>
+                        <div class="list-group">
+                            <a class="list-group-item" ng-repeat="patient in patientList | orderBy: 'lastName' | filter: patientSearchText" ng-click="clicked(patient)">
+                                <h4 class="list-group-item-heading">{{patient.lastName}}, {{patient.firstName}}</h4>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div ng-show="contactClicked" class="col col-xs-4">
+        <div ng-show="contactClicked" class="col col-xs-6">
             <div class="bootcards-card">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">

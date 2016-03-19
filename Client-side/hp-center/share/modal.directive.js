@@ -1,4 +1,4 @@
-function modal_dir() {
+module.exports = function() {
 	return {
 		templateUrl: 'share/modal.template.html',
 		scope: {

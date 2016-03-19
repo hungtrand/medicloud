@@ -178,18 +178,6 @@ public class PersonServiceImpl {
 				System.out.println("\n\n\n" + mr.message + "\n\n\n");
 			}
 		}
-		System.out.println(personToAdd.getBirthdate());
-//		if (personDao.findByFirstName(personToAdd.getFirstName()) != null && personDao.findByLastName(personToAdd.getLastName()) != null && personDao.findByBirthdate(personToAdd.getBirthdate()) != null) {
-//			mr.success = false;
-//			mr.message = "Patient already exists in database.";
-//			System.out.println("\n\n\n" + mr.message + "\n\n\n");
-//		}
-//		else {
-//			personDao.save(personToAdd);
-//			mr.success = true;
-//			mr.message = "Patient successfully added.";
-//			System.out.println("\n\n\n" + mr.message + "\n\n\n");
-//		}
 		return personToAdd;
 	}
 	

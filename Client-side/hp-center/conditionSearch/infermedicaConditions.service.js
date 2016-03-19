@@ -1,4 +1,4 @@
-function infermedicaConditions_serv($resource, $rootScope) {
+module.exports = function($resource, $rootScope) {
 	var url_list = 'http://'+window.location.hostname+'\\:8080/conditions';
 	var url_single = 'http://'+window.location.hostname+'\\:8080/conditions/:condition_id';
 

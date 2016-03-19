@@ -1,4 +1,4 @@
-<div id="conditions" ng-controller="conditions_ctrl">
+<div id="conditions" ng-controller="conditionList_ctrl">
 	<div class="btn-toolbar">
 		<div class="btn-group pull-right">
 			<button type="button" class="btn btn-lg btn-circle btn-danger" ng-click="appendNewCondition()">&plus;</button>
@@ -8,10 +8,10 @@
 	<hr />
 
 	<div class="post" ng-repeat="new in newConditions"
-		mc-new-condition 
+		mc-new-active-condition 
 		cond-data="new"></div>
 	
 
 	<!-- {"id":"c_205","name":"Wilson's disease","categories":["Gastroenterology","Neurology"],"prevalence":"very_rare","acuteness":"chronic_with_exacerbations","severity":"moderate","sex_filter":"both"} -->
-	<div class="post" mc-condition cond-data="condition" ng-repeat="condition in conditions"></div>
+	<div class="post" mc-active-condition cond-data="condition" ng-repeat="condition in conditions"></div>
 </div>

@@ -1,4 +1,4 @@
-function patientsListService($http, $rootScope, $resource) {
+module.exports = function($http, $rootScope, $resource) {
   var onSuccessFn;
   var onFailureFn;
   var service = {
