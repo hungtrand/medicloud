@@ -42,7 +42,11 @@ public class Observation {
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="start_obs_id")
-	private List<ActiveCondition> activeCondition = new ArrayList<ActiveCondition>();
+	private List<ActiveCondition> sactiveCondition = new ArrayList<ActiveCondition>();
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="end_obs_id")
+	private List<ActiveCondition> eactiveCondition  = new ArrayList<ActiveCondition>();
 	
 	@Column(name="encounter_id")
 	private int encounterId;
@@ -79,9 +83,12 @@ public class Observation {
 		return this.state;
 	}
 	
+
+	
 //	public List<Note> getAllNote(){
 //		return this.note;
 //	}
+	
 	
 	public String getDateChanged(){
 		

@@ -6,14 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.repository.CrudRepository;
-import model.Contact;
+import model.Encounter;
 
 @Repository
 @Qualifier(value="ContactRepo")
-public interface ContactRepo extends CrudRepository<Contact, String>{
+public interface EncounterRepo extends CrudRepository<Encounter, String>{
 
-	public Contact findByContactId(int contactId);
-	public Contact findByPersonId(int personId);
+
+//	public Contact findByEmail(String email);
 //	public List<Contact> findByPersonId(Collection<Integer> personId);
 //	public Contact findByPhone(String phone);
 }

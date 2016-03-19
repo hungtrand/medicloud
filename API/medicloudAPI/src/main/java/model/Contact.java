@@ -1,5 +1,8 @@
 package model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,11 +26,8 @@ public class Contact {
 	private int contactId = 0;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="person_id")
+	@JoinColumn(name="person_id", nullable = true, insertable = false, updatable = false)
 	private Person personId;
-	
-	@Column(name="email")
-	private String primaryEmail;
 	
 	@Column(name="phone")
 	private String primaryPhone;
@@ -47,13 +47,18 @@ public class Contact {
 	@Column(name="zip")
 	private int zip;
 	
+	@Column(name="latest_updated")
+	private String latestUpdate;
+	
 	public int getContactId(){
 		return this.contactId;
 	}
-
-	public String getEmail(){
-		return this.primaryEmail;
+	
+	public String getLatestUpdate(){
+		return this.latestUpdate;
 	}
+
+	
 	public String getPhone(){
 		return this.primaryPhone;
 	}
@@ -76,9 +81,7 @@ public class Contact {
 //	public void setPersonId(Person newPersonID){
 //		this.personId = newPersonID;
 //	}
-	public void setEmail(String newEmail){
-		this.primaryEmail = newEmail;
-	}
+	
 	public void setAddress(String newAddress){
 		this.address = newAddress;
 	}
@@ -93,5 +96,9 @@ public class Contact {
 	}
 	public void setZip(int newZip){
 		this.zip = newZip;
+	}
+	
+	public void setLatestUpdated(){
+		this.latestUpdate = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
 	}
 }

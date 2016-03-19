@@ -26,7 +26,7 @@ public class Encounter {
 	private int encounterId;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="patient_id", insertable=false, updatable= false)
+	@JoinColumn(name="patient_id", insertable=false, updatable= false, nullable= true)
 	private Patient patient;
 	
 	@Column(name="patient_id")
@@ -57,4 +57,6 @@ public class Encounter {
 	public void setPersonId(int newPersonId){
 		this.patientId = newPersonId;
 	}
+	
+	
 }
