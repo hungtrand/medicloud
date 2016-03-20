@@ -3,9 +3,9 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         browserify: {
-            main: {
-                src: ["app.dev.js"],
-                dest: "app.js"
+            hpCenter: {
+                src: ["hp-center/app.dev.js"],
+                dest: "hp-center/app.js"
             }
         },
 
@@ -17,8 +17,10 @@ module.exports = function(grunt) {
         },
 
         watch: {
-            files: ["**/*.js", "!app.js"],
-            tasks: ["browserify"]
+            hpCenter: {
+		files: ["hp-center/**/*.js", "!hp-center/app.js"],
+		tasks: ["browserify:hpCenter"]
+	    }
         }  
     });
 
