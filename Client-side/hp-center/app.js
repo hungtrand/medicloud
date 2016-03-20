@@ -311,7 +311,8 @@ module.exports = function() {
 	var conditionSearch_dir = require("./../conditionSearch/conditionSearch.directive");
 	var infermedicaConditions_serv = require("./../conditionSearch/infermedicaConditions.service");
 	var observations_ctrl = require("./observations/observations.controller");
-
+    
+        // initialize angular module 
 	var app = angular.module('hpPatient', ['ngRoute', 'ngResource']);
 	app.config(['$routeProvider', function($routeProvider) {
 		'use strict';
@@ -324,7 +325,8 @@ module.exports = function() {
 
 	// services
 	app
-		.service('infermedicaConditions_serv', ['$resource', '$rootScope', infermedicaConditions_serv])
+		.service('infermedicaConditions_serv', 
+			 ['$resource', '$rootScope', infermedicaConditions_serv])
 		.service('patient_serv', ['$resource', '$rootScope', patient_serv])
 		.factory('condition_fact', ['$resource', '$rootScope', condition_fact])
 	;
@@ -344,22 +346,25 @@ module.exports = function() {
 		.controller("main_ctrl", ['$scope', 'patient_serv', main_ctrl])
 	;
 }
+
 },{"./../conditionSearch/conditionSearch.directive":2,"./../conditionSearch/infermedicaConditions.service":3,"./../share/modal.directive":16,".//main.controller":7,"./conditions/activeCondition.factory":4,"./conditions/activeConditionList.controller":5,"./conditions/newActiveCondition.directive":6,"./observations/observations.controller":8,"./patient.service":10,"./profile/profile.controller":11}],10:[function(require,module,exports){
 module.exports = function($resource, $rootScope) {
 	var url = 'http://'+window.location.hostname+'\\:8080/api/hp/:hpId/patients/:patientId';
 	var client = $resource(
 		url, {
-			patientId: '@id'
+		    hpId: 1
+		    , patientId: '@pId'
 		}
 	);
-
+        
+    // service
 	return {
 		data: { contact_info: {}, encounters: [], notes: [] },
 		fetch: function() {
 			var self = this;
 
 			client.get({
-				patient_id: 1
+				patientId: 1
 			}, function(response, headers) {
 				self.data = response;
 				$rootScope.$broadcast('patient_service.data.updated');
@@ -369,6 +374,7 @@ module.exports = function($resource, $rootScope) {
 		}
 	}
 }
+
 },{}],11:[function(require,module,exports){
 module.exports = function($scope, patient_serv) {
 	
