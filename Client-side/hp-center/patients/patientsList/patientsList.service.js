@@ -1,6 +1,7 @@
 module.exports = function($http, $rootScope, $resource) {
   var onSuccessFn;
   var onFailureFn;
+    var url = 'http://'+window.location.hostname+':8080/hp/:hpId/patients/:patientId';
   var service = {
 
     patients: [
@@ -10,7 +11,10 @@ module.exports = function($http, $rootScope, $resource) {
 
     getPatients: function () {
       var that = this;
-      var client = $resource('http://'+window.location.hostname+':8080/person/persons');
+      var client = $resource(url, {
+	  hpId: 1
+      });
+
       var promise = client.query().$promise;
       promise.then(function(patient) {
         that.patients = patient;
@@ -39,7 +43,7 @@ module.exports = function($http, $rootScope, $resource) {
     addPatient: function (patient) {
       
       $rootScope.$broadcast('patientAdded');
-      var client = $resource('http://'+window.location.hostname+':8080/person/addPerson');
+      var client = $resource(url, { hpId: 1 } );
       client.save(patient, 
         function(response) {
           if (response.personId) {
