@@ -23,11 +23,6 @@ public class UserService {
 		
 	}
 	
-	/*@RequestMapping(method=GET)
-	public List<User> users() {
-		return userd.getUsers();
-	}*/
-	
 	@RequestMapping(method=GET, value="/username/{username}")
 	public User user(@PathVariable("username") String username) {
 		User u = userRepository.findByUsername(username);

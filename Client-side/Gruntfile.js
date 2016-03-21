@@ -6,6 +6,10 @@ module.exports = function(grunt) {
             hpCenter: {
                 src: ["hp-center/app.dev.js"],
                 dest: "hp-center/app.js"
+            },
+            patientSignUp: {
+                src: ["patientSignUp/app.dev.js"],
+                dest: "patientSignUp/app.js"
             }
         },
 
@@ -18,10 +22,14 @@ module.exports = function(grunt) {
 
         watch: {
             hpCenter: {
-		files: ["hp-center/**/*.js", "!hp-center/app.js"],
-		tasks: ["browserify:hpCenter"]
-	    }
-        }  
+		            files: ["hp-center/**/*.js", "!hp-center/app.js"],
+		            tasks: ["browserify:hpCenter"]
+	          },
+            patientSignUp: {
+                files: ["patientSignUp/**/*.js", "!patientSignUp/app.js"],
+                tasks: ["browserify:patientSignUp"]
+            }
+        }
     });
 
     grunt.loadNpmTasks("grunt-browserify");
