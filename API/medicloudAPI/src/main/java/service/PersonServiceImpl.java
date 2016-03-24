@@ -183,8 +183,7 @@ public class PersonServiceImpl {
 	
 	@RequestMapping(method=GET, value="/deletePerson")
 	public Person deletePerson(@RequestParam("personId") int personId) {
-		Person personToDelete = new Person();
-		personToDelete = personDao.findByPersonId(personId);
+		Person personToDelete = personDao.findByPersonId(personId);
 		personDao.delete(personToDelete);
 		return personToDelete;
 	}

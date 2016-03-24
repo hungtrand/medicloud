@@ -77,8 +77,8 @@ public class PatientService {
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public Patient getAllPatient(@PathVariable("id")int id){
-		
-		return patientRepo.findByPatientId(id);
+		return null;
+//		return patientRepo.findByPatientId(id);
 	}
 	
 	

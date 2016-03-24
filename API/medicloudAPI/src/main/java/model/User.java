@@ -3,12 +3,19 @@ package model;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.*;
+
+import repository.PersonDao;
 
 @Entity
 @Table(name="user")
@@ -16,7 +23,7 @@ public class User {
 	@Id
 	@GeneratedValue
 	@Column(name="user_id")
-	private int userID;
+	private int userId=0;
 	
 	@Column(name="username", nullable=false, length=45)
 	private String username;
@@ -30,18 +37,37 @@ public class User {
 	@Column(name="email", nullable=false, length=45)
 	private String email;
 	
-	public static User createUser(String username, String email, String password) throws Exception {
-        User user = new User();
+	@OneToOne(targetEntity=Person.class, cascade=CascadeType.ALL)
+	@JoinColumn(name="person_id",insertable=false, updatable=false, referencedColumnName= "person_id")
+	private Person person;
+	
+	@Autowired
+	private static PersonDao personRepo;
+	
+	public static User create(String username, String email, String password, Person newPerson) throws Exception {
+        newPerson = personRepo.findByPersonId(newPerson.getPersonId());
+        if (newPerson == null) throw new Exception("Cannot create user. Person not found in the database.");
+        
+		User user = new User();
 
         user.setUsername(username);
         user.setEmail(email);
         user.setPassword(password);
+        user.setPerson(newPerson);
         
         return user;
 	}
         
-	public int getUserID() {
-		return this.userID;
+	private void setPerson(Person newPerson) {
+		this.person = newPerson;
+	}
+	
+	public Person getPerson() {
+		return this.person;
+	}
+
+	public int getUserId() {
+		return this.userId;
 	}
 	
 	public String getUsername() {

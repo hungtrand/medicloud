@@ -40,7 +40,7 @@ public class Patient {
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="patient_id")
-	private List<ActiveCondition> activeCondition = new ArrayList<ActiveCondition>();
+	private List<ActiveCondition> activeConditions = new ArrayList<ActiveCondition>();
 	
 	
 	/**
@@ -56,7 +56,7 @@ public class Patient {
 	
 	
 	public List<ActiveCondition> getActiveCondition(){
-		return this.activeCondition;
+		return this.activeConditions;
 	}
 	
 	
@@ -78,27 +78,17 @@ public class Patient {
 	}
 	
 	
-
-	
 	public void setPersonId(int newPersonId){
 		this.patientId = newPersonId;
 	}
 	
-	/**
-	 * Get the first name of the patient. 
-	 * @return
-	 */
-	public String getFirstName(){
-		return this.person.getFirstName();
-	}
-	
-	public String getLastName(){
-		return this.person.getLastName();
+	public Person getProfile() {
+		return this.person;
 	}
 	
 	
 	public void addActiveCondition(ActiveCondition activeCondtion){
-		this.activeCondition.add(activeCondtion);
+		this.activeConditions.add(activeCondtion);
 	}
 	
 	public int getPatientId(){

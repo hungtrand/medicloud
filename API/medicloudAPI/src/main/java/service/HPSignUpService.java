@@ -7,6 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +20,15 @@ import java.net.URLEncoder;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import model.Contact;
 import model.HPSignUp;
+import model.HealthProfessional;
+import model.Person;
 import model.User;
 import provider.MessageResponse;
+import repository.ContactRepo;
 import repository.HPSignUp_repo;
+import repository.PersonDao;
 import repository.User_repo;
 
 @Configuration
@@ -35,6 +41,12 @@ public class HPSignUpService {
 	
 	@Autowired
 	private User_repo userRepo;
+	
+	@Autowired
+	private PersonDao personRepo;
+	
+	@Autowired
+	private ContactRepo contactRepo;
 	
 	@Value("${client.root}")
 	private String clientRoot;
@@ -127,6 +139,7 @@ public class HPSignUpService {
 		
 	}
 	
+	@Transactional
 	@RequestMapping(value="/accountSetup/{email}/{token}", method=POST)
 	public MessageResponse setupSecurity(
 			@RequestBody User newUser, 
@@ -134,25 +147,49 @@ public class HPSignUpService {
 	{
 		MessageResponse mr = new MessageResponse();
 		
-		HPSignUp hp = hpsuRepo.findByEmail(email);
+		HPSignUp hpSignup = hpsuRepo.findByEmail(email);
 		if (userRepo.findByUsername(newUser.getUsername()) instanceof User) {
 			mr.success = false;
 			mr.message = "duplicate";
 			return mr;
 		}
 		
-		if (!hp.verify(email, token)) {
+		if (!hpSignup.verify(email, token)) {
 			mr.success = false;
 			mr.message = "eof";
 			return mr;
 		}
 		
 		try {
+			/* creating a health professional is a multi-steps process
+			 * 1. create a new person
+			 * 2. create a new user for that person
+			 * 3. create a new health professional for that user
+			 * 4. create a new contact (optional)
+			 */
+			
+			String[] nameParts = hpSignup.getName().split(" ", 2);
+			String firstName = nameParts[0];
+			String lastName = "";
+			if (nameParts.length > 1) lastName = nameParts[1];
+			
+			Person newPerson = Person.create(firstName, lastName);
+			personRepo.save(newPerson);
+			
 			System.out.println(newUser.getUsername() +" " + email +" "+ newUser.getPassword());
-			User u = User.createUser(newUser.getUsername(), email, newUser.getPassword());
+			User u = User.create(newUser.getUsername(), email, newUser.getPassword(), newPerson);
 			userRepo.save(u);
 			
-			hp.changeVerificationKey();
+			HealthProfessional hp = HealthProfessional.create(u);
+			hp.setCdo(hpSignup.getBusinessName());
+			
+			Contact c = Contact.create(u);
+			c.setAddress(hpSignup.getBusinessAddress());
+			c.setPhone(hpSignup.getBusinessPhone());
+			
+			contactRepo.save(c);
+			
+			hpSignup.changeVerificationKey();
 			
 			mr.success = true;
 		} catch(Exception e) {

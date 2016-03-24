@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import model.Contact;
 
 
@@ -46,6 +49,15 @@ public class Person {
 	
 	@Column(name="verification_key", nullable=false, length=32)
 	private String verificationKey;
+	
+	public Person() {
+		
+	}
+	
+	public Person(String firstName, String lastName) {
+		this.setFirstName(firstName);
+		this.setLastName(lastName);
+	}
 	
 	public int getPersonId() {
 		return personId;
@@ -103,7 +115,8 @@ public class Person {
 	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
-
+	
+	@JsonIgnore
 	public String getVerificationKey() {
 		return verificationKey;
 	}
@@ -117,6 +130,12 @@ public class Person {
 		return "Person [pId = " + this.personId + ", PersonName = " + this.firstName + " ]";
 	}
 	
+	
+	public static Person create(String firstName, String lastName) {
+		Person newPerson = new Person(firstName, lastName);
+		
+		return newPerson;
+	}
 }
 
 
