@@ -10,7 +10,8 @@ module.exports = function() {
 	var conditionSearch_dir = require("./../conditionSearch/conditionSearch.directive");
 	var infermedicaConditions_serv = require("./../conditionSearch/infermedicaConditions.service");
 	var observations_ctrl = require("./observations/observations.controller");
-
+    
+        // initialize angular module 
 	var app = angular.module('hpPatient', ['ngRoute', 'ngResource']);
 	app.config(['$routeProvider', function($routeProvider) {
 		'use strict';
@@ -23,7 +24,8 @@ module.exports = function() {
 
 	// services
 	app
-		.service('infermedicaConditions_serv', ['$resource', '$rootScope', infermedicaConditions_serv])
+		.service('infermedicaConditions_serv', 
+			 ['$resource', '$rootScope', infermedicaConditions_serv])
 		.service('patient_serv', ['$resource', '$rootScope', patient_serv])
 		.factory('condition_fact', ['$resource', '$rootScope', condition_fact])
 	;

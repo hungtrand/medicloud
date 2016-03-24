@@ -1,11 +1,13 @@
 {
-  "name": "hp-center",
+  "name": "Medicloud",
   "version": "0.0.1",
   "author": "medicloud",
   "description": "Health Professional center to manage patient information",
   "devDependencies": {
+    "grunt": "latest",
     "grunt-browserify": "~5.0.0",
     "grunt-contrib-uglify": "latest",
-    "grunt-contrib-watch": "latest"
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-copy": "latest"
   }
 }

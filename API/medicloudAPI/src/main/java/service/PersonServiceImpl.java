@@ -107,7 +107,7 @@ public class PersonServiceImpl {
 	private boolean sendVerificationEmailForNewPatient(Person personSU) {
 		String vMsg = "Please click on the following link (or copy & paste it to your browser's address bar): \n";
 		try {
-			vMsg += "http://" + this.clientRoot + "/HPSignUp/#/verification/?email=" 
+			vMsg += "http://localhost/patientSignUp/?email=" 
 					+ URLEncoder.encode(personSU.getEmail(), "UTF-8") 
 					+  "&token=" + personSU.getVerificationKey();
 		} catch (UnsupportedEncodingException e) {
