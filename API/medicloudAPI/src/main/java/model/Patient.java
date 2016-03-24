@@ -97,6 +97,9 @@ public class Patient {
 		return this.person.getLastName();
 	}
 	
+	public int getPersonId(){
+		return this.person.getPersonId();
+	}
 	
 	public void addActiveCondition(ActiveCondition activeCondtion){
 		this.activeCondition.add(activeCondtion);

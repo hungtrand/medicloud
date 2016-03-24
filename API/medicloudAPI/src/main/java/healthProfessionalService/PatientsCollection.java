@@ -69,7 +69,7 @@ public class PatientsCollection {
 	}
 	
 	// POST: /api/hp/hpId/patients
-	@RequestMapping(value = "/", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/s", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> addPatient(@PathVariable("hpId") int hpId, @RequestBody Person personToAdd) {
 		HealthProfessional hp = hpRepo.findByHpId(hpId);
 		personToAdd.setVerificationKey(SessionIdentifierGenerator.nextSessionId());

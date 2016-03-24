@@ -1,7 +1,8 @@
 package model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,21 +33,40 @@ public class Encounter {
 	@Column(name="patient_id")
 	private int patientId;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="hp_id", insertable = false, updatable = false, nullable = true)
+	private HealthProfessional hp;
+	
+	@Column(name="hp_id")
+	private int hpId;
+	
 	@Column(name="description")
 	private String description;
 	
 	@Column(name="encounterDatetime")
-	private Timestamp encounterDatetime;
+	private String encounterDatetime;
 	
 	@Column(name="dateCreated")
-	private Date dateCreated;
+	private String dateCreated;
 	
-	
+	// Getters
 	public int getEncounterId(){
 		return this.encounterId;
 	}
 	
-	public int getPersonId(){
+	public String getEncounterDateTime(){
+		return this.encounterDatetime;
+	}
+	
+	public String getDateCreated(){
+		return this.dateCreated;
+	}
+	
+	public int getHpId(){
+		return this.hp.getHpId();
+	}
+	
+	public int getPatientId(){
 		return this.patient.getPatientId();
 	}
 	
@@ -54,8 +74,32 @@ public class Encounter {
 		return this.description;
 	}
 	
-	public void setPersonId(int newPersonId){
-		this.patientId = newPersonId;
+	
+	
+	// Setters
+	public void setPatientId(int newPatientId){
+		this.patientId = newPatientId;
+	}
+	
+	public void setHpId(int newHpId){
+		this.hpId = newHpId;
+	}
+	
+	public void setEncounterDate(String newEncounterDate){
+		this.encounterDatetime = newEncounterDate;
+	}
+	
+	public void setDescription(String newDescription){
+		this.description = newDescription;
+	}
+	
+	public void setDateCreated(){
+		if(this.dateCreated != null){
+			this.dateCreated = this.dateCreated;
+		}else{
+		
+			this.dateCreated = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
+		}
 	}
 	
 	

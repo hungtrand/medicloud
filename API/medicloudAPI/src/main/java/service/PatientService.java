@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import model.ActiveCondition;
-import model.Cdo;
 import model.Condition;
+import model.Contact;
 import model.Encounter;
 import model.Note;
 import model.Observation;
 import model.Patient;
 import model.Person;
 import repository.ActiveConditionRepo;
-import repository.CdoRepo;
 import repository.ConditionRepo;
+import repository.ContactRepo;
 import repository.EncounterRepo;
 import repository.NoteRepo;
 import repository.ObservationRepo;
@@ -33,7 +33,7 @@ import repository.PersonDao;
 
 
 @RestController
-@RequestMapping(value="/api/hps/{hp_id}/patients")
+@RequestMapping(value="/api/patients")
 public class PatientService {
 	
 		
@@ -62,9 +62,11 @@ public class PatientService {
 	@Autowired
 	private EncounterRepo encounterRepo;
 	
+	@Autowired
+	private ContactRepo contactRepo;
 	
 	
-	
+	//api/patients/patientId/observations/
 	/**
 	 * Get patient's all observations.
 	 * @return
@@ -75,20 +77,44 @@ public class PatientService {
 	}
 
 	
-	
+	/**
+	 * Get an observation of a patient.
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value="/{patient_id}/observation/{observation_id}", method=RequestMethod.GET)
 	public Observation getObservationById(@PathVariable("observation_id") int id){
 		Observation tempObs = new Observation();	
 		return obsRepo.findByObsId(id);
 	}
 	
-	
-	@RequestMapping(value="/api/patient/{id}", method=RequestMethod.GET)
-	public Patient getAllPatient(@PathVariable("id")int id){
+	/**
+	 * Get all medical information of a patient.
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/{patient_id}", method=RequestMethod.GET)
+	public Patient getAllPatient(@PathVariable("patient_id")int patientId){
 		
-		return patientRepo.findByPatientId(id);
+		return patientRepo.findByPatientId(patientId);
 	}
 	
+	
+	//api/patients/patientId/contacts
+	/**
+	 * Get all contact information of a patient.
+	 * @param patientId
+	 * @return
+	 */
+	@RequestMapping(value="/{patient_id}/contacts", method=RequestMethod.GET)
+	public List<Contact> getAllContact(@PathVariable("patient_id")int patientId){
+		Iterable<Contact> allContact = new ArrayList<Contact>();
+		int personId=patientRepo.findByPatientId(patientId).getPersonId();
+		//Contact oneContact = contactRepo.findByPersonId(personId);
+		allContact = contactRepo.findAll();
+		
+		return (List<Contact>) allContact;
+	}
 	
 	
 	
@@ -188,6 +214,21 @@ public class PatientService {
 		newNote.setObsId(obsId);
 		note = noteRepo.save(newNote);
 		
+	}
+	
+	/**
+	 * 
+	 * Create new Contact information for patients.
+	 * 
+	 * @return - new patient information.
+	 * 
+	 */
+	@RequestMapping(value="/{patient_id}/contact", method=RequestMethod.POST)
+	public void setNewContactInformation(@PathVariable("patient_id")int patientId, @RequestBody Contact newContact){
+		Contact saveContact = new Contact();
+		newContact.setPersonId(patientRepo.findByPatientId(patientId).getPersonId());
+		newContact.setLatestUpdated();
+		saveContact = contactRepo.save(newContact);
 	}
 	
 	

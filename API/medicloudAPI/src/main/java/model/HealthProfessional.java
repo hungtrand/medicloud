@@ -37,6 +37,8 @@ public class HealthProfessional {
 	private int personId;
 	
 	
+	
+	// Getters
 	public int getPersonId(){
 		return this.person.getPersonId();
 	}
@@ -53,6 +55,8 @@ public class HealthProfessional {
 		return this.license;
 	}
 	
+	
+	// Setters
 	public void setPersonId(int newPersonId){
 		this.personId = newPersonId;
 	}

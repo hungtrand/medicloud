@@ -14,6 +14,7 @@ public interface ContactRepo extends CrudRepository<Contact, String>{
 
 	public Contact findByContactId(int contactId);
 	public Contact findByPersonId(int personId);
+	
 //	public List<Contact> findByPersonId(Collection<Integer> personId);
 //	public Contact findByPhone(String phone);
 }

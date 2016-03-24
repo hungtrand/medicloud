@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="contact")
 public class Contact {
@@ -25,12 +27,16 @@ public class Contact {
 	@Column(name="contact_id")
 	private int contactId = 0;
 	
+	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="person_id", nullable = true, insertable = false, updatable = false)
-	private Person personId;
+	private Person person;
+	
+	@Column(name="person_id")
+	private int personId;
 	
 	@Column(name="phone")
-	private String primaryPhone;
+	private String phone;
 	
 	@Column(name="address")
 	private String address;
@@ -50,17 +56,24 @@ public class Contact {
 	@Column(name="latest_updated")
 	private String latestUpdate;
 	
+	
+	
+	//Getters
 	public int getContactId(){
 		return this.contactId;
 	}
+	public String getCountry(){
+		return this.country;
+	}
 	
+	public int getPersonId(){
+		return this.person.getPersonId();
+	}
 	public String getLatestUpdate(){
 		return this.latestUpdate;
 	}
-
-	
 	public String getPhone(){
-		return this.primaryPhone;
+		return this.phone;
 	}
 	public String getAddress(){
 		return this.address;
@@ -75,18 +88,23 @@ public class Contact {
 		return this.zip;
 	}
 	
+	
+	
+	//Setters
 	public void setContactId(int newContactID){
 		this.contactId = newContactID;
 	}
-//	public void setPersonId(Person newPersonID){
-//		this.personId = newPersonID;
-//	}
-	
+	public void setPersonId(int newPersonId){
+		this.personId = newPersonId;
+	}
 	public void setAddress(String newAddress){
 		this.address = newAddress;
 	}
 	public void setPhone(String newPhone){
-		this.primaryPhone = newPhone;
+		this.phone = newPhone;
+	}
+	public void setCountry(String newCountry){
+		this.country = newCountry;
 	}
 	public void setCity(String newCity){
 		this.city = newCity;
@@ -97,7 +115,6 @@ public class Contact {
 	public void setZip(int newZip){
 		this.zip = newZip;
 	}
-	
 	public void setLatestUpdated(){
 		this.latestUpdate = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
 	}
