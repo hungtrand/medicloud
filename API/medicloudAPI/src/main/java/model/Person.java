@@ -47,7 +47,7 @@ public class Person {
 	@Column(name="birthdate")
 	private String birthdate;
 	
-	@Column(name="verification_key", nullable=false, length=32)
+	@Column(name="verification_key", nullable=true, length=32)
 	private String verificationKey;
 	
 	public Person() {

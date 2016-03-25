@@ -58,7 +58,7 @@ public class User {
         return user;
 	}
         
-	private void setPerson(Person newPerson) {
+	public void setPerson(Person newPerson) {
 		this.person = newPerson;
 	}
 	

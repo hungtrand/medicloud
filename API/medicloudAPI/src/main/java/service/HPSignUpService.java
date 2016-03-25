@@ -143,7 +143,7 @@ public class HPSignUpService {
 	@RequestMapping(value="/accountSetup/{email}/{token}", method=POST)
 	public MessageResponse setupSecurity(
 			@RequestBody User newUser, 
-			@PathVariable("email") String email, @PathVariable("token") String token) 
+			@PathVariable("email") String email, @PathVariable("token") String token) throws Exception 
 	{
 		MessageResponse mr = new MessageResponse();
 		
@@ -160,42 +160,39 @@ public class HPSignUpService {
 			return mr;
 		}
 		
-		try {
-			/* creating a health professional is a multi-steps process
-			 * 1. create a new person
-			 * 2. create a new user for that person
-			 * 3. create a new health professional for that user
-			 * 4. create a new contact (optional)
-			 */
-			
-			String[] nameParts = hpSignup.getName().split(" ", 2);
-			String firstName = nameParts[0];
-			String lastName = "";
-			if (nameParts.length > 1) lastName = nameParts[1];
-			
-			Person newPerson = Person.create(firstName, lastName);
-			personRepo.save(newPerson);
-			
-			System.out.println(newUser.getUsername() +" " + email +" "+ newUser.getPassword());
-			User u = User.create(newUser.getUsername(), email, newUser.getPassword(), newPerson);
-			userRepo.save(u);
-			
-			HealthProfessional hp = HealthProfessional.create(u);
-			hp.setCdo(hpSignup.getBusinessName());
-			
-			Contact c = Contact.create(u);
-			c.setAddress(hpSignup.getBusinessAddress());
-			c.setPhone(hpSignup.getBusinessPhone());
-			
-			contactRepo.save(c);
-			
-			hpSignup.changeVerificationKey();
-			
-			mr.success = true;
-		} catch(Exception e) {
-			mr.success = false;
-			mr.error = e.getMessage();
-		}
+		/* creating a health professional is a multi-steps process
+		 * 1. create a new person
+		 * 2. create a new user for that person
+		 * 3. create a new health professional for that user
+		 * 4. create a new contact (optional)
+		 */
+		
+		String[] nameParts = hpSignup.getName().split(" ", 2);
+		String firstName = nameParts[0];
+		String lastName = "";
+		if (nameParts.length > 1) lastName = nameParts[1];
+		
+		Person newPerson = Person.create(firstName, lastName);
+		personRepo.save(newPerson);
+		
+		newUser.setPerson(newPerson);
+		
+//		System.out.println("#### NEW USER ####" + newPerson.getPersonId() + newUser.getUsername() +" " + email +" "+ newUser.getPassword());
+//		User u = User.create(newUser.getUsername(), email, newUser.getPassword(), newPerson);
+		userRepo.save(newUser);
+		
+		HealthProfessional hp = HealthProfessional.create(newUser);
+		hp.setCdo(hpSignup.getBusinessName());
+		
+		Contact c = Contact.create(newUser);
+		c.setAddress(hpSignup.getBusinessAddress());
+		c.setPhone(hpSignup.getBusinessPhone());
+		
+		contactRepo.save(c);
+		
+		hpSignup.changeVerificationKey();
+		
+		mr.success = true;
 		
 		return mr;
 	}
