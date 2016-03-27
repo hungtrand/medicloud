@@ -60,7 +60,7 @@ public class PatientsCollection {
 	}
 	
 	// GET [collections]: /api/hp/{hpId}/patients
-	@RequestMapping(value = "/", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Patient> getPatients(@PathVariable("hpId") int hpId) {
 		Iterable<Patient> patients = new ArrayList<Patient>();
 		patients = patientRepo.findByHpId(hpId);

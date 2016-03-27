@@ -5,19 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import repository.User_repo;
+
 @Entity
 @Table(name="health_professional")
-public class HealthProfessional {
-
-	public HealthProfessional(){
-		
-	}
-	
+public class HealthProfessional {	
 	@Id
 	@GeneratedValue
 	@Column(name="hp_id")
@@ -29,18 +26,41 @@ public class HealthProfessional {
 	@Column(name="license")
 	private String license;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="person_id",insertable=false, updatable=false, referencedColumnName= "person_id")
-	private Person person;
+	@Column(name="cdo")
+	private String cdo;
 	
-	@Column(name="person_id")
-	private int personId;
+	@OneToOne(targetEntity=User.class, cascade=CascadeType.ALL)
+	@JoinColumn(name="user_id",insertable=false, updatable=false, referencedColumnName= "user_id")
+	private User user;
 	
+	@Column(name="user_id")
+	private int userId;
+
+	public HealthProfessional() {
+		
+	}
 	
+	public HealthProfessional(User user) throws Exception{
+		this.setUser(user);
+	}
+	
+	public Person getPerson() {
+		return this.user.getPerson();
+	}
+	
+	public User getUser() {
+		return this.user;
+	}
+	
+<<<<<<< HEAD
 	
 	// Getters
 	public int getPersonId(){
 		return this.person.getPersonId();
+=======
+	public void setUser(User user) {
+		this.user = user;
+>>>>>>> 6cc86bf898d374e3c75351459e6fd861e4d46dd9
 	}
 	
 	public int getHpId(){
@@ -55,12 +75,15 @@ public class HealthProfessional {
 		return this.license;
 	}
 	
+<<<<<<< HEAD
 	
 	// Setters
 	public void setPersonId(int newPersonId){
 		this.personId = newPersonId;
 	}
 	
+=======
+>>>>>>> 6cc86bf898d374e3c75351459e6fd861e4d46dd9
 	public void setHpId(int newHpId){
 		this.hpId = newHpId;
 	}
@@ -71,5 +94,19 @@ public class HealthProfessional {
 	
 	public void setLicense(String newLicense){
 		this.license = newLicense;
+	}
+	
+	public String getCdo() {
+		return this.cdo;
+	}
+	
+	public void setCdo(String cdoName) {
+		this.cdo = cdoName;
+	}
+	
+	public static HealthProfessional create(User user) throws Exception {
+		HealthProfessional newHP = new HealthProfessional(user);
+		
+		return newHP;
 	}
 }

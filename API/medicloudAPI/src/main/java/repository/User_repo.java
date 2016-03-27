@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Qualifier(value = "User_repo")
 public interface User_repo extends CrudRepository<User, String> {
     public User findByUsername(String username);
-    public User findByUserID(int userID);
+    public User findByUserId(int userId);
 }

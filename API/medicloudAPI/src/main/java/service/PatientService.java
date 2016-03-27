@@ -100,6 +100,7 @@ public class PatientService {
 	}
 	
 	
+<<<<<<< HEAD
 	//api/patients/patientId/contacts
 	/**
 	 * Get all contact information of a patient.
@@ -114,6 +115,12 @@ public class PatientService {
 		allContact = contactRepo.findAll();
 		
 		return (List<Contact>) allContact;
+=======
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public Patient getAllPatient(@PathVariable("id")int id){
+		return null;
+//		return patientRepo.findByPatientId(id);
+>>>>>>> 6cc86bf898d374e3c75351459e6fd861e4d46dd9
 	}
 	
 	
