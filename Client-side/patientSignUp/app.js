@@ -4,28 +4,46 @@
 
 	var patientSignUpController = require('./patientSignUp.controller');
 
-	var app = angular.module('patientSignUp', ['ngRoute', 'ngResource']);
+	var configuration = require('./configuration.js');
+
+	var app = angular.module('patientSignUp', ['ngRoute', 'ngResource', 'ngMessages']);
+
+	app.config(['$routeProvider', '$resourceProvider', configuration]);
+
 	app.service('patientSignUpService', ['$http', '$resource', patientSignUpService]);
 
-	app.controller('patientSignUpController', ['$scope', '$routeParams', '$location', '$rootScope','patientSignUpService', patientSignUpController]);
+	app.controller('patientSignUpController', ['$scope', '$routeParams', '$route', '$rootScope','patientSignUpService', patientSignUpController]);
 })();
 
-},{"./patientSignUp.controller":2,"./patientSignUp.service":3}],2:[function(require,module,exports){
-module.exports = function ($scope, $routeParams, $location, $rootScope, service) {
-		$(document).on('dblclick', function() {
-			console.log($routeParams);
-		})
-		console.log("Route params are: " + $routeParams.email);
-
-
-	console.log("here");
-	$scope.response = "testin";
-	$scope.registerPatient = function(newPatientData) {
-		service.patientSignUp(newPatientData);
-	}
+},{"./configuration.js":2,"./patientSignUp.controller":3,"./patientSignUp.service":4}],2:[function(require,module,exports){
+module.exports = function configuration($routeProvider, $resourceProvider) {
+	/* config navigation*/
+	$routeProvider
+		.when('/:email', {
+			templateUrl : '/',
+			controller	: 'patientSignUpController'
+		});
+	/* config ngResource for REST API*/
 }
 
 },{}],3:[function(require,module,exports){
+module.exports = function ($scope, $routeParams, $route, $rootScope, service) {
+	$scope.response = "testin";
+	$scope.state = "";
+	$scope.registerPatient = function(newPatientData) {
+		newPatientData.email = $routeParams.email;
+		if (newPatientData.password === newPatientData.confPassword) {
+			service.patientSignUp(newPatientData);
+			$scope.state = 'success';
+			window.location.href = "../patientCenter";
+		}
+		else {
+			$scope.state = 'mismatchedPasswords';
+		}
+	}
+}
+
+},{}],4:[function(require,module,exports){
 module.exports = function ($http, $resource) {
 	var service = {
 		patientSignUp: function(patient) {
@@ -35,4 +53,5 @@ module.exports = function ($http, $resource) {
 	}
 	return service;
 }
+
 },{}]},{},[1]);

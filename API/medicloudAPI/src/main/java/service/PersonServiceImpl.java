@@ -107,9 +107,9 @@ public class PersonServiceImpl {
 	private boolean sendVerificationEmailForNewPatient(Person personSU) {
 		String vMsg = "Please click on the following link (or copy & paste it to your browser's address bar): \n";
 		try {
-			vMsg += "http://localhost/patientSignUp/?email=" 
+			vMsg += "http://localhost/patientSignUp/#/" 
 					+ URLEncoder.encode(personSU.getEmail(), "UTF-8") 
-					+  "&token=" + personSU.getVerificationKey();
+					+  "?token=" + personSU.getVerificationKey();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			System.out.println("Unsupported Encoding UTF-8");
