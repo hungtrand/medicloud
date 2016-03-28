@@ -7,7 +7,7 @@ module.exports = function($resource, $rootScope) {
 		}
 	);
         
-    // service
+        // return instance of service
 	return {
 		data: { contact_info: {}, encounters: [], notes: [] },
 		fetch: function() {

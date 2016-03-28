@@ -9,13 +9,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import repository.User_repo;
+
 @Entity
 @Table(name="contact")
 public class Contact {
-
-	public Contact(){
-		
-	}
 	
 	@Id
 	@GeneratedValue
@@ -23,8 +23,8 @@ public class Contact {
 	private int contactId = 0;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="person_id")
-	private Person personId;
+	@JoinColumn(name="user_id", updatable=true, referencedColumnName="user_id")
+	private User user;
 	
 	@Column(name="email")
 	private String primaryEmail;
@@ -46,11 +46,18 @@ public class Contact {
 	
 	@Column(name="zip")
 	private int zip;
+
+	public Contact(){
+		
+	}
+	
+	public Contact(User u) {
+		this.setUser(u);
+	}
 	
 	public int getContactId(){
 		return this.contactId;
 	}
-
 	public String getEmail(){
 		return this.primaryEmail;
 	}
@@ -70,12 +77,6 @@ public class Contact {
 		return this.zip;
 	}
 	
-	public void setContactId(int newContactID){
-		this.contactId = newContactID;
-	}
-//	public void setPersonId(Person newPersonID){
-//		this.personId = newPersonID;
-//	}
 	public void setEmail(String newEmail){
 		this.primaryEmail = newEmail;
 	}
@@ -93,5 +94,13 @@ public class Contact {
 	}
 	public void setZip(int newZip){
 		this.zip = newZip;
+	}
+	
+	public void setUser(User newUser) {
+		this.user = newUser;
+	}
+	
+	public static Contact create(User u) {
+		return new Contact(u);
 	}
 }

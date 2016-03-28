@@ -32,7 +32,7 @@ public class UserService {
 	
 	@RequestMapping(method=GET, value="/userID/{userID}")
 	public User user(@PathVariable("userID") int userID) {
-		User u = userRepository.findByUserID(userID);
+		User u = userRepository.findByUserId(userID);
 		
 		return u;
 	}

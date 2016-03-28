@@ -10,6 +10,6 @@ import model.Patient;
 @Qualifier(value="PatientRepo")
 public interface PatientRepo extends CrudRepository<Patient, String>{
 
-	public Patient findByPatientId(int patientId);
+	public Patient findByHpIdAndPatientId(int hpId, int patientId);
 	public Iterable<Patient> findByHpId(int hpId);
 }

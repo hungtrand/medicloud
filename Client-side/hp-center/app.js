@@ -357,7 +357,7 @@ module.exports = function($resource, $rootScope) {
 		}
 	);
         
-    // service
+        // return instance of service
 	return {
 		data: { contact_info: {}, encounters: [], notes: [] },
 		fetch: function() {
@@ -382,15 +382,15 @@ module.exports = function($scope, patient_serv) {
 		var patient_data = patient_serv.data;
 
 		$scope.personal = {
-			first_name: patient_data.firstName,
-			middle_name: patient_data.middleName,
-			last_name: patient_data.lastName,
-			birthdate: patient_data.birthdate,
-			email: patient_data.contactInfo.primaryEmail,
-			address: patient_data.contactInfo.address,
-			city: patient_data.contactInfo.city,
-			state: patient_data.contactInfo.state,
-			zip: patient_data.contactInfo.zip
+			first_name: patient_data.profile.firstName,
+			middle_name: patient_data.profile.middleName,
+			last_name: patient_data.profile.lastName,
+			birthdate: patient_data.profile.birthdate,
+			email: patient_data.profile.email,
+			address: patient_data.contactInfo.addres || '',
+			city: patient_data.contactInfo.city || '',
+			state: patient_data.contactInfo.state || '',
+			zip: patient_data.contactInfo.zip || ''
 		};
 
 		$scope.encounters = patient_data.encounters;
@@ -401,6 +401,7 @@ module.exports = function($scope, patient_serv) {
 		sync_patient_data();
 	});
 }
+
 },{}],12:[function(require,module,exports){
 module.exports = function() {
     return {
@@ -520,6 +521,7 @@ module.exports = function($scope, $rootScope, service) {
 module.exports = function($http, $rootScope, $resource) {
   var onSuccessFn;
   var onFailureFn;
+    var url = 'http://'+window.location.hostname+':8080/hp/:hpId/patients/:patientId';
   var service = {
 
     patients: [
@@ -529,7 +531,10 @@ module.exports = function($http, $rootScope, $resource) {
 
     getPatients: function () {
       var that = this;
-      var client = $resource('http://'+window.location.hostname+':8080/person/persons');
+      var client = $resource(url, {
+	  hpId: 1
+      });
+
       var promise = client.query().$promise;
       promise.then(function(patient) {
         that.patients = patient;
@@ -558,7 +563,7 @@ module.exports = function($http, $rootScope, $resource) {
     addPatient: function (patient) {
       
       $rootScope.$broadcast('patientAdded');
-      var client = $resource('http://'+window.location.hostname+':8080/person/addPerson');
+      var client = $resource(url, { hpId: 1 } );
       client.save(patient, 
         function(response) {
           if (response.personId) {
