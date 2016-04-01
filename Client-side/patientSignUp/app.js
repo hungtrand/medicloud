@@ -35,7 +35,8 @@ module.exports = function ($scope, $routeParams, $route, $rootScope, service) {
 		if (newPatientData.password === newPatientData.confPassword) {
 			service.patientSignUp(newPatientData);
 			$scope.state = 'success';
-			window.location.href = "../patientCenter";
+			//window.location.href = "../patientCenter";
+
 		}
 		else {
 			$scope.state = 'mismatchedPasswords';
@@ -46,9 +47,9 @@ module.exports = function ($scope, $routeParams, $route, $rootScope, service) {
 },{}],4:[function(require,module,exports){
 module.exports = function ($http, $resource) {
 	var service = {
-		patientSignUp: function(patient) {
+		patientSignUp: function(patientSignUp) {
 			var client = $resource('http://'+window.location.hostname+':8080/user/patientSignUp');
-			client.save(patient);
+			client.save(patientSignUp);
 		}
 	}
 	return service;

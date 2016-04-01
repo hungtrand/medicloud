@@ -69,7 +69,7 @@ public class PatientsCollection {
 	}
 	
 	// POST: /api/hp/hpId/patients
-	@RequestMapping(value = "/", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> addPatient(@PathVariable("hpId") int hpId, @RequestBody Person personToAdd) {
 		HealthProfessional hp = hpRepo.findByHpId(hpId);
 		personToAdd.setVerificationKey(SessionIdentifierGenerator.nextSessionId());
@@ -97,9 +97,9 @@ public class PatientsCollection {
 	private boolean sendVerificationEmailForNewPatient(Person personSU) {
 		String vMsg = "Please click on the following link (or copy & paste it to your browser's address bar): \n";
 		try {
-			vMsg += "http://" + this.clientRoot + "/HPSignUp/#/verification/?email=" 
+			vMsg += "http://localhost/patientSignUp/#/" 
 					+ URLEncoder.encode(personSU.getEmail(), "UTF-8") 
-					+  "&token=" + personSU.getVerificationKey();
+					+  "?token=" + personSU.getVerificationKey();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			System.out.println("Unsupported Encoding UTF-8");

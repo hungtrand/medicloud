@@ -6,7 +6,8 @@ module.exports = function ($scope, $routeParams, $route, $rootScope, service) {
 		if (newPatientData.password === newPatientData.confPassword) {
 			service.patientSignUp(newPatientData);
 			$scope.state = 'success';
-			window.location.href = "../patientCenter";
+			//window.location.href = "../patientCenter";
+
 		}
 		else {
 			$scope.state = 'mismatchedPasswords';
