@@ -1,7 +1,7 @@
 (function() {
-	var patientSignUpService = require('./patientSignUp.service');
+	var patientCenterService = require('./patientCenter.service');
 
-	var patientSignUpController = require('./patientSignUp.controller');
+	var patientCenterController = require('./patientCenter.controller');
 
 	var configuration = require('./configuration.js');
 

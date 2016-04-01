@@ -1,7 +1,7 @@
 module.exports = function($http, $rootScope, $resource) {
   var onSuccessFn;
   var onFailureFn;
-    var url = 'http://'+window.location.hostname+':8080/hp/:hpId/patients/:patientId';
+    var url = 'http://'+window.location.hostname+':8080/api/hp/:hpId/patients/:patientId';
   var service = {
 
     patients: [
@@ -41,10 +41,10 @@ module.exports = function($http, $rootScope, $resource) {
     },
 
     addPatient: function (patient) {
-      
+
       $rootScope.$broadcast('patientAdded');
       var client = $resource(url, { hpId: 1 } );
-      client.save(patient, 
+      client.save(patient,
         function(response) {
           if (response.personId) {
             service.patients.push(patient);
@@ -52,7 +52,7 @@ module.exports = function($http, $rootScope, $resource) {
             setTimeout(function() {
               $('#patientSuccessAlert').fadeOut('slow');
             }, 3000);
-            
+
           }
           else {
             $('#patientFailureAlert').show();

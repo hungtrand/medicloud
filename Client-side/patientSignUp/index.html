@@ -43,7 +43,12 @@
     </style>
 </head>
 <body class="login" ng-app="patientSignUp" ng-controller="patientSignUpController">
-    <form ng-submit="registerPatient(patient)">
+  <div class="row">
+      <div id="patientSuccessAlert" class="alert alert-success" role="alert" ng-show="state=='success'">Success</div>
+      <div id="patientFailureAlert" class="alert alert-danger" role="alert" ng-show="state=='username'">This username is already taken.</div>
+  </div>
+  <div class="row">
+    <form ng-submit="registerPatient(patient)" name="registerPatientForm">
     <div id="content">
         <div class="container-fluid">
             <div id="accountSetup" class="formContainer">
@@ -55,27 +60,29 @@
             Just one more step. Before you can sign in, let's set up your account:
             <hr />
 
-            <div class="form-group">
+            <div class="form-group" ng-class="{ 'has-error': registerPatientForm.username.$dirty && registerPatientForm.username.$invalid }">
                 <label for="password">Create a username</label>
                 <input type="text" name="username" class="form-control" id="username" placeholder="Username" required ng-model='patient.username'>
+                <div class="help-block" ng-messages="registerPatientForm.username.$error" ng-if="registerPatientForm.username.$dirty" role="alert">
+                  <p ng-message="required">Required</p>
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="password">Enter a new Password: {{response}}</label>
+                <label for="password">Enter a new Password: </label>
                 <input type="password" name="password" class="form-control" id="password" placeholder="Password" required ng-model='patient.password'>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" ng-class="{ 'has-error': state=='mismatchedPasswords' }">
                 <label for="confPassword">Confirm Password:</label>
                 <input type="password" name="confPassword" class="form-control" id="confPassword" placeholder="Type your password again" required ng-model='patient.confPassword'>
+                <div class="help-block" ng-messages="registerPatientForm.confPassword.$error" ng-if="state=='mismatchedPasswords'" role="alert">
+                  <p>Passwords must match.</p>
+                </div>
             </div>
         </div><!-- /.box-body -->
 
         <div class="box-footer text-center">
-            <div class="alert"
-                ng-class="{ 'invisible': response=='', 'alert-warning': state=='warning', 'alert-danger': state=='error' }">
-                {{ response }}
-            </div>
             <button type="submit" class="btn btn-primary"
                 ng-click="resetState()"
                 ng-class="{'disabled': state=='waiting'}">
@@ -84,15 +91,12 @@
             </button>
         </div>
     </form>
+  </div>
                     </div>
                 </div>
-
-
-    <div class="alert alert-success" ng-if="state=='success'">
-        Your account is set up successfully! <a href="../HPSignIn">Please click here to sign in.</a>
-    </div>
 </div>
         </div>
+      </form>
     </div>
     <footer class="footer">
         <strong>Medicloud</strong> &copy; Copyright 2015
@@ -136,6 +140,7 @@
     <script src="../Assets/Social/js/vendor-forms.min.js"></script>
     <script src="../Assets/Social/js/theme-core.min.js"></script>
     <script src="../lib/jab/jab.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </body>
 </html>

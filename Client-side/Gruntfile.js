@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 		        tasks: ["browserify:hpCenter"]
 	        },
             patientSignUp: {
-                files: ["patientSignUp/**n/*.js", "!patientSignUp/app.js"],
+                files: ["patientSignUp/**/*.js", "!patientSignUp/app.js"],
                 tasks: ["browserify:patientSignUp"]
             }
         }
