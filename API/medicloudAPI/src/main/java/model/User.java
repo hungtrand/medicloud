@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -37,9 +38,12 @@ public class User {
 	@Column(name="email", nullable=false, length=45)
 	private String email;
 	
-	@OneToOne(targetEntity=Person.class, cascade=CascadeType.ALL)
-	@JoinColumn(name="person_id",insertable=false, updatable=false, referencedColumnName= "person_id")
+	@ManyToOne(targetEntity=Person.class, cascade=CascadeType.ALL)
+	@JoinColumn(name="person_id",insertable= false, updatable= false, referencedColumnName= "person_id")
 	private Person person;
+	
+	@Column(name="person_id")
+	private int personId;
 	
 	@Autowired
 	private static PersonDao personRepo;
@@ -56,6 +60,14 @@ public class User {
         user.setPerson(newPerson);
         
         return user;
+	}
+	public User(){
+		
+	}
+	
+	
+	public void setPersonId(int newPersonId){
+		this.personId = newPersonId;
 	}
         
 	public void setPerson(Person newPerson) {

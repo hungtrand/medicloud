@@ -36,6 +36,9 @@ public class Patient {
 	@Column(name="person_id" )
 	private int personId;
 	
+	@Column(name="user_id")
+	private int userId;
+	
 	@Column(name="hp_id")
 	private int hpId;
 	
@@ -60,6 +63,10 @@ public class Patient {
 		return this.activeConditions;
 	}
 	
+	public int getUserId(){
+		return this.userId;
+	}
+	
 	
 	/**
 	 * Get all the encounters of a patient.
@@ -78,7 +85,9 @@ public class Patient {
 		this.encounter.add(newEncounter);
 	}
 	
-	
+	public void setUserId(int newUserId){
+		this.userId = newUserId;
+	}
 	public void setPersonId(int newPersonId){
 		this.patientId = newPersonId;
 	}

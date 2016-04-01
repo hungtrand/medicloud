@@ -2,6 +2,7 @@ package service;
 
 import java.awt.PageAttributes.MediaType;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,14 +94,15 @@ public class PatientService {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value="/{patient_id}", method=RequestMethod.GET)
-	public Patient getAllPatient(@PathVariable("patient_id")int patientId){
-		
-		return patientRepo.findByPatientId(patientId);
+	@RequestMapping(value="", method=RequestMethod.GET)
+	public List<Patient> getPatientHealthHistory(){
+		Iterator<Patient> temp =  new ArrayList<Patient>();
+		temp =  patientRepo.findAll();
+		return (List<Patient>) temp;
+		//return patientRepo.findByPatientId(patientId);
 	}
 	
 	
-<<<<<<< HEAD
 	//api/patients/patientId/contacts
 	/**
 	 * Get all contact information of a patient.
@@ -114,13 +116,8 @@ public class PatientService {
 		//Contact oneContact = contactRepo.findByPersonId(personId);
 		allContact = contactRepo.findAll();
 		
-		return (List<Contact>) allContact;
-=======
-	@RequestMapping(value="/", method=RequestMethod.GET)
-	public Patient getAllPatient(@PathVariable("id")int id){
 		return null;
-//		return patientRepo.findByPatientId(id);
->>>>>>> 6cc86bf898d374e3c75351459e6fd861e4d46dd9
+
 	}
 	
 	

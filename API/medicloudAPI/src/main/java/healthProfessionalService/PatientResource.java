@@ -43,4 +43,6 @@ public class PatientResource {
 			return new ResponseEntity<Patient>(foundPatient, HttpStatus.OK);
 		}
 	}
+	
+	
 }

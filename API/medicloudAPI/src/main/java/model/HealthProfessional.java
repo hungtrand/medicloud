@@ -26,9 +26,6 @@ public class HealthProfessional {
 	@Column(name="license")
 	private String license;
 	
-	@Column(name="cdo")
-	private String cdo;
-	
 	@OneToOne(targetEntity=User.class, cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id",insertable=false, updatable=false, referencedColumnName= "user_id")
 	private User user;
@@ -52,15 +49,15 @@ public class HealthProfessional {
 		return this.user;
 	}
 	
-<<<<<<< HEAD
-	
-	// Getters
-	public int getPersonId(){
-		return this.person.getPersonId();
-=======
+//<<<<<<< HEAD
+//	
+//	// Getters
+//	public int getPersonId(){
+//		return this.person.getPersonId();
+//=======
 	public void setUser(User user) {
 		this.user = user;
->>>>>>> 6cc86bf898d374e3c75351459e6fd861e4d46dd9
+//>>>>>>> 6cc86bf898d374e3c75351459e6fd861e4d46dd9
 	}
 	
 	public int getHpId(){
@@ -74,16 +71,7 @@ public class HealthProfessional {
 	public String getLicense(){
 		return this.license;
 	}
-	
-<<<<<<< HEAD
-	
-	// Setters
-	public void setPersonId(int newPersonId){
-		this.personId = newPersonId;
-	}
-	
-=======
->>>>>>> 6cc86bf898d374e3c75351459e6fd861e4d46dd9
+
 	public void setHpId(int newHpId){
 		this.hpId = newHpId;
 	}
@@ -96,13 +84,6 @@ public class HealthProfessional {
 		this.license = newLicense;
 	}
 	
-	public String getCdo() {
-		return this.cdo;
-	}
-	
-	public void setCdo(String cdoName) {
-		this.cdo = cdoName;
-	}
 	
 	public static HealthProfessional create(User user) throws Exception {
 		HealthProfessional newHP = new HealthProfessional(user);

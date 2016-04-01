@@ -12,18 +12,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-<<<<<<< HEAD
-import com.fasterxml.jackson.annotation.JsonIgnore;
-=======
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import repository.User_repo;
->>>>>>> 6cc86bf898d374e3c75351459e6fd861e4d46dd9
+
 
 @Entity
 @Table(name="contact")
 public class Contact {
 	
+	//variables
 	@Id
 	@GeneratedValue
 	@Column(name="contact_id")
@@ -31,16 +30,18 @@ public class Contact {
 	
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-<<<<<<< HEAD
-	@JoinColumn(name="person_id", nullable = true, insertable = false, updatable = false)
+	@JoinColumn(name="person_id", updatable=false, insertable=false,referencedColumnName="person_id")
 	private Person person;
-=======
-	@JoinColumn(name="user_id", updatable=true, referencedColumnName="user_id")
-	private User user;
->>>>>>> 6cc86bf898d374e3c75351459e6fd861e4d46dd9
 	
 	@Column(name="person_id")
 	private int personId;
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="user_id", updatable=false, insertable=false, referencedColumnName="user_id")
+	private User user;
+	
+	@Column(name="user_id")
+	private int userId;
 	
 	@Column(name="phone")
 	private String phone;
@@ -60,16 +61,16 @@ public class Contact {
 	@Column(name="zip")
 	private int zip;
 
+	@Column(name="latest_updated")
+	private String latestUpdate;
+	
+	//Constructor
 	public Contact(){
 		
 	}
-	
 	public Contact(User u) {
 		this.setUser(u);
 	}
-	
-	@Column(name="latest_updated")
-	private String latestUpdate;
 	
 	
 	
@@ -77,20 +78,17 @@ public class Contact {
 	public int getContactId(){
 		return this.contactId;
 	}
-<<<<<<< HEAD
-	public String getCountry(){
-		return this.country;
+	public int getUserId(){
+		return this.user.getUserId();
 	}
-	
 	public int getPersonId(){
 		return this.person.getPersonId();
 	}
+	public String getCountry(){
+		return this.country;
+	}
 	public String getLatestUpdate(){
 		return this.latestUpdate;
-=======
-	public String getEmail(){
-		return this.primaryEmail;
->>>>>>> 6cc86bf898d374e3c75351459e6fd861e4d46dd9
 	}
 	public String getPhone(){
 		return this.phone;
@@ -108,7 +106,7 @@ public class Contact {
 		return this.zip;
 	}
 	
-<<<<<<< HEAD
+
 	
 	
 	//Setters
@@ -117,10 +115,6 @@ public class Contact {
 	}
 	public void setPersonId(int newPersonId){
 		this.personId = newPersonId;
-=======
-	public void setEmail(String newEmail){
-		this.primaryEmail = newEmail;
->>>>>>> 6cc86bf898d374e3c75351459e6fd861e4d46dd9
 	}
 	public void setAddress(String newAddress){
 		this.address = newAddress;
@@ -140,17 +134,14 @@ public class Contact {
 	public void setZip(int newZip){
 		this.zip = newZip;
 	}
-<<<<<<< HEAD
 	public void setLatestUpdated(){
 		this.latestUpdate = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
-=======
-	
+	}
 	public void setUser(User newUser) {
 		this.user = newUser;
 	}
-	
 	public static Contact create(User u) {
 		return new Contact(u);
->>>>>>> 6cc86bf898d374e3c75351459e6fd861e4d46dd9
+
 	}
 }

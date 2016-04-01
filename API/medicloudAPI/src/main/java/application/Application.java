@@ -13,7 +13,7 @@ import org.springframework.data.repository.config.RepositoryConfiguration;
 @Configuration
 @SpringBootApplication
 @EnableAutoConfiguration
-@ComponentScan(basePackages = {"application","model", "repository","provider", "service", "healthProfessionalService"})
+@ComponentScan(basePackages = {"application","model", "repository","provider", "service", "healthProfessionalService", "patientService", "personService"})
 @EnableJpaRepositories(basePackages = "repository")
 @EntityScan(basePackages = "model")
 public class Application {
