@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,17 +10,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import repository.PersonDao;
 
 @Entity
 @Table(name="user")
-public class User {
+public class User implements UserDetails {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	@Column(name="user_id")
@@ -41,19 +53,18 @@ public class User {
 	@JoinColumn(name="person_id",insertable=false, updatable=false, referencedColumnName= "person_id")
 	private Person person;
 	
-	@Autowired
-	private static PersonDao personRepo;
+	@OneToOne(cascade=CascadeType.ALL)  
+    @JoinTable(name="user_role",  
+    	joinColumns={@JoinColumn(name="user_id", referencedColumnName="user_id")},  
+    	inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="role_id")})  
+    private Role role; 
 	
-	public static User create(String username, String email, String password, Person newPerson) throws Exception {
-        newPerson = personRepo.findByPersonId(newPerson.getPersonId());
-        if (newPerson == null) throw new Exception("Cannot create user. Person not found in the database.");
-        
+	public static User create(String username, String email, String password) throws Exception {
 		User user = new User();
 
         user.setUsername(username);
         user.setEmail(email);
         user.setPassword(password);
-        user.setPerson(newPerson);
         
         return user;
 	}
@@ -82,8 +93,14 @@ public class User {
 		this.username = newUsername;
 	}
 	
+	@JsonIgnore
 	public String getPassword() {
 		return this.password;
+	}
+	
+	@JsonIgnore
+	public String getSalt() {
+		return this.salt;
 	}
 	
 	public void setPassword(String password) throws Exception {
@@ -108,5 +125,42 @@ public class User {
 		} else {
 			this.email = email;
 		}
+	}
+	
+	public Role getRole() {
+		return this.role;
+	}
+	
+	public void setRole(Role newRole) {
+		this.role = newRole;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return AuthorityUtils.createAuthorityList(this.getRole().getDescription());
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 }

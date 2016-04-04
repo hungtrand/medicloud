@@ -11,8 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 import java.io.UnsupportedEncodingException;
@@ -24,11 +22,13 @@ import model.Contact;
 import model.HPSignUp;
 import model.HealthProfessional;
 import model.Person;
+import model.Role;
 import model.User;
 import provider.MessageResponse;
 import repository.ContactRepo;
 import repository.HPSignUp_repo;
 import repository.PersonDao;
+import repository.Role_repo;
 import repository.User_repo;
 
 @Configuration
@@ -47,6 +47,9 @@ public class HPSignUpService {
 	
 	@Autowired
 	private ContactRepo contactRepo;
+	
+	@Autowired
+	private Role_repo roleRepo;
 	
 	@Value("${client.root}")
 	private String clientRoot;
@@ -139,16 +142,40 @@ public class HPSignUpService {
 		
 	}
 	
+	/*
+	 * helper class: convert the account set up form into this class
+	 */
+	public static class accountSetupForm {
+		public String username;
+		public String password;
+		public String email;
+		
+		public accountSetupForm() {}
+		
+		/*public String getUsername() { return this.username; }
+		public String getEmail() { return this.email; }
+		public String getPassword() { return this.password; }
+		public void setUsername(String newUsername) { this.username = newUsername; }
+		public void setEmail (String newEmail) { this.email = newEmail; }
+		public void setPassword ( String newPassword) { this.password = newPassword; }*/
+	}
+	
 	@Transactional
 	@RequestMapping(value="/accountSetup/{email}/{token}", method=POST)
 	public MessageResponse setupSecurity(
-			@RequestBody User newUser, 
+			@RequestBody accountSetupForm requestForm, 
 			@PathVariable("email") String email, @PathVariable("token") String token) throws Exception 
 	{
 		MessageResponse mr = new MessageResponse();
 		
+//		Verbose
+		System.out.println("################################## NEW USER #################################");
+		System.out.println("Username: " + requestForm.username);
+		System.out.println("Email: " + requestForm.email);
+		System.out.println("Password: " + requestForm.password);
+		
 		HPSignUp hpSignup = hpsuRepo.findByEmail(email);
-		if (userRepo.findByUsername(newUser.getUsername()) instanceof User) {
+		if (userRepo.findByUsername(requestForm.username) instanceof User) {
 			mr.success = false;
 			mr.message = "duplicate";
 			return mr;
@@ -173,18 +200,24 @@ public class HPSignUpService {
 		if (nameParts.length > 1) lastName = nameParts[1];
 		
 		Person newPerson = Person.create(firstName, lastName);
-		personRepo.save(newPerson);
+		newPerson = personRepo.save(newPerson);
+
+		User u = User.create(requestForm.username, requestForm.email, requestForm.password);
+		u.setPerson(newPerson);
 		
-		newUser.setPerson(newPerson);
+		u = userRepo.save(u);
 		
-//		System.out.println("#### NEW USER ####" + newPerson.getPersonId() + newUser.getUsername() +" " + email +" "+ newUser.getPassword());
-//		User u = User.create(newUser.getUsername(), email, newUser.getPassword(), newPerson);
-		userRepo.save(newUser);
+		Role hpRole = roleRepo.findByDescription("ROLE_HP");
+		if (hpRole == null) {
+			hpRole = Role.create("ROLE_HP");
+		}
 		
-		HealthProfessional hp = HealthProfessional.create(newUser);
+		u.setRole(hpRole);
+		
+		HealthProfessional hp = HealthProfessional.create(u);
 		hp.setCdo(hpSignup.getBusinessName());
 		
-		Contact c = Contact.create(newUser);
+		Contact c = Contact.create(u);
 		c.setAddress(hpSignup.getBusinessAddress());
 		c.setPhone(hpSignup.getBusinessPhone());
 		

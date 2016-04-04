@@ -1,7 +1,5 @@
 package model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -133,6 +131,7 @@ public class Person {
 	
 	public static Person create(String firstName, String lastName) {
 		Person newPerson = new Person(firstName, lastName);
+		newPerson.verificationKey = "";
 		
 		return newPerson;
 	}
