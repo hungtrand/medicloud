@@ -1,13 +1,16 @@
-module.exports = function ($scope, $routeParams, $location, $rootScope, service) {
-		$(document).on('dblclick', function() {
-			console.log($routeParams);
-		})
-		console.log("Route params are: " + $routeParams.email);
-
-
-	console.log("here");
+module.exports = function ($scope, $routeParams, $route, $rootScope, service) {
 	$scope.response = "testin";
+	$scope.state = "";
 	$scope.registerPatient = function(newPatientData) {
-		service.patientSignUp(newPatientData);
+		newPatientData.email = $routeParams.email;
+		if (newPatientData.password === newPatientData.confPassword) {
+			service.patientSignUp(newPatientData);
+			$scope.state = 'success';
+			//window.location.href = "../patientCenter";
+
+		}
+		else {
+			$scope.state = 'mismatchedPasswords';
+		}
 	}
 }

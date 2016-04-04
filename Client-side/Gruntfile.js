@@ -11,6 +11,10 @@ module.exports = function(grunt) {
                 src: ["hp-center/app.dev.js"],
                 dest: "hp-center/app.js"
             },
+	    patientCenter: {
+		src: ["patientCenter/app.dev.js"],
+		dest: "patientCenter/app.js"
+	    },
             patientSignUp: {
                 src: ["patientSignUp/app.dev.js"],
                 dest: "patientSignUp/app.js"
@@ -29,13 +33,17 @@ module.exports = function(grunt) {
 		        files: ["hp-sign-in/**/*.js", "!hp-sign-in/app.js"],
 		        tasks: ["browserify:hpSignIn"]
 	        },
-             hpCenter: {
+                hpCenter: {
 		        files: ["hp-center/**/*.js", "!hp-center/app.js"],
 		        tasks: ["browserify:hpCenter"]
 	        },
-            patientSignUp: {
-                files: ["patientSignUp/**n/*.js", "!patientSignUp/app.js"],
-                tasks: ["browserify:patientSignUp"]
+		patientCenter: {
+			files: ["patientCenter/**/*.js", "!patientCenter/app.js"],
+			tasks: ["browserify:patientCenter"]
+		},
+                patientSignUp: {
+                	files: ["patientSignUp/**/*.js", "!patientSignUp/app.js"],
+                	tasks: ["browserify:patientSignUp"]
             }
         }
     });
