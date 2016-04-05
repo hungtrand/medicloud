@@ -5,11 +5,11 @@
 
 	var configuration = require('./configuration.js');
 
-	var app = angular.module('patientSignUp', ['ngRoute', 'ngResource', 'ngMessages']);
+	var app = angular.module('patientCenter', ['ngRoute', 'ngResource']);
 
-	app.config(['$routeProvider', '$resourceProvider', configuration]);
+	app.config(['$routeProvider', configuration]);
 
-	app.service('patientSignUpService', ['$http', '$resource', patientSignUpService]);
+	app.service('patientCenterService', ['$http', '$resource', patientCenterService]);
 
-	app.controller('patientSignUpController', ['$scope', '$routeParams', '$route', '$rootScope','patientSignUpService', patientSignUpController]);
+	app.controller('patientCenterController', ['$scope', '$routeParams', '$route', '$rootScope','patientCenterService', patientCenterController]);
 })();
