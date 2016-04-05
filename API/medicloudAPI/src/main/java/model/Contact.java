@@ -105,6 +105,7 @@ public class Contact {
 	public int getZip(){
 		return this.zip;
 	}
+
 	
 
 	
@@ -143,5 +144,8 @@ public class Contact {
 	public static Contact create(User u) {
 		return new Contact(u);
 
+	}
+	public void setUserId(int newUserId){
+		this.userId = newUserId;
 	}
 }

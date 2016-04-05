@@ -116,7 +116,6 @@ public class Patient {
 		Patient newPatient = new Patient();
 		newPatient.personId = p.getPersonId();
 		newPatient.hpId = hp.getHpId();
-		
 		return newPatient;
 	}
 }

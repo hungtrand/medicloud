@@ -45,6 +45,8 @@ public class User {
 	@Column(name="person_id")
 	private int personId;
 	
+	
+	
 	@Autowired
 	private static PersonDao personRepo;
 	
@@ -66,6 +68,7 @@ public class User {
 	}
 	
 	
+	
 	public void setPersonId(int newPersonId){
 		this.personId = newPersonId;
 	}
@@ -78,6 +81,10 @@ public class User {
 		return this.person;
 	}
 
+	
+	public int getPersonId(){
+		return this.person.getPersonId();
+	}
 	public int getUserId() {
 		return this.userId;
 	}
@@ -110,7 +117,9 @@ public class User {
 	public String getEmail() {
 		return this.email;
 	}
-	
+	public void setUserId(int newUserId){
+		this.userId = newUserId;
+	}
 	public void setEmail(String email) throws Exception {
 		String regexEmailPat = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 		Pattern emailPat = Pattern.compile(regexEmailPat);

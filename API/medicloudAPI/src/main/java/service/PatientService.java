@@ -96,9 +96,9 @@ public class PatientService {
 	 */
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public List<Patient> getPatientHealthHistory(){
-		Iterator<Patient> temp =  new ArrayList<Patient>();
-		temp =  patientRepo.findAll();
-		return (List<Patient>) temp;
+		List<Patient> temp = new ArrayList<Patient>();
+		temp =  (List<Patient>) patientRepo.findAll();
+		return  temp;
 		//return patientRepo.findByPatientId(patientId);
 	}
 	
