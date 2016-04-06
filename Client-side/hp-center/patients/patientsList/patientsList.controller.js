@@ -13,28 +13,27 @@ module.exports = function($scope, $rootScope, service) {
     var validEmail = false;
     $('#patientSuccessAlert').hide();
     $('#patientFailureAlert').hide();
-      
+
     $scope.clicked = function(patient) {
-      $scope.contactClicked = true;
-      $scope.selectedPatient = patient;
+        $scope.contactClicked = true;
+        $scope.selectedPatient = patient;
     }
 
     $rootScope.$on('patientAdded', function() {
-      $scope.modalShown = false;
+        $scope.modalShown = false;
     });
 
     $scope.addPatient = function(newPatientData) {
-      service.addPatient(newPatientData);
-      $('#AddPatientForm')[0].reset();
+        service.addPatient(newPatientData);
+        $('#AddPatientForm')[0].reset();
     }
 
     function getPatients() {
-      service.getPatients().onSuccess(function(patient) {
-        $scope.patientList = service.patients;
-        console.log($scope.patientList);
-      })
-      .onFailure(function(error) {
-        console.log(error);
-      });
+        service.getPatients().onSuccess(function(patient) {
+                $scope.patientList = service.patients;
+            })
+            .onFailure(function(error) {
+                console.log(error);
+            });
     }
 }

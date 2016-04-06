@@ -1,4 +1,6 @@
 module.exports = function() {
+	var auth = require("../../Shared/authorization.interceptor");
+
 	var main_ctrl = require(".//main.controller");
 	var modal_dir = require("./../share/modal.directive");
 	var patient_serv = require("./patient.service");
@@ -13,13 +15,15 @@ module.exports = function() {
     
         // initialize angular module 
 	var app = angular.module('hpPatient', ['ngRoute', 'ngResource']);
-	app.config(['$routeProvider', function($routeProvider) {
+	app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
 		'use strict';
 		$routeProvider
 			.when('/patient/:patient_id/:tab?', {
 				templateUrl: 'patient/',
 				controller: 'profile_ctrl'
 			});
+
+		$httpProvider.interceptors.push(['$q', '$location', auth]);
 	}]);
 
 	// services

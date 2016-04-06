@@ -1,8 +1,34 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+module.exports = function($q, $location) {
+	return {
+		'request': function(config) {
+			var credentials = sessionStorage.getItem("medicloudHealthProfessional");
+			// console.log("Credentials: " + credentials);
+			if (credentials) {
+				config.headers.Authorization = 'Basic ' + credentials;
+			}
+
+			return config || $q.when(config);
+		},
+		responseError: function(rejection) {
+
+			console.log("Found responseError: ", rejection);
+			if (rejection.status == 401) {
+
+				console.log("Access denied (error 401), please login again");
+				//$location.nextAfterLogin = $location.path();
+				window.location.href = '/sign-in/';
+			}
+			return $q.reject(rejection);
+		}
+	}
+}
+},{}],2:[function(require,module,exports){
 (function() {
 	// patients_module = require("./patients/patients.module");
 	var patient_module = require("./patient/patient.module");
 	var hpPatientList_module = require("./patients/patients.module");
+	var auth = require("../Shared/authorization.interceptor");
 
 	patient_module();
 	hpPatientList_module();
@@ -10,18 +36,20 @@
 	var app = new angular.module("hp-center", ['ngRoute', 'hpPatient', 'hpPatientList']);
 
 	// routing and navigation configuration
-	app.config(['$routeProvider', function($routeProvider) {
-		'use strict';
-		$routeProvider
-			.when('/', {
-				templateUrl: 'dashboard/'
-			})
-			.otherwise({
-				redirectTo: '/'
-			});
+	app.config(['$routeProvider', '$httpProvider',
+		function($routeProvider, $httpProvider) {
+			'use strict';
+			$routeProvider
+				.when('/', {
+					templateUrl: 'dashboard/'
+				})
+				.otherwise({
+					redirectTo: '/'
+				});
 
-	}]);
-
+			$httpProvider.interceptors.push(['$q', '$location', auth]);
+		}
+	]);
 	// directives
 
 	// services and factories
@@ -32,7 +60,7 @@
 	angular.bootstrap(window.document, ['hp-center']);
 
 })();
-},{"./patient/patient.module":9,"./patients/patients.module":13}],2:[function(require,module,exports){
+},{"../Shared/authorization.interceptor":1,"./patient/patient.module":10,"./patients/patients.module":14}],3:[function(require,module,exports){
 module.exports = function() {
 	var controller = function($scope, infermedicaConditionsService) {
 		$scope.waiting = false;
@@ -130,7 +158,7 @@ module.exports = function() {
 		controller: ['$scope', 'infermedicaConditions_serv', controller]
 	}
 }
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 module.exports = function($resource, $rootScope) {
 	var url_list = 'http://'+window.location.hostname+'\\:8080/conditions';
 	var url_single = 'http://'+window.location.hostname+'\\:8080/conditions/:condition_id';
@@ -160,7 +188,7 @@ module.exports = function($resource, $rootScope) {
 	service.fetchAll();	
 	return service;
 }
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports = function($resource, $rootScope) {
 	var url = "http://" + location.host + '/condition/:condition_id';
 
@@ -171,7 +199,7 @@ module.exports = function($resource, $rootScope) {
 
 	return client;
 }
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports = function($scope, patient_serv) {
 	$scope.conditions = patient_serv.data.conditions;
 	$scope.newConditions = [];
@@ -203,7 +231,7 @@ module.exports = function($scope, patient_serv) {
 		console.log('saved');
 	});
 }
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 module.exports = function() {
 	var controller = function($scope, condition_fact) {
 		$scope.mode = 'search';
@@ -257,7 +285,7 @@ module.exports = function() {
 		controller: ['$scope', 'condition_fact', controller]
 	}
 }
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 module.exports = function($scope, patient_serv) {
 	/* include files */
 	$scope.incConditionList = "patient/conditions/activeConditionList.html";
@@ -278,7 +306,7 @@ module.exports = function($scope, patient_serv) {
 		}
 	}
 }
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = function($scope, patient_serv) {
 	$scope.modal = {
 		show: false,
@@ -298,8 +326,10 @@ module.exports = function($scope, patient_serv) {
 		$scope.modal.show = true;
 	}
 }
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports = function() {
+	var auth = require("../../Shared/authorization.interceptor");
+
 	var main_ctrl = require(".//main.controller");
 	var modal_dir = require("./../share/modal.directive");
 	var patient_serv = require("./patient.service");
@@ -314,13 +344,15 @@ module.exports = function() {
     
         // initialize angular module 
 	var app = angular.module('hpPatient', ['ngRoute', 'ngResource']);
-	app.config(['$routeProvider', function($routeProvider) {
+	app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
 		'use strict';
 		$routeProvider
 			.when('/patient/:patient_id/:tab?', {
 				templateUrl: 'patient/',
 				controller: 'profile_ctrl'
 			});
+
+		$httpProvider.interceptors.push(['$q', '$location', auth]);
 	}]);
 
 	// services
@@ -347,7 +379,7 @@ module.exports = function() {
 	;
 }
 
-},{"./../conditionSearch/conditionSearch.directive":2,"./../conditionSearch/infermedicaConditions.service":3,"./../share/modal.directive":16,".//main.controller":7,"./conditions/activeCondition.factory":4,"./conditions/activeConditionList.controller":5,"./conditions/newActiveCondition.directive":6,"./observations/observations.controller":8,"./patient.service":10,"./profile/profile.controller":11}],10:[function(require,module,exports){
+},{"../../Shared/authorization.interceptor":1,"./../conditionSearch/conditionSearch.directive":3,"./../conditionSearch/infermedicaConditions.service":4,"./../share/modal.directive":17,".//main.controller":8,"./conditions/activeCondition.factory":5,"./conditions/activeConditionList.controller":6,"./conditions/newActiveCondition.directive":7,"./observations/observations.controller":9,"./patient.service":11,"./profile/profile.controller":12}],11:[function(require,module,exports){
 module.exports = function($resource, $rootScope) {
 	var url = 'http://'+window.location.hostname+'\\:8080/api/hp/:hpId/patients/:patientId';
 	var client = $resource(
@@ -375,7 +407,7 @@ module.exports = function($resource, $rootScope) {
 	}
 }
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 module.exports = function($scope, patient_serv) {
 	
 	var sync_patient_data = function() {
@@ -402,7 +434,7 @@ module.exports = function($scope, patient_serv) {
 	});
 }
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 module.exports = function() {
     return {
         restrict: 'E',
@@ -448,21 +480,26 @@ module.exports = function() {
     };
 }
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = function() {
 	var patientsList_ctrl = require("./patientsList/patientsList.controller");
 	var patientsListService = require("./patientsList/patientsList.service");
 	var formAddPatient_dir = require("./formAddPatient/formAddPatient.directive");
-	
+	var auth = require("../../Shared/authorization.interceptor");
+
 	var app = angular.module('hpPatientList', ['ngRoute']);
-	app.config(['$routeProvider', function($routeProvider) {
-		'use strict';
-		$routeProvider
-			.when('/patients/', {
-				templateUrl: 'patients/',
-				controller: 'patientsList_ctrl'
-			});
-	}])
+	app.config(['$routeProvider', '$httpProvider',
+		function($routeProvider, $httpProvider) {
+			'use strict';
+			$routeProvider
+				.when('/patients/', {
+					templateUrl: 'patients/',
+					controller: 'patientsList_ctrl'
+				});
+
+			$httpProvider.interceptors.push(['$q', '$location', auth]);
+		}
+	])
 
 	// services
 	app.service('patientsListService', ["$http", "$rootScope", "$resource", patientsListService]);
@@ -474,8 +511,7 @@ module.exports = function() {
 	app.controller("patientsList_ctrl", ['$scope', '$rootScope', 'patientsListService', patientsList_ctrl]);
 
 }
-
-},{"./formAddPatient/formAddPatient.directive":12,"./patientsList/patientsList.controller":14,"./patientsList/patientsList.service":15}],14:[function(require,module,exports){
+},{"../../Shared/authorization.interceptor":1,"./formAddPatient/formAddPatient.directive":13,"./patientsList/patientsList.controller":15,"./patientsList/patientsList.service":16}],15:[function(require,module,exports){
 module.exports = function($scope, $rootScope, service) {
     $scope.patientList = [];
     getPatients();
@@ -491,100 +527,103 @@ module.exports = function($scope, $rootScope, service) {
     var validEmail = false;
     $('#patientSuccessAlert').hide();
     $('#patientFailureAlert').hide();
-      
+
     $scope.clicked = function(patient) {
-      $scope.contactClicked = true;
-      $scope.selectedPatient = patient;
+        $scope.contactClicked = true;
+        $scope.selectedPatient = patient;
     }
 
     $rootScope.$on('patientAdded', function() {
-      $scope.modalShown = false;
+        $scope.modalShown = false;
     });
 
     $scope.addPatient = function(newPatientData) {
-      service.addPatient(newPatientData);
-      $('#AddPatientForm')[0].reset();
+        service.addPatient(newPatientData);
+        $('#AddPatientForm')[0].reset();
     }
 
     function getPatients() {
-      service.getPatients().onSuccess(function(patient) {
-        $scope.patientList = service.patients;
-        console.log($scope.patientList);
-      })
-      .onFailure(function(error) {
-        console.log(error);
-      });
+        service.getPatients().onSuccess(function(patient) {
+                $scope.patientList = service.patients;
+            })
+            .onFailure(function(error) {
+                console.log(error);
+            });
     }
 }
-
-},{}],15:[function(require,module,exports){
-module.exports = function($http, $rootScope, $resource) {
-  var onSuccessFn;
-  var onFailureFn;
-    var url = 'http://'+window.location.hostname+':8080/hp/:hpId/patients/:patientId';
-  var service = {
-
-    patients: [
-      {firstName: "Peter", lastName: "Parker", email: "peterparker@gmail.com"},
-      {firstName: "Bruce", lastName: "Wayne", email: "brucewayne@gmail.com"}
-    ],
-
-    getPatients: function () {
-      var that = this;
-      var client = $resource(url, {
-	  hpId: 1
-      });
-
-      var promise = client.query().$promise;
-      promise.then(function(patient) {
-        that.patients = patient;
-        (onSuccessFn || angular.noop)();
-        onSuccessFn = null;
-        onFailureFn = null;
-      },function(error) {
-        (onFailureFn || angular.noop)(error);
-        onSuccessFn = null;
-        onFailureFn = null;
-      });
-
-      return this;
-    },
-
-    onSuccess: function(fn) {
-      onSuccessFn = fn;
-      return this;
-    },
-
-    onFailure: function(fn) {
-      onFailureFn = fn;
-      return this;
-    },
-
-    addPatient: function (patient) {
-      
-      $rootScope.$broadcast('patientAdded');
-      var client = $resource(url, { hpId: 1 } );
-      client.save(patient, 
-        function(response) {
-          if (response.personId) {
-            service.patients.push(patient);
-            $('#patientSuccessAlert').show();
-            setTimeout(function() {
-              $('#patientSuccessAlert').fadeOut('slow');
-            }, 3000);
-            
-          }
-          else {
-            $('#patientFailureAlert').show();
-          }
-          console.log(response);
-      });
-    }
-  }
-  return service;
-}
-
 },{}],16:[function(require,module,exports){
+module.exports = function($http, $rootScope, $resource) {
+    var onSuccessFn;
+    var onFailureFn;
+    var url = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/:patientId';
+    var service = {
+
+        patients: [{
+            firstName: "Peter",
+            lastName: "Parker",
+            email: "peterparker@gmail.com"
+        }, {
+            firstName: "Bruce",
+            lastName: "Wayne",
+            email: "brucewayne@gmail.com"
+        }],
+
+        getPatients: function() {
+            var that = this;
+            var client = $resource(url, {
+                hpId: 1
+            });
+
+            var promise = client.query().$promise;
+            promise.then(function(patient) {
+                that.patients = patient;
+                (onSuccessFn || angular.noop)();
+                onSuccessFn = null;
+                onFailureFn = null;
+            }, function(error) {
+                (onFailureFn || angular.noop)(error);
+                onSuccessFn = null;
+                onFailureFn = null;
+            });
+
+            return this;
+        },
+
+        onSuccess: function(fn) {
+            onSuccessFn = fn;
+            return this;
+        },
+
+        onFailure: function(fn) {
+            onFailureFn = fn;
+            return this;
+        },
+
+        addPatient: function(patient) {
+
+            $rootScope.$broadcast('patientAdded');
+            var client = $resource(url, {
+                hpId: 1
+            });
+            client.save(patient,
+                function(response) {
+                    if (response.personId) {
+                        service.patients.push(patient);
+                        $('#patientSuccessAlert').show();
+                        setTimeout(function() {
+                            $('#patientSuccessAlert').fadeOut('slow');
+                        }, 3000);
+
+                    } else {
+                        $('#patientFailureAlert').show();
+                    }
+                    console.log(response);
+                });
+        }
+    }
+    return service;
+}
+},{}],17:[function(require,module,exports){
 module.exports = function() {
 	return {
 		templateUrl: 'share/modal.template.html',
@@ -617,4 +656,4 @@ module.exports = function() {
 		}
 	}
 }
-},{}]},{},[1]);
+},{}]},{},[2]);
