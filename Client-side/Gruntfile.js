@@ -3,9 +3,9 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         browserify: {
-	        hpSignIn: {
-		        src: ["hp-sign-in/app.dev.js"],
-		        dest: "hp-sign-in/app.js"
+	        signin: {
+		        src: ["sign-in/app.dev.js"],
+		        dest: "sign-in/app.js"
 	        },
             hpCenter: {
                 src: ["hp-center/app.dev.js"],
@@ -26,12 +26,17 @@ module.exports = function(grunt) {
                 src: "hp-center/app.js",
                 dest: "hp-center/app.js"
             }
+            ,
+            signin: {
+                src: "sign-in/app.js",
+                dest: "sign-in/app.js"
+            }
         },
 
         watch: {
-	        hpSignIn: {
-		        files: ["hp-sign-in/**/*.js", "!hp-sign-in/app.js"],
-		        tasks: ["browserify:hpSignIn"]
+	        signin: {
+		        files: ["sign-in/**/*.js", "!sign-in/app.js"],
+		        tasks: ["browserify:signin"]
 	        },
                 hpCenter: {
 		        files: ["hp-center/**/*.js", "!hp-center/app.js"],
