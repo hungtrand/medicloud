@@ -69,13 +69,19 @@ module.exports = function($rootScope, signin_factory) {
 				function(response) {
 					if (response.hasOwnProperty('hpId')) {
 						var credentials = window.btoa(form.username + ":" + form.password);
-						sessionStorage.setItem("medicloudHealthProfessional", credentials);
+						sessionStorage.setItem("medicloud_user_credentials", credentials);
+						sessionStorage.setItem("medicloud_hp_id", response.hpId);
  						$rootScope.$broadcast("medicloud.healthprofessional.signin", response);
+					} else if (response.hasOwnProperty('patientId')) {
+						var credentials = window.btoa(form.username + ":" + form.password);
+						sessionStorage.setItem("medicloud_user_credentials", credentials);
+						sessionStorage.setItem("medicloud_patient_id", response.hpId);
+ 						$rootScope.$broadcast("medicloud.patient.signin", response);
 					}
 				}
 				,
 				function(response) {
-					$rootScope.$broadcast("medicloud.healthprofessional.signin", response);
+					$rootScope.$broadcast("medicloud.signin.error", response);
 				}
 			);
 
@@ -95,6 +101,16 @@ module.exports = function($scope, models) {
     	setTimeout(function() {
     		window.location.href = "/hp-center";
     	}, 2000);
+    });
+
+    $scope.$on("medicloud.patient.signin", function(evt, response) {	
+    	setTimeout(function() {
+    		window.location.href = "/patient-center";
+    	}, 2000);
+    });
+
+    $scope.$on("medicloud.signin.error", function(evt, response) {	
+    	$scope.error = response.data;
     });
 }
 },{}],6:[function(require,module,exports){
