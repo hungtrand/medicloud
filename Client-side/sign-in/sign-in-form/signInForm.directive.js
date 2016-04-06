@@ -1,10 +1,13 @@
 module.exports = function() {
-    var controller = require("./signInForm.controller");
 
-    return {
-	link: function($scope, $element, $attr) {
-	    console.log('sign in form directive initialized');
+	return {
+		link: function($scope, $element, $attr) {
+			$scope.submit = function() {
+				
+				$scope.signin();
+			}
+		}
+		,
+		controller: "signin_controller"
 	}
-	, controller: ["$scope", "models_service", "signIn_service", controller]
-    };
 }
