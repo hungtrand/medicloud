@@ -22,6 +22,7 @@ import org.springframework.security.crypto.bcrypt.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import provider.SessionIdentifierGenerator;
 import repository.PersonDao;
 
 @Entity
@@ -37,17 +38,23 @@ public class User implements UserDetails {
 	@Column(name="user_id")
 	private int userId=0;
 	
-	@Column(name="username", nullable=false, length=45)
+	@Column(name="username", nullable=true, length=45)
 	private String username;
 	
-	@Column(name="password", nullable=false, length=60)
+	@Column(name="password", nullable=true, length=60)
 	private String password;
 	
-	@Column(name="salt", nullable=false, length=60)
+	@Column(name="salt", nullable=true, length=60)
 	private String salt;
 	
 	@Column(name="email", nullable=false, length=45)
 	private String email;
+	
+	@Column(name="is_verified", nullable=false)
+	private boolean isVerified = false;
+	
+	@Column(name="verification_key", nullable=true, length=32)
+	private String verificationKey;
 	
 	@OneToOne(targetEntity=Person.class, cascade=CascadeType.ALL)
 	@JoinColumn(name="person_id",insertable=false, updatable=false, referencedColumnName= "person_id")
@@ -81,15 +88,12 @@ public class User implements UserDetails {
 		return this.userId;
 	}
 	
+	@JsonIgnore
 	public String getUsername() {
 		return this.username;
 	}
 	
-	public void setUsername(String newUsername) throws Exception {
-		if (newUsername.length() < 6) {
-			throw new Exception("Invalid username format.");
-		}
-		
+	public void setUsername(String newUsername) {
 		this.username = newUsername;
 	}
 	
@@ -103,13 +107,25 @@ public class User implements UserDetails {
 		return this.salt;
 	}
 	
-	public void setPassword(String password) throws Exception {
-		if (password.length() < 6) {
-			throw new Exception("Password is too weak.");
-		}
-		
+	public void setPassword(String password) {
 		this.salt = BCrypt.gensalt();
 		this.password = BCrypt.hashpw(password, this.salt);
+	}
+	
+	public boolean getIsVerified() {
+		return this.isVerified;
+	}
+	
+	public void setVerified(boolean isVerified) {
+		this.isVerified = isVerified;
+	}
+	
+	public String getVerificationKey() {
+		return this.verificationKey;
+	}
+	
+	public void setVerificationKey() {
+		this.verificationKey = SessionIdentifierGenerator.nextSessionId();
 	}
 	
 	public String getEmail() {

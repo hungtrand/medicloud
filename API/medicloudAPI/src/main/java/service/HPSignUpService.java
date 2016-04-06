@@ -27,6 +27,7 @@ import model.User;
 import provider.MessageResponse;
 import repository.ContactRepo;
 import repository.HPSignUp_repo;
+import repository.HealthProfessional_repo;
 import repository.PersonDao;
 import repository.Role_repo;
 import repository.User_repo;
@@ -44,6 +45,9 @@ public class HPSignUpService {
 	
 	@Autowired
 	private PersonDao personRepo;
+	
+	@Autowired
+	private HealthProfessional_repo hpRepo;
 	
 	@Autowired
 	private ContactRepo contactRepo;
@@ -216,6 +220,8 @@ public class HPSignUpService {
 		
 		HealthProfessional hp = HealthProfessional.create(u);
 		hp.setCdo(hpSignup.getBusinessName());
+		
+		hpRepo.save(hp);
 		
 		Contact c = Contact.create(u);
 		c.setAddress(hpSignup.getBusinessAddress());

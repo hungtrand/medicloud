@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,9 @@ import repository.PersonDao;
 import repository.PersonalViewRepo;
 
 import model.PersonalView;
+import model.User;
 import model.Person;
+import model.Contact;
 import model.HealthProfessional;
 import model.Note;
 import model.Patient;
@@ -68,14 +71,20 @@ public class PatientsCollection {
 		
 	}
 	
-	// POST: /api/hp/hpId/patients
+	public static class addPatientForm {
+		public String firstName;
+		public String lastName;
+		public String email;
+		public String birthdate;
+	}
+	
+	// POST: /api/hp/{hpId}/patients
+	@Transactional
 	@RequestMapping(value = "", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> addPatient(@PathVariable("hpId") int hpId, @RequestBody Person personToAdd) {
+	public ResponseEntity<?> addPatient(@PathVariable("hpId") int hpId, @RequestBody addPatientForm newPatientForm) throws Exception {
 		HealthProfessional hp = hpRepo.findByHpId(hpId);
-		personToAdd.setVerificationKey(SessionIdentifierGenerator.nextSessionId());
 		
-		
-		if (personDao.findByFirstName(personToAdd.getFirstName()) != null && personDao.findByLastName(personToAdd.getLastName()) != null && personDao.findByBirthdate(personToAdd.getBirthdate()) != null) {
+		if (personDao.findByFirstName(newPatientForm.firstName) != null && personDao.findByLastName(newPatientForm.lastName) != null && personDao.findByBirthdate(newPatientForm.birthdate) != null) {
 			MessageResponse mr = new MessageResponse();
 			mr.success = false;
 			mr.error = "Person Exists";
@@ -83,10 +92,15 @@ public class PatientsCollection {
 			return new ResponseEntity<MessageResponse>(mr, HttpStatus.BAD_REQUEST);
 		}
 		else {
-			Person personPatient = personDao.save(personToAdd);
+			Person p = Person.create(newPatientForm.firstName, newPatientForm.lastName);
+			p.setBirthdate(newPatientForm.birthdate);
+			personDao.save(p);
 			
-			Patient newPatient = Patient.create(personPatient, hp);
-			this.sendVerificationEmailForNewPatient(personToAdd);
+			User u = User.create(null, newPatientForm.email, null);
+			u.setVerificationKey();
+			
+			Patient newPatient = Patient.create(p, hp);
+			this.sendVerificationEmailForNewPatient(u);
 			
 			return new ResponseEntity<Patient>(newPatient, HttpStatus.OK);
 		}
@@ -94,12 +108,12 @@ public class PatientsCollection {
 	}
 	
 	//	helpers
-	private boolean sendVerificationEmailForNewPatient(Person personSU) {
+	private boolean sendVerificationEmailForNewPatient(User newPatientUser) {
 		String vMsg = "Please click on the following link (or copy & paste it to your browser's address bar): \n";
 		try {
 			vMsg += "http://localhost/patientSignUp/#/" 
-					+ URLEncoder.encode(personSU.getEmail(), "UTF-8") 
-					+  "?token=" + personSU.getVerificationKey();
+					+ URLEncoder.encode(newPatientUser.getEmail(), "UTF-8") 
+					+  "?token=" + newPatientUser.getVerificationKey();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			System.out.println("Unsupported Encoding UTF-8");
@@ -107,7 +121,7 @@ public class PatientsCollection {
 		
 		
 		SimpleMailMessage msg = new SimpleMailMessage();
-		msg.setTo(personSU.getEmail());
+		msg.setTo(newPatientUser.getEmail());
 		msg.setCc("medicloud.sjsu@gmail.com");
 		msg.setSubject("Verify your Medicloud account.");
 		msg.setText(vMsg);

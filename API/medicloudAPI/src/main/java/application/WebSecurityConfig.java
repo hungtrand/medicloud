@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,6 +17,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 
 import repository.User_repo;
 
@@ -33,20 +35,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-		.antMatchers("/", "/HPSignup/**").permitAll()
-        .antMatchers("/api/hp/**").hasAuthority("ROLE_HP")
-        .antMatchers("/api/patient/**").hasAuthority("ROLE_PATIENT")
-        .anyRequest().fullyAuthenticated()
-        .and()
-        .formLogin()
-        .loginPage("/login")
-        .failureUrl("/login?error")
-        .usernameParameter("email")
-        .permitAll()
-        .and()
-		.httpBasic().and().
-		csrf().disable();
+		http
+			.addFilterBefore(new SimpleCORSFilter(), ChannelProcessingFilter.class)
+			.authorizeRequests()
+			.antMatchers("/", "/HPSignup/**", "/signin/**").permitAll()
+			.antMatchers(HttpMethod.OPTIONS,"/api/**").permitAll()
+	        .antMatchers("/api/hp/**").hasAuthority("ROLE_HP")
+	        .antMatchers("/api/patient/**").hasAuthority("ROLE_PATIENT")
+	        .anyRequest().fullyAuthenticated()
+	        .and()
+			.httpBasic()
+			.and()
+			.csrf().disable();
 	}
 	
 	public class CustomAuthProvider implements AuthenticationProvider {
@@ -61,6 +61,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		public Authentication authenticate(final Authentication authentication) throws AuthenticationException {
 			final String name = authentication.getName();
 			final String password = authentication.getCredentials().toString();
+			
+			System.out.println("\n\n ******** New Request *********");
+			System.out.println(name);
+			System.out.println(password);
+			System.out.println("\n********************************\n");
 			
 			model.User u = userRepo.findByUsername(name);
 			

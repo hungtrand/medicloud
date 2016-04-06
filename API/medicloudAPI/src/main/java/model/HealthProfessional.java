@@ -90,6 +90,7 @@ public class HealthProfessional {
 	
 	public static HealthProfessional create(User user) throws Exception {
 		HealthProfessional newHP = new HealthProfessional(user);
+		newHP.userId = user.getUserId();
 		
 		return newHP;
 	}

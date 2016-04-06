@@ -10,4 +10,5 @@ import model.HealthProfessional;
 @Qualifier(value = "HealthProfessional_repo")
 public interface HealthProfessional_repo extends CrudRepository<HealthProfessional, String> {
     public HealthProfessional findByHpId(int hpId);
+    public HealthProfessional findByUserId(int userId);
 }
