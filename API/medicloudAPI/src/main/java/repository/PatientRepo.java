@@ -11,5 +11,7 @@ import model.Patient;
 public interface PatientRepo extends CrudRepository<Patient, String>{
 
 	public Patient findByHpIdAndPatientId(int hpId, int patientId);
+	public Patient findByPatientId(int patientId);
+	public Patient findByUserId(int userId);
 	public Iterable<Patient> findByHpId(int hpId);
 }

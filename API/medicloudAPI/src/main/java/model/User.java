@@ -60,6 +60,9 @@ public class User implements UserDetails {
 	@JoinColumn(name="person_id",insertable=false, updatable=false, referencedColumnName= "person_id")
 	private Person person;
 	
+	@Column(name="person_id")
+	private int personId;
+	
 	@OneToOne(cascade=CascadeType.ALL)  
     @JoinTable(name="user_role",  
     	joinColumns={@JoinColumn(name="user_id", referencedColumnName="user_id")},  
@@ -75,6 +78,15 @@ public class User implements UserDetails {
         
         return user;
 	}
+	public User(){
+		
+	}
+	
+	
+	
+	public void setPersonId(int newPersonId){
+		this.personId = newPersonId;
+	}
         
 	public void setPerson(Person newPerson) {
 		this.person = newPerson;
@@ -84,6 +96,10 @@ public class User implements UserDetails {
 		return this.person;
 	}
 
+	
+	public int getPersonId(){
+		return this.person.getPersonId();
+	}
 	public int getUserId() {
 		return this.userId;
 	}
@@ -131,7 +147,9 @@ public class User implements UserDetails {
 	public String getEmail() {
 		return this.email;
 	}
-	
+	public void setUserId(int newUserId){
+		this.userId = newUserId;
+	}
 	public void setEmail(String email) throws Exception {
 		String regexEmailPat = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 		Pattern emailPat = Pattern.compile(regexEmailPat);

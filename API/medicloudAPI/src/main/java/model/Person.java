@@ -39,6 +39,9 @@ public class Person {
 	@Column(name="last_name")
 	private String lastName;
 	
+	@Column(name="gender")
+	private String gender;
+	
 	@Column(name="birthdate")
 	private String birthdate;
 	
@@ -59,6 +62,9 @@ public class Person {
 		return this.contact;
 	}
 	
+	public String getGender(){
+		return this.gender;
+	}
 	
 	public String getMiddleName(){
 		return this.middleName;
@@ -73,6 +79,9 @@ public class Person {
 	}
 	public void setPersonId(int personId) {
 		this.personId = personId;
+	}
+	public void setGender(String newGender){
+		this.gender = newGender;
 	}
 	
 	public String getFirstName() {

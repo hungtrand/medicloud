@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import org.apache.activemq.filter.function.makeListFunction;
 
+
 @Entity
 @Table(name="patient")
 public class Patient {
@@ -34,6 +35,9 @@ public class Patient {
 	
 	@Column(name="person_id" )
 	private int personId;
+	
+	@Column(name="user_id")
+	private int userId;
 	
 	@Column(name="hp_id")
 	private int hpId;
@@ -59,6 +63,10 @@ public class Patient {
 		return this.activeConditions;
 	}
 	
+	public int getUserId(){
+		return this.userId;
+	}
+	
 	
 	/**
 	 * Get all the encounters of a patient.
@@ -77,7 +85,9 @@ public class Patient {
 		this.encounter.add(newEncounter);
 	}
 	
-	
+	public void setUserId(int newUserId){
+		this.userId = newUserId;
+	}
 	public void setPersonId(int newPersonId){
 		this.patientId = newPersonId;
 	}
@@ -86,6 +96,9 @@ public class Patient {
 		return this.person;
 	}
 	
+	public int getPersonId(){
+		return this.person.getPersonId();
+	}
 	
 	public void addActiveCondition(ActiveCondition activeCondtion){
 		this.activeConditions.add(activeCondtion);
@@ -103,7 +116,6 @@ public class Patient {
 		Patient newPatient = new Patient();
 		newPatient.personId = p.getPersonId();
 		newPatient.hpId = hp.getHpId();
-		
 		return newPatient;
 	}
 }

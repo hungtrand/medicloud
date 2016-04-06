@@ -29,7 +29,7 @@ import repository.NoteRepo;
 import repository.PatientRepo;
 import repository.PersonDao;
 import repository.PersonalViewRepo;
-
+import repository.User_repo;
 import model.PersonalView;
 import model.User;
 import model.Person;
@@ -51,6 +51,9 @@ public class PatientsCollection {
 	
 	@Autowired
 	private HealthProfessional_repo hpRepo;
+	
+	@Autowired
+	private User_repo userRepo;
 	
 	@Value("${client.root}")
 	private String clientRoot;
@@ -107,6 +110,32 @@ public class PatientsCollection {
 		
 	}
 	
+//	@RequestMapping(value="/existingPatient", method=RequestMethod.POST)
+//	public ResponseEntity<?> addExistingPatient(@PathVariable("hpId")int hpId, @RequestBody Patient patientToAdd){
+//		HealthProfessional hp = hpRepo.findByHpId(hpId);
+//		
+//		
+//		
+//		if (personDao.findByFirstName(personToAdd.getFirstName()) != null && personDao.findByLastName(personToAdd.getLastName()) != null && personDao.findByBirthdate(personToAdd.getBirthdate()) != null) {
+//			MessageResponse mr = new MessageResponse();
+//			mr.success = false;
+//			mr.error = "Person Exists";
+//			
+//			return new ResponseEntity<MessageResponse>(mr, HttpStatus.BAD_REQUEST);
+//		}
+//		else {
+//			Person personPatient = personDao.save(personToAdd);
+//			
+//			Patient newPatient = Patient.create(personPatient, hp);
+//			this.sendVerificationEmailForNewPatient(personToAdd);
+//			
+//			return new ResponseEntity<Patient>(newPatient, HttpStatus.OK);
+//		}
+//		return null;
+//	}
+	
+	
+	
 	//	helpers
 	private boolean sendVerificationEmailForNewPatient(User newPatientUser) {
 		String vMsg = "Please click on the following link (or copy & paste it to your browser's address bar): \n";
@@ -137,6 +166,11 @@ public class PatientsCollection {
             return false;
         }
 	}
+	
+	
+	
+	
+	
 	
 
 }
