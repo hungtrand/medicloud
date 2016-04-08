@@ -15,7 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import model.HealthProfessional;
@@ -41,17 +41,17 @@ public class Appointment {
 	@Column(name="hp_name")
 	private String hpName;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name="hpAppointment", joinColumns = {@JoinColumn(name ="appointmentId")}, inverseJoinColumns={@JoinColumn(name="hp_id")})
-	private Set<HealthProfessional> hp = new HashSet<HealthProfessional>(0);
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="hp_id", insertable = false, updatable=false)
+	private HealthProfessional hp; //= new HashSet<HealthProfessional>(0);
 	
 	@Column(name="hp_id")
 	private int hpId;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name="hpAppointment", joinColumns = {@JoinColumn(name="appointmentId")}, inverseJoinColumns={@JoinColumn(name="patient_id")})
-	private Set<Patient> patient = new HashSet<Patient>(0);
-	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="patient_id", insertable= false, updatable=false)
+	private Patient patient;
+
 	@Column(name="patient_id")
 	private int patientId;
 	
@@ -77,7 +77,7 @@ public class Appointment {
 	private String requestDate;
 	
 	public Appointment(){
-		this.getPatientId();
+		
 	}
 	
 	//Getters
@@ -87,20 +87,32 @@ public class Appointment {
 	public int getAppointmentId(){
 		return this.appointmentId;
 	}
-	public Set<HealthProfessional> getHealthProfessionalId(){
-		 return this.hp;
+//	public int getHealthProfessionalId(){
+//		 return this.hp.iterator().next().getHpId();
+//	}
+	
+	//HP relationshipid
+
+	//local hpid
+	public int getHPId(){
+		
+		return this.hpId;
+	}
+	
+	public int getPatientId(){
+		return this.patientId;
 	}
 
-	public Iterator<Patient> getPatientId(){
-		int temp = 0;
-		if(patient.iterator().hasNext()){
-			temp++;
-			//System.out.println("temp");
-			return this.patient.iterator();
-		}
-		
-		return null;
-	}
+//	public Iterator<Patient> getPatientId(){
+//		int temp = 0;
+//		if(patient.iterator().hasNext()){
+//			temp++;
+//			//System.out.println("temp");
+//			return this.patient.iterator();
+//		}
+//		
+//		return null;
+//	}
 	
 	public String getPatientName(){
 		return this.patientName;
@@ -137,7 +149,7 @@ public class Appointment {
 	public void setPatient(int newPatientId){
 		this.patientId = newPatientId;
 	}
-	public void setHPId(int newHPId){
+	public void setHpId(int newHPId){
 		this.hpId = newHPId;
 	}
 	public void setPatientName(String newPatientName){

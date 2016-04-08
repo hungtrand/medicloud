@@ -56,7 +56,7 @@ public class PersonService {
 	@RequestMapping(value="/{user_id}", method =RequestMethod.GET)
 	public List<Contact> getUser(@PathVariable("user_id")int userId){
 		List<Contact> temp = new ArrayList<Contact>();
-		int findUser = userRepo.findByUserId(userId).getUserId();
+		
 		
 			temp = contactRepo.findByUserId(userId);
 			return temp;

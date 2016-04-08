@@ -36,6 +36,12 @@ public class Patient {
 	@Column(name="person_id" )
 	private int personId;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="user_id", insertable=false, updatable=false)
+	private User user;
+
+	
+	
 	@Column(name="user_id")
 	private int userId;
 	
@@ -63,8 +69,12 @@ public class Patient {
 		return this.activeConditions;
 	}
 	
+	public User getUser(){
+		return this.user;
+	}
+	
 	public int getUserId(){
-		return this.userId;
+		return this.user.getUserId();
 	}
 	
 	

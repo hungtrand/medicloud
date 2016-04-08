@@ -25,6 +25,7 @@ public class HealthProfessional {
 	
 	@Column(name="license")
 	private String license;
+
 	
 	@OneToOne(targetEntity=User.class, cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id",insertable=false, updatable=false, referencedColumnName= "user_id")
@@ -59,6 +60,8 @@ public class HealthProfessional {
 		this.user = user;
 //>>>>>>> 6cc86bf898d374e3c75351459e6fd861e4d46dd9
 	}
+	
+	
 	
 	public int getHpId(){
 		return this.hpId;
