@@ -2,11 +2,11 @@
 	// patients_module = require("./patients/patients.module");
 	var patient_module = require("./patient/patient.module");
 	var hpPatientList_module = require("./patients/patients.module");
-
+	var hpCalendar_module = require('./calendar/calendar.module');
 	patient_module();
 	hpPatientList_module();
-
-	var app = new angular.module("hp-center", ['ngRoute', 'hpPatient', 'hpPatientList']);
+	hpCalendar_module();
+	var app = new angular.module("hp-center", ['ngRoute', 'hpPatient', 'hpPatientList', 'hpCalendar']);
 
 	// routing and navigation configuration
 	app.config(['$routeProvider', function($routeProvider) {
