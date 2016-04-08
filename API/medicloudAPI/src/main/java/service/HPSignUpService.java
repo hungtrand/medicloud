@@ -182,7 +182,7 @@ public class HPSignUpService {
 		userRepo.save(newUser);
 		
 		HealthProfessional hp = HealthProfessional.create(newUser);
-		hp.setCdo(hpSignup.getBusinessName());
+		
 		
 		Contact c = Contact.create(newUser);
 		c.setAddress(hpSignup.getBusinessAddress());

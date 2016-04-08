@@ -28,8 +28,9 @@ import repository.NoteRepo;
 import repository.PatientRepo;
 import repository.PersonDao;
 import repository.PersonalViewRepo;
-
+import repository.User_repo;
 import model.PersonalView;
+import model.User;
 import model.Person;
 import model.HealthProfessional;
 import model.Note;
@@ -48,6 +49,9 @@ public class PatientsCollection {
 	
 	@Autowired
 	private HealthProfessional_repo hpRepo;
+	
+	@Autowired
+	private User_repo userRepo;
 	
 	@Value("${client.root}")
 	private String clientRoot;
@@ -68,9 +72,11 @@ public class PatientsCollection {
 		
 	}
 	
+
 	// POST: /api/hp/hpId/patients
 	@RequestMapping(value = "", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> addPatient(@PathVariable("hpId") int hpId, @RequestBody Person personToAdd) {
+
 		HealthProfessional hp = hpRepo.findByHpId(hpId);
 		personToAdd.setVerificationKey(SessionIdentifierGenerator.nextSessionId());
 		
@@ -92,6 +98,32 @@ public class PatientsCollection {
 		}
 		
 	}
+	
+//	@RequestMapping(value="/existingPatient", method=RequestMethod.POST)
+//	public ResponseEntity<?> addExistingPatient(@PathVariable("hpId")int hpId, @RequestBody Patient patientToAdd){
+//		HealthProfessional hp = hpRepo.findByHpId(hpId);
+//		
+//		
+//		
+//		if (personDao.findByFirstName(personToAdd.getFirstName()) != null && personDao.findByLastName(personToAdd.getLastName()) != null && personDao.findByBirthdate(personToAdd.getBirthdate()) != null) {
+//			MessageResponse mr = new MessageResponse();
+//			mr.success = false;
+//			mr.error = "Person Exists";
+//			
+//			return new ResponseEntity<MessageResponse>(mr, HttpStatus.BAD_REQUEST);
+//		}
+//		else {
+//			Person personPatient = personDao.save(personToAdd);
+//			
+//			Patient newPatient = Patient.create(personPatient, hp);
+//			this.sendVerificationEmailForNewPatient(personToAdd);
+//			
+//			return new ResponseEntity<Patient>(newPatient, HttpStatus.OK);
+//		}
+//		return null;
+//	}
+	
+	
 	
 	//	helpers
 	private boolean sendVerificationEmailForNewPatient(Person personSU) {
@@ -123,6 +155,11 @@ public class PatientsCollection {
             return false;
         }
 	}
+	
+	
+	
+	
+	
 	
 
 }

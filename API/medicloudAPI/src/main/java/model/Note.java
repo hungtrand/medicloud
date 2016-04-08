@@ -54,11 +54,7 @@ public class Note {
 	public String getDateCreated(){
 		return this.create;
 	}
-	
-//	public Timestamp setDateCreated(){
-//		Date now = new Date();
-//		return this.create = new Timestamp(now.getTime());
-//	}
+
 
 	public int getObservationId(){
 		return this.observation.getObsId();

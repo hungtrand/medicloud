@@ -36,29 +36,24 @@ public class ActiveCondition {
 	@Column(name="patient_id")
 	private int patientId;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="start_obs_id",nullable = true, insertable=false, updatable=false)
 	private Observation sObservation;
 	
-	@Column(name="start_obs_id")
-	private int startObsId;
-	
-	@OneToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="end_obs_id", nullable= true, insertable=false, updatable=false)
 	private Observation eObservation;
-	
-	@Column(name="end_obs_id")
-	private int endObsId;
+
 	
 	@Column(name="description")
 	private String description;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="condition_id", nullable=true, insertable=false, updatable=false)
-	private Condition condition;
-	
-	@Column(name="condition_id")
-	private int conditionId;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="condition_id", nullable=true, insertable=false, updatable=false)
+//	private Condition condition;
+//	
+//	@Column(name="condition_id")
+//	private int conditionId;
 	
 	
 //	public int getConditionId(){
@@ -73,34 +68,20 @@ public class ActiveCondition {
 		return this.activeConditionId;
 	}
 	
-	public Observation getEndObsId(){
-		return this.eObservation;
-	}
+//
 	
-	public Observation getStartObsId(){
+	public Observation getStartObservation(){
 		return this.sObservation;
 	}
-	
-//	public int getEndObsId(){
-//		return this.eObservation.getObsId();
-//	}
-	
-//	public void setConditionId(int newConditionId){
-//		this.conditionId = newConditionId;
-//	}
-	
-	public void setStarObsId(int newStartObsId){
-		this.startObsId = newStartObsId;
+	public Observation getEndObservation(){
+		return this.eObservation;
 	}
-	
-	public void setEndObsId(int newEndObsId){
-		this.endObsId = newEndObsId;
+	public void setStartObsId(int sid){
+		this.sObservation.setObsId(sid);;
 	}
-	
-//	public void setEndObsId(int newEndObsId){
-//		this.endObsId = newEndObsId;
-//	}
-	
+	public void setEndObsId(int eid){
+		this.eObservation.setObsId(eid);
+	}
 	public void setPatientId(int newPatientId){
 		this.patientId = newPatientId;
 	}
@@ -109,7 +90,7 @@ public class ActiveCondition {
 		this.description = newDescription;
 	}
 	public void setConditionId(int newConditionId){
-		this.conditionId = newConditionId;
+//		this.conditionId = newConditionId;
 	}
 	
 	

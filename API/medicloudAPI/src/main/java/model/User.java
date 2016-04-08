@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -37,9 +38,14 @@ public class User {
 	@Column(name="email", nullable=false, length=45)
 	private String email;
 	
-	@OneToOne(targetEntity=Person.class, cascade=CascadeType.ALL)
-	@JoinColumn(name="person_id",insertable=false, updatable=false, referencedColumnName= "person_id")
+	@ManyToOne(targetEntity=Person.class, cascade=CascadeType.ALL)
+	@JoinColumn(name="person_id",insertable= false, updatable= false, referencedColumnName= "person_id")
 	private Person person;
+	
+	@Column(name="person_id")
+	private int personId;
+	
+	
 	
 	@Autowired
 	private static PersonDao personRepo;
@@ -57,6 +63,15 @@ public class User {
         
         return user;
 	}
+	public User(){
+		
+	}
+	
+	
+	
+	public void setPersonId(int newPersonId){
+		this.personId = newPersonId;
+	}
         
 	public void setPerson(Person newPerson) {
 		this.person = newPerson;
@@ -66,6 +81,10 @@ public class User {
 		return this.person;
 	}
 
+	
+	public int getPersonId(){
+		return this.person.getPersonId();
+	}
 	public int getUserId() {
 		return this.userId;
 	}
@@ -98,7 +117,9 @@ public class User {
 	public String getEmail() {
 		return this.email;
 	}
-	
+	public void setUserId(int newUserId){
+		this.userId = newUserId;
+	}
 	public void setEmail(String email) throws Exception {
 		String regexEmailPat = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 		Pattern emailPat = Pattern.compile(regexEmailPat);
