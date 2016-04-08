@@ -15,7 +15,7 @@ import model.User;
 import model.Patient;
 import model.Person;
 import repository.PersonDao;
-import repository.ContactRepo;
+import repository.Contact_repo;
 import repository.PatientRepo;
 import repository.User_repo;
 
@@ -25,16 +25,16 @@ public class PersonService {
 
 	@Autowired
 	private PatientRepo patientRepo;
-	
+
 	@Autowired
-	private ContactRepo contactRepo;
-	
+	private Contact_repo contactRepo;
+
 	@Autowired
 	private PersonDao personRepo;
-	
+
 	@Autowired
 	private User_repo userRepo;
-	
+
 	/**
 	 * 
 	 * Create new Contact information for patients.
@@ -42,28 +42,28 @@ public class PersonService {
 	 * @return - new patient information.
 	 * 
 	 */
-//	@RequestMapping(value="/contact", method=RequestMethod.POST)
-//	public void setNewContactInformation(@PathVariable("user_id")int userId, 
-//			@RequestBody Contact newContact){
-//		
-//		Contact saveContact = new Contact();
-//		newContact.setPersonId(user);
-//		newContact.setPersonId(patientRepo.findByPatientId(patientId).getPersonId());
-//		newContact.setLatestUpdated();
-//		saveContact = contactRepo.save(newContact);
-//	}
-	
+	//	@RequestMapping(value="/contact", method=RequestMethod.POST)
+	//	public void setNewContactInformation(@PathVariable("user_id")int userId, 
+	//			@RequestBody Contact newContact){
+	//		
+	//		Contact saveContact = new Contact();
+	//		newContact.setPersonId(user);
+	//		newContact.setPersonId(patientRepo.findByPatientId(patientId).getPersonId());
+	//		newContact.setLatestUpdated();
+	//		saveContact = contactRepo.save(newContact);
+	//	}
+
 	@RequestMapping(value="/{user_id}", method =RequestMethod.GET)
 	public List<Contact> getUser(@PathVariable("user_id")int userId){
 		List<Contact> temp = new ArrayList<Contact>();
-		int findUser = userRepo.findByUserId(userId).getUserId();
-		
-			temp = contactRepo.findByUserId(userId);
-			return temp;
-		
+		User findUser = userRepo.findByUserId(userId);
+
+		temp = contactRepo.findByPerson(findUser.getPerson());
+		return temp;
+
 
 	}
-	
+
 	//----------------------- Post method-----------------------------
 	/**
 	 * Add new user Contact information.
@@ -71,37 +71,40 @@ public class PersonService {
 	 * @param newContact
 	 */
 	@RequestMapping(value="/{user_id}/contact", method=RequestMethod.POST)
-	public void setNewUserContact(@PathVariable("user_id")int userId, @RequestBody Contact newContact){
-		Contact temp = new Contact();
-		int findPerson = userRepo.findByUserId(userId).getPersonId();
-				
-		newContact.setPersonId(findPerson);
-		newContact.setUserId(userId);
+	public void setNewUserContact(@PathVariable("user_id")int userId, @RequestBody Contact newContact) {
+		User u = userRepo.findByUserId(userId);
+
+		newContact.setPerson(u.getPerson());
 		newContact.setLatestUpdated();
-		temp = newContact;
-		contactRepo.save(temp);
-		
+
+		contactRepo.save(newContact);
+
 	}
-	
+
 	//---------------------------- PUT method -------------------------
 	@RequestMapping(value="/{user_id}/contacts/{contact_id}", method = RequestMethod.PUT)
 	public void updateUserContact(@PathVariable("user_id")int userId, @PathVariable("contact_id")int contactId,
 			@RequestBody Contact updateContact){
-		Contact temp = new Contact();
-		int findPerson = userRepo.findByUserId(userId).getPersonId();
-		temp = contactRepo.findByContactIdAndUserIdAndPersonId(contactId, userId, findPerson);
+		
+		Contact temp = contactRepo.findByContactId(contactId);
+		
 		if(temp != null){
-		updateContact.setPersonId(findPerson);
-		updateContact.setContactId(contactId);
-		updateContact.setUserId(userId);
-		updateContact.setLatestUpdated();
-		contactRepo.save(updateContact);
+			temp.setEmail(updateContact.getEmail());
+			temp.setAddress(updateContact.getAddress());
+			temp.setCity(updateContact.getCity());
+			temp.setCountry(updateContact.getCountry());
+			temp.setPhone(updateContact.getPhone());
+			temp.setState(updateContact.getState());
+			temp.setZip(updateContact.getZip());
+			
+			temp.setLatestUpdated();
+			contactRepo.save(temp);
 		}else {
 			System.out.println("User does not exists.");
 		}
-		
+
 	}
-	
+
 	// Adding 
-	
+
 }

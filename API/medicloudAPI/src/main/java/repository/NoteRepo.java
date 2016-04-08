@@ -11,4 +11,4 @@ import model.Note;
 public interface NoteRepo extends CrudRepository<Note, String>{
 	public Note findByCreator(String creator);
 	public  Note findByNoteId(int noteId); 
-	}
+}

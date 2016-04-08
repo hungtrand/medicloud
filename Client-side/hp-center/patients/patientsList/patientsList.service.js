@@ -1,6 +1,7 @@
 module.exports = function($http, $rootScope, $resource) {
     var onSuccessFn;
     var onFailureFn;
+    var hpId = sessionStorage.getItem("medicloud_hp_id");
     var url = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/:patientId';
     var service = {
 
@@ -17,7 +18,7 @@ module.exports = function($http, $rootScope, $resource) {
         getPatients: function() {
             var that = this;
             var client = $resource(url, {
-                hpId: 1
+                hpId: hpId
             });
 
             var promise = client.query().$promise;
@@ -49,7 +50,7 @@ module.exports = function($http, $rootScope, $resource) {
 
             $rootScope.$broadcast('patientAdded');
             var client = $resource(url, {
-                hpId: 1
+                hpId: hpId
             });
             client.save(patient,
                 function(response) {

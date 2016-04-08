@@ -1,27 +1,33 @@
 <form name="signinForm" action="javascript:void(0)"
-    ng-submit="submit()" mc-sign-in-form-directive> 
+    ng-submit="submit()" mc-sign-in-form-directive>
     <h1>Sign In</h1>
     <div class="panel panel-default text-center">
         <a href="/">
             <img src="../Assets/Logos/MediCloud_2_transparent.png" id="LogoPatientLogin" class="img-circle">
         </a>
         <div class="panel-body">
-            <div class="form-group" 
+            <div class="form-group"
                 ng-class="{ 'has-error': signinForm.inputUsername.$invalid && signinForm.inputUsername.$touched }">
-                <input class="form-control" type="text" name="inputUsername" 
-                    ng-model="form.username" 
-                    placeholder="Username" required>
+                <input class="form-control" type="text" name="inputUsername"
+                ng-model="form.username"
+                placeholder="Username" required>
             </div>
-
             <div class="form-group" ng-class="{ 'has-error': signinForm.inputPassword.$invalid && signinForm.inputPassword.$touched }">
                 <input class="form-control" type="password" name="inputPassword"
-                    ng-model="form.password" 
-                    placeholder="Password" ng-minlength="6" minlength="6" required>
-            </div> 
+                ng-model="form.password"
+                placeholder="Password" ng-minlength="6" minlength="6" required>
+            </div>
+            
+            <pre class="alert alert-danger" ng-if="error" style="word-wrap: break-word;">{{ error }}</pre>
+            <pre class="alert alert-success" ng-if="success" style="word-wrap: break-word;">Success! Redirecting...</pre>
 
-            <button type="submit" class="btn btn-primary">Login <i class="fa fa-fw fa-unlock-alt"></i></button>
+            <button type="submit" class="btn btn-primary" ng-if="!waiting">Login
+            <i class="fa fa-fw fa-unlock-alt"></i>
+            </button>
+            <button type="button" class="btn btn-default" ng-if="waiting"><i class="fa fa-spin fa-spinner"></i></button>
+            
             <!-- <a href="#" class="forgot-password">Forgot password?</a> -->
-	    <a href="../HPSignUp/" class="forgot-password">Sign up</a>
+            <a href="../HPSignUp/" class="forgot-password">Sign up</a>
         </div>
     </div>
 </form>

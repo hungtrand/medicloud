@@ -15,6 +15,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.apache.activemq.filter.function.makeListFunction;
+import org.springframework.data.annotation.Transient;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 
 @Entity
@@ -36,11 +42,12 @@ public class Patient {
 	@Column(name="person_id" )
 	private int personId;
 	
-	@Column(name="user_id")
-	private int userId;
-	
 	@Column(name="hp_id")
 	private int hpId;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="hp_id", insertable=false, updatable=false, referencedColumnName= "hp_id")
+	private HealthProfessional healthProfessional;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="patient_id")
@@ -63,11 +70,6 @@ public class Patient {
 		return this.activeConditions;
 	}
 	
-	public int getUserId(){
-		return this.userId;
-	}
-	
-	
 	/**
 	 * Get all the encounters of a patient.
 	 * @return - list of encounter.
@@ -85,19 +87,17 @@ public class Patient {
 		this.encounter.add(newEncounter);
 	}
 	
-	public void setUserId(int newUserId){
-		this.userId = newUserId;
-	}
 	public void setPersonId(int newPersonId){
 		this.patientId = newPersonId;
 	}
 	
-	public Person getProfile() {
-		return this.person;
+	public int getPersonId(){
+		return this.personId;
 	}
 	
-	public int getPersonId(){
-		return this.person.getPersonId();
+	@JsonIgnore
+	public Person getPerson() {
+		return this.person;
 	}
 	
 	public void addActiveCondition(ActiveCondition activeCondtion){
@@ -115,7 +115,33 @@ public class Patient {
 	public static Patient create(Person p, HealthProfessional hp) {
 		Patient newPatient = new Patient();
 		newPatient.personId = p.getPersonId();
+		newPatient.person = p;
+		
 		newPatient.hpId = hp.getHpId();
 		return newPatient;
+	}
+	
+	public String getFirstName() {
+		return this.person.getFirstName();
+	}
+	
+	public String getLastName() {
+		return this.person.getLastName();
+	}
+	
+	public String getEmail() {
+		List<Contact> contacts = this.person.getContacts();
+		if (contacts.isEmpty()) return null;
+		else return contacts.get(0).getEmail();
+	}
+	
+	public String getBirthdate() {
+		return this.person.getBirthdate();
+	}
+	
+	public Contact getContact() {
+		List<Contact> contacts = this.person.getContacts();
+		if (contacts.isEmpty()) return null;
+		else return contacts.get(0);
 	}
 }

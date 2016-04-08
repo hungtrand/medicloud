@@ -1,7 +1,7 @@
 module.exports = function($q, $location) {
 	return {
 		'request': function(config) {
-			var credentials = sessionStorage.getItem("medicloudHealthProfessional");
+			var credentials = sessionStorage.getItem("medicloud_user_credentials");
 			// console.log("Credentials: " + credentials);
 			if (credentials) {
 				config.headers.Authorization = 'Basic ' + credentials;

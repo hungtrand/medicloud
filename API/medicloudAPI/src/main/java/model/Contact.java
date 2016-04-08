@@ -28,20 +28,15 @@ public class Contact {
 	@Column(name="contact_id")
 	private int contactId = 0;
 	
-	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="person_id", updatable=false, insertable=false,referencedColumnName="person_id")
+	@JoinColumn(name="person_id", updatable=false, insertable=false, referencedColumnName="person_id")
 	private Person person;
 	
 	@Column(name="person_id")
 	private int personId;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="user_id", updatable=false, insertable=false, referencedColumnName="user_id")
-	private User user;
-	
-	@Column(name="user_id")
-	private int userId;
+	@Column(name="email")
+	private String email;
 	
 	@Column(name="phone")
 	private String phone;
@@ -68,22 +63,16 @@ public class Contact {
 	public Contact(){
 		
 	}
-	public Contact(User u) {
-		this.setUser(u);
-	}
-	
-	
 	
 	//Getters
 	public int getContactId(){
 		return this.contactId;
 	}
-	public int getUserId(){
-		return this.user.getUserId();
+	
+	public String getEmail() {
+		return this.email;
 	}
-	public int getPersonId(){
-		return this.person.getPersonId();
-	}
+	
 	public String getCountry(){
 		return this.country;
 	}
@@ -105,18 +94,11 @@ public class Contact {
 	public int getZip(){
 		return this.zip;
 	}
-
 	
-
-	
-	
-	//Setters
-	public void setContactId(int newContactID){
-		this.contactId = newContactID;
+	public void setEmail(String newEmail) {
+		this.email = newEmail;
 	}
-	public void setPersonId(int newPersonId){
-		this.personId = newPersonId;
-	}
+	
 	public void setAddress(String newAddress){
 		this.address = newAddress;
 	}
@@ -138,14 +120,15 @@ public class Contact {
 	public void setLatestUpdated(){
 		this.latestUpdate = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
 	}
-	public void setUser(User newUser) {
-		this.user = newUser;
+	public void setPerson(Person p) {
+		this.person = p;
 	}
-	public static Contact create(User u) {
-		return new Contact(u);
+	public static Contact create(Person p) {
+		Contact newContact = new Contact();
+		newContact.setPerson(p);
+		newContact.personId = p.getPersonId();
+		
+		return newContact;
 
-	}
-	public void setUserId(int newUserId){
-		this.userId = newUserId;
 	}
 }

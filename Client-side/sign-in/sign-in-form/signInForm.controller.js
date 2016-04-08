@@ -1,21 +1,35 @@
 module.exports = function($scope, models) {
+    $scope.waiting = false;
+    $scope.success = false;
+
     $scope.signin = function() {
-		models.signin($scope.form);
+        $scope.waiting = true;
+        models.signin($scope.form);
     }
 
-    $scope.$on("medicloud.healthprofessional.signin", function(evt, response) {	
-    	setTimeout(function() {
-    		window.location.href = "/hp-center";
-    	}, 2000);
+    $scope.$on("medicloud.healthprofessional.signin", function(evt, response) {
+        $scope.waiting = false;
+        $scope.success = true;
+        setTimeout(function() {
+            window.location.href = "/hp-center";
+        }, 2000);
     });
 
-    $scope.$on("medicloud.patient.signin", function(evt, response) {	
-    	setTimeout(function() {
-    		window.location.href = "/patient-center";
-    	}, 2000);
+    $scope.$on("medicloud.patient.signin", function(evt, response) {
+        $scope.waiting = false;
+        $scope.success = true;
+        setTimeout(function() {
+            window.location.href = "/patient-center";
+        }, 2000);
     });
 
-    $scope.$on("medicloud.signin.error", function(evt, response) {	
-    	$scope.error = response.data;
+    $scope.$on("medicloud.signin.error", function(evt, response) {
+        $scope.waiting = false;
+
+        if (response.data.error) {
+            $scope.error = response.data.error;
+        } else {
+            $scope.error = response.data;
+        }
     });
 }

@@ -24,6 +24,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import repository.Contact_repo;
 import repository.HealthProfessional_repo;
 import repository.NoteRepo;
 import repository.PatientRepo;
@@ -55,6 +56,9 @@ public class PatientsCollection {
 	@Autowired
 	private User_repo userRepo;
 	
+	@Autowired
+	private Contact_repo contactRepo;
+	
 	@Value("${client.root}")
 	private String clientRoot;
 	
@@ -63,6 +67,35 @@ public class PatientsCollection {
 	
 	public PatientsCollection() {
 		
+	}
+	
+	@Transactional
+	private Patient saveNewPatient(int hpId, addPatientForm newPatientForm) throws Exception {
+		HealthProfessional hp = hpRepo.findByHpId(hpId);
+		
+		Person p = Person.create(newPatientForm.firstName, newPatientForm.lastName);
+		p.setBirthdate(newPatientForm.birthdate);
+		p = personDao.save(p);
+		
+		User u = User.create(null, newPatientForm.email, null, p);
+		u.setPerson(p);
+		u.setVerificationKey();
+		
+		u = userRepo.save(u);
+		
+		Contact c = Contact.create(p);
+		c.setEmail(newPatientForm.email);
+		
+		c = contactRepo.save(c);
+		
+		Patient newPatient = Patient.create(p, hp);
+		newPatient = patientRepo.save(newPatient);
+		
+		if (p != null && u != null && newPatient != null && c != null) {
+			this.sendVerificationEmailForNewPatient(u);
+		}
+		
+		return newPatient;
 	}
 	
 	// GET [collections]: /api/hp/{hpId}/patients
@@ -82,7 +115,6 @@ public class PatientsCollection {
 	}
 	
 	// POST: /api/hp/{hpId}/patients
-	@Transactional
 	@RequestMapping(value = "", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> addPatient(@PathVariable("hpId") int hpId, @RequestBody addPatientForm newPatientForm) throws Exception {
 		HealthProfessional hp = hpRepo.findByHpId(hpId);
@@ -95,46 +127,13 @@ public class PatientsCollection {
 			return new ResponseEntity<MessageResponse>(mr, HttpStatus.BAD_REQUEST);
 		}
 		else {
-			Person p = Person.create(newPatientForm.firstName, newPatientForm.lastName);
-			p.setBirthdate(newPatientForm.birthdate);
-			personDao.save(p);
-			
-			User u = User.create(null, newPatientForm.email, null);
-			u.setVerificationKey();
-			
-			Patient newPatient = Patient.create(p, hp);
-			this.sendVerificationEmailForNewPatient(u);
+			Patient newPatient = saveNewPatient(hpId, newPatientForm);
+			newPatient = patientRepo.findByPatientId(newPatient.getPatientId());
 			
 			return new ResponseEntity<Patient>(newPatient, HttpStatus.OK);
 		}
 		
-	}
-	
-//	@RequestMapping(value="/existingPatient", method=RequestMethod.POST)
-//	public ResponseEntity<?> addExistingPatient(@PathVariable("hpId")int hpId, @RequestBody Patient patientToAdd){
-//		HealthProfessional hp = hpRepo.findByHpId(hpId);
-//		
-//		
-//		
-//		if (personDao.findByFirstName(personToAdd.getFirstName()) != null && personDao.findByLastName(personToAdd.getLastName()) != null && personDao.findByBirthdate(personToAdd.getBirthdate()) != null) {
-//			MessageResponse mr = new MessageResponse();
-//			mr.success = false;
-//			mr.error = "Person Exists";
-//			
-//			return new ResponseEntity<MessageResponse>(mr, HttpStatus.BAD_REQUEST);
-//		}
-//		else {
-//			Person personPatient = personDao.save(personToAdd);
-//			
-//			Patient newPatient = Patient.create(personPatient, hp);
-//			this.sendVerificationEmailForNewPatient(personToAdd);
-//			
-//			return new ResponseEntity<Patient>(newPatient, HttpStatus.OK);
-//		}
-//		return null;
-//	}
-	
-	
+	}	
 	
 	//	helpers
 	private boolean sendVerificationEmailForNewPatient(User newPatientUser) {

@@ -25,7 +25,7 @@ import model.Person;
 import model.Role;
 import model.User;
 import provider.MessageResponse;
-import repository.ContactRepo;
+import repository.Contact_repo;
 import repository.HPSignUp_repo;
 import repository.HealthProfessional_repo;
 import repository.PersonDao;
@@ -50,7 +50,7 @@ public class HPSignUpService {
 	private HealthProfessional_repo hpRepo;
 	
 	@Autowired
-	private ContactRepo contactRepo;
+	private Contact_repo contactRepo;
 	
 	@Autowired
 	private Role_repo roleRepo;
@@ -155,13 +155,6 @@ public class HPSignUpService {
 		public String email;
 		
 		public accountSetupForm() {}
-		
-		/*public String getUsername() { return this.username; }
-		public String getEmail() { return this.email; }
-		public String getPassword() { return this.password; }
-		public void setUsername(String newUsername) { this.username = newUsername; }
-		public void setEmail (String newEmail) { this.email = newEmail; }
-		public void setPassword ( String newPassword) { this.password = newPassword; }*/
 	}
 	
 	@Transactional
@@ -206,7 +199,7 @@ public class HPSignUpService {
 		Person newPerson = Person.create(firstName, lastName);
 		newPerson = personRepo.save(newPerson);
 
-		User u = User.create(requestForm.username, requestForm.email, requestForm.password);
+		User u = User.create(requestForm.username, requestForm.email, requestForm.password, newPerson);
 		u.setPerson(newPerson);
 		
 		u = userRepo.save(u);
@@ -223,7 +216,8 @@ public class HPSignUpService {
 		
 		hpRepo.save(hp);
 		
-		Contact c = Contact.create(u);
+		Contact c = Contact.create(u.getPerson());
+		c.setEmail(requestForm.email);
 		c.setAddress(hpSignup.getBusinessAddress());
 		c.setPhone(hpSignup.getBusinessPhone());
 		

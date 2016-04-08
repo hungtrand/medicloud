@@ -2,7 +2,7 @@
 module.exports = function($q, $location) {
 	return {
 		'request': function(config) {
-			var credentials = sessionStorage.getItem("medicloudHealthProfessional");
+			var credentials = sessionStorage.getItem("medicloud_user_credentials");
 			// console.log("Credentials: " + credentials);
 			if (credentials) {
 				config.headers.Authorization = 'Basic ' + credentials;
@@ -359,7 +359,7 @@ module.exports = function() {
 	app
 		.service('infermedicaConditions_serv', 
 			 ['$resource', '$rootScope', infermedicaConditions_serv])
-		.service('patient_serv', ['$resource', '$rootScope', patient_serv])
+		.service('patient_serv', ['$resource', '$rootScope', '$route', '$routeParams', patient_serv])
 		.factory('condition_fact', ['$resource', '$rootScope', condition_fact])
 	;
 
@@ -380,11 +380,13 @@ module.exports = function() {
 }
 
 },{"../../Shared/authorization.interceptor":1,"./../conditionSearch/conditionSearch.directive":3,"./../conditionSearch/infermedicaConditions.service":4,"./../share/modal.directive":17,".//main.controller":8,"./conditions/activeCondition.factory":5,"./conditions/activeConditionList.controller":6,"./conditions/newActiveCondition.directive":7,"./observations/observations.controller":9,"./patient.service":11,"./profile/profile.controller":12}],11:[function(require,module,exports){
-module.exports = function($resource, $rootScope) {
+module.exports = function($resource, $rootScope, $route, $routeParams) {
 	var url = 'http://'+window.location.hostname+'\\:8080/api/hp/:hpId/patients/:patientId';
+	var hpId = sessionStorage.getItem("medicloud_hp_id");
+
 	var client = $resource(
 		url, {
-		    hpId: 1
+		    hpId:hpId
 		    , patientId: '@pId'
 		}
 	);
@@ -396,7 +398,7 @@ module.exports = function($resource, $rootScope) {
 			var self = this;
 
 			client.get({
-				patientId: 1
+				patientId: $routeParams['patient_id']
 			}, function(response, headers) {
 				self.data = response;
 				$rootScope.$broadcast('patient_service.data.updated');
@@ -555,6 +557,7 @@ module.exports = function($scope, $rootScope, service) {
 module.exports = function($http, $rootScope, $resource) {
     var onSuccessFn;
     var onFailureFn;
+    var hpId = sessionStorage.getItem("medicloud_hp_id");
     var url = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/:patientId';
     var service = {
 
@@ -571,7 +574,7 @@ module.exports = function($http, $rootScope, $resource) {
         getPatients: function() {
             var that = this;
             var client = $resource(url, {
-                hpId: 1
+                hpId: hpId
             });
 
             var promise = client.query().$promise;
@@ -603,7 +606,7 @@ module.exports = function($http, $rootScope, $resource) {
 
             $rootScope.$broadcast('patientAdded');
             var client = $resource(url, {
-                hpId: 1
+                hpId: hpId
             });
             client.save(patient,
                 function(response) {

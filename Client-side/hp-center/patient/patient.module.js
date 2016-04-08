@@ -30,7 +30,7 @@ module.exports = function() {
 	app
 		.service('infermedicaConditions_serv', 
 			 ['$resource', '$rootScope', infermedicaConditions_serv])
-		.service('patient_serv', ['$resource', '$rootScope', patient_serv])
+		.service('patient_serv', ['$resource', '$rootScope', '$route', '$routeParams', patient_serv])
 		.factory('condition_fact', ['$resource', '$rootScope', condition_fact])
 	;
 

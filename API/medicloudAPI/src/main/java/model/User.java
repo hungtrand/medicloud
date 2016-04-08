@@ -69,7 +69,7 @@ public class User implements UserDetails {
     	inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="role_id")})  
     private Role role; 
 	
-	public static User create(String username, String email, String password) throws Exception {
+	public static User create(String username, String email, String password, Person p) throws Exception {
 		User user = new User();
 
         user.setUsername(username);
@@ -90,6 +90,7 @@ public class User implements UserDetails {
         
 	public void setPerson(Person newPerson) {
 		this.person = newPerson;
+		this.personId = newPerson.getPersonId();
 	}
 	
 	public Person getPerson() {

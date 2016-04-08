@@ -1,8 +1,10 @@
-module.exports = function($resource, $rootScope) {
+module.exports = function($resource, $rootScope, $route, $routeParams) {
 	var url = 'http://'+window.location.hostname+'\\:8080/api/hp/:hpId/patients/:patientId';
+	var hpId = sessionStorage.getItem("medicloud_hp_id");
+
 	var client = $resource(
 		url, {
-		    hpId: 1
+		    hpId:hpId
 		    , patientId: '@pId'
 		}
 	);
@@ -14,7 +16,7 @@ module.exports = function($resource, $rootScope) {
 			var self = this;
 
 			client.get({
-				patientId: 1
+				patientId: $routeParams['patient_id']
 			}, function(response, headers) {
 				self.data = response;
 				$rootScope.$broadcast('patient_service.data.updated');

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,7 +29,8 @@ public class Person {
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="person_id")
-	private List<Contact> contact;
+	@OrderBy("latest_updated DESC")
+	private List<Contact> contacts = new ArrayList<Contact>();
 	
 	
 	@Column(name="first_name")
@@ -58,8 +61,8 @@ public class Person {
 		return personId;
 	}
 
-	public List<Contact> getContactInfo(){
-		return this.contact;
+	public List<Contact> getContacts(){
+		return this.contacts;
 	}
 	
 	public String getGender(){
@@ -71,7 +74,7 @@ public class Person {
 	}
 	
 	public void setContactInfo(Contact newContactInfo){
-		this.contact.add(newContactInfo);
+		this.contacts.add(newContactInfo);
 	}
 	
 	public void setMiddleName(String newMiddleName){

@@ -23,7 +23,7 @@ import model.Person;
 import model.Appointment;
 import provider.MessageResponse;
 import repository.AppointmentRepo;
-import repository.ContactRepo;
+import repository.Contact_repo;
 import repository.PatientRepo;
 
 @RestController
@@ -35,7 +35,7 @@ public class PatientPersonalResourceServices {
 		@Autowired
 		private PatientRepo patientRepo;
 		@Autowired
-		private ContactRepo contactRepo;
+		private Contact_repo contactRepo;
 		@Autowired
 		private JavaMailSender mailer;
 		
