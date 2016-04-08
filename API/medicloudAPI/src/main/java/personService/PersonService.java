@@ -61,7 +61,6 @@ public class PersonService {
 		temp = contactRepo.findByPerson(findUser.getPerson());
 		return temp;
 
-
 	}
 
 	//----------------------- Post method-----------------------------

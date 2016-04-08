@@ -28,12 +28,14 @@ module.exports = function($q, $location) {
 	// patients_module = require("./patients/patients.module");
 	var patient_module = require("./patient/patient.module");
 	var hpPatientList_module = require("./patients/patients.module");
+
 	var auth = require("../Shared/authorization.interceptor");
+	var hpCalendar_module = require('./calendar/calendar.module');
 
 	patient_module();
 	hpPatientList_module();
-
-	var app = new angular.module("hp-center", ['ngRoute', 'hpPatient', 'hpPatientList']);
+	hpCalendar_module();
+	var app = new angular.module("hp-center", ['ngRoute', 'hpPatient', 'hpPatientList', 'hpCalendar']);
 
 	// routing and navigation configuration
 	app.config(['$routeProvider', '$httpProvider',
@@ -60,7 +62,196 @@ module.exports = function($q, $location) {
 	angular.bootstrap(window.document, ['hp-center']);
 
 })();
-},{"../Shared/authorization.interceptor":1,"./patient/patient.module":10,"./patients/patients.module":14}],3:[function(require,module,exports){
+
+},{"../Shared/authorization.interceptor":1,"./calendar/calendar.module":4,"./patient/patient.module":12,"./patients/patients.module":16}],3:[function(require,module,exports){
+module.exports = function() {
+  return {
+    link: function($scope, elem, attr) {
+      function ini_events(ele) {
+        ele.each(function () {
+          // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+          // it doesn't need to have a start or end
+          var eventObject = {
+            title: $.trim($(this).text()) // use the element's text as the event title
+          };
+
+          // store the Event Object in the DOM element so we can get to it later
+          $(this).data('eventObject', eventObject);
+
+          // make the event draggable using jQuery UI
+          $(this).draggable({
+            zIndex: 1070,
+            revert: true, // will cause the event to go back to its
+            revertDuration: 0  //  original position after the drag
+          });
+
+        });
+      }
+      ini_events($('#external-events div.external-event'));
+
+      /* initialize the calendar
+       -----------------------------------------------------------------*/
+      //Date for the calendar events (dummy data)
+      var date = new Date();
+      var d = date.getDate(),
+              m = date.getMonth(),
+              y = date.getFullYear();
+      $('#calendar').fullCalendar({
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay'
+        },
+        buttonText: {
+          today: 'today',
+          month: 'month',
+          week: 'week',
+          day: 'day'
+        },
+        //Random default events
+        events: [
+          {
+            title: 'All Day Event',
+            start: new Date(y, m, 1),
+            backgroundColor: "#f56954", //red
+            borderColor: "#f56954" //red
+          },
+          {
+            title: 'Long Event',
+            start: new Date(y, m, d - 5),
+            end: new Date(y, m, d - 2),
+            backgroundColor: "#f39c12", //yellow
+            borderColor: "#f39c12" //yellow
+          },
+          {
+            title: 'Meeting',
+            start: new Date(y, m, d, 10, 30),
+            allDay: false,
+            backgroundColor: "#0073b7", //Blue
+            borderColor: "#0073b7" //Blue
+          },
+          {
+            title: 'Lunch',
+            start: new Date(y, m, d, 12, 0),
+            end: new Date(y, m, d, 14, 0),
+            allDay: false,
+            backgroundColor: "#00c0ef", //Info (aqua)
+            borderColor: "#00c0ef" //Info (aqua)
+          },
+          {
+            title: 'Birthday Party',
+            start: new Date(y, m, d + 1, 19, 0),
+            end: new Date(y, m, d + 1, 22, 30),
+            allDay: false,
+            backgroundColor: "#00a65a", //Success (green)
+            borderColor: "#00a65a" //Success (green)
+          },
+          {
+            title: 'Click for Google',
+            start: new Date(y, m, 28),
+            end: new Date(y, m, 29),
+            url: 'http://google.com/',
+            backgroundColor: "#3c8dbc", //Primary (light-blue)
+            borderColor: "#3c8dbc" //Primary (light-blue)
+          }
+        ],
+        editable: true,
+        droppable: true, // this allows things to be dropped onto the calendar !!!
+        drop: function (date, allDay) { // this function is called when something is dropped
+          // retrieve the dropped element's stored Event Object
+          var originalEventObject = $(this).data('eventObject');
+
+          // we need to copy it, so that multiple events don't have a reference to the same object
+          var copiedEventObject = $.extend({}, originalEventObject);
+
+          // assign it the date that was reported
+          copiedEventObject.start = date;
+          copiedEventObject.allDay = allDay;
+          copiedEventObject.backgroundColor = $(this).css("background-color");
+          copiedEventObject.borderColor = $(this).css("border-color");
+
+          // render the event on the calendar
+          // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+          $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+          // is the "remove after drop" checkbox checked?
+          if ($('#drop-remove').is(':checked')) {
+            // if so, remove the element from the "Draggable Events" list
+            $(this).remove();
+          }
+
+        }
+      });
+
+      /* ADDING EVENTS */
+      var currColor = "#3c8dbc"; //Red by default
+      //Color chooser button
+      var colorChooser = $("#color-chooser-btn");
+      $("#color-chooser > li > a").click(function (e) {
+        e.preventDefault();
+        //Save color
+        currColor = $(this).css("color");
+        //Add color effect to button
+        $('#add-new-event').css({"background-color": currColor, "border-color": currColor});
+      });
+
+      $("#add-new-event").click(function (e) {
+        e.preventDefault();
+        //Get value and make sure it is not null
+        var val = $("#new-event").val();
+        if (val.length == 0) {
+          return;
+        }
+
+        //Create events
+        var event = $("<div />");
+        event.css({"background-color": currColor, "border-color": currColor, "color": "#fff"}).addClass("external-event");
+        event.html(val);
+        $('#external-events').prepend(event);
+
+        //Add draggable funtionality
+        ini_events(event);
+
+        //Remove event from text input
+        $("#new-event").val("");
+      });
+
+      $("[data-date]").click(function() {
+        $scope.modalControl.show = true;
+        var selectedDate = $(this).attr("data-date");
+        console.log("selectedDate is " + selectedDate);
+        $scope.$apply();
+      });
+
+    },
+    controller: ['$scope', function($scope) {
+      $scope.modalControl = {
+        show: false
+      };
+    }]
+  }
+}
+
+},{}],4:[function(require,module,exports){
+module.exports = function() {
+	//var patientsList_ctrl = require("./patientsList/patientsList.controller");
+	//var patientsListService = require("./patientsList/patientsList.service");
+	//var formAddPatient_dir = require("./formAddPatient/formAddPatient.directive");
+	var calendarDirective = require('./calendar.js');
+	var app = angular.module('hpCalendar', ['ngRoute']);
+	app.config(['$routeProvider', function($routeProvider) {
+		'use strict';
+		$routeProvider
+			.when('/calendar/', {
+				templateUrl: 'calendar/calendar.html'
+			});
+	}])
+	//app.service('patientsListService', ["$http", "$rootScope", "$resource", patientsListService]);
+	app.directive('calendarDirective', calendarDirective);
+	//app.controller("patientsList_ctrl", ['$scope', '$rootScope', 'patientsListService', patientsList_ctrl]);
+}
+
+},{"./calendar.js":3}],5:[function(require,module,exports){
 module.exports = function() {
 	var controller = function($scope, infermedicaConditionsService) {
 		$scope.waiting = false;
@@ -158,7 +349,7 @@ module.exports = function() {
 		controller: ['$scope', 'infermedicaConditions_serv', controller]
 	}
 }
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports = function($resource, $rootScope) {
 	var url_list = 'http://'+window.location.hostname+'\\:8080/conditions';
 	var url_single = 'http://'+window.location.hostname+'\\:8080/conditions/:condition_id';
@@ -188,7 +379,7 @@ module.exports = function($resource, $rootScope) {
 	service.fetchAll();	
 	return service;
 }
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 module.exports = function($resource, $rootScope) {
 	var url = "http://" + location.host + '/condition/:condition_id';
 
@@ -199,7 +390,7 @@ module.exports = function($resource, $rootScope) {
 
 	return client;
 }
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 module.exports = function($scope, patient_serv) {
 	$scope.conditions = patient_serv.data.conditions;
 	$scope.newConditions = [];
@@ -231,7 +422,7 @@ module.exports = function($scope, patient_serv) {
 		console.log('saved');
 	});
 }
-},{}],7:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = function() {
 	var controller = function($scope, condition_fact) {
 		$scope.mode = 'search';
@@ -285,7 +476,7 @@ module.exports = function() {
 		controller: ['$scope', 'condition_fact', controller]
 	}
 }
-},{}],8:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports = function($scope, patient_serv) {
 	/* include files */
 	$scope.incConditionList = "patient/conditions/activeConditionList.html";
@@ -306,7 +497,7 @@ module.exports = function($scope, patient_serv) {
 		}
 	}
 }
-},{}],9:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports = function($scope, patient_serv) {
 	$scope.modal = {
 		show: false,
@@ -326,7 +517,7 @@ module.exports = function($scope, patient_serv) {
 		$scope.modal.show = true;
 	}
 }
-},{}],10:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 module.exports = function() {
 	var auth = require("../../Shared/authorization.interceptor");
 
@@ -379,7 +570,7 @@ module.exports = function() {
 	;
 }
 
-},{"../../Shared/authorization.interceptor":1,"./../conditionSearch/conditionSearch.directive":3,"./../conditionSearch/infermedicaConditions.service":4,"./../share/modal.directive":17,".//main.controller":8,"./conditions/activeCondition.factory":5,"./conditions/activeConditionList.controller":6,"./conditions/newActiveCondition.directive":7,"./observations/observations.controller":9,"./patient.service":11,"./profile/profile.controller":12}],11:[function(require,module,exports){
+},{"../../Shared/authorization.interceptor":1,"./../conditionSearch/conditionSearch.directive":5,"./../conditionSearch/infermedicaConditions.service":6,"./../share/modal.directive":19,".//main.controller":10,"./conditions/activeCondition.factory":7,"./conditions/activeConditionList.controller":8,"./conditions/newActiveCondition.directive":9,"./observations/observations.controller":11,"./patient.service":13,"./profile/profile.controller":14}],13:[function(require,module,exports){
 module.exports = function($resource, $rootScope, $route, $routeParams) {
 	var url = 'http://'+window.location.hostname+'\\:8080/api/hp/:hpId/patients/:patientId';
 	var hpId = sessionStorage.getItem("medicloud_hp_id");
@@ -409,7 +600,7 @@ module.exports = function($resource, $rootScope, $route, $routeParams) {
 	}
 }
 
-},{}],12:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = function($scope, patient_serv) {
 	
 	var sync_patient_data = function() {
@@ -436,7 +627,7 @@ module.exports = function($scope, patient_serv) {
 	});
 }
 
-},{}],13:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = function() {
     return {
         restrict: 'E',
@@ -482,12 +673,14 @@ module.exports = function() {
     };
 }
 
-},{}],14:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = function() {
 	var patientsList_ctrl = require("./patientsList/patientsList.controller");
 	var patientsListService = require("./patientsList/patientsList.service");
+
 	var formAddPatient_dir = require("./formAddPatient/formAddPatient.directive");
 	var auth = require("../../Shared/authorization.interceptor");
+
 
 	var app = angular.module('hpPatientList', ['ngRoute']);
 	app.config(['$routeProvider', '$httpProvider',
@@ -513,7 +706,8 @@ module.exports = function() {
 	app.controller("patientsList_ctrl", ['$scope', '$rootScope', 'patientsListService', patientsList_ctrl]);
 
 }
-},{"../../Shared/authorization.interceptor":1,"./formAddPatient/formAddPatient.directive":13,"./patientsList/patientsList.controller":15,"./patientsList/patientsList.service":16}],15:[function(require,module,exports){
+
+},{"../../Shared/authorization.interceptor":1,"./formAddPatient/formAddPatient.directive":15,"./patientsList/patientsList.controller":17,"./patientsList/patientsList.service":18}],17:[function(require,module,exports){
 module.exports = function($scope, $rootScope, service) {
     $scope.patientList = [];
     getPatients();
@@ -553,7 +747,7 @@ module.exports = function($scope, $rootScope, service) {
             });
     }
 }
-},{}],16:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = function($http, $rootScope, $resource) {
     var onSuccessFn;
     var onFailureFn;
@@ -626,7 +820,7 @@ module.exports = function($http, $rootScope, $resource) {
     }
     return service;
 }
-},{}],17:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports = function() {
 	return {
 		templateUrl: 'share/modal.template.html',

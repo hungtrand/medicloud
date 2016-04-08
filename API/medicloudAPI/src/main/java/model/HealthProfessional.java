@@ -25,6 +25,7 @@ public class HealthProfessional {
 	
 	@Column(name="license")
 	private String license;
+
 	
 	@Column(name="cdo")
 	private String cdo;
@@ -55,6 +56,8 @@ public class HealthProfessional {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	
 	
 	public int getHpId(){
 		return this.hpId;

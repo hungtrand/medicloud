@@ -69,7 +69,7 @@ public class Patient {
 	public List<ActiveCondition> getActiveCondition(){
 		return this.activeConditions;
 	}
-	
+
 	/**
 	 * Get all the encounters of a patient.
 	 * @return - list of encounter.
