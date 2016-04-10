@@ -24,7 +24,7 @@
 .event-block-wrap-extended .image-and-description p {position: static; width: 100%;}
 .event-block-wrap-extended:nth-child(2n) .image-and-description p {position: static; width: 100%;}
 .fotorama-nav-wrap-custom {position: relative; margin: 48px 0; bottom: auto;}
-.fotorama__caption.fotorama__caption_overlay {display: none !important;}
+/*.fotorama__caption.fotorama__caption_overlay {display: none !important;}*/
 .nav-thumb-wrap {background: #ededed;}
 
 .responsive_nav {display: block; width: 50%; float: right; margin: 26px 12px;}
