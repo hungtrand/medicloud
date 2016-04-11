@@ -36,11 +36,13 @@ module.exports = function() {
 
         },
         templateUrl: 'modalDialogue/modal.html',
-        controller: ['$scope', function($scope) {
+        controller: ['$scope', 'patientsListService', function($scope, patientsListService) {
           $('[data-toggle="tooltip"]').tooltip('disable');
-          $scope.patient = {
-            firstName: "", lastName: ""
-          };
+          $scope.patientList = patientsListService.getPatients();
+          $(document).on('dblclick', function() {
+            console.log("patients list is " + $scope.patientList.patients);
+            debugger;
+          })
         }],
     };
 }

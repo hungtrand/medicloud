@@ -16,6 +16,7 @@
 		function($routeProvider, $httpProvider) {
 			'use strict';
 			$routeProvider
+
 				.when('/', {
 					templateUrl: 'dashboard/'
 				})

@@ -4,8 +4,7 @@ module.exports = function($http, $rootScope, $resource) {
     var hpId = sessionStorage.getItem("medicloud_hp_id");
     var url = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/:patientId';
     var service = {
-
-        patients: [{
+      patients: [{
             firstName: "Peter",
             lastName: "Parker",
             email: "peterparker@gmail.com"
@@ -14,7 +13,6 @@ module.exports = function($http, $rootScope, $resource) {
             lastName: "Wayne",
             email: "brucewayne@gmail.com"
         }],
-
         getPatients: function() {
             var that = this;
             var client = $resource(url, {

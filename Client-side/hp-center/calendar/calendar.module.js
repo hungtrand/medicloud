@@ -1,9 +1,10 @@
 module.exports = function() {
 	//var patientsList_ctrl = require("./patientsList/patientsList.controller");
-	//var patientsListService = require("./patientsList/patientsList.service");
-	//var formAddPatient_dir = require("./formAddPatient/formAddPatient.directive");
+	var calendarService = require("./calendar.service.js");
+	var appointmentModalDirective = require('../modalDialogue/modal.directive');
 	var calendarDirective = require('./calendar.js');
-	var app = angular.module('hpCalendar', ['ngRoute']);
+
+	var app = angular.module('hpCalendar', ['ngRoute', 'hpPatientList']);
 	app.config(['$routeProvider', function($routeProvider) {
 		'use strict';
 		$routeProvider
@@ -11,7 +12,8 @@ module.exports = function() {
 				templateUrl: 'calendar/calendar.html'
 			});
 	}])
-	//app.service('patientsListService', ["$http", "$rootScope", "$resource", patientsListService]);
+	app.service('calendarService', ["$http", "$rootScope", "$resource", calendarService]);
+	app.directive('appointmentModalDirective', appointmentModalDirective);
 	app.directive('calendarDirective', calendarDirective);
 	//app.controller("patientsList_ctrl", ['$scope', '$rootScope', 'patientsListService', patientsList_ctrl]);
 }
