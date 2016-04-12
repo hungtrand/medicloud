@@ -1,10 +1,14 @@
 package model;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -12,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import org.apache.activemq.filter.function.makeListFunction;
@@ -45,11 +50,19 @@ public class Patient {
 	@Column(name="hp_id")
 	private int hpId;
 	
+	@Column(name="patient_since_date")
+	private Date patientSinceDate;
+	
+	@PrePersist
+	protected void onCreate() {
+		patientSinceDate = new Date();
+	}	
+	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="hp_id", insertable=false, updatable=false, referencedColumnName= "hp_id")
 	private HealthProfessional healthProfessional;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="patient_id")
 	private List<ActiveCondition> activeConditions = new ArrayList<ActiveCondition>();
 	
@@ -61,12 +74,12 @@ public class Patient {
 	 * Join Column create a relation column in encounter table.
 	 * @para patient_id - name of the relationship column which is a primary key of patient table.
 	 */
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="patient_id")
 	private List<Encounter> encounter = new ArrayList<Encounter>();
 	
 	
-	public List<ActiveCondition> getActiveCondition(){
+	public List<ActiveCondition> getConditions(){
 		return this.activeConditions;
 	}
 
@@ -129,6 +142,10 @@ public class Patient {
 		return this.person.getLastName();
 	}
 	
+	public String getGender() {
+		return this.person.getGender();
+	}
+	
 	public String getEmail() {
 		List<Contact> contacts = this.person.getContacts();
 		if (contacts.isEmpty()) return null;
@@ -143,5 +160,12 @@ public class Patient {
 		List<Contact> contacts = this.person.getContacts();
 		if (contacts.isEmpty()) return null;
 		else return contacts.get(0);
+	}
+	
+	public String getPatientSinceDate() {
+		if (this.patientSinceDate == null) return "";
+		DateFormat formatDate = new SimpleDateFormat("MM/dd/yyyy");
+		
+		return formatDate.format(this.patientSinceDate);
 	}
 }

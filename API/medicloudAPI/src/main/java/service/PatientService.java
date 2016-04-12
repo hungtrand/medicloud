@@ -126,14 +126,14 @@ public class PatientService {
 	 */
 	@RequestMapping(value="/{patient_id}/activeconditions", method=RequestMethod.POST)
 	public void setNewActiveCondition(@PathVariable("patient_id")int id, @RequestBody ActiveCondition newCondition){
-		ActiveCondition addcondition = new ActiveCondition();
-		int temp = 0;
-		Observation addObservation = new Observation();
-		addObservation.setDateCreated();
-		addObservation.setDateUpdated();
-		addObservation = obsRepo.save(addObservation);
-		newCondition.setPatientId(id);
-		addcondition = activeConditionRepo.save(newCondition);
+//		ActiveCondition addcondition = new ActiveCondition();
+//		int temp = 0;
+//		Observation addObservation = new Observation();
+//		addObservation.setDateCreated();
+//		addObservation.setDateUpdated();
+//		addObservation = obsRepo.save(addObservation);
+//		newCondition.setPatientId(id);
+//		addcondition = activeConditionRepo.save(newCondition);
 
 	}
 
@@ -144,12 +144,10 @@ public class PatientService {
 	 */
 	@RequestMapping(value="/{patient_id}/condition", method=RequestMethod.POST)
 	public void setNewCondition(@PathVariable("patient_id")int patientId){
-		Condition newCondition = new Condition();	
+//		Condition newCondition = new Condition();	
 	}
 
 	/**
-	 * 
-	 * 
 	 * @param patientId
 	 * @param newObservation
 	 */
@@ -164,8 +162,6 @@ public class PatientService {
 	}
 
 	/**
-	 * 
-	 * 
 	 * @param patientId
 	 * @param obsId
 	 * @param newNote
@@ -211,10 +207,10 @@ public class PatientService {
 	 */
 	@RequestMapping(value="/{patient_id}/activeconditions/{active_condition_id}", method=RequestMethod.PUT)
 	public void updateActiveCondition(@PathVariable("patient_id") int patientId, @PathVariable("active_condition_id") int conditionId, @RequestBody ActiveCondition updateCondition){
-		ActiveCondition updateCondition1 = new ActiveCondition();
-		//		updateCondition.setActiveConditionId(conditionId);
-		updateCondition1.setPatientId(patientId);
-		updateCondition1 = activeConditionRepo.save(updateCondition);
+//		ActiveCondition updateCondition1 = new ActiveCondition();
+//		//		updateCondition.setActiveConditionId(conditionId);
+//		updateCondition1.setPatientId(patientId);
+//		updateCondition1 = activeConditionRepo.save(updateCondition);
 	}
 
 	//NOTE: this method might not need to use.
