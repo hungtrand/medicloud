@@ -10,7 +10,7 @@
 	patient_module();
 	hpPatientList_module();
 	hpCalendar_module();
-	var app = new angular.module("hp-center", ['ngRoute', 'hpPatient', 'hpPatientList', 'hpCalendar']);
+	var app = new angular.module("hp-center", ['ngRoute', 'ngAnimate', 'hpPatient', 'hpPatientList', 'hpCalendar']);
 
 	// routing and navigation configuration
 	app.config(['$routeProvider', '$httpProvider',
