@@ -1,31 +1,15 @@
-module.exports = function($scope, patient_serv) {
-	$scope.conditions = patient_serv.data.conditions;
-	$scope.newConditions = [];
+module.exports = function($scope, models_service, $route, $routeParams) {
+	$scope.patient = models_service.getPatient($routeParams['patient_id']);
+	$scope.patient.fetchConditions();
+	$scope.newActiveConditionForms = [];
 
-	var sync_conditions = function() {
-		$scope.conditions = patient_serv.data.conditions;
-	} 
-
-	$scope.$on('patient_service.data.updated', function() {
-		sync_conditions();
-	});
-
-	$scope.appendNewCondition = function() {
-		$scope.newConditions.unshift({
-			"conditionId": 0,
-			"name": '',
-			"startObs": null,
-			"endObs": null,
-			"comments": ''	
-		});
+	$scope.getNewActiveConditionForm = function() {
+		$scope.newActiveConditionForms.unshift({});
 	}
 
-	$scope.$on('newCondition.cancel', function(evt, data) {
-		var indexToRemove = $scope.newConditions.indexOf(data);
-		$scope.newConditions.splice(indexToRemove, 1);
-	});
-
-	$scope.$on('newCondition.save', function(evt, data) {
-		console.log('saved');
-	});
+	$scope.removeForm = function(index) {
+		return function() {
+			$scope.newActiveConditionForms.splice(index, 1);
+		};
+	}
 }

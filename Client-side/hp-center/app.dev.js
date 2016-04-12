@@ -5,6 +5,7 @@
 
 	var auth = require("../Shared/authorization.interceptor");
 	var hpCalendar_module = require('./calendar/calendar.module');
+	var errorModal_directive = require('./error/error.directive');
 
 	patient_module();
 	hpPatientList_module();
@@ -26,7 +27,10 @@
 			$httpProvider.interceptors.push(['$q', '$location', auth]);
 		}
 	]);
+
 	// directives
+	app
+		.directive('mdErrorModal', errorModal_directive);
 
 	// services and factories
 

@@ -45,7 +45,7 @@ module.exports = function() {
 	return {
 		templateUrl: 'conditionSearch/conditionSearch.template.html',
 		scope: {
-			model: '='
+			onSelect: '='
 		}
 
 		, link: function($scope, $element, $attrs) {
@@ -84,8 +84,7 @@ module.exports = function() {
 				});
 
 				$element.find('.inputSearch').bind('typeahead:select', function(ev, suggestion) {
-					$scope.model = suggestion;
-					setTimeout(function() { $scope.$apply(); }, 100);
+					($scope.onSelect || angular.noop)(suggestion);
 				});
 			});
 

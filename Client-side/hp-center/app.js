@@ -31,6 +31,7 @@ module.exports = function($q, $location) {
 
 	var auth = require("../Shared/authorization.interceptor");
 	var hpCalendar_module = require('./calendar/calendar.module');
+	var errorModal_directive = require('./error/error.directive');
 
 	patient_module();
 	hpPatientList_module();
@@ -52,7 +53,10 @@ module.exports = function($q, $location) {
 			$httpProvider.interceptors.push(['$q', '$location', auth]);
 		}
 	]);
+
 	// directives
+	app
+		.directive('mdErrorModal', errorModal_directive);
 
 	// services and factories
 
@@ -63,7 +67,7 @@ module.exports = function($q, $location) {
 
 })();
 
-},{"../Shared/authorization.interceptor":1,"./calendar/calendar.module":4,"./patient/patient.module":12,"./patients/patients.module":16}],3:[function(require,module,exports){
+},{"../Shared/authorization.interceptor":1,"./calendar/calendar.module":4,"./error/error.directive":7,"./patient/patient.module":15,"./patients/patients.module":18}],3:[function(require,module,exports){
 module.exports = function() {
   return {
     link: function($scope, elem, attr) {
@@ -299,7 +303,7 @@ module.exports = function() {
 	return {
 		templateUrl: 'conditionSearch/conditionSearch.template.html',
 		scope: {
-			model: '='
+			onSelect: '='
 		}
 
 		, link: function($scope, $element, $attrs) {
@@ -338,8 +342,7 @@ module.exports = function() {
 				});
 
 				$element.find('.inputSearch').bind('typeahead:select', function(ev, suggestion) {
-					$scope.model = suggestion;
-					setTimeout(function() { $scope.$apply(); }, 100);
+					($scope.onSelect || angular.noop)(suggestion);
 				});
 			});
 
@@ -354,7 +357,7 @@ module.exports = function($resource, $rootScope) {
 	var url_list = 'http://'+window.location.hostname+'\\:8080/conditions';
 	var url_single = 'http://'+window.location.hostname+'\\:8080/conditions/:condition_id';
 
-	var client = $resource(url_single, { condition_id: '@c_id'});
+	var client = $resource(url_list, { condition_id: '@c_id'});
 	var service = {
 		data: {
 			conditions: []
@@ -380,53 +383,77 @@ module.exports = function($resource, $rootScope) {
 	return service;
 }
 },{}],7:[function(require,module,exports){
+module.exports = function() {
+	return {
+		scope: {
+			error: "="
+			, control: "="
+		}
+		, templateUrl: 'error/error.template.html'
+		, link: function($scope, $element, $attrs) {
+			var modal = $($element[0]).modal('hide');
+			$scope.control = {
+				isShown: false
+				, show: function(err) {
+					$scope.error = err || $scope.error;
+					modal.modal('show');
+					modal.on('modal.bs.shown', function() {
+						$scope.isShown = true;
+					});
+				}
+				, hide: function() {
+					modal.modal('hide');
+					moda.on('modal.bs.hidden', function() {
+						$scope.isShown = false;
+					});
+				}
+			}
+		}
+	}
+}
+},{}],8:[function(require,module,exports){
 module.exports = function($resource, $rootScope) {
-	var url = "http://" + location.host + '/condition/:condition_id';
+	var url = "http://" + location.host + '/conditions/:condition_id';
 
 	var client = $resource(url, { condition_id: '@id' }, 
 		{
 			insert: { method: "POST" }
 		});
 
-	return client;
-}
-},{}],8:[function(require,module,exports){
-module.exports = function($scope, patient_serv) {
-	$scope.conditions = patient_serv.data.conditions;
-	$scope.newConditions = [];
-
-	var sync_conditions = function() {
-		$scope.conditions = patient_serv.data.conditions;
-	} 
-
-	$scope.$on('patient_service.data.updated', function() {
-		sync_conditions();
-	});
-
-	$scope.appendNewCondition = function() {
-		$scope.newConditions.unshift({
-			"conditionId": 0,
-			"name": '',
-			"startObs": null,
-			"endObs": null,
-			"comments": ''	
-		});
+	var activeCondition = function() {
+		this.conditionId = null;
+		this.name = '';
+		this.description = '';
+		this.startObs = null
+		this.endObs = null;
 	}
 
-	$scope.$on('newCondition.cancel', function(evt, data) {
-		var indexToRemove = $scope.newConditions.indexOf(data);
-		$scope.newConditions.splice(indexToRemove, 1);
-	});
+	activeCondition.prototype = {
+		constructor: activeCondition
+	}
 
-	$scope.$on('newCondition.save', function(evt, data) {
-		console.log('saved');
-	});
+	return activeCondition;
 }
 },{}],9:[function(require,module,exports){
+module.exports = function($scope, models_service, $route, $routeParams) {
+	$scope.patient = models_service.getPatient($routeParams['patient_id']);
+	$scope.patient.fetchConditions();
+	$scope.newActiveConditionForms = [];
+
+	$scope.getNewActiveConditionForm = function() {
+		$scope.newActiveConditionForms.unshift({});
+	}
+
+	$scope.removeForm = function(index) {
+		return function() {
+			$scope.newActiveConditionForms.splice(index, 1);
+		};
+	}
+}
+},{}],10:[function(require,module,exports){
 module.exports = function() {
-	var controller = function($scope, condition_fact) {
-		$scope.mode = 'search';
-		$scope.model = { suggestion: null };
+	var controller = function($scope, models_service) {
+		$scope.mode = 'search'; // search, create, or confirm
 
 		$scope.formatDate = function(d) {
 			if (!d) return 'none';
@@ -438,52 +465,61 @@ module.exports = function() {
 		}
 
 		$scope.save = function() {
-			$scope.waiting = true;
-			var data = {
-				name: $scope.condition.name
-				, severity: $scope.condition.severity
-				, infer_c_id: $scope.condition.id
-			}
-			condition_fact.insert({ condition_id: 0 }, data);
+			models_service.addActiveCondition($scope.condition.name, $scope.condition.severity, $scope.condition.description, $scope.condition.infer_c_id);
 		}
 
 		$scope.cancel = function() {
-			$scope.$emit('newCondition.cancel', $scope.condition);
+			($scope.onCancelled || angular.noop)();
 		}
 
-		$scope.severityOptions = ['mild', 'moderate', 'severe'];
 
-		$scope.$watch('model.suggestion', function(newVal) {
-			angular.extend($scope.condition, newVal);
-			if ($scope.model.suggestion) {
-				$scope.mode = 'confirm';
+		$scope.severityOptions = ['mild', 'moderate', 'severe'];
+		$scope.create = function(suggestion) {
+			if (suggestion) {
+				$scope.condition.name = suggestion.name;
+				$scope.condition.severity = suggestion.severity;
+				$scope.condition.infer_c_id = suggestion.id;
+				$scope.condition.description = "";
 			}
 			
-		}, true);
+			$scope.mode = "create";
+			setTimeout(function() {
+				$scope.$apply();
+			}, 200);
+		}
 	}
 
 	return {
 		templateUrl: 'patient/conditions/newActiveCondition.template.html',
-		
+
 		scope: {
-			condition: "=condData"
+			condition: "=condData",
+			onSaved: "&",
+			onCancelled: "&"
 		},
 
-		link: function() {
+		link: function($scope, $element, $attrs) {
+			$scope.condition.name = '';
+			$scope.condition.severity = '';
+			$scope.condition.infer_c_id = null;
+			$scope.condition.description = '';
 
-		}, 
+			$scope.confirm = function() {
+				$scope.mode = "confirm";
+			}
 
-		controller: ['$scope', 'condition_fact', controller]
+		},
+
+		controller: ['$scope', 'models_service', controller]
 	}
 }
-},{}],10:[function(require,module,exports){
-module.exports = function($scope, patient_serv) {
+},{}],11:[function(require,module,exports){
+module.exports = function($scope, models_service, $route, $routeParams) {
 	/* include files */
 	$scope.incConditionList = "patient/conditions/activeConditionList.html";
 	$scope.incObservationList = "patient/observations/observations.html";
 
-	/***** fetch inital data from services ******/
-	patient_serv.fetch();
+	$scope.patient = models_service.getPatient($routeParams['patient_id']);
 
 	$scope.modalMessage = {
 		show: false,
@@ -497,7 +533,65 @@ module.exports = function($scope, patient_serv) {
 		}
 	}
 }
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
+module.exports = function($rootScope, patient_factory, activeCondition_factory) {
+	var models = {
+		patients: []
+		, patientIndex: {}
+	}	
+
+	var service = {
+		
+		getPatient: function(patientId) {
+			if (models.patientIndex.hasOwnProperty(patientId)) {
+				var index = models.patientIndex[patientId];
+				return models.patients[index];
+			} else {
+				// never delete or slice an element out of array
+				// otherwise, the indexing will be messed up and cannot retrieve the right patient
+				var newPatientIndex = models.patients.length;
+				models.patientIndex[patientId] = newPatientIndex;  // track this index by patient Id
+				
+				models.patients.push(new patient_factory(patientId));
+				
+				models.patients[newPatientIndex].onLoad(
+					function(response) {
+						$rootScope.$broadcast("patients.updated", models.patients[newPatientIndex]);
+					}
+				);
+
+				models.patients[newPatientIndex].onFailure(
+					function(failedResponse) {
+						// instead of the deleting from the array, just delete form the index and set it to null
+						models.patients[newPatientIndex] = null;
+						delete models.patientIndex[patientId];
+					}
+				);
+
+				return models.patients[newPatientIndex];
+			}
+		}
+
+		, getPatients: function() {
+			return model.patients;
+		}
+
+		, addActiveCondition: function(name, severity, description, infer_c_id) {
+			var newAC = new activeCondition_factory();
+			newAC.name = name;
+			newAC.severity = severity;
+			newAC.description = description;
+			newAC.infer_c_id = infer_c_id;
+
+			console.log(newAC);
+
+			return newAC;
+		}
+	}
+
+	return service;
+}
+},{}],13:[function(require,module,exports){
 module.exports = function($scope, patient_serv) {
 	$scope.modal = {
 		show: false,
@@ -517,18 +611,88 @@ module.exports = function($scope, patient_serv) {
 		$scope.modal.show = true;
 	}
 }
-},{}],12:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
+module.exports = function($resource, $rootScope, $route, $routeParams) {
+	var hpId = sessionStorage.getItem("medicloud_hp_id");
+	var url = 'http://' + window.location.hostname + '\\:8080/api/hp/:hpId/patients/:patientId';
+	var client = $resource(url, {
+		hpId: hpId,
+		patientId: '@patientId'
+	});
+
+	var url_cond = url + "/conditions/:conditionId";
+	var cond_client = $resource(url_cond, { hpId: hpId, patientId: '@patientId', conditionId: '@conditionId' });
+
+	var patient = function(patientId) {
+		this.patientId = patientId;
+		this.onLoadCallback = angular.noop;
+		this.onFailureCallback = angular.noop;
+		this.conditions = [];
+		this.observations = [];
+		this.fetch();
+	}
+
+	patient.prototype = {
+		constructor: patient,
+
+		onLoad: function(callback) {
+			this.onLoadCallback = callback;
+		},
+
+		onFailure: function(callback) {
+			this.onFailureCallback = callback;
+		},
+
+		fetch: function() {
+			var self = this;
+
+			var promise = client.get({
+				patientId: self.patientId
+			}, function(response, headers) {
+				angular.extend(self, response);
+				self.onLoadCallback.call(self, response);
+			}, function(response) {
+				$rootScope.$broadcast('error', response);
+				self.onFailureCallback.call(self, response);
+			});
+
+			return promise;
+		},
+
+		fetchConditions: function() {
+			var self = this;
+
+			self.conditions = [];
+
+			var promise = cond_client.query(
+				{ patientId: self.patientId}
+				, function(response) {
+					angular.extend(self.conditions, response);
+				}
+				, function(response) {
+					$rootScope.$broadcast('error', response);
+				})
+
+			return promise;
+		}
+	}
+
+	return patient;
+}
+},{}],15:[function(require,module,exports){
 module.exports = function() {
 	var auth = require("../../Shared/authorization.interceptor");
 
 	var main_ctrl = require(".//main.controller");
 	var modal_dir = require("./../share/modal.directive");
-	var patient_serv = require("./patient.service");
+	var models_service = require("./models.service");
+
+	var patient_factory = require("./patient.factory");
 	var profile_ctrl = require("./profile/profile.controller");
 	var conditionList_ctrl = require("./conditions/activeConditionList.controller");
 	// var condition_dir = require("./../condition/condition.directive");
 	var newActiveCondition_dir = require("./conditions/newActiveCondition.directive");
-	var condition_fact = require("./conditions/activeCondition.factory");
+	var activeCondition_factory = require("./conditions/activeCondition.factory");
 	var conditionSearch_dir = require("./../conditionSearch/conditionSearch.directive");
 	var infermedicaConditions_serv = require("./../conditionSearch/infermedicaConditions.service");
 	var observations_ctrl = require("./observations/observations.controller");
@@ -548,10 +712,11 @@ module.exports = function() {
 
 	// services
 	app
+		.service('models_service', ['$rootScope', 'patient_factory', 'activeCondition_factory', models_service])
 		.service('infermedicaConditions_serv', 
 			 ['$resource', '$rootScope', infermedicaConditions_serv])
-		.service('patient_serv', ['$resource', '$rootScope', '$route', '$routeParams', patient_serv])
-		.factory('condition_fact', ['$resource', '$rootScope', condition_fact])
+		.service('patient_factory', ['$resource', '$rootScope', '$route', '$routeParams', patient_factory])
+		.factory('activeCondition_factory', ['$resource', '$rootScope', activeCondition_factory])
 	;
 
 	// directives
@@ -563,71 +728,20 @@ module.exports = function() {
 
 	// controllers
 	app
-		.controller("profile_ctrl", ['$scope', 'patient_serv', profile_ctrl])
-		.controller("conditionList_ctrl", ['$scope', 'patient_serv', conditionList_ctrl])
-		.controller("observations_ctrl", ['$scope', 'patient_serv', observations_ctrl])
-		.controller("main_ctrl", ['$scope', 'patient_serv', main_ctrl])
+		.controller("profile_ctrl", ['$scope', 'models_service', '$route', '$routeParams', profile_ctrl])
+		.controller("conditionList_ctrl", ['$scope', 'models_service', '$route', '$routeParams', conditionList_ctrl])
+		.controller("observations_ctrl", ['$scope', 'models_service', '$route', '$routeParams', observations_ctrl])
+		.controller("main_ctrl", ['$scope', 'models_service', '$route', '$routeParams', main_ctrl])
 	;
 }
 
-},{"../../Shared/authorization.interceptor":1,"./../conditionSearch/conditionSearch.directive":5,"./../conditionSearch/infermedicaConditions.service":6,"./../share/modal.directive":19,".//main.controller":10,"./conditions/activeCondition.factory":7,"./conditions/activeConditionList.controller":8,"./conditions/newActiveCondition.directive":9,"./observations/observations.controller":11,"./patient.service":13,"./profile/profile.controller":14}],13:[function(require,module,exports){
-module.exports = function($resource, $rootScope, $route, $routeParams) {
-	var url = 'http://'+window.location.hostname+'\\:8080/api/hp/:hpId/patients/:patientId';
-	var hpId = sessionStorage.getItem("medicloud_hp_id");
-
-	var client = $resource(
-		url, {
-		    hpId:hpId
-		    , patientId: '@pId'
-		}
-	);
-        
-        // return instance of service
-	return {
-		data: { contact_info: {}, encounters: [], notes: [] },
-		fetch: function() {
-			var self = this;
-
-			client.get({
-				patientId: $routeParams['patient_id']
-			}, function(response, headers) {
-				self.data = response;
-				$rootScope.$broadcast('patient_service.data.updated');
-			}, function(response) {
-				console.log(response);
-			});
-		}
-	}
-}
-
-},{}],14:[function(require,module,exports){
-module.exports = function($scope, patient_serv) {
+},{"../../Shared/authorization.interceptor":1,"./../conditionSearch/conditionSearch.directive":5,"./../conditionSearch/infermedicaConditions.service":6,"./../share/modal.directive":21,".//main.controller":11,"./conditions/activeCondition.factory":8,"./conditions/activeConditionList.controller":9,"./conditions/newActiveCondition.directive":10,"./models.service":12,"./observations/observations.controller":13,"./patient.factory":14,"./profile/profile.controller":16}],16:[function(require,module,exports){
+module.exports = function($scope, models_service, $route, $routeParams) {
 	
-	var sync_patient_data = function() {
-		var patient_data = patient_serv.data;
-
-		$scope.personal = {
-			first_name: patient_data.profile.firstName,
-			middle_name: patient_data.profile.middleName,
-			last_name: patient_data.profile.lastName,
-			birthdate: patient_data.profile.birthdate,
-			email: patient_data.profile.email,
-			address: patient_data.contactInfo.addres || '',
-			city: patient_data.contactInfo.city || '',
-			state: patient_data.contactInfo.state || '',
-			zip: patient_data.contactInfo.zip || ''
-		};
-
-		$scope.encounters = patient_data.encounters;
-		$scope.notes = patient_data.notes;
-	}
-
-	$scope.$on('patient_service.data.updated', function() {
-		sync_patient_data();
-	});
+	$scope.patient = models_service.getPatient($routeParams['patient_id']);
 }
 
-},{}],15:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports = function() {
     return {
         restrict: 'E',
@@ -673,7 +787,7 @@ module.exports = function() {
     };
 }
 
-},{}],16:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = function() {
 	var patientsList_ctrl = require("./patientsList/patientsList.controller");
 	var patientsListService = require("./patientsList/patientsList.service");
@@ -707,7 +821,7 @@ module.exports = function() {
 
 }
 
-},{"../../Shared/authorization.interceptor":1,"./formAddPatient/formAddPatient.directive":15,"./patientsList/patientsList.controller":17,"./patientsList/patientsList.service":18}],17:[function(require,module,exports){
+},{"../../Shared/authorization.interceptor":1,"./formAddPatient/formAddPatient.directive":17,"./patientsList/patientsList.controller":19,"./patientsList/patientsList.service":20}],19:[function(require,module,exports){
 module.exports = function($scope, $rootScope, service) {
     $scope.patientList = [];
     getPatients();
@@ -747,7 +861,7 @@ module.exports = function($scope, $rootScope, service) {
             });
     }
 }
-},{}],18:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = function($http, $rootScope, $resource) {
     var onSuccessFn;
     var onFailureFn;
@@ -820,7 +934,7 @@ module.exports = function($http, $rootScope, $resource) {
     }
     return service;
 }
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 module.exports = function() {
 	return {
 		templateUrl: 'share/modal.template.html',

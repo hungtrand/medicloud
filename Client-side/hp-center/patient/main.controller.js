@@ -1,10 +1,9 @@
-module.exports = function($scope, patient_serv) {
+module.exports = function($scope, models_service, $route, $routeParams) {
 	/* include files */
 	$scope.incConditionList = "patient/conditions/activeConditionList.html";
 	$scope.incObservationList = "patient/observations/observations.html";
 
-	/***** fetch inital data from services ******/
-	patient_serv.fetch();
+	$scope.patient = models_service.getPatient($routeParams['patient_id']);
 
 	$scope.modalMessage = {
 		show: false,
