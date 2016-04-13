@@ -10,7 +10,7 @@
                     <label class="col-sm-4 control-label">Patient</label>
                     <div class="btn-group">
                       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        Hello <span class="caret"></span>
+                        Select a patient <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu">
                         <li ng-repeat="patient in patientList.patients"><a href="#">{{patient.lastName}} {{patient.firstName}}</a></li>
@@ -18,11 +18,17 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">Time</label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" ng-model="patient.firstName" name="firstName" required>
+                    <label class="col-sm-4 control-label">Times</label>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        Select a time <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li ng-repeat="time in timesList"><a href="#">{{time}}</a></li>
+                      </ul>
                     </div>
                 </div>
+
         </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
