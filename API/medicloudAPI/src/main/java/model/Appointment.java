@@ -29,8 +29,8 @@ import repository.AppointmentRepo;
 @Table(name="appointment")
 public class Appointment {
 
-	@Autowired
-	private AppointmentRepo appointmentRepo;
+//	@Autowired
+//	private AppointmentRepo appointmentRepo;
 	
 	@Id
 	@Column(name="appointment_id")
@@ -225,16 +225,16 @@ public class Appointment {
 		return availableTime;
 	}
 	
-	public boolean checkAppointmentExists(String userTime, String userDate, int hpId){
-		
-		Appointment checkTime = appointmentRepo.findByHpIdAndAppointmentTimeAndAppointmentDate(hpId, userTime, userDate);
-		if(checkTime == null){
-			
-			return true;
-		}
-		return false;
-	}
-	
+//	public boolean checkAppointmentExists(String userTime, String userDate, int hpId){
+//		
+//		Appointment checkTime = appointmentRepo.findByHpIdAndAppointmentTimeAndAppointmentDate(hpId, userTime, userDate);
+//		if(checkTime == null){
+//			
+//			return true;
+//		}
+//		return false;
+//	}
+//	
 	
 	public double[] getAvailability(){
 		double[] a = null;

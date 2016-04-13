@@ -132,7 +132,7 @@ public class PatientsCollection {
 				appointmentRepo.findByAppointmentTime(userTime)==null){
 			appointment.defaultAppointmentAvailability();
 		}else {
-//			if(appointmentRepo.findByAppointmentTime(appointmentTime)){
+//			if(appointmentRepo.findByAppointmentTime(userTime)){
 //				
 //			}
 		}
