@@ -119,24 +119,30 @@ public class PatientsCollection {
 	 * Doctor's Availability on weekly base.
 	 * @param newAvailableTime
 	 */
-	@RequestMapping(value="/availability", method=RequestMethod.POST)
-	public void getDoctorAvailableTime(@RequestBody Appointment newAvailableTime
-			, @PathVariable("hpId")int hpId){
+	@RequestMapping(value="/availability", method=RequestMethod.GET)
+	public List<String> getDoctorAvailableTime(
+			 @PathVariable("hpId")int hpId){
 		
 		Appointment appointment = new Appointment();
-		String userTime =newAvailableTime.getAppointmentTime();
-		String userDate = newAvailableTime.getAppointmentDate();
+//		String userTime =newAvailableTime.getAppointmentTime();
+//		String userDate = newAvailableTime.getAppointmentDate();
 		
 		
-		if(appointmentRepo.findByAppointmentDate(userDate) == null && 
-				appointmentRepo.findByAppointmentTime(userTime)==null){
-			appointment.defaultAppointmentAvailability();
-		}else {
-//			if(appointmentRepo.findByAppointmentTime(userTime)){
+//		if(appointmentRepo.findByHpIdAndAppointmentTimeAndAppointmentDate(hpId, 
+//				userTime, userDate) == null){ 		
+//			return appointment.defaultAppointmentAvailability();
+//			
+//		}else {
+//			if(appointmentRepo.findByAppointmentTime(userDate)==null){
+//				
+//				if(appointmentRepo.findByAppointmentTime(userTime)!=null){
+//					
+//				}
 //				
 //			}
-		}
-		
+//		}
+//		List<String> a = new ArrayList<String>();
+		return appointment.defaultAppointmentAvailability();
 		
 	}
 	
