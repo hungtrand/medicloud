@@ -1,0 +1,35 @@
+<form id="AddPatientForm" class="form-horizontal modal fade" tabindex="-1" role="dialog" action="javascript:void(0)">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Request Appointment Form</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Patient</label>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        Hello <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li ng-repeat="patient in patientList.patients"><a href="#">{{patient.lastName}} {{patient.firstName}}</a></li>
+                      </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Time</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" ng-model="patient.firstName" name="firstName" required>
+                    </div>
+                </div>
+        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="AddPatient">Request Appointment</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</form>

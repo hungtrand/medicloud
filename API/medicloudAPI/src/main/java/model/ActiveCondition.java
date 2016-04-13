@@ -1,20 +1,16 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import model.Observation;
@@ -48,27 +44,46 @@ public class ActiveCondition {
 	@Column(name="description")
 	private String description;
 	
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="condition_id", nullable=true, insertable=false, updatable=false)
-//	private Condition condition;
-//	
-//	@Column(name="condition_id")
-//	private int conditionId;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="condition_id", nullable=true, insertable=false, updatable=false)
+	private Condition condition;
 	
+	@Column(name="condition_id")
+	private int conditionId;
 	
-//	public int getConditionId(){
-//		return this.condtion.getConditionId();
-//	}
+	@Column(name="severity")
+	private String severity;
 	
-	public String getDescription(){
+	@Column(name="date_created")
+	private Date dateCreated;
+	
+	public ActiveCondition(Condition cond, Patient patient) {
+		this.condition = cond;
+		this.patient = patient;
+	}
+	
+	public int getConditionId(){
+		return this.condition.getConditionId();
+	}
+	
+	public String getDescription() {
 		return this.description;
+	}
+	
+	public String getSeverity() {
+		return this.severity;
+	}
+	
+	public String getDateCreated() {
+		if (this.dateCreated == null) return "";
+		DateFormat formatDate = new SimpleDateFormat("MM/dd/yyyy");
+		
+		return formatDate.format(this.dateCreated);
 	}
 	
 	public int getActiveConditionId(){
 		return this.activeConditionId;
 	}
-	
-//
 	
 	public Observation getStartObservation(){
 		return this.sObservation;
@@ -89,8 +104,24 @@ public class ActiveCondition {
 	public void setDescription(String newDescription){
 		this.description = newDescription;
 	}
-	public void setConditionId(int newConditionId){
-//		this.conditionId = newConditionId;
+	
+	public void setSeverity(String severity) {
+		if (severity.equals("mild") || severity.equals("moderate") || severity.equals("high")) {
+			this.severity = severity.toLowerCase();
+		}
+	}
+	
+	@PrePersist
+	public void setDateCreated() {
+		this.dateCreated = new Date();
+	}
+
+	public static ActiveCondition create(Condition cond, Patient patient) {
+		ActiveCondition newAC = new ActiveCondition(cond, patient);
+		newAC.conditionId = cond.getConditionId();
+		newAC.patientId = patient.getPatientId();
+		
+		return newAC;
 	}
 	
 	

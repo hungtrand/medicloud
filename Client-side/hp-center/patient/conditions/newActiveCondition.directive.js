@@ -1,7 +1,6 @@
 module.exports = function() {
-	var controller = function($scope, condition_fact) {
-		$scope.mode = 'search';
-		$scope.model = { suggestion: null };
+	var controller = function($scope, models_service) {
+		$scope.mode = 'search'; // search, create, or confirm
 
 		$scope.formatDate = function(d) {
 			if (!d) return 'none';
@@ -13,41 +12,51 @@ module.exports = function() {
 		}
 
 		$scope.save = function() {
-			$scope.waiting = true;
-			var data = {
-				name: $scope.condition.name
-				, severity: $scope.condition.severity
-				, infer_c_id: $scope.condition.id
-			}
-			condition_fact.insert({ condition_id: 0 }, data);
+			models_service.addActiveCondition($scope.condition.name, $scope.condition.severity, $scope.condition.description, $scope.condition.infer_c_id);
 		}
 
 		$scope.cancel = function() {
-			$scope.$emit('newCondition.cancel', $scope.condition);
+			($scope.onCancelled || angular.noop)();
 		}
 
-		$scope.severityOptions = ['mild', 'moderate', 'severe'];
 
-		$scope.$watch('model.suggestion', function(newVal) {
-			angular.extend($scope.condition, newVal);
-			if ($scope.model.suggestion) {
-				$scope.mode = 'confirm';
+		$scope.severityOptions = ['mild', 'moderate', 'severe'];
+		$scope.create = function(suggestion) {
+			if (suggestion) {
+				$scope.condition.name = suggestion.name;
+				$scope.condition.severity = suggestion.severity;
+				$scope.condition.infer_c_id = suggestion.id;
+				$scope.condition.description = "";
 			}
 			
-		}, true);
+			$scope.mode = "create";
+			setTimeout(function() {
+				$scope.$apply();
+			}, 200);
+		}
 	}
 
 	return {
 		templateUrl: 'patient/conditions/newActiveCondition.template.html',
-		
+
 		scope: {
-			condition: "=condData"
+			condition: "=condData",
+			onSaved: "&",
+			onCancelled: "&"
 		},
 
-		link: function() {
+		link: function($scope, $element, $attrs) {
+			$scope.condition.name = '';
+			$scope.condition.severity = '';
+			$scope.condition.infer_c_id = null;
+			$scope.condition.description = '';
 
-		}, 
+			$scope.confirm = function() {
+				$scope.mode = "confirm";
+			}
 
-		controller: ['$scope', 'condition_fact', controller]
+		},
+
+		controller: ['$scope', 'models_service', controller]
 	}
 }

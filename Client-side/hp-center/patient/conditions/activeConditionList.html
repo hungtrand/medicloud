@@ -1,17 +1,19 @@
 <div id="conditions" ng-controller="conditionList_ctrl">
 	<div class="btn-toolbar">
 		<div class="btn-group pull-right">
-			<button type="button" class="btn btn-lg btn-circle btn-danger" ng-click="appendNewCondition()">&plus;</button>
+			<button type="button" class="btn btn-lg btn-circle btn-danger" ng-click="getNewActiveConditionForm()">&plus;</button>
 		</div>
 	</div>
 	
 	<hr />
 
-	<div class="post" ng-repeat="new in newConditions"
+	<div class="post" ng-repeat="newCond in newActiveConditionForms"
 		mc-new-active-condition 
-		cond-data="new"></div>
+		cond-data="newCond"
+		on-saved="removeForm($index)"
+		on-cancelled="removeForm($index)"></div>
 	
 
 	<!-- {"id":"c_205","name":"Wilson's disease","categories":["Gastroenterology","Neurology"],"prevalence":"very_rare","acuteness":"chronic_with_exacerbations","severity":"moderate","sex_filter":"both"} -->
-	<div class="post" mc-active-condition cond-data="condition" ng-repeat="condition in conditions"></div>
+	<div class="post" mc-active-condition cond-data="condition" ng-repeat="condition in patient.conditions"></div>
 </div>

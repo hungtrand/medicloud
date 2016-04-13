@@ -3,12 +3,14 @@ module.exports = function() {
 
 	var main_ctrl = require(".//main.controller");
 	var modal_dir = require("./../share/modal.directive");
-	var patient_serv = require("./patient.service");
+	var models_service = require("./models.service");
+
+	var patient_factory = require("./patient.factory");
 	var profile_ctrl = require("./profile/profile.controller");
 	var conditionList_ctrl = require("./conditions/activeConditionList.controller");
 	// var condition_dir = require("./../condition/condition.directive");
 	var newActiveCondition_dir = require("./conditions/newActiveCondition.directive");
-	var condition_fact = require("./conditions/activeCondition.factory");
+	var activeCondition_factory = require("./conditions/activeCondition.factory");
 	var conditionSearch_dir = require("./../conditionSearch/conditionSearch.directive");
 	var infermedicaConditions_serv = require("./../conditionSearch/infermedicaConditions.service");
 	var observations_ctrl = require("./observations/observations.controller");
@@ -28,10 +30,11 @@ module.exports = function() {
 
 	// services
 	app
+		.service('models_service', ['$rootScope', 'patient_factory', 'activeCondition_factory', models_service])
 		.service('infermedicaConditions_serv', 
 			 ['$resource', '$rootScope', infermedicaConditions_serv])
-		.service('patient_serv', ['$resource', '$rootScope', '$route', '$routeParams', patient_serv])
-		.factory('condition_fact', ['$resource', '$rootScope', condition_fact])
+		.service('patient_factory', ['$resource', '$rootScope', '$route', '$routeParams', patient_factory])
+		.factory('activeCondition_factory', ['$resource', '$rootScope', activeCondition_factory])
 	;
 
 	// directives
@@ -43,9 +46,9 @@ module.exports = function() {
 
 	// controllers
 	app
-		.controller("profile_ctrl", ['$scope', 'patient_serv', profile_ctrl])
-		.controller("conditionList_ctrl", ['$scope', 'patient_serv', conditionList_ctrl])
-		.controller("observations_ctrl", ['$scope', 'patient_serv', observations_ctrl])
-		.controller("main_ctrl", ['$scope', 'patient_serv', main_ctrl])
+		.controller("profile_ctrl", ['$scope', 'models_service', '$route', '$routeParams', profile_ctrl])
+		.controller("conditionList_ctrl", ['$scope', 'models_service', '$route', '$routeParams', conditionList_ctrl])
+		.controller("observations_ctrl", ['$scope', 'models_service', '$route', '$routeParams', observations_ctrl])
+		.controller("main_ctrl", ['$scope', 'models_service', '$route', '$routeParams', main_ctrl])
 	;
 }

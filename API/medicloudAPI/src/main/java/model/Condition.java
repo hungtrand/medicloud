@@ -21,16 +21,13 @@ public class Condition {
 	@Column(name="name")
 	private String name;
 	
-	@Column(name="severity")
-	private String severity;
-	
 	@Column(name="infer_c_id")
-	private int inferCId;
+	private String inferCId;
 	
-	
-	
-	
-	
+	public Condition(String newName, String inferCId) {
+		this.name = newName;
+		this.inferCId = inferCId;
+	}
 	
 	//Getters 
 	/**
@@ -41,17 +38,10 @@ public class Condition {
 		return this.conditionId;
 	}
 	
-	/**
-	 * Get severity of that condition.
-	 * @return - current severity
-	 */
-	public String getSeverity(){
-		return this.severity;
-	}
 	public String getName(){
 		return this.name;
 	}
-	public int getInferCId(){
+	public String getInferCId(){
 		return this.inferCId;
 	}
 	
@@ -68,11 +58,15 @@ public class Condition {
 		this.conditionId = newConditionId;
 	}
 	
-	public void setSeverity(String newSeverity){
-		this.severity = newSeverity;
-	}
-	public void setInferCId(int newInferCId){
+
+	public void setInferCId(String newInferCId){
 		this.inferCId = newInferCId;
+	}
+
+	public static Condition create(String name, String inferCId) {
+		Condition newCond = new Condition(name, inferCId);
+		
+		return newCond;
 	}
 	
 

@@ -151,14 +151,15 @@ module.exports = function() {
       });
 
       $("[data-date]").click(function() {
-        $scope.modalControl.show = true;
+        $scope.modalControl.show = !$scope.modalControl.show;
         var selectedDate = $(this).attr("data-date");
         console.log("selectedDate is " + selectedDate);
         $scope.$apply();
+        console.log("show is " + $scope.modalControl.show);
       });
 
     },
-    controller: ['$scope', function($scope) {
+    controller: ['$scope', 'calendarService', function($scope, calendarService) {
       $scope.modalControl = {
         show: false
       };
