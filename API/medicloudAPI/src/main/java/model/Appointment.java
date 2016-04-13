@@ -75,10 +75,10 @@ public class Appointment {
 	private String reason;
 	
 	@Column(name="active")
-	private boolean active=false;
+	private boolean active;
 	
 	@Column(name="accept_Appointment")
-	private boolean acceptAppointment = false;
+	private boolean acceptAppointment;
 	
 	@Column(name="requestDate")
 	private String requestDate;
@@ -220,8 +220,7 @@ public class Appointment {
 			start = start + 0.5;	
 		}
 	
-			
-		
+				
 		return availableTime;
 	}
 	
