@@ -24,6 +24,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import repository.AppointmentRepo;
 import repository.Contact_repo;
 import repository.HealthProfessional_repo;
 import repository.NoteRepo;
@@ -33,7 +34,9 @@ import repository.PersonalViewRepo;
 import repository.User_repo;
 import model.PersonalView;
 import model.User;
+//import model.DoctorAvailability.CalculateTime;
 import model.Person;
+import model.Appointment;
 import model.Contact;
 import model.HealthProfessional;
 import model.Note;
@@ -58,6 +61,10 @@ public class PatientsCollection {
 	
 	@Autowired
 	private Contact_repo contactRepo;
+	
+	@Autowired
+	private AppointmentRepo appointmentRepo;
+	
 	
 	@Value("${client.root}")
 	private String clientRoot;
@@ -106,6 +113,41 @@ public class PatientsCollection {
 		return (List<Patient>) patients;
 		
 	}
+	
+	
+	/**
+	 * Doctor's Availability on weekly base.
+	 * @param newAvailableTime
+	 */
+	@RequestMapping(value="/availability", method=RequestMethod.POST)
+	public void getDoctorAvailableTime(@RequestBody Appointment newAvailableTime
+			, @PathVariable("hpId")int hpId){
+		
+		Appointment appointment = new Appointment();
+		String userTime =newAvailableTime.getAppointmentTime();
+		String userDate = newAvailableTime.getAppointmentDate();
+		
+		
+		if(appointmentRepo.findByAppointmentDate(userDate) == null && 
+				appointmentRepo.findByAppointmentTime(userTime)==null){
+			appointment.defaultAppointmentAvailability();
+		}else {
+//			if(appointmentRepo.findByAppointmentTime(appointmentTime)){
+//				
+//			}
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public static class addPatientForm {
 		public String firstName;

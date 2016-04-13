@@ -1,6 +1,7 @@
 package model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -18,13 +19,19 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import model.HealthProfessional;
 import model.Patient;
+import repository.AppointmentRepo;
 
 @Entity
 @Table(name="appointment")
 public class Appointment {
 
+	@Autowired
+	private AppointmentRepo appointmentRepo;
+	
 	@Id
 	@Column(name="appointment_id")
 	@GeneratedValue
@@ -184,5 +191,56 @@ public class Appointment {
 	public void setRequestDate(){
 		this.requestDate = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
 	}
+	
+	public List<String> defaultAppointmentAvailability(){
+		double start =9;
+		double end = 17;
+		List<String> availableTime = new ArrayList<String>();
+		double[] time;
+		int temp = (int) (end - start);
+		temp = temp*2;
+		for(int i = 0; i< temp; i++){
+			
+			double calculateHour = start;
+			calculateHour = calculateHour * 2;
+			double cH = calculateHour % 2;
+			String number;
+			if(cH <= 0){
+			number= Integer.toString((int) start) + ":00";
+			availableTime.add(number);
+			} else{
+			number= Integer.toString((int)(start-.5)) + ":30";
+				availableTime.add(number);
+			}
+			
+			if(start > 12){	
+				start = start - 12;
+			}
+			
+			start = start + 0.5;	
+		}
+	
+			
+		
+		return availableTime;
+	}
+	
+	public boolean checkAppointmentExists(String userTime, String userDate, int hpId){
+		
+		Appointment checkTime = appointmentRepo.findByHpIdAndAppointmentTimeAndAppointmentDate(hpId, userTime, userDate);
+		if(checkTime == null){
+			
+			return true;
+		}
+		return false;
+	}
+	
+	
+	public double[] getAvailability(){
+		double[] a = null;
+		return a;
+	}
+	
+	
 
 }
