@@ -46,14 +46,15 @@ module.exports = function($http, $rootScope, $resource) {
 
         addPatient: function(patient) {
 
-            $rootScope.$broadcast('patientAdded');
             var client = $resource(url, {
                 hpId: hpId
             });
             client.save(patient,
                 function(response) {
                     if (response.personId) {
-                        service.patients.push(patient);
+                        $rootScope.$broadcast('patientAdded');
+
+                        service.patients.push(response);
                         $('#patientSuccessAlert').show();
                         setTimeout(function() {
                             $('#patientSuccessAlert').fadeOut('slow');

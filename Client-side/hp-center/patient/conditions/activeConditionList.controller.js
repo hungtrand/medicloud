@@ -8,8 +8,6 @@ module.exports = function($scope, models_service, $route, $routeParams) {
 	}
 
 	$scope.removeForm = function(index) {
-		return function() {
-			$scope.newActiveConditionForms.splice(index, 1);
-		};
+		$scope.newActiveConditionForms.splice(index, 1);
 	}
 }

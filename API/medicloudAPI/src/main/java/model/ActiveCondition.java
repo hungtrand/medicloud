@@ -57,13 +57,12 @@ public class ActiveCondition {
 	@Column(name="date_created")
 	private Date dateCreated;
 	
-	public ActiveCondition(Condition cond, Patient patient) {
-		this.condition = cond;
-		this.patient = patient;
-	}
-	
 	public int getConditionId(){
 		return this.condition.getConditionId();
+	}
+	
+	public String getName() {
+		return this.condition.getName();
 	}
 	
 	public String getDescription() {
@@ -106,7 +105,7 @@ public class ActiveCondition {
 	}
 	
 	public void setSeverity(String severity) {
-		if (severity.equals("mild") || severity.equals("moderate") || severity.equals("high")) {
+		if (severity.equals("mild") || severity.equals("moderate") || severity.equals("severe")) {
 			this.severity = severity.toLowerCase();
 		}
 	}
@@ -117,7 +116,9 @@ public class ActiveCondition {
 	}
 
 	public static ActiveCondition create(Condition cond, Patient patient) {
-		ActiveCondition newAC = new ActiveCondition(cond, patient);
+		ActiveCondition newAC = new ActiveCondition();
+		newAC.condition = cond;
+		newAC.patient = patient;
 		newAC.conditionId = cond.getConditionId();
 		newAC.patientId = patient.getPatientId();
 		

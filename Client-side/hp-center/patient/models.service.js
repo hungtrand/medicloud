@@ -1,4 +1,4 @@
-module.exports = function($rootScope, patient_factory, activeCondition_factory) {
+module.exports = function($rootScope, patient_factory) {
 	var models = {
 		patients: []
 		, patientIndex: {}
@@ -38,18 +38,6 @@ module.exports = function($rootScope, patient_factory, activeCondition_factory) 
 
 		, getPatients: function() {
 			return model.patients;
-		}
-
-		, addActiveCondition: function(name, severity, description, infer_c_id) {
-			var newAC = new activeCondition_factory();
-			newAC.name = name;
-			newAC.severity = severity;
-			newAC.description = description;
-			newAC.infer_c_id = infer_c_id;
-
-			console.log(newAC);
-
-			return newAC;
 		}
 	}
 

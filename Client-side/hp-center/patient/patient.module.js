@@ -8,7 +8,7 @@ module.exports = function() {
 	var patient_factory = require("./patient.factory");
 	var profile_ctrl = require("./profile/profile.controller");
 	var conditionList_ctrl = require("./conditions/activeConditionList.controller");
-	// var condition_dir = require("./../condition/condition.directive");
+	var activeCondition_dir = require("./conditions/activeCondition.directive");
 	var newActiveCondition_dir = require("./conditions/newActiveCondition.directive");
 	var activeCondition_factory = require("./conditions/activeCondition.factory");
 	var conditionSearch_dir = require("./../conditionSearch/conditionSearch.directive");
@@ -30,10 +30,10 @@ module.exports = function() {
 
 	// services
 	app
-		.service('models_service', ['$rootScope', 'patient_factory', 'activeCondition_factory', models_service])
+		.service('models_service', ['$rootScope', 'patient_factory', models_service])
 		.service('infermedicaConditions_serv', 
 			 ['$resource', '$rootScope', infermedicaConditions_serv])
-		.service('patient_factory', ['$resource', '$rootScope', '$route', '$routeParams', patient_factory])
+		.service('patient_factory', ['$resource', '$rootScope', 'activeCondition_factory', patient_factory])
 		.factory('activeCondition_factory', ['$resource', '$rootScope', activeCondition_factory])
 	;
 
@@ -41,6 +41,7 @@ module.exports = function() {
 	app
 		.directive('mcConditionSearch', conditionSearch_dir)
 		.directive('mcNewActiveCondition', newActiveCondition_dir)
+		.directive('mcActiveCondition', activeCondition_dir)
 		.directive('mcModal', modal_dir)
 	;
 
