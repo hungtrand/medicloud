@@ -18,18 +18,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import model.Contact;
+
 import model.Patient;
 import model.Person;
 import model.Appointment;
 import provider.MessageResponse;
 import repository.AppointmentRepo;
+
 import repository.Contact_repo;
 import repository.HealthProfessional_repo;
 import repository.PatientRepo;
 
 
 @RestController
-@RequestMapping(value="/api/patient/{patient_id}")
+@RequestMapping(value="/api/patient")
 public class PatientPersonalResourceServices {
 
 
@@ -42,6 +44,7 @@ public class PatientPersonalResourceServices {
 		private JavaMailSender mailer;
 		@Autowired
 		private HealthProfessional_repo hpRepo;
+	
 		
 		@Autowired
 		private AppointmentRepo appointmentRepo;
@@ -54,7 +57,7 @@ public class PatientPersonalResourceServices {
 		 * @param patientId
 		 * @return
 		 */
-		@RequestMapping(value="/appointments", method=RequestMethod.GET)
+		@RequestMapping(value="/{patient_id}/appointments", method=RequestMethod.GET)
 		public ResponseEntity<?> getAllAppointment(@PathVariable("patient_id")int patientId){
 			List<Appointment> foundPatient = new ArrayList<Appointment>();
 			
@@ -73,6 +76,7 @@ public class PatientPersonalResourceServices {
 			}
 			
 		}
+		
 		
 		
 		
@@ -106,6 +110,7 @@ public class PatientPersonalResourceServices {
 		}
 		
 		
+
 		
 		//---------------------------------------------PUT-------------------------------------------------------
 		
