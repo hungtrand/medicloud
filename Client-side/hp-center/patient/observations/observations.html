@@ -3,7 +3,7 @@
 		<li>
 			<button type="button" 
 				class="addObservation btn btn-circle btn-lg btn-danger"
-				ng-click="addObservationForm()">
+				ng-click="openObservationForm()">
 				<span style="font-size: 24px;">&plus;</span>
 			</button>
 		</li>
@@ -20,45 +20,50 @@
 		<!-- /.timeline-label -->
 		<!-- timeline item -->
 		<li>
-			<i class="fa fa-envelope bg-blue"></i>
+			<i class="fa fa-user-md bg-blue"></i>
 			<div class="timeline-item">
 				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-				<h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+				<h3 class="timeline-header"><strong class="text-primary">Patient state:</strong> conscious, tired, laying down </h3>
 				<div class="timeline-body">
-					Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-					weebly ning heekya handango imeem plugg dopplr jibjab, movity
-					jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-					quora plaxo ideeli hulu weebly balihoo...
+					<strong class="text-primary">Dr. Perry's Observations:</strong>
+<pre>
+Heart rate normal (104)
+Blood pressure moderate
+</pre>
 				</div>
-				<div class="timeline-footer">
-					<a class="btn btn-primary btn-xs">Read more</a>
-					<a class="btn btn-danger btn-xs">Delete</a>
-				</div>
+				<!-- <div class="timeline-footer">
+					<a class="btn btn-warning btn-flat btn-xs">View comments</a>
+				</div> -->
 			</div>
 		</li>
 		<!-- END timeline item -->
 		<!-- timeline item -->
 		<li>
-			<i class="fa fa-user bg-aqua"></i>
+			<i class="fa fa-user-md bg-blue"></i>
 			<div class="timeline-item">
 				<span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-				<h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
+				<h3 class="timeline-header"><strong class="text-primary">Patient state: Post-exercise</strong> </h3>
+				<div class="timeline-body">
+					<strong class="text-primary">Dr. Kaur's Observations:</strong>
+<pre>
+Heart rate normal (120)
+Sugar level moderate
+</pre>
+				</div>
 			</div>
 		</li>
 		<!-- END timeline item -->
 		<!-- timeline item -->
 		<li>
-			<i class="fa fa-comments bg-yellow"></i>
+			<i class="fa fa-user bg-green"></i>
 			<div class="timeline-item">
 				<span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-				<h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
+				<h3 class="timeline-header"><strong class="text-success">Patient's self observations</strong></h3>
 				<div class="timeline-body">
-					Take me to your leader!
-					Switzerland is small and neutral!
-					We are more like Germany, ambitious and misunderstood!
-				</div>
-				<div class="timeline-footer">
-					<a class="btn btn-warning btn-flat btn-xs">View comment</a>
+<pre>
+I'm feeling rashes on my leg
+My index finger is also swollen
+</pre>
 				</div>
 			</div>
 		</li>
@@ -72,16 +77,17 @@
 		<!-- /.timeline-label -->
 		<!-- timeline item -->
 		<li>
-			<i class="fa fa-camera bg-purple"></i>
+			<i class="fa fa-user-md bg-blue"></i>
 			<div class="timeline-item">
 				<span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-				<h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
+				<h3 class="timeline-header"><a href="#">Dr. Takashi</a> uploaded new photos</h3>
 				<div class="timeline-body">
 					<img src="http://placehold.it/150x100" alt="..." class="margin">
 					<img src="http://placehold.it/150x100" alt="..." class="margin">
 					<img src="http://placehold.it/150x100" alt="..." class="margin">
 					<img src="http://placehold.it/150x100" alt="..." class="margin">
 				</div>
+				
 			</div>
 		</li>
 		<!-- END timeline item -->
@@ -90,10 +96,5 @@
 		</li>
 	</ul>
 
-	<mc-modal
-		show="modal.show" 
-		mc-title="" 
-		mc-body="modal.addObservationForm"
-		mc-footer=""
-		mc-actions="modal.actions"></mc-modal>
+	<mc-observation-form control="observationForm"></mc-observation-form>
 </div>

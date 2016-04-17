@@ -14,6 +14,8 @@ module.exports = function() {
 	var conditionSearch_dir = require("./../conditionSearch/conditionSearch.directive");
 	var infermedicaConditions_serv = require("./../conditionSearch/infermedicaConditions.service");
 	var observations_ctrl = require("./observations/observations.controller");
+	var observation_factory = require("./observations/observation.factory");
+	var observationForm_directive = require("./observations/observationForm.directive");
     
         // initialize angular module 
 	var app = angular.module('hpPatient', ['ngRoute', 'ngResource']);
@@ -35,6 +37,7 @@ module.exports = function() {
 			 ['$resource', '$rootScope', infermedicaConditions_serv])
 		.service('patient_factory', ['$resource', '$rootScope', 'activeCondition_factory', patient_factory])
 		.factory('activeCondition_factory', ['$resource', '$rootScope', activeCondition_factory])
+		.factory('observation_factory', ['$resource', observation_factory])
 	;
 
 	// directives
@@ -42,6 +45,7 @@ module.exports = function() {
 		.directive('mcConditionSearch', conditionSearch_dir)
 		.directive('mcNewActiveCondition', newActiveCondition_dir)
 		.directive('mcActiveCondition', activeCondition_dir)
+		.directive('mcObservationForm', observationForm_directive)
 		.directive('mcModal', modal_dir)
 	;
 
