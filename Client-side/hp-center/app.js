@@ -38,6 +38,7 @@ module.exports = function($q, $location) {
 	hpCalendar_module();
 	var app = new angular.module("hp-center", ['ngRoute', 'ngAnimate', 'hpPatient', 'hpPatientList', 'hpCalendar']);
 	// routing and navigation configuration
+	
 	app.config(['$routeProvider', '$httpProvider',
 		function($routeProvider, $httpProvider) {
 			'use strict';
@@ -223,20 +224,18 @@ module.exports = function() {
       $("[data-date]").click(function() {
         $scope.modalControl.show = !$scope.modalControl.show;
         $scope.selectedDate = $(this).attr("data-date");
-        console.log("$scope.selectedDate is " + $scope.selectedDate);
-        console.log("show is " + $scope.modalControl.show);
         $scope.setSelectedDate();
         $scope.$apply();
       });
 
     },
-    controller: ['$scope', 'calendarService', function($scope, calendarService) {
+    controller: ['$scope', '$rootScope', 'calendarService', function($scope, $rootScope, calendarService) {
       $scope.modalControl = {
         show: false
       };
       $scope.setSelectedDate = function() {
         calendarService.selectedDate = $scope.selectedDate;
-        console.log("calendarService.selectedDate is " + calendarService.selectedDate);
+        $rootScope.$broadcast('dateSelected');
       }
     }]
   }
@@ -273,20 +272,19 @@ module.exports = function($http, $rootScope, $resource) {
     var availabilityUrl = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/availability?userDate=:selectedDate';
     var service = {
       times: [{
-            appointmentTime: "9:00",
-            appointmentDate: "01/01/2016",
+            appointmentTime: "9:00"
         }, {
-            appointmentTime: "10:00",
-            appointmentDate: "01/01/2016",
+            appointmentTime: "10:00"
         }],
 
         getTimes: function() {
+          selectedDate = this.selectedDate;
           var that = this;
-          console.log("Service here. Selected date is " + selectedDate);
           var client = $resource(availabilityUrl, {
               hpId: hpId,
               selectedDate: selectedDate
           });
+          console.log("service.getTimes() selectedDate is " + selectedDate);
           var promise = client.query().$promise;
           promise.then(function(times) {
               angular.extend(that.times, times);
@@ -511,7 +509,7 @@ module.exports = function() {
                     $(element[0]).modal('hide');
                 }
             });
-            /*element.find('#AddPatient').on('click', function() {
+            /*element.find('#AddAppointment').on('click', function() {
               element.submit();
             });*/
             element.on('submit', function(){
@@ -523,20 +521,17 @@ module.exports = function() {
                 }
                var data = scope.patient;
                data = angular.extend({}, scope.patient);
-               data.birthdate = element.find('[type=date]').val();
                scope.submit(data);
             });
 
         },
         templateUrl: 'modalDialogue/modal.html',
-        controller: ['$scope', 'patientsListService', 'calendarService', function($scope, patientsListService, calendarService) {
+        controller: ['$scope', '$rootScope', 'patientsListService', 'calendarService', function($scope, $rootScope, patientsListService, calendarService) {
           $('[data-toggle="tooltip"]').tooltip('disable');
-          $scope.patientList = patientsListService.getPatients();
-          $scope.timesList = calendarService.getTimes();
-          $(document).on('dblclick', function() {
-            console.log("patients list is " + $scope.patientList.patients);
-            console.log('times are ' + $scope.timesList);
-            console.log("modalDirective " + calendarService.selectedDate);
+          $rootScope.$on('dateSelected', function() {
+            console.log("Broadcast received.");
+            $scope.patientList = patientsListService.getPatients();
+            $scope.timesList = calendarService.getTimes();
           })
         }],
     };

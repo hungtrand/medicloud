@@ -1,4 +1,4 @@
-<form id="AddPatientForm" class="form-horizontal modal fade" tabindex="-1" role="dialog" action="javascript:void(0)">
+<form id="AddAppointmentForm" class="form-horizontal modal fade" tabindex="-1" role="dialog" action="javascript:void(0)">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,7 +13,7 @@
                         Select a patient <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu">
-                        <li ng-repeat="patient in patientList.patients"><a href="#">{{patient.lastName}} {{patient.firstName}}</a></li>
+                        <li ng-repeat="patient in patientList.patients"><a href data-target="#">{{patient.lastName}} {{patient.firstName}}</a></li>
                       </ul>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                         Select a time <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu">
-                        <li ng-repeat="time in timesList"><a href="#">{{time}}</a></li>
+                        <li ng-repeat="time in timesList"><a href data-target="#">{{time}}</a></li>
                       </ul>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
         </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" id="AddPatient">Request Appointment</button>
+                <button type="submit" class="btn btn-primary" id="AddAppointment">Request Appointment</button>
             </div>
         </div>
         <!-- /.modal-content -->

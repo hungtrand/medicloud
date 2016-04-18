@@ -18,7 +18,7 @@ module.exports = function() {
                     $(element[0]).modal('hide');
                 }
             });
-            /*element.find('#AddPatient').on('click', function() {
+            /*element.find('#AddAppointment').on('click', function() {
               element.submit();
             });*/
             element.on('submit', function(){
@@ -30,16 +30,18 @@ module.exports = function() {
                 }
                var data = scope.patient;
                data = angular.extend({}, scope.patient);
-               data.birthdate = element.find('[type=date]').val();
                scope.submit(data);
             });
 
         },
         templateUrl: 'modalDialogue/modal.html',
-        controller: ['$scope', 'patientsListService', 'calendarService', function($scope, patientsListService, calendarService) {
+        controller: ['$scope', '$rootScope', 'patientsListService', 'calendarService', function($scope, $rootScope, patientsListService, calendarService) {
           $('[data-toggle="tooltip"]').tooltip('disable');
-          $scope.patientList = patientsListService.getPatients();
-          $scope.timesList = calendarService.getTimes();
+          $rootScope.$on('dateSelected', function() {
+            console.log("Broadcast received.");
+            $scope.patientList = patientsListService.getPatients();
+            $scope.timesList = calendarService.getTimes();
+          })
         }],
     };
 }
