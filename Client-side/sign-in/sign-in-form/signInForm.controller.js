@@ -4,6 +4,7 @@ module.exports = function($scope, models) {
 
     $scope.signin = function() {
         $scope.waiting = true;
+        $scope.error = "";
         models.signin($scope.form);
     }
 

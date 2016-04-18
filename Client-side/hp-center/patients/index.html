@@ -1,9 +1,10 @@
 <div class="container-fluid">
-    <h3 class="text-primary">Patients</h3>
+    <h3 class="text-primary">Patients <span class="text-warning" style="font-size: 24px;" ng-if="waiting"><i class="fa fa-spin fa-spinner"></i></span></h3>
 
     <div class="row">
         <div id="patientSuccessAlert" class="alert alert-success" role="alert">Patient successfully added!</div>
         <div id="patientFailureAlert" class="alert alert-danger" role="alert">Patient unsuccessfully added!</div>
+
     </div>
 
     <div class="row">
@@ -32,8 +33,8 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="list-group">
-                            <a class="list-group-item" ng-repeat="patient in patientList | orderBy: 'lastName' | filter: patientSearchText" ng-click="clicked(patient)">
-                                <h4 class="list-group-item-heading">{{patient.lastName}}, {{patient.firstName}}</h4>
+                            <a class="list-group-item list-group-item-info" href="" ng-repeat="patient in patientList | orderBy: 'lastName' | filter: patientSearchText" ng-click="clicked(patient)">
+                                <h4 class="list-group-item-heading"><i class="fa fa-user"></i> {{patient.lastName}}, {{patient.firstName}}</h4>
                             </a>
                         </div>
                     </div>
@@ -45,9 +46,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left">Patient Information</h3>
-                        <a class="btn btn-primary pull-right" ng-href="#/patient/{{selectedPatient.patientId}}">
+                        <a class="btn btn-primary pull-right btn-flat" ng-href="#/patient/{{selectedPatient.patientId}}">
                             <i class="fa fa-pencil"></i>
-                            Edit
+                            Profile
                         </a>
                     </div>
                     <div class="list-group">

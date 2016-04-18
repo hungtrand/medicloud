@@ -20,19 +20,24 @@ module.exports = function($scope, $rootScope, service) {
     }
 
     $rootScope.$on('patientAdded', function() {
-        $scope.modalShown = false;
+        $scope.waiting = false;
+        $('#AddPatientForm')[0].reset();
     });
 
     $scope.addPatient = function(newPatientData) {
+        $scope.waiting = true;
         service.addPatient(newPatientData);
-        $('#AddPatientForm')[0].reset();
+        $scope.modalShown = false;
     }
 
     function getPatients() {
+        $scope.waiting = true;
         service.getPatients().onSuccess(function(patient) {
+                $scope.waiting = false;
                 $scope.patientList = service.patients;
             })
             .onFailure(function(error) {
+                $scope.waiting = false;
                 console.log(error);
             });
     }

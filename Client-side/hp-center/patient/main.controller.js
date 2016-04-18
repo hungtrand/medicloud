@@ -2,6 +2,7 @@ module.exports = function($scope, models_service, $route, $routeParams) {
 	/* include files */
 	$scope.incConditionList = "patient/conditions/activeConditionList.html";
 	$scope.incObservationList = "patient/observations/observations.html";
+	$scope.incLabResults = "patient/labs/labResults.html";
 
 	$scope.patient = models_service.getPatient($routeParams['patient_id']);
 

@@ -1,26 +1,27 @@
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<h3 class="panel-title">
-		{{ condition.name }}
-		<span class="pull-right"><small style="color: #fff;">Severity: </small><button class="btn btn-xs btn-warning">{{ condition.severity }}</button></span>
+		{{ activeCondition.name }}
+		<button class="btn btn-xs bg-maroon btn-flat pull-right" title="Condition severity" ng-if="activeCondition.severity">{{ activeCondition.severity }}</button>
 		</h3>
 	</div>
 	<div class="panel-body">
-		<span class='description'>{{ condition.categories.join(', ') }}</span>
 		
 		<div class="row">
 			<div class="col col-xs-12 col-sm-6">
-				<p>
-					{{ condition.comments }}
-				</p>
+				<blockquote>
+					{{ activeCondition.description }}
+				</blockquote>
+
+				<em class="text-muted">{{ activeCondition.dateCreated }}</em>
 			</div>
 			<div class="col col-xs-12 col-sm-6 text-right">
 				<div class="btn-group-vertical" role="group">
-					<a class="btn btn-default" title="Start Observation">
-						First Observation: <label class="label label-info">{{ formatDate(condition.startObs.updated) | date:'yyyy-MM-dd' }}</label>
+					<a class="btn btn-info" title="Start Observation">
+						First Observation: <label class="label label-default">{{ formatDate(activeCondition.startObs.updated) ||  'none' | date:'yyyy-MM-dd' }}</label>
 					</a>
-					<a class="btn btn-default" title="End Observation">
-						Last Observation: <label class="label label-warning">{{ formatDate(condition.endObs.updated) | date:'yyyy-MM-dd' }}</label>
+					<a class="btn btn-warning" title="End Observation">
+						Last Observation: <label class="label label-default">{{ formatDate(activeCondition.endObs.updated) || 'none' | date:'yyyy-MM-dd' }}</label>
 					</a>
 					
 				</div>

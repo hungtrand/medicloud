@@ -9,11 +9,15 @@
 
 	<div class="post" ng-repeat="newCond in newActiveConditionForms"
 		mc-new-active-condition 
+		patient="patient"
 		cond-data="newCond"
 		on-saved="removeForm($index)"
 		on-cancelled="removeForm($index)"></div>
 	
 
 	<!-- {"id":"c_205","name":"Wilson's disease","categories":["Gastroenterology","Neurology"],"prevalence":"very_rare","acuteness":"chronic_with_exacerbations","severity":"moderate","sex_filter":"both"} -->
-	<div class="post" mc-active-condition cond-data="condition" ng-repeat="condition in patient.conditions"></div>
+	<div class="post" 
+		mc-active-condition 
+		active-condition="condition" 
+		ng-repeat="condition in patient.conditions | orderBy: '-conditionId'"></div>
 </div>

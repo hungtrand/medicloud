@@ -8,12 +8,14 @@ module.exports = function() {
 	var patient_factory = require("./patient.factory");
 	var profile_ctrl = require("./profile/profile.controller");
 	var conditionList_ctrl = require("./conditions/activeConditionList.controller");
-	// var condition_dir = require("./../condition/condition.directive");
+	var activeCondition_dir = require("./conditions/activeCondition.directive");
 	var newActiveCondition_dir = require("./conditions/newActiveCondition.directive");
 	var activeCondition_factory = require("./conditions/activeCondition.factory");
 	var conditionSearch_dir = require("./../conditionSearch/conditionSearch.directive");
 	var infermedicaConditions_serv = require("./../conditionSearch/infermedicaConditions.service");
 	var observations_ctrl = require("./observations/observations.controller");
+	var observation_factory = require("./observations/observation.factory");
+	var observationForm_directive = require("./observations/observationForm.directive");
     
         // initialize angular module 
 	var app = angular.module('hpPatient', ['ngRoute', 'ngResource']);
@@ -30,17 +32,20 @@ module.exports = function() {
 
 	// services
 	app
-		.service('models_service', ['$rootScope', 'patient_factory', 'activeCondition_factory', models_service])
+		.service('models_service', ['$rootScope', 'patient_factory', models_service])
 		.service('infermedicaConditions_serv', 
 			 ['$resource', '$rootScope', infermedicaConditions_serv])
-		.service('patient_factory', ['$resource', '$rootScope', '$route', '$routeParams', patient_factory])
+		.service('patient_factory', ['$resource', '$rootScope', 'activeCondition_factory', patient_factory])
 		.factory('activeCondition_factory', ['$resource', '$rootScope', activeCondition_factory])
+		.factory('observation_factory', ['$resource', observation_factory])
 	;
 
 	// directives
 	app
 		.directive('mcConditionSearch', conditionSearch_dir)
 		.directive('mcNewActiveCondition', newActiveCondition_dir)
+		.directive('mcActiveCondition', activeCondition_dir)
+		.directive('mcObservationForm', observationForm_directive)
 		.directive('mcModal', modal_dir)
 	;
 
