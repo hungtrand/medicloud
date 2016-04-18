@@ -158,12 +158,13 @@ module.exports = function() {
       });
 
     },
-    controller: ['$scope', 'calendarService', function($scope, calendarService) {
+    controller: ['$scope', '$rootScope', 'calendarService', function($scope, $rootScope, calendarService) {
       $scope.modalControl = {
         show: false
       };
       $scope.setSelectedDate = function() {
         calendarService.selectedDate = $scope.selectedDate;
+        $rootScope.$broadcast('dateSelected');
       }
     }]
   }

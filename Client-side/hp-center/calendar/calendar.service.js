@@ -7,19 +7,19 @@ module.exports = function($http, $rootScope, $resource) {
     var availabilityUrl = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/availability?userDate=:selectedDate';
     var service = {
       times: [{
-            appointmentTime: "9:00",
-            appointmentDate: "01/01/2016",
+            appointmentTime: "9:00"
         }, {
-            appointmentTime: "10:00",
-            appointmentDate: "01/01/2016",
+            appointmentTime: "10:00"
         }],
 
         getTimes: function() {
+          selectedDate = this.selectedDate;
           var that = this;
           var client = $resource(availabilityUrl, {
               hpId: hpId,
               selectedDate: selectedDate
           });
+          console.log("service.getTimes() selectedDate is " + selectedDate);
           var promise = client.query().$promise;
           promise.then(function(times) {
               angular.extend(that.times, times);
