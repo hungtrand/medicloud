@@ -45,9 +45,13 @@
 		</form>
 
 		<nav ng-switch-when="confirm">
+			<h4 class="text-danger text-center">Save this condition into patient's profile? <br /><br />
+				<label class="label label-warning">{{ condition.name }}</label>
+			</h4>
+			
 			<ul class="pager">
 				<li><a href="" ng-click="create()">Back</a></li>
-				<li><a href="" ng-click="save()">Confirm?</a></li>
+				<li class="active"><a href="" ng-click="save()">Confirm?</a></li>
 			</ul>
 		</nav>
 	</div>

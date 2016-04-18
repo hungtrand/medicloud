@@ -78,15 +78,12 @@ public class Patient {
 	@JoinColumn(name="patient_id")
 	private List<Encounter> encounter = new ArrayList<Encounter>();
 	
-	
-	public List<ActiveCondition> getConditions(){
+	@JsonIgnore
+	public List<ActiveCondition> getActiveConditions() {
 		return this.activeConditions;
 	}
 
-	/**
-	 * Get all the encounters of a patient.
-	 * @return - list of encounter.
-	 */
+	@JsonIgnore
 	public List<Encounter> getEncounters() {
 		return this.encounter;
 	}

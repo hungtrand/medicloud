@@ -12,7 +12,7 @@ module.exports = function() {
 				templateUrl: 'calendar/calendar.html'
 			});
 	}])
-	app.service('calendarService', ["$http", "$rootScope", "$resource", calendarService]);
+	app.service('calendarService', ['$http', '$rootScope', '$resource', calendarService]);
 	app.directive('appointmentModalDirective', appointmentModalDirective);
 	app.directive('calendarDirective', calendarDirective);
 	//app.controller("patientsList_ctrl", ['$scope', '$rootScope', 'patientsListService', patientsList_ctrl]);

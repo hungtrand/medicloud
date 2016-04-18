@@ -120,15 +120,18 @@ public class PatientsCollection {
 	 * @param newAvailableTime
 	 */
 	@RequestMapping(value="/availability", method=RequestMethod.GET)
-	public List<String> getDoctorAvailableTime( @PathVariable("hpId")int hpId
-			
+
+	public List<String> getDoctorAvailableTime( @PathVariable("hpId")int hpId, @RequestParam("userDate") String userDate
+
 			){
 		List<Appointment> appointment = new ArrayList<Appointment>();
 		List<String> temp = new ArrayList<String>();
 		Appointment start = new Appointment();
 		appointment.add(start);
 		temp = start.defaultAppointmentAvailability();
-		appointment = appointmentRepo.findByAppointmentDate("2016-08-01");
+
+		appointment = appointmentRepo.findByAppointmentDate(userDate);
+		
 		
 		if(appointment!= null){
 				

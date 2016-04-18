@@ -152,10 +152,9 @@ module.exports = function() {
 
       $("[data-date]").click(function() {
         $scope.modalControl.show = !$scope.modalControl.show;
-        var selectedDate = $(this).attr("data-date");
-        console.log("selectedDate is " + selectedDate);
+        $scope.selectedDate = $(this).attr("data-date");
+        $scope.setSelectedDate();
         $scope.$apply();
-        console.log("show is " + $scope.modalControl.show);
       });
 
     },
@@ -163,6 +162,9 @@ module.exports = function() {
       $scope.modalControl = {
         show: false
       };
+      $scope.setSelectedDate = function() {
+        calendarService.selectedDate = $scope.selectedDate;
+      }
     }]
   }
 }

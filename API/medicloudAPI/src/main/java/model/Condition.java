@@ -24,9 +24,8 @@ public class Condition {
 	@Column(name="infer_c_id")
 	private String inferCId;
 	
-	public Condition(String newName, String inferCId) {
-		this.name = newName;
-		this.inferCId = inferCId;
+	public Condition() {
+		
 	}
 	
 	//Getters 
@@ -64,7 +63,9 @@ public class Condition {
 	}
 
 	public static Condition create(String name, String inferCId) {
-		Condition newCond = new Condition(name, inferCId);
+		Condition newCond = new Condition();
+		newCond.name = name;
+		newCond.inferCId = inferCId;
 		
 		return newCond;
 	}

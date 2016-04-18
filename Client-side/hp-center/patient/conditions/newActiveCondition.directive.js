@@ -12,7 +12,14 @@ module.exports = function() {
 		}
 
 		$scope.save = function() {
-			models_service.addActiveCondition($scope.condition.name, $scope.condition.severity, $scope.condition.description, $scope.condition.infer_c_id);
+			$scope.patient.addActiveCondition(
+				$scope.condition.name
+				, $scope.condition.severity
+				, $scope.condition.description
+				, $scope.condition.inferCId
+			);
+			
+			($scope.onSaved || angular.noop)();
 		}
 
 		$scope.cancel = function() {
@@ -25,7 +32,7 @@ module.exports = function() {
 			if (suggestion) {
 				$scope.condition.name = suggestion.name;
 				$scope.condition.severity = suggestion.severity;
-				$scope.condition.infer_c_id = suggestion.id;
+				$scope.condition.inferCId = suggestion.id;
 				$scope.condition.description = "";
 			}
 			
@@ -41,6 +48,7 @@ module.exports = function() {
 
 		scope: {
 			condition: "=condData",
+			patient: "=",
 			onSaved: "&",
 			onCancelled: "&"
 		},
