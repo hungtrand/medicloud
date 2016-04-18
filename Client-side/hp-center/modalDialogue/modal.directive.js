@@ -40,11 +40,6 @@ module.exports = function() {
           $('[data-toggle="tooltip"]').tooltip('disable');
           $scope.patientList = patientsListService.getPatients();
           $scope.timesList = calendarService.getTimes();
-          $(document).on('dblclick', function() {
-            console.log("patients list is " + $scope.patientList.patients);
-            console.log('times are ' + $scope.timesList);
-            debugger;
-          })
         }],
     };
 }

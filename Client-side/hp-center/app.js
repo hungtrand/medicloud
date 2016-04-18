@@ -37,8 +37,6 @@ module.exports = function($q, $location) {
 	hpPatientList_module();
 	hpCalendar_module();
 	var app = new angular.module("hp-center", ['ngRoute', 'ngAnimate', 'hpPatient', 'hpPatientList', 'hpCalendar']);
-
-
 	// routing and navigation configuration
 	app.config(['$routeProvider', '$httpProvider',
 		function($routeProvider, $httpProvider) {
@@ -224,10 +222,11 @@ module.exports = function() {
 
       $("[data-date]").click(function() {
         $scope.modalControl.show = !$scope.modalControl.show;
-        var selectedDate = $(this).attr("data-date");
-        console.log("selectedDate is " + selectedDate);
-        $scope.$apply();
+        $scope.selectedDate = $(this).attr("data-date");
+        console.log("$scope.selectedDate is " + $scope.selectedDate);
         console.log("show is " + $scope.modalControl.show);
+        $scope.setSelectedDate();
+        $scope.$apply();
       });
 
     },
@@ -235,6 +234,10 @@ module.exports = function() {
       $scope.modalControl = {
         show: false
       };
+      $scope.setSelectedDate = function() {
+        calendarService.selectedDate = $scope.selectedDate;
+        console.log("calendarService.selectedDate is " + calendarService.selectedDate);
+      }
     }]
   }
 }
@@ -254,7 +257,7 @@ module.exports = function() {
 				templateUrl: 'calendar/calendar.html'
 			});
 	}])
-	app.service('calendarService', ["$http", "$rootScope", "$resource", calendarService]);
+	app.service('calendarService', ['$http', '$rootScope', '$resource', calendarService]);
 	app.directive('appointmentModalDirective', appointmentModalDirective);
 	app.directive('calendarDirective', calendarDirective);
 	//app.controller("patientsList_ctrl", ['$scope', '$rootScope', 'patientsListService', patientsList_ctrl]);
@@ -265,8 +268,9 @@ module.exports = function($http, $rootScope, $resource) {
     var onSuccessFn;
     var onFailureFn;
     var hpId = sessionStorage.getItem("medicloud_hp_id");
+    var selectedDate;
     var url = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/:patientId';
-    var availabilityUrl = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/availability';
+    var availabilityUrl = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/availability?userDate=:selectedDate';
     var service = {
       times: [{
             appointmentTime: "9:00",
@@ -278,8 +282,10 @@ module.exports = function($http, $rootScope, $resource) {
 
         getTimes: function() {
           var that = this;
+          console.log("Service here. Selected date is " + selectedDate);
           var client = $resource(availabilityUrl, {
-              hpId: hpId
+              hpId: hpId,
+              selectedDate: selectedDate
           });
           var promise = client.query().$promise;
           promise.then(function(times) {
@@ -300,7 +306,6 @@ module.exports = function($http, $rootScope, $resource) {
             var client = $resource(url, {
                 hpId: hpId
             });
-
             var promise = client.query().$promise;
             promise.then(function(patient) {
                 angular.extend(that.patients, patient);
@@ -531,7 +536,7 @@ module.exports = function() {
           $(document).on('dblclick', function() {
             console.log("patients list is " + $scope.patientList.patients);
             console.log('times are ' + $scope.timesList);
-            debugger;
+            console.log("modalDirective " + calendarService.selectedDate);
           })
         }],
     };
