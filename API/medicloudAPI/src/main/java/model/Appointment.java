@@ -38,7 +38,7 @@ public class Appointment {
 	private int appointmentId = 0;
 	
 
-	@Column(name="appointmentDate")
+	@Column(name="appointment_date")
 	private String appointmentDate;
 	
 	
@@ -65,7 +65,7 @@ public class Appointment {
 	@Column(name="appointment_time")
 	private String appointmentTime;
 
-	@Column(name="is_Encounter")
+	@Column(name="is_encounter")
 	private boolean isEncounter;
 	
 	@Column(name="encounter_id")
@@ -77,10 +77,10 @@ public class Appointment {
 	@Column(name="active")
 	private boolean active;
 	
-	@Column(name="accept_Appointment")
+	@Column(name="accept_appointment")
 	private boolean acceptAppointment;
 	
-	@Column(name="requestDate")
+	@Column(name="request_date")
 	private String requestDate;
 	
 	public Appointment(){
@@ -223,22 +223,9 @@ public class Appointment {
 				
 		return availableTime;
 	}
+
 	
-//	public boolean checkAppointmentExists(String userTime, String userDate, int hpId){
-//		
-//		Appointment checkTime = appointmentRepo.findByHpIdAndAppointmentTimeAndAppointmentDate(hpId, userTime, userDate);
-//		if(checkTime == null){
-//			
-//			return true;
-//		}
-//		return false;
-//	}
-//	
 	
-	public double[] getAvailability(){
-		double[] a = null;
-		return a;
-	}
 	
 	
 

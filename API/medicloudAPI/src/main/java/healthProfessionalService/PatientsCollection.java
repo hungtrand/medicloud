@@ -116,26 +116,24 @@ public class PatientsCollection {
 	
 	
 	/**
-	 * Doctor's Availability on weekly base.
+	 * Doctor's Availability on daily base.
 	 * @param newAvailableTime
 	 */
-	@RequestMapping(value="/availability/{userDate}", method=RequestMethod.GET)
+	@RequestMapping(value="/availability", method=RequestMethod.GET)
 	public List<String> getDoctorAvailableTime( @PathVariable("hpId")int hpId
+			
 			){
-		
 		List<Appointment> appointment = new ArrayList<Appointment>();
 		List<String> temp = new ArrayList<String>();
 		Appointment start = new Appointment();
 		appointment.add(start);
 		temp = start.defaultAppointmentAvailability();
-		appointment = appointmentRepo.findByAppointmentDate("8/8/2016");
-		
+		appointment = appointmentRepo.findByAppointmentDate("2016-08-01");
 		
 		if(appointment!= null){
 				
 				for(int i =0; i<appointment.size(); i++){
-					temp.remove(appointment.get(i).getAppointmentTime());
-				
+					temp.remove(appointment.get(i).getAppointmentTime());			
 				}
 	
 			return temp;
@@ -146,13 +144,9 @@ public class PatientsCollection {
 	}
 	
 	
+		
 	
-	
-	
-	
-	
-	
-	
+	//-----------------------------------------------------POST--------------------------------------
 	
 	public static class addPatientForm {
 		public String firstName;

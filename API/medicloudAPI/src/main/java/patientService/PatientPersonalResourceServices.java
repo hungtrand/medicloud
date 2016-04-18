@@ -86,15 +86,17 @@ public class PatientPersonalResourceServices {
 		 * Patient requests an Appointment.
 		 * @param patientId
 		 */
-		@RequestMapping(value="/appointment", method=RequestMethod.POST)
-		public ResponseEntity<?> setAppointment(@PathVariable("patient_id")int patientId		
+		@RequestMapping(value="/{patient_id}/appointment", method=RequestMethod.POST)
+		public ResponseEntity<?> setAppointment(@PathVariable("patient_id")int patientId	
+				
 				, @RequestBody Appointment newAppointment){
 			
 			Appointment temp = new Appointment();
 			int hpId = newAppointment.getHPId();
 			newAppointment.setRequestDate();
 			newAppointment.setPatient(patientId);
-			newAppointment.setHPName(hpRepo.findByHpId(hpId).getUser().getUsername());
+			newAppointment.setPatientName(patientRepo.findByPatientId(patientId).getFirstName());
+			newAppointment.setHPName(hpRepo.findByHpId(hpId).getUser().getPerson().getFirstName());
 			Patient foundPatient = patientRepo.findByHpIdAndPatientId(hpId, patientId);
 			if(foundPatient == null){
 				MessageResponse mr = new MessageResponse();
@@ -103,13 +105,15 @@ public class PatientPersonalResourceServices {
 				System.out.println(mr.error);
 				return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);			
 			}else{			
-				temp = newAppointment;			
+				temp = newAppointment;
+			
 				return new ResponseEntity<Appointment>(appointmentRepo.save(temp),HttpStatus.OK);
 			}
 				
 		}
 		
 		
+	
 
 		
 		//---------------------------------------------PUT-------------------------------------------------------
