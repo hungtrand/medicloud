@@ -15,9 +15,12 @@ import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 
+import model.Appointment;
 import model.Patient;
 import model.Prescription;
 import provider.MessageResponse;
+import repository.AppointmentRepo;
+import repository.HealthProfessional_repo;
 import repository.PatientRepo;
 import repository.PrescriptionRepo;
 @RestController
@@ -30,6 +33,11 @@ public class PatientResource {
 	@Autowired
 	PrescriptionRepo prescriptionRepo;
 	
+	@Autowired
+	HealthProfessional_repo hpRepo;
+
+	@Autowired
+	AppointmentRepo appointmentRepo;
 	
 	/**
 	 * This method is to use for HP to look at patient.
@@ -118,6 +126,36 @@ public class PatientResource {
 		}
 	}
 	
+	
+	/**
+	 * Hp requests an Appointment.
+	 * @param patientId
+	 */
+	@RequestMapping(value="/appointment", method=RequestMethod.POST)
+	public ResponseEntity<?> setAppointment(@PathVariable("patient_id")int patientId	
+			, @PathVariable("hpId")int hpId
+			, @RequestBody Appointment newAppointment){
+		
+		Appointment temp = new Appointment();
+	
+		newAppointment.setRequestDate();
+		newAppointment.setPatient(patientId);
+		newAppointment.setPatientName(patientRepo.findByPatientId(patientId).getFirstName());
+		newAppointment.setHPName(hpRepo.findByHpId(hpId).getUser().getPerson().getFirstName());
+		Patient foundPatient = patientRepo.findByHpIdAndPatientId(hpId, patientId);
+		if(foundPatient == null){
+			MessageResponse mr = new MessageResponse();
+			mr.success = false;
+			mr.error = "HealthProfessional and Patient are not connected.";
+			System.out.println(mr.error);
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);			
+		}else{			
+			temp = newAppointment;
+		
+			return new ResponseEntity<Appointment>(appointmentRepo.save(temp),HttpStatus.OK);
+		}
+			
+	}
 	
 	//---------------------------------------------------------PUT-----------------------------------
 	
