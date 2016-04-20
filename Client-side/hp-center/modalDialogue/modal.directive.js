@@ -21,7 +21,7 @@ module.exports = function() {
             /*element.find('#AddAppointment').on('click', function() {
               element.submit();
             });*/
-            element.on('submit', function(){
+            /*element.on('submit', function(){
                 var elements = element[0].querySelectorAll('input,select,textarea');
                 for (var i = elements.length; i--;) {
                     elements[i].addEventListener('invalid', function() {
@@ -31,17 +31,39 @@ module.exports = function() {
                var data = scope.patient;
                data = angular.extend({}, scope.patient);
                scope.submit(data);
-            });
+            });*/
 
         },
         templateUrl: 'modalDialogue/modal.html',
         controller: ['$scope', '$rootScope', 'patientsListService', 'calendarService', function($scope, $rootScope, patientsListService, calendarService) {
+          var appointment = {
+            time: '9:00',
+            date: '2000-01-01'
+          };
+          var selectedPatientId;
+          $scope.selectedPatient = 'Select a patient';
+          $scope.selectedTime = 'Select a time';
           $('[data-toggle="tooltip"]').tooltip('disable');
-          $rootScope.$on('dateSelected', function() {
-            console.log("Broadcast received.");
+          $rootScope.$on('dateSelected', function(event, args) {
+            console.log("Broadcast received. Date is " + args.date);
             $scope.patientList = patientsListService.getPatients();
             $scope.timesList = calendarService.getTimes();
-          })
+            appointment.date = args.date;
+          });
+          $scope.selectPatient = function(patient) {
+            $scope.selectedPatient = patient;
+            selectedPatientId = $scope.selectedPatient.patientId;
+          }
+
+          $scope.selectTime = function(time) {
+            $scope.selectedTime = time;
+            appointment.time = $scope.selectedTime;
+          }
+          $scope.submitAppointment = function() {
+            calendarService.addAppointment(appointment, selectedPatientId);
+
+            console.log('Appointment is ' + appointment);
+          }
         }],
     };
 }

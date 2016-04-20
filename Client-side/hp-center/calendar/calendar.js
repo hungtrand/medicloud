@@ -164,7 +164,7 @@ module.exports = function() {
       };
       $scope.setSelectedDate = function() {
         calendarService.selectedDate = $scope.selectedDate;
-        $rootScope.$broadcast('dateSelected');
+        $rootScope.$broadcast('dateSelected', {date: calendarService.selectedDate});
       }
     }]
   }
