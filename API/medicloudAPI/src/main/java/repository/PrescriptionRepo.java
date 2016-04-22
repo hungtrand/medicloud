@@ -1,5 +1,7 @@
 package repository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -13,5 +15,6 @@ public interface PrescriptionRepo extends CrudRepository<Prescription, String> {
 	public Prescription findByPdId(int pdId);
 	public Prescription findByHpIdAndPatientId(int hpId, int patientId);
 	public Prescription findByIsActive(boolean checker);
+	public List<Prescription> findByPatientId(int patientId);
 	
 }
