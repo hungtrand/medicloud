@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,10 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Entity
@@ -34,8 +32,6 @@ public class Observation {
 	@Column(name="obs_id")
 	private int obsId=1;
 	
-	
-	
 //	@OneToMany(cascade=CascadeType.ALL)
 //	@JoinColumn(name="obs_id")
 //	private List<Note> note = new ArrayList<Note>();
@@ -48,66 +44,73 @@ public class Observation {
 	@JoinColumn(name="end_obs_id")
 	private List<ActiveCondition> eactiveCondition  = new ArrayList<ActiveCondition>();
 	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="hp_id", insertable=false, updatable=false, referencedColumnName="hp_id")
+	private HealthProfessional healthProfessional;
+	
+	@Column(name="hp_id")
+	private int hpId;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="patient_id", insertable=false, updatable=false, referencedColumnName="patient_id")
+	private Patient patient;
+	
+	@Column(name="patient_id")
+	private int patientId;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="encounter_id", insertable=false, updatable=false, referencedColumnName="encounter_id")
+	private Encounter encounter;
+	
 	@Column(name="encounter_id")
 	private int encounterId;
 	
 	@Column(name="comments")
 	private String comments;
 	
-	@Column(name="creators")
-	private String creators;
-	
 	@Column(name="state")
 	private String state;
 	
-	
-	@Column(name="date_changed")
-	private String updated;
-	
 	@Column(name="date_created")
-	private String createNew;
+	private Date dateCreated;
 	
 	public int getObsId(){
 		return this.obsId;
 	}
-	public int getEncounterId(){
-		return this.encounterId;
-	}
+	
 	public String getComments(){
 		return this.comments;
 	}
-	public String getCreator(){
-		return this.creators;
+	
+	public HealthProfessional getHealthProfessional(){
+		return this.healthProfessional;
 	}
+
+	public Patient getPatient(){
+		return this.patient;
+	}
+	
 	public String getState(){
 		return this.state;
 	}
-	
-
-	
+		
 //	public List<Note> getAllNote(){
 //		return this.note;
 //	}
 	
-	
-	public String getDateChanged(){
-		
-		
-		return this.updated;
-		
-	
-	}
 	public String getDateCreated(){
+		if (this.dateCreated == null) return "";
+		DateFormat formatDate = new SimpleDateFormat("MM/dd/yyyy");
 		
-		return this.createNew;
+		return formatDate.format(this.dateCreated);
 	}
 	
 	public void setObsId(int newObsId){
 		this.obsId = newObsId;
 	}
 
-	public void setEncounterId(int newEncounterId){
-		this.encounterId = newEncounterId;
+	public void setEncounter(Encounter newEncounter){
+		this.encounter = newEncounter;
 	}
 	public void setComments(String newComments){
 		this.comments = newComments;
@@ -116,20 +119,21 @@ public class Observation {
 	public void setState(String newState){
 		this.state = newState;
 	}
-	public void setCreators(String newCreator){
-		this.creators = newCreator;
-	}
+	
+	@PrePersist
 	public void setDateCreated(){
-		if(this.createNew != null){
-			this.createNew = this.createNew;
-		}else{
-			this.createNew = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
-		}
+		this.dateCreated = new Date();
 	}
-	public void setDateUpdated(){
+	
+	public static Observation create(Encounter encounter, HealthProfessional hp, Patient pt, String comments, String state) {
+		Observation newObs = new Observation();
+		newObs.hpId = hp.getHpId();
+		newObs.patientId = pt.getPatientId();
+		newObs.encounterId = encounter.getEncounterId();
+		newObs.state = state;
+		newObs.comments = comments;
 		
-			this.updated = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
-		
+		return newObs;
 	}
 
 

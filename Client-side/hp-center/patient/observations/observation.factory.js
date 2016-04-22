@@ -10,7 +10,7 @@ module.exports = function($resource) {
 		}
 		,
 		{
-			create: { method: 'POST' }
+			save: { method: 'POST' }
 		}
 	);
 
