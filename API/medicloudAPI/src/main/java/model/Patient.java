@@ -66,14 +66,9 @@ public class Patient {
 	@JoinColumn(name="patient_id")
 	private List<ActiveCondition> activeConditions = new ArrayList<ActiveCondition>();
 	
-	
-	/**
-	 * Create a column which foreign key constraint in encounter table.
-	 * @annotation(One to many) - It has one to many relation with patient and encounter table.
-	 * @annotation(JoinColumn)  - This is the owner of relationship.
-	 * Join Column create a relation column in encounter table.
-	 * @para patient_id - name of the relationship column which is a primary key of patient table.
-	 */
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Observation> observations = new ArrayList<Observation>();
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="patient_id")
 	private List<Encounter> encounter = new ArrayList<Encounter>();
@@ -81,6 +76,11 @@ public class Patient {
 	@JsonIgnore
 	public List<ActiveCondition> getActiveConditions() {
 		return this.activeConditions;
+	}
+	
+	@JsonIgnore
+	public List<Observation> getObservations() {
+		return this.observations;
 	}
 
 	@JsonIgnore

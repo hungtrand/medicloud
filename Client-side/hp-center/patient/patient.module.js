@@ -35,7 +35,9 @@ module.exports = function() {
 		.service('models_service', ['$rootScope', 'patient_factory', models_service])
 		.service('infermedicaConditions_serv', 
 			 ['$resource', '$rootScope', infermedicaConditions_serv])
-		.service('patient_factory', ['$resource', '$rootScope', 'activeCondition_factory', patient_factory])
+		.service('patient_factory', 
+			['$resource', '$rootScope', 'activeCondition_factory', 'observation_factory'
+			, patient_factory])
 		.factory('activeCondition_factory', ['$resource', '$rootScope', activeCondition_factory])
 		.factory('observation_factory', ['$resource', observation_factory])
 	;

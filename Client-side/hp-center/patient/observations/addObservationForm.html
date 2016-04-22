@@ -1,4 +1,4 @@
-<form class="modal fade modal-success">
+<form class="modal fade modal-success" ng-submit="submitNewObservationForm()">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -12,6 +12,8 @@
 							<label>Select encounter date:</label>
 							<div class="input-group">
 								<div class="input-group-btn" id="btnPickEncounterDate">
+									<input type="text" name="encounterDate" ng-model="form.encounterDate" style="height: 1px; width: 0px; margin:0; padding:0;" required />
+
 									<button class="btn btn-default dropdown-toggle active" data-toggle="dropdown">
 									<i class="fa fa-calendar"></i> {{ form.encounterDate || 'Select a date:' }}
 									<i class="fa fa-caret-down"></i>
@@ -32,23 +34,23 @@
 					<div class="col col-sm-6">
 						<div class="form-group">
 							<label>Reason for visit:</label>
-							<textarea class="form-control" ng-model="form.encounterReason" placeholder="Reason for patient's visit / encounter"></textarea>
+							<textarea class="form-control" ng-model="form.encounterReason" placeholder="Reason for patient's visit / encounter" required></textarea>
 						</div>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label>Patient's state:</label>
-					<input type="text" class="form-control" ng-,model="form.state" placeholder="State of patient (e.g. conciousness, pregnancy, ...)" />
+					<input type="text" class="form-control" ng-model="form.state" placeholder="State of patient (e.g. conciousness, pregnancy, ...)" required />
 				</div>
 				<div class="form-group">
 					<label>Observation comments</label>
-					<textarea class="form-control" ng-model="form.comments" placeholder="Vital signs, visible signs, ..."></textarea>
+					<textarea class="form-control" ng-model="form.comments" placeholder="Vital signs, visible signs, ..." required></textarea>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-outline">Submit</button>
+				<button type="submit" class="btn btn-outline">Submit</button>
 			</div>
 		</div>
 	</div>
