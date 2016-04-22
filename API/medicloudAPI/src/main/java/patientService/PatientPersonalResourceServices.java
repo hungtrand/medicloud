@@ -100,10 +100,12 @@ public class PatientPersonalResourceServices {
 							time = time + scanTime.next();
 						}
 						
-						
+						Appointment getChecker = new Appointment();
 						System.out.println(date + time);
 						System.out.println("----------------------");
-						//System.out.println(appointmentRepo.findByAppointmentId(83).dateTimeChecker());
+						int a = getChecker.dateTimeChecker();
+						System.out.println(a);
+						System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
 						return new ResponseEntity<List<Appointment>>(foundPatient,HttpStatus.OK);
 //					}
 				}

@@ -190,14 +190,14 @@ public class Appointment {
 		this.acceptAppointment = newAcceptAppointment;
 	}
 	public void setRequestDate(){
-		this.requestDate = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss").format(new Date().getTime());
+		this.requestDate = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date().getTime());
 	}
 	
 	public List<String> defaultAppointmentAvailability(){
 		double start =9;
 		double end = 17;
 		List<String> availableTime = new ArrayList<String>();
-		double[] time;
+		double time;
 		int temp = (int) (end - start);
 		temp = temp*2;
 		for(int i = 0; i< temp; i++){
@@ -219,9 +219,9 @@ public class Appointment {
 			}
 			
 			start = start + 0.5;	
-		}
+			}
 	
-				
+		
 		return availableTime;
 	}
 
