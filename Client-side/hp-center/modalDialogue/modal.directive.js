@@ -37,8 +37,9 @@ module.exports = function() {
         templateUrl: 'modalDialogue/modal.html',
         controller: ['$scope', '$rootScope', 'patientsListService', 'calendarService', function($scope, $rootScope, patientsListService, calendarService) {
           var appointment = {
-            time: '9:00',
-            date: '2000-01-01'
+            appointmentTime: '9:00',
+            appointmentDate: '2000-01-01',
+            reason: 'N/A'
           };
           var selectedPatientId;
           $scope.selectedPatient = 'Select a patient';
@@ -48,7 +49,7 @@ module.exports = function() {
             console.log("Broadcast received. Date is " + args.date);
             $scope.patientList = patientsListService.getPatients();
             $scope.timesList = calendarService.getTimes();
-            appointment.date = args.date;
+            appointment.appointmentDate = args.date;
           });
           $scope.selectPatient = function(patient) {
             $scope.selectedPatient = patient;
@@ -57,11 +58,12 @@ module.exports = function() {
 
           $scope.selectTime = function(time) {
             $scope.selectedTime = time;
-            appointment.time = $scope.selectedTime;
+            appointment.appointmentTime = $scope.selectedTime;
           }
-          $scope.submitAppointment = function() {
-            calendarService.addAppointment(appointment, selectedPatientId);
 
+          $scope.submitAppointment = function() {
+            appointment.reason = $scope.reason;
+            calendarService.addAppointment(appointment, selectedPatientId);
             console.log('Appointment is ' + appointment);
           }
         }],
