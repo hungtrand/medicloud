@@ -11,5 +11,5 @@ import model.ActiveCondition;
 @Qualifier(value="ActiveConditionRepo")
 public interface ActiveConditionRepo extends CrudRepository<ActiveCondition, String> {
 
-	
+	public ActiveCondition findByActiveConditionId(int activeConditionId);
 }

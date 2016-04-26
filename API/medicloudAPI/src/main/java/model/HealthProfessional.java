@@ -2,6 +2,7 @@ package model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -9,6 +10,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import repository.User_repo;
 
@@ -30,7 +33,7 @@ public class HealthProfessional {
 	@Column(name="cdo")
 	private String cdo;
 	
-	@OneToOne(targetEntity=User.class, cascade=CascadeType.ALL)
+	@OneToOne(fetch=FetchType.LAZY, targetEntity=User.class, cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id",insertable=false, updatable=false, referencedColumnName= "user_id")
 	private User user;
 	
@@ -45,10 +48,7 @@ public class HealthProfessional {
 		this.setUser(user);
 	}
 	
-	public Person getPerson() {
-		return this.user.getPerson();
-	}
-	
+	@JsonIgnore
 	public User getUser() {
 		return this.user;
 	}
@@ -56,8 +56,6 @@ public class HealthProfessional {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
 	
 	public int getHpId(){
 		return this.hpId;
@@ -69,6 +67,16 @@ public class HealthProfessional {
 	
 	public String getLicense(){
 		return this.license;
+	}
+	
+	public String getName() {
+		Person person = this.user.getPerson();
+		String name = person.getLastName();
+		if (this.title != null && this.title.length() > 0) {
+			name = this.title + " " + name;
+		}
+		
+		return name;
 	}
 	
 	public void setHpId(int newHpId){

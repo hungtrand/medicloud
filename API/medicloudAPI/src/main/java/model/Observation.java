@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="observation")
@@ -85,7 +87,8 @@ public class Observation {
 	public HealthProfessional getHealthProfessional(){
 		return this.healthProfessional;
 	}
-
+	
+	@JsonIgnore
 	public Patient getPatient(){
 		return this.patient;
 	}
@@ -100,7 +103,7 @@ public class Observation {
 	
 	public String getDateCreated(){
 		if (this.dateCreated == null) return "";
-		DateFormat formatDate = new SimpleDateFormat("MM/dd/yyyy");
+		DateFormat formatDate = new SimpleDateFormat("MM/dd/yyyy h:mm a");
 		
 		return formatDate.format(this.dateCreated);
 	}

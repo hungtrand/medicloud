@@ -1,20 +1,6 @@
 module.exports = function() {
 	var controller = function($scope, infermedicaConditionsService) {
-		$scope.waiting = false;
-		$scope.$on("status.waiting", function() {
-			$scope.waiting = true;
-			setTimeout(function() {
-				$scope.$apply();
-			}, 10);
-		});
-
-		$scope.$on("status.ready", function() {
-			$scope.waiting = false;
-
-			setTimeout(function() {
-				$scope.$apply();
-			}, 10);
-		});
+		$scope.waiting = true;
 
 		var initializeBloodhound = function() {
 			$scope.suggestions = new Bloodhound({
@@ -29,17 +15,18 @@ module.exports = function() {
 			setTimeout(function() {
 				$scope.$broadcast('conditionSearch.suggestions.updated');
 			}, 200);
+			$scope.waiting = false;
 			
 		}
 
 
-		if (infermedicaConditionsService.data.conditions) {
+		if (infermedicaConditionsService.ready) {
 			initializeBloodhound(); 
+		} else {
+			$scope.$on('infermedicaConditions_serv.data.updated', function() {
+				initializeBloodhound();
+			});
 		}
-
-		$scope.$on('infermedicaConditions_serv.data.updated', function() {
-			initializeBloodhound();
-		});
 	}
 
 	return {
@@ -68,7 +55,7 @@ module.exports = function() {
 						suggestion: function(data) {
 							var templ = '<div class="list-group-item">'
 										+ '<dl>'
-										+ '<dt>{{name}}<label class="label label-info pull-right">{{severity}}</label></dt>'
+										+ '<dt>{{name}}<label class="label pull-right">{{severity}}</label></dt>'
 										+ '<dd><em>'
 										+ '{{categories}}'
 										+ '</em></dd>'
@@ -77,6 +64,16 @@ module.exports = function() {
 										.replace(/{{name}}/g, data.name)
 										.replace(/{{severity}}/g, data.severity)
 										.replace(/{{categories}}/g, data.categories.join(', '))
+							item = $(item);
+							if (data.severity == 'mild') {
+								item.find('label').toggleClass('label-info', true);
+							} else if (data.severity == 'moderate') {
+								item.find('label').toggleClass('label-warning', true);
+							} else if (data.severity == 'severe') {
+								item.find('label').toggleClass('label-danger', true);
+							} else {
+								item.find('label').toggleClass('label-default', true);
+							}
 
 							return item;
 						}

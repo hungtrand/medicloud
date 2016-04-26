@@ -1,57 +1,64 @@
-<form class="modal fade modal-success" ng-submit="submitNewObservationForm()">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Add new observation</h4>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="col col-sm-6">
-						<div class="form-group">
-							<label>Select encounter date:</label>
-							<div class="input-group">
-								<div class="input-group-btn" id="btnPickEncounterDate">
-									<input type="text" name="encounterDate" ng-model="form.encounterDate" style="height: 1px; width: 0px; margin:0; padding:0;" required />
+<form class="modal fade modal-success" data-backdrop="static" ng-submit="submitNewObservationForm()">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add new observation</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col col-sm-6">
+                        <div class="form-group">
+                            <label>Select encounter date:</label>
+                            <div class="input-group">
+                                <div class="input-group-btn" id="btnPickEncounterDate">
+                                    <input type="text" name="encounterDate" ng-value="form.encounterDate" style="height: 1px; width: 0px; margin:0; padding:0;" required />
 
-									<button class="btn btn-default dropdown-toggle active" data-toggle="dropdown">
-									<i class="fa fa-calendar"></i> {{ form.encounterDate || 'Select a date:' }}
-									<i class="fa fa-caret-down"></i>
-									</button>
-									<ul class="dropdown-menu">
-										<li><a href="" ng-click="setEncounterDate(0)">Today</a></li>
-										<li><a href="" ng-click="setEncounterDate(-1)">Yesterday</a></li>
-										<li><a href="" ng-click="setEncounterDate(-2)">2 days ago</a></li>
-										<li><a href="" ng-click="setEncounterDate(-3)">3 days ago</a></li>
-										<li class="divider"></li>
-										<li><input type="date" class="form-control pickCustomEncounterDate" ng-model="customEncounterDate" ng-change="setEncounterDate(customEncounterDate)" placeholder="Custom Date" /></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						
-					</div>
-					<div class="col col-sm-6">
-						<div class="form-group">
-							<label>Reason for visit:</label>
-							<textarea class="form-control" ng-model="form.encounterReason" placeholder="Reason for patient's visit / encounter" required></textarea>
-						</div>
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<label>Patient's state:</label>
-					<input type="text" class="form-control" ng-model="form.state" placeholder="State of patient (e.g. conciousness, pregnancy, ...)" required />
-				</div>
-				<div class="form-group">
-					<label>Observation comments</label>
-					<textarea class="form-control" ng-model="form.comments" placeholder="Vital signs, visible signs, ..." required></textarea>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-outline">Submit</button>
-			</div>
-		</div>
-	</div>
+                                    <button class="btn btn-default dropdown-toggle active" data-toggle="dropdown">
+                                        <i class="fa fa-calendar"></i> {{ form.encounterDate || 'Select a date:' }}
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="" ng-click="setEncounterDate(0)">Today</a></li>
+                                        <li><a href="" ng-click="setEncounterDate(-1)">Yesterday</a></li>
+                                        <li><a href="" ng-click="setEncounterDate(-2)">2 days ago</a></li>
+                                        <li><a href="" ng-click="setEncounterDate(-3)">3 days ago</a></li>
+                                        <li class="divider"></li>
+                                        <li><input type="date" class="form-control pickCustomEncounterDate" ng-model="customEncounterDate" ng-change="setEncounterDate(customEncounterDate)" placeholder="Custom Date" /></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col col-sm-6">
+                        <div class="form-group">
+                            <label>Reason for visit:</label>
+                            <textarea class="form-control" ng-model="form.encounterReason" placeholder="Reason for patient's visit / encounter" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Patient's state:</label>
+                    <input type="text" class="form-control" ng-model="form.state" placeholder="State of patient (e.g. conciousness, pregnancy, ...)" required />
+                </div>
+                <div class="form-group">
+                    <label>Observation comments</label>
+                    <textarea class="form-control" ng-model="form.comments" placeholder="Vital signs, visible signs, ..." required></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-outline"
+                    ng-disabled="waiting">
+                    <i class="fa fa-send"
+                        ng-show="!waiting"></i>
+                    <i class="fa fa-spin fa-spinner"
+                        ng-show="waiting"></i>
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
 </form>

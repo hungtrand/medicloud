@@ -33,8 +33,20 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="list-group">
-                            <a class="list-group-item list-group-item-info" href="" ng-repeat="patient in patientList | orderBy: 'lastName' | filter: patientSearchText" ng-click="clicked(patient)">
-                                <h4 class="list-group-item-heading"><i class="fa fa-user"></i> {{patient.lastName}}, {{patient.firstName}}</h4>
+                            <a class="list-group-item list-group-item-info" 
+                                href="" 
+                                ng-repeat="patient in patientList | orderBy: 'lastName' | filter: patientSearchText" 
+                                ng-click="clicked(patient)">
+                                <div class="row">
+                                    <div class="col-xs-2 pull-left">
+                                        <i class="fa fa-user text-muted" style="font-size: 32px;"></i>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <h3 class="list-group-item-heading">
+                                            {{patient.lastName}}, {{patient.firstName}}
+                                        </h3>
+                                    </div>       
+                                </div>
                             </a>
                         </div>
                     </div>
@@ -64,7 +76,7 @@
                             <p class="list-group-item-text">Birthdate</p>
                             <h4 class="list-group-item-heading">{{selectedPatient.birthdate}}</h4>
                         </div>
-                        
+
                     </div>
                     <div class="panel-footer">
                         <a href="pages/calendar.html">

@@ -1,5 +1,6 @@
 package model;
 
+import provider.DateTimeDeserializer;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import model.Observation;
 
@@ -36,10 +39,15 @@ public class ActiveCondition {
 	@JoinColumn(name="start_obs_id",nullable = true, insertable=false, updatable=false)
 	private Observation sObservation;
 	
+	@Column(name="start_obs_id", nullable=true)
+	private Integer startObsId;
+	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="end_obs_id", nullable= true, insertable=false, updatable=false)
 	private Observation eObservation;
-
+	
+	@Column(name="end_obs_id", nullable=true)
+	private Integer endObsId;
 	
 	@Column(name="description")
 	private String description;
@@ -54,11 +62,20 @@ public class ActiveCondition {
 	@Column(name="severity")
 	private String severity;
 	
+	@JsonDeserialize(using=DateTimeDeserializer.class)
 	@Column(name="date_created")
 	private Date dateCreated;
 	
+	public int getActiveConditionId() {
+		return this.activeConditionId;
+	}
+	
 	public int getConditionId(){
 		return this.condition.getConditionId();
+	}
+	
+	public int getPatientId() {
+		return this.patientId;
 	}
 	
 	public String getName() {
@@ -80,8 +97,14 @@ public class ActiveCondition {
 		return formatDate.format(this.dateCreated);
 	}
 	
-	public int getActiveConditionId(){
-		return this.activeConditionId;
+	public int getStartObsId() {
+		if (this.sObservation == null) return 0;
+		return this.sObservation.getObsId();
+	}
+	
+	public int getEndObsId() {
+		if (this.eObservation == null) return 0;
+		return this.eObservation.getObsId();
 	}
 	
 	public Observation getStartObservation(){
@@ -90,11 +113,12 @@ public class ActiveCondition {
 	public Observation getEndObservation(){
 		return this.eObservation;
 	}
-	public void setStartObsId(int sid){
-		this.sObservation.setObsId(sid);;
+	public void setStartObsId(Integer sid){
+		this.startObsId = sid;
 	}
-	public void setEndObsId(int eid){
-		this.eObservation.setObsId(eid);
+	
+	public void setEndObsId(Integer eid){
+		this.endObsId = eid;
 	}
 	public void setPatientId(int newPatientId){
 		this.patientId = newPatientId;

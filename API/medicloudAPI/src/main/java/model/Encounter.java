@@ -75,6 +75,10 @@ public class Encounter {
 		return formatDate.format(this.dateCreated);
 	}
 	
+	public List<Observation> getObservations() {
+		return this.observations;
+	}
+	
 	public String getDescription(){
 		return this.description;
 	}

@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
@@ -67,11 +68,14 @@ public class Patient {
 	private List<ActiveCondition> activeConditions = new ArrayList<ActiveCondition>();
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="patient_id")
+	@OrderBy("date_created DESC")
 	private List<Observation> observations = new ArrayList<Observation>();
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="patient_id")
-	private List<Encounter> encounter = new ArrayList<Encounter>();
+	@OrderBy("encounter_datetime DESC, date_created DESC")
+	private List<Encounter> encounters = new ArrayList<Encounter>();
 	
 	@JsonIgnore
 	public List<ActiveCondition> getActiveConditions() {
@@ -85,16 +89,7 @@ public class Patient {
 
 	@JsonIgnore
 	public List<Encounter> getEncounters() {
-		return this.encounter;
-	}
-	
-	
-	/**
-	 * 
-	 * @param newEncounter
-	 */
-	public void setEncounters(Encounter newEncounter){
-		this.encounter.add(newEncounter);
+		return this.encounters;
 	}
 	
 	public void setPersonId(int newPersonId){

@@ -1,6 +1,5 @@
 package repository;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,8 +11,5 @@ import model.Encounter;
 @Qualifier(value="ContactRepo")
 public interface EncounterRepo extends CrudRepository<Encounter, String>{
 
-
-//	public Contact findByEmail(String email);
-//	public List<Contact> findByPersonId(Collection<Integer> personId);
-//	public Contact findByPhone(String phone);
+	public List<Encounter> findByPatientId(int patientId);
 }

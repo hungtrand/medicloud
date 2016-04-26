@@ -1,35 +1,52 @@
 <div class="panel panel-primary">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-		{{ activeCondition.name }}
-		<button class="btn btn-xs bg-maroon btn-flat pull-right" title="Condition severity" ng-if="activeCondition.severity">{{ activeCondition.severity }}</button>
-		</h3>
-	</div>
-	<div class="panel-body">
-		
-		<div class="row">
-			<div class="col col-xs-12 col-sm-6">
-				<blockquote>
-					{{ activeCondition.description }}
-				</blockquote>
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            {{ activeCondition.name }}
+            <button class="btn btn-xs btn-flat pull-right"
+                ng-class="{ 'bg-olive': activeCondition.severity == 'mild',
+                'bg-orange': activeCondition.severity == 'moderate',
+                'bg-maroon': activeCondition.severity == 'severe' }" 
+                title="Condition severity" 
+                ng-if="activeCondition.severity">{{ activeCondition.severity }}</button>
+        </h3>
+    </div>
+    <div class="panel-body">
 
-				<em class="text-muted">{{ activeCondition.dateCreated }}</em>
-			</div>
-			<div class="col col-xs-12 col-sm-6 text-right">
-				<div class="btn-group-vertical" role="group">
-					<a class="btn btn-info" title="Start Observation">
-						First Observation: <label class="label label-default">{{ formatDate(activeCondition.startObs.updated) ||  'none' | date:'yyyy-MM-dd' }}</label>
-					</a>
-					<a class="btn btn-warning" title="End Observation">
-						Last Observation: <label class="label label-default">{{ formatDate(activeCondition.endObs.updated) || 'none' | date:'yyyy-MM-dd' }}</label>
-					</a>
-					
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="row">
+            <div class="col col-xs-12 col-sm-6">
+                <blockquote>
+                    {{ activeCondition.description }}
+                </blockquote>
 
-	<div class="panel-footer">
-		<input class="form-control input-sm" type="text" placeholder="Type a comment">
-	</div>
+                <em class="text-muted">{{ activeCondition.dateCreated }}</em>
+            </div>
+            <div class="col col-xs-12 col-sm-6 text-right">
+                <div class="btn-group-vertical" role="group">
+                    <a class="btn btn-info" title="Start Observation"
+                        ng-click="pickStartObservation()">
+                        First Observation: 
+                        <label class="label label-default">
+                            {{ activeCondition.startObservation.dateCreated ||
+                            'none' |
+                            date:'MM/dd/yyyy' }}
+                        </label>
+                    </a>
+                    <a class="btn btn-warning" title="End Observation"
+                        ng-click="pickEndObservation()">
+                        Last Observation: 
+                        <label class="label label-default">
+                            {{ activeCondition.endObservation.dateCreated ||
+                            'none' |
+                            date:'MM/dd/yyyy' }}
+                        </label>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <input class="form-control input-sm" type="text" placeholder="Type a comment">
+    </div>
 </div>

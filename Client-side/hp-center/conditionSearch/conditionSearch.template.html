@@ -1,7 +1,6 @@
 <div class="input-group">
-	<input type="text" class="form-control inputSearch" placeholder="Search condition database"
-	ng-model="searchInput"
-	ng-disabled="waiting" />
+	<input type="text" ng-readonly="waiting" class="form-control inputSearch" placeholder="Search condition database"
+	ng-model="searchInput" />
 	<span class="input-group-btn">
 		<button type="submit" class="btn btn-primary btnSearch"
 		ng-disabled="waiting" style="font-size: 15px;">
