@@ -132,13 +132,14 @@ public class PatientResource {
 	 * @param patientId
 	 */
 	@RequestMapping(value="/appointment", method=RequestMethod.POST)
-	public ResponseEntity<?> setAppointment(@PathVariable("patient_id")int patientId	
+	public ResponseEntity<?> setAppointment(@PathVariable("patientId")int patientId	
 			, @PathVariable("hpId")int hpId
 			, @RequestBody Appointment newAppointment){
 		
 		Appointment temp = new Appointment();
 	
 		newAppointment.setRequestDate();
+		newAppointment.setHpId(hpId);
 		newAppointment.setPatient(patientId);
 		newAppointment.setPatientName(patientRepo.findByPatientId(patientId).getFirstName());
 		newAppointment.setHPName(hpRepo.findByHpId(hpId).getUser().getPerson().getFirstName());

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -189,14 +190,14 @@ public class Appointment {
 		this.acceptAppointment = newAcceptAppointment;
 	}
 	public void setRequestDate(){
-		this.requestDate = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date().getTime());
+		this.requestDate = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date().getTime());
 	}
 	
 	public List<String> defaultAppointmentAvailability(){
 		double start =9;
 		double end = 17;
 		List<String> availableTime = new ArrayList<String>();
-		double[] time;
+		double time;
 		int temp = (int) (end - start);
 		temp = temp*2;
 		for(int i = 0; i< temp; i++){
@@ -218,13 +219,23 @@ public class Appointment {
 			}
 			
 			start = start + 0.5;	
-		}
+			}
 	
-				
+		
 		return availableTime;
 	}
 
-	
+
+	public int dateTimeChecker(){
+		String temp = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date().getTime());
+		Scanner scanDateTime = new Scanner(temp);
+		scanDateTime.useDelimiter("-");
+		String dateTime="";
+		while(scanDateTime.hasNext()){
+			dateTime = dateTime + scanDateTime.next();
+		}
+		return Integer.parseInt(dateTime);
+	}
 	
 	
 	

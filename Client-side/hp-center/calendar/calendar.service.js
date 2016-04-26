@@ -59,10 +59,11 @@ module.exports = function($http, $rootScope, $resource) {
         addAppointment: function(appointment, selectedPatientId) {
             patientId = selectedPatientId;
             console.log('In calendar service. patientId is ' + selectedPatientId);
-            var client = $resource(url, {
+            var client = $resource(setAppointmentUrl, {
                 hpId: hpId,
                 patientId: selectedPatientId
             });
+            
             client.save(appointment,
                 function(response) {
                     if (response.personId) {

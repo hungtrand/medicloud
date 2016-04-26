@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ import model.Contact;
 
 import model.Patient;
 import model.Person;
+import model.Prescription;
 import model.Appointment;
 import provider.MessageResponse;
 import repository.AppointmentRepo;
@@ -28,6 +30,7 @@ import repository.AppointmentRepo;
 import repository.Contact_repo;
 import repository.HealthProfessional_repo;
 import repository.PatientRepo;
+import repository.PrescriptionRepo;
 
 
 @RestController
@@ -44,6 +47,8 @@ public class PatientPersonalResourceServices {
 		private JavaMailSender mailer;
 		@Autowired
 		private HealthProfessional_repo hpRepo;
+		@Autowired
+		private PrescriptionRepo prescriptionRepo;
 	
 		
 		@Autowired
@@ -60,8 +65,11 @@ public class PatientPersonalResourceServices {
 		@RequestMapping(value="/{patient_id}/appointments", method=RequestMethod.GET)
 		public ResponseEntity<?> getAllAppointment(@PathVariable("patient_id")int patientId){
 			List<Appointment> foundPatient = new ArrayList<Appointment>();
+			List<Appointment> appointment = new ArrayList<Appointment>();
 			
 			foundPatient =  appointmentRepo.findByPatientId(patientId);
+			appointment = foundPatient;
+			int dateTime = 0;
 			
 			if(foundPatient == null){
 				MessageResponse mr = new MessageResponse();
@@ -70,15 +78,73 @@ public class PatientPersonalResourceServices {
 				mr.error = "Not Found: [patientId: " + patientId + " ]";
 			
 				System.out.println(mr.error);
+				
 				return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
 			}else{
+				for(int i=0; i<foundPatient.size(); i++){
+//					if(foundPatient.get(i).getActive() == true){
+						Scanner scanDate = new Scanner(foundPatient.get(i).getAppointmentDate());
+						scanDate.useDelimiter("-");
+						Scanner scanTime = new Scanner(foundPatient.get(i).getAppointmentTime());
+						scanTime.useDelimiter(":");
+						String date="";
+						String time="";
+						while(scanDate.hasNext()){
+							date = date + scanDate.next();
+							System.out.println(date);
+							System.out.println("********************");
+						}
+						System.out.println(date);
+						System.out.println("88888888888888888888888888");
+						while(scanTime.hasNext()){
+							time = time + scanTime.next();
+						}
+						
+						Appointment getChecker = new Appointment();
+						System.out.println(date + time);
+						System.out.println("----------------------");
+						int a = getChecker.dateTimeChecker();
+						System.out.println(a);
+						System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
+						return new ResponseEntity<List<Appointment>>(foundPatient,HttpStatus.OK);
+//					}
+				}
 				return  new ResponseEntity<List<Appointment>>(foundPatient, HttpStatus.OK);
 			}
 			
 		}
 		
+		/**
+		 * Get all the prescription of an individual patient.
+		 * @param patientId
+		 * @return
+		 */
+		@RequestMapping(value="/{patient_id}/prescriptions", method=RequestMethod.GET)
+		public ResponseEntity<?> getAllPrescription(@PathVariable("patient_id")int patientId
+				){
+			List<Prescription> foundPatient = new ArrayList<Prescription>();
+			foundPatient = prescriptionRepo.findByPatientId(patientId);
+			MessageResponse mr = new MessageResponse();
+			mr.success = true;
+			List<Prescription> prescription = new ArrayList<Prescription>();
+			prescription = foundPatient;
+			if(foundPatient == null){
+				
+				mr.success = false;
+				mr.error ="Not Found: [patientId: " + patientId + " ]";
+				
+				return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);	
+			}
+			for(int i=0; i<foundPatient.size(); i++){
+				if(foundPatient.get(i).getIsActive() == false){
+					prescription.remove(i);
+				}
+			}
+			return new ResponseEntity<List<Prescription>>(prescription, HttpStatus.OK);
+			
+		}
 		
-		
+
 		
 		//--------------------------------------------------------------------POST-----------------------------------------------------
 		
