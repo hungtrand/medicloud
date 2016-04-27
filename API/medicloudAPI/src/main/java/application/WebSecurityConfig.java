@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.addFilterBefore(new SimpleCORSFilter(), ChannelProcessingFilter.class)
 			.authorizeRequests()
-			.antMatchers("/", "/HPSignup/**", "/signin/**", "/conditions/**", "/observations/**").permitAll()
+			.antMatchers("/", "/HPSignup/**", "/signin/**", "/conditions/**", "/observations/**", "/labs/**").permitAll()
 			.antMatchers(HttpMethod.OPTIONS,"/api/**").permitAll()
 	        .antMatchers("/api/hp/**").hasAuthority("ROLE_HP")
 	        .antMatchers("/api/patient/**").hasAuthority("ROLE_PATIENT")

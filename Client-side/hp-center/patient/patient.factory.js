@@ -118,7 +118,6 @@ module.exports = function($resource, $rootScope, activeCondition_factory, observ
             newObservation.$promise.then(
                     function(response) {
                         self.fetchObservations();
-                        A
                         self.fetchEncounters();
                     }
                     ,

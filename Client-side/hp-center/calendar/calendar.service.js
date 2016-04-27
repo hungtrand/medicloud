@@ -66,8 +66,10 @@ module.exports = function($http, $rootScope, $resource) {
             
             client.save(appointment,
                 function(response) {
+                  $rootScope.$broadcast('appointmentAdded');
+                  console.log('appointment broadcast');
                     if (response.personId) {
-                        $rootScope.$broadcast('patientAdded');
+
 
                         service.patients.push(response);
                         $('#patientSuccessAlert').show();
