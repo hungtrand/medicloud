@@ -52,7 +52,8 @@ public class PatientObservationCollection {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<?> getPatientObservations(@PathVariable("patientId") int patientId) {
-		Patient patient = patientRepo.findByPatientId(patientId);
+		
+		Patient patient = patientRepo.findByPatientId(patientId).get(0);
 		
 		List<Observation> listObs = patient.getObservations();
 		return new ResponseEntity<List<Observation>>(listObs, HttpStatus.OK);
@@ -73,7 +74,7 @@ public class PatientObservationCollection {
 			@PathVariable("patientId") int patientId) {
 		MessageResponse mr = new MessageResponse();
 		
-		Patient patient = patientRepo.findByPatientId(patientId);
+		Patient patient = patientRepo.findByPatientId(patientId).get(0);
 		HealthProfessional hp = hpRepo.findByHpId(hpId);
 		
 		if (patient == null) {

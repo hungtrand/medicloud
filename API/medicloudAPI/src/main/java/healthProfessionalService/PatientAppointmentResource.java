@@ -90,6 +90,14 @@ public class PatientAppointmentResource {
 		return new ResponseEntity<Appointment>(appointment, HttpStatus.OK);
 	}
 	
+	/**
+	 * HP accepts appointments.
+	 * @param patientId
+	 * @param hpId
+	 * @param appointmentId
+	 * @param accept
+	 * @return
+	 */
 	@RequestMapping(value="/{patientId}/appointments/{appointmentId}/acceptAppiontment", method=RequestMethod.PUT)
 	public ResponseEntity<?> setAppointment(@PathVariable("patientId")int patientId
 			,@PathVariable("hpId")int hpId
@@ -114,6 +122,13 @@ public class PatientAppointmentResource {
 		return new ResponseEntity<MessageResponse>(mr, HttpStatus.OK);
 	}
 
+	/**
+	 * Health professional cancel appointment.
+	 * @param hpId
+	 * @param patientId
+	 * @param appointmentId
+	 * @return
+	 */
 	@RequestMapping(value="{patientId}/appointments/{appointmentId}/cancel", method=RequestMethod.PUT)
 	public ResponseEntity<?> deleteAppointment(@PathVariable("hpId")int hpId
 			, @PathVariable("patientId")int patientId

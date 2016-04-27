@@ -121,6 +121,11 @@ public class Patient {
 		this.patientId = newPatientId;
 	}
 	
+	public int getHpId(){
+		return this.hpId;
+	}
+	
+	
 	public static Patient create(Person p, HealthProfessional hp) {
 		Patient newPatient = new Patient();
 		newPatient.personId = p.getPersonId();

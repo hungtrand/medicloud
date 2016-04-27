@@ -35,7 +35,7 @@ public class PatientEncounterCollection {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<?> getPatientEncounters(@PathVariable("patientId") int patientId) {
-		Patient patient = patientRepo.findByPatientId(patientId);
+		Patient patient = patientRepo.findByPatientId(patientId).get(0);
 		List<Encounter> listEncounters = patient.getEncounters();
 		
 		return new ResponseEntity<List<Encounter>>(listEncounters, HttpStatus.OK);
