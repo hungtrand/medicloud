@@ -27,7 +27,7 @@ module.exports = function() {
                 $scope.observationPicker.onSelect = function(obs) {
                     $scope.activeCondition.endObservation = obs;
                     $scope.activeCondition.endObsId = obs.obsId;
-                    $activeCondition_factory.update(
+                    activeCondition_factory.update(
                             { 
                                 patientId: $scope.activeCondition.patientId,
                         activeConditionId: $scope.activeCondition.activeConditionId

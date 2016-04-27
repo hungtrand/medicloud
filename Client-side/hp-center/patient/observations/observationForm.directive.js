@@ -23,8 +23,9 @@ module.exports = function() {
             }
         ,
             controller: [
-                '$scope', '$filter', 'models_service', '$route', '$routeParams'
-                , function($scope, $filter, models_service, $route, $routeParams) {
+                '$scope', '$filter', 'models_service', 
+                '$route', '$routeParams', 'observationSuggestions_factory'
+                , function($scope, $filter, models_service, $route, $routeParams, obsSuggestionsFactory) {
                     $scope.error = "";
                     $scope.waiting = false;
                     $scope.control = {};
@@ -36,18 +37,6 @@ module.exports = function() {
                     }
 
                     $scope.patient = models_service.getPatient($routeParams['patient_id']);
-
-                    var initializeBloodhound = function() {
-                        $scope.suggestions = new Bloodhound({
-                            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
-                            queryTokenizer: Bloodhound.tokenizers.whitespace,
-                            identify: function(obj) {
-                                return obj.id;
-                            },
-                            local: models_service.getObservationSuggestions
-                        });
-
-                    }
 
                     $scope.setEncounterDate = function(d) {
                         var encDate;
@@ -74,6 +63,24 @@ module.exports = function() {
                                     },
                                     function(failure) { handleError(failure); }
                                  );
+                    }
+
+                    $scope.queryObservationSuggestions = function(keywords) {
+                        $scope.obsSuggestions = obsSuggestionsFactory.query(
+                                { 
+                                    keywords: keywords,
+                                    gender: $scope.patient.gender || ''
+                                });
+
+                        return $scope.obsSuggestions.$promise.then(
+                                    function() { return $scope.obsSuggestions; }
+                                );
+                    }
+
+                    $scope.addToObservationComments = function(sugg) {
+                        if ($scope.form.comments) $scope.form.comments += "\n";
+                        $scope.form.comments += sugg.label;
+                        $scope.selectedObsSuggestion = "";
                     }
 
                     var handleError = function(failure) {

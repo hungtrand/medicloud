@@ -12,10 +12,14 @@
                             <label>Select encounter date:</label>
                             <div class="input-group">
                                 <div class="input-group-btn" id="btnPickEncounterDate">
-                                    <input type="text" name="encounterDate" ng-value="form.encounterDate" style="height: 1px; width: 0px; margin:0; padding:0;" required />
+                                    <input type="text" name="encounterDate" 
+                                        ng-value="form.encounterDate" 
+                                        style="height: 1px; width: 0px; margin:0; padding:0;" required />
 
-                                    <button class="btn btn-default dropdown-toggle active" data-toggle="dropdown">
-                                        <i class="fa fa-calendar"></i> {{ form.encounterDate || 'Select a date:' }}
+                                    <button class="btn btn-default dropdown-toggle active" 
+                                        data-toggle="dropdown">
+                                        <i class="fa fa-calendar"></i> 
+                                        {{ form.encounterDate || 'Select a date:' }}
                                         <i class="fa fa-caret-down"></i>
                                     </button>
                                     <ul class="dropdown-menu">
@@ -24,7 +28,13 @@
                                         <li><a href="" ng-click="setEncounterDate(-2)">2 days ago</a></li>
                                         <li><a href="" ng-click="setEncounterDate(-3)">3 days ago</a></li>
                                         <li class="divider"></li>
-                                        <li><input type="date" class="form-control pickCustomEncounterDate" ng-model="customEncounterDate" ng-change="setEncounterDate(customEncounterDate)" placeholder="Custom Date" /></li>
+                                        <li>
+                                            <input type="date" 
+                                                class="form-control pickCustomEncounterDate" 
+                                                ng-model="customEncounterDate" 
+                                                ng-change="setEncounterDate(customEncounterDate)" 
+                                                placeholder="Custom Date" />
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -34,18 +44,43 @@
                     <div class="col col-sm-6">
                         <div class="form-group">
                             <label>Reason for visit:</label>
-                            <textarea class="form-control" ng-model="form.encounterReason" placeholder="Reason for patient's visit / encounter" required></textarea>
+                            <textarea class="form-control" 
+                                ng-model="form.encounterReason" 
+                                placeholder="Reason for patient's visit / encounter" required></textarea>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>Patient's state:</label>
-                    <input type="text" class="form-control" ng-model="form.state" placeholder="State of patient (e.g. conciousness, pregnancy, ...)" required />
+                    <input type="text" class="form-control" 
+                        ng-model="form.state" 
+                        placeholder="State of patient (e.g. conciousness, pregnancy, ...)" required />
+                </div>
+                
+                <div class="form-group">
+                    <label>Add observation, vital, visual signs: </label>
+                    <div class="input-group">
+                        <input class="form-control" type="text"
+                            ng-model="selectedObsSuggestion"
+                            uib-typeahead="obsSugg.label for obsSugg in queryObservationSuggestions($viewValue)"
+                            typeahead-loading="loadingSuggestion"
+                            typeahead-no-results="noObsSuggestions"
+                            typeahead-on-select="addToObservationComments($item)"
+                            placeholder="search to add observations..." />
+                        <span class="input-group-addon">
+                            <i class="fa fa-spin fa-spinner" ng-if="loadingSuggestion"></i>
+                            <i class="fa fa-search" ng-if="!loadingSuggestion"></i>
+                        </span>
+                    </div>
+                    <em ng-if="noObsSuggestions">No suggestion</em>
+                    
                 </div>
                 <div class="form-group">
-                    <label>Observation comments</label>
-                    <textarea class="form-control" ng-model="form.comments" placeholder="Vital signs, visible signs, ..." required></textarea>
+                    <textarea class="form-control" rows="10"
+                        ng-model="form.comments" 
+                        placeholder="Vital signs, visible signs, ..." 
+                        required></textarea>
                 </div>
             </div>
             <div class="modal-footer">
