@@ -1,5 +1,8 @@
 package healthProfessionalService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -131,12 +134,12 @@ public class PatientResource {
 	 * Hp requests an Appointment.
 	 * @param patientId
 	 */
-	@RequestMapping(value="/appointment", method=RequestMethod.POST)
-	public ResponseEntity<?> setAppointment(@PathVariable("patientId")int patientId	
+	@RequestMapping(value="/appointment", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public void setAppointment(@PathVariable("patientId")int patientId	
 			, @PathVariable("hpId")int hpId
 			, @RequestBody Appointment newAppointment){
 		
-		Appointment temp = new Appointment();
+		List<Appointment> temp = new ArrayList<Appointment>();
 	
 		newAppointment.setRequestDate();
 		newAppointment.setHpId(hpId);
@@ -149,11 +152,11 @@ public class PatientResource {
 			mr.success = false;
 			mr.error = "HealthProfessional and Patient are not connected.";
 			System.out.println(mr.error);
-			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);			
+					
 		}else{			
-			temp = newAppointment;
+			appointmentRepo.save(newAppointment);
 		
-			return new ResponseEntity<Appointment>(appointmentRepo.save(temp),HttpStatus.OK);
+			
 		}
 			
 	}
