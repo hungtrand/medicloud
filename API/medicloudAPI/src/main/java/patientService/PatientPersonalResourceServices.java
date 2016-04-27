@@ -2,7 +2,9 @@ package patientService;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -65,11 +67,11 @@ public class PatientPersonalResourceServices {
 		@RequestMapping(value="/{patient_id}/appointments", method=RequestMethod.GET)
 		public ResponseEntity<?> getAllAppointment(@PathVariable("patient_id")int patientId){
 			List<Appointment> foundPatient = new ArrayList<Appointment>();
-			List<Appointment> appointment = new ArrayList<Appointment>();
+			List<Appointment> appointment = new ArrayList<Appointment>();	
 			
 			foundPatient =  appointmentRepo.findByPatientId(patientId);
-			appointment = foundPatient;
-			int dateTime = 0;
+
+			Appointment temp = new Appointment();
 			
 			if(foundPatient == null){
 				MessageResponse mr = new MessageResponse();
@@ -82,34 +84,22 @@ public class PatientPersonalResourceServices {
 				return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
 			}else{
 				for(int i=0; i<foundPatient.size(); i++){
-//					if(foundPatient.get(i).getActive() == true){
 						Scanner scanDate = new Scanner(foundPatient.get(i).getAppointmentDate());
 						scanDate.useDelimiter("-");
-						Scanner scanTime = new Scanner(foundPatient.get(i).getAppointmentTime());
-						scanTime.useDelimiter(":");
 						String date="";
-						String time="";
+						
 						while(scanDate.hasNext()){
 							date = date + scanDate.next();
-							System.out.println(date);
-							System.out.println("********************");
 						}
-						System.out.println(date);
-						System.out.println("88888888888888888888888888");
-						while(scanTime.hasNext()){
-							time = time + scanTime.next();
-						}
-						
-						Appointment getChecker = new Appointment();
-						System.out.println(date + time);
-						System.out.println("----------------------");
-						int a = getChecker.dateTimeChecker();
-						System.out.println(a);
-						System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
-						return new ResponseEntity<List<Appointment>>(foundPatient,HttpStatus.OK);
-//					}
+					
+						int dateTime= Integer.parseInt(date);
+					
+						if((dateTime-temp.dateTimeChecker()) > 0){	
+							appointment.add(foundPatient.get(i));
+						}						
 				}
-				return  new ResponseEntity<List<Appointment>>(foundPatient, HttpStatus.OK);
+				
+				return new ResponseEntity<List<Appointment>>(appointment,HttpStatus.OK);
 			}
 			
 		}
@@ -144,6 +134,7 @@ public class PatientPersonalResourceServices {
 			
 		}
 		
+	
 
 		
 		//--------------------------------------------------------------------POST-----------------------------------------------------
@@ -179,8 +170,6 @@ public class PatientPersonalResourceServices {
 		}
 		
 		
-	
-
 		
 		//---------------------------------------------PUT-------------------------------------------------------
 		

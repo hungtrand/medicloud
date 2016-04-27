@@ -30,8 +30,7 @@ import repository.AppointmentRepo;
 @Table(name="appointment")
 public class Appointment {
 
-//	@Autowired
-//	private AppointmentRepo appointmentRepo;
+	
 	
 	@Id
 	@Column(name="appointment_id")
@@ -95,13 +94,7 @@ public class Appointment {
 	public int getAppointmentId(){
 		return this.appointmentId;
 	}
-//	public int getHealthProfessionalId(){
-//		 return this.hp.iterator().next().getHpId();
-//	}
-	
-	//HP relationshipid
 
-	//local hpid
 	public int getHPId(){
 		
 		return this.hpId;
@@ -111,17 +104,7 @@ public class Appointment {
 		return this.patientId;
 	}
 
-//	public Iterator<Patient> getPatientId(){
-//		int temp = 0;
-//		if(patient.iterator().hasNext()){
-//			temp++;
-//			//System.out.println("temp");
-//			return this.patient.iterator();
-//		}
-//		
-//		return null;
-//	}
-	
+
 	public String getPatientName(){
 		return this.patientName;
 	}
@@ -206,18 +189,27 @@ public class Appointment {
 			calculateHour = calculateHour * 2;
 			double cH = calculateHour % 2;
 			String number;
+			
 			if(cH <= 0){
-			number= Integer.toString((int) start) + ":00";
-			availableTime.add(number);
+				if(start < 10){
+					number= "0"+Integer.toString((int) start) + ":00";
+					availableTime.add(number);
+				}else{
+					number= Integer.toString((int) start) + ":00";
+					availableTime.add(number);
+				}
+			
 			} else{
-			number= Integer.toString((int)(start-.5)) + ":30";
-				availableTime.add(number);
-			}
+				if(start<10){
+					number= "0"+Integer.toString((int)(start-.5)) + ":30";
+					availableTime.add(number);
+				}else{
+					number= Integer.toString((int)(start-.5)) + ":30";
+					availableTime.add(number);
+				}
 			
-			if(start > 12){	
-				start = start - 12;
 			}
-			
+	
 			start = start + 0.5;	
 			}
 	
@@ -227,16 +219,16 @@ public class Appointment {
 
 
 	public int dateTimeChecker(){
-		String temp = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date().getTime());
-		Scanner scanDateTime = new Scanner(temp);
-		scanDateTime.useDelimiter("-");
-		String dateTime="";
-		while(scanDateTime.hasNext()){
-			dateTime = dateTime + scanDateTime.next();
+		String temp = new SimpleDateFormat("yyyy-MM-dd").format(new Date().getTime());
+		Scanner scanToday = new Scanner(temp);
+		scanToday.useDelimiter("-");
+		String today = "";
+		while(scanToday.hasNext()){
+			today = today + scanToday.next();
 		}
-		return Integer.parseInt(dateTime);
+		int timeChecker = Integer.parseInt(today);
+		return timeChecker;
 	}
-	
 	
 	
 

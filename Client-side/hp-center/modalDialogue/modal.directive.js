@@ -15,23 +15,12 @@ module.exports = function() {
                 if (newValue) {
                     $(element[0]).modal('show');
                 } else {
-                    $(element[0]).modal('hide');
-                }
-            });
-            /*element.find('#AddAppointment').on('click', function() {
-              element.submit();
-            });*/
-            /*element.on('submit', function(){
-                var elements = element[0].querySelectorAll('input,select,textarea');
-                for (var i = elements.length; i--;) {
-                    elements[i].addEventListener('invalid', function() {
-                        this.scrollIntoView(false);
+                    $(element[0]).on('hidden.bs.modal', function() {
+                      scope.show = false;
+                      scope.$apply();
                     });
                 }
-               var data = scope.patient;
-               data = angular.extend({}, scope.patient);
-               scope.submit(data);
-            });*/
+            });
 
         },
         templateUrl: 'modalDialogue/modal.html',
@@ -45,12 +34,14 @@ module.exports = function() {
           $scope.selectedPatient = 'Select a patient';
           $scope.selectedTime = 'Select a time';
           $('[data-toggle="tooltip"]').tooltip('disable');
+
           $rootScope.$on('dateSelected', function(event, args) {
             console.log("Broadcast received. Date is " + args.date);
             $scope.patientList = patientsListService.getPatients();
             $scope.timesList = calendarService.getTimes();
             appointment.appointmentDate = args.date;
           });
+
           $scope.selectPatient = function(patient) {
             $scope.selectedPatient = patient;
             selectedPatientId = $scope.selectedPatient.patientId;
@@ -66,6 +57,13 @@ module.exports = function() {
             calendarService.addAppointment(appointment, selectedPatientId);
             console.log('Appointment is ' + appointment);
           }
+
+          $scope.$on('appointmentAdded', function() {
+            $('.modal.in').modal('hide') 
+            $('#AddAppointmentForm')[0].reset();
+            $scope.selectedTime = 'Select a time';
+          }
+        );
         }],
     };
 }
