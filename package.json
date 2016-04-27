@@ -1,0 +1,27 @@
+{
+  "name": "medicloud",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "preinstall": "npm install -g grunt-cli"
+  },
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "morgan": "~1.6.1",
+    "mysql": "~2.10.2",
+    "path": "~0.12.7",
+    "serve-favicon": "~2.3.0",
+    "socket.io": "~1.4.5"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-browserify": "~4.0.1",
+    "grunt-contrib-clean": "~1.0.0",
+    "grunt-contrib-watch": "latest",
+    "watchify": "~3.7.0"
+  }
+}

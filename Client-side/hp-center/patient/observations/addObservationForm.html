@@ -67,6 +67,7 @@
                             typeahead-loading="loadingSuggestion"
                             typeahead-no-results="noObsSuggestions"
                             typeahead-on-select="addToObservationComments($item)"
+                            typeahead-wait-ms="500"
                             placeholder="search to add observations..." />
                         <span class="input-group-addon">
                             <i class="fa fa-spin fa-spinner" ng-if="loadingSuggestion"></i>
