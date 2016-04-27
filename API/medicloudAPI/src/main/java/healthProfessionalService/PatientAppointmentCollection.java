@@ -31,7 +31,6 @@ public class PatientAppointmentCollection {
 	
 	//---------------------------------------------------GET-----------------------------------------
 
-	
 	/**
 	 * Doctor's Availability on daily base.
 	 * @param newAvailableTime

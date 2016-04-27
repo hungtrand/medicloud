@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -53,6 +54,9 @@ public class Patient {
 	
 	@Column(name="patient_since_date")
 	private Date patientSinceDate;
+	
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="patient", orphanRemoval=true)
+	private Set<Appointment> appointment;
 	
 	@PrePersist
 	protected void onCreate() {

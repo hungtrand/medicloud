@@ -20,6 +20,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import model.HealthProfessional;
@@ -48,7 +49,12 @@ public class Appointment {
 	@Column(name="hp_name")
 	private String hpName;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
+		org.hibernate.annotations.CascadeType.DELETE, 
+		org.hibernate.annotations.CascadeType.MERGE,
+		org.hibernate.annotations.CascadeType.PERSIST,
+		org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
 	@JoinColumn(name="hp_id", insertable = false, updatable=false)
 	private HealthProfessional hp; //= new HashSet<HealthProfessional>(0);
 	
@@ -75,7 +81,7 @@ public class Appointment {
 	private String reason;
 	
 	@Column(name="active")
-	private boolean active;
+	private boolean active=true;
 	
 	@Column(name="accept_appointment")
 	private boolean acceptAppointment;

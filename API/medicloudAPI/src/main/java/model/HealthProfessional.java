@@ -1,4 +1,6 @@
 package model;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,6 +32,8 @@ public class HealthProfessional {
 	@Column(name="license")
 	private String license;
 
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="hp", orphanRemoval=true)
+	private Set<Appointment> appointment;
 	
 	@Column(name="cdo")
 	private String cdo;
