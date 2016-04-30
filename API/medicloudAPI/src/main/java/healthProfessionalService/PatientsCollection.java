@@ -153,7 +153,7 @@ public class PatientsCollection {
 		}
 		else {
 			Patient newPatient = saveNewPatient(hpId, newPatientForm);
-			newPatient = patientRepo.findByPatientId(newPatient.getPatientId());
+			newPatient = patientRepo.findByPatientId(newPatient.getPatientId()).get(0);
 			
 			return new ResponseEntity<Patient>(newPatient, HttpStatus.OK);
 		}

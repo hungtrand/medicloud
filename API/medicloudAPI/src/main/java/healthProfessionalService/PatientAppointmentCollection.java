@@ -65,7 +65,7 @@ public class PatientAppointmentCollection {
 	 * @param patientId
 	 * @return
 	 */
-	@RequestMapping(value="/{patient_id}/appointments", method=RequestMethod.GET)
+	@RequestMapping(value="/{patientId}/appointments", method=RequestMethod.GET)
 	public ResponseEntity<?> getAllAppointment(@PathVariable("patientId")int patientId
 			, @PathVariable("hpId")int hpId){
 		List<Appointment> foundPatient = new ArrayList<Appointment>();
@@ -84,6 +84,8 @@ public class PatientAppointmentCollection {
 			
 			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
 		}else{
+			
+			
 			for(int i=0; i<foundPatient.size(); i++){
 					Scanner scanDate = new Scanner(foundPatient.get(i).getAppointmentDate());
 					scanDate.useDelimiter("-");
@@ -92,8 +94,10 @@ public class PatientAppointmentCollection {
 						date = date + scanDate.next();
 					}
 					int dateTime= Integer.parseInt(date);
-					if((dateTime-temp.dateTimeChecker()) > 0){	
-						appointment.add(foundPatient.get(i));
+					if((dateTime-temp.dateTimeChecker()) > 0){
+						if(foundPatient.get(i).getActive() == true){
+							appointment.add(foundPatient.get(i));
+						}
 					}						
 			}
 			
@@ -115,7 +119,7 @@ public class PatientAppointmentCollection {
 		List<Appointment> foundAppointment = new ArrayList<Appointment>();
 		List<Appointment> appointment = new ArrayList<Appointment>();
 		
-		foundAppointment = appointmentRepo.findByAppointmentDateAndHpId(userDate, hpId);
+		foundAppointment = appointmentRepo.findByAppointmentDateAndHpIdAndActive(userDate, hpId, true);
 		
 		if(foundAppointment == null){
 			MessageResponse mr = new MessageResponse();
@@ -124,6 +128,7 @@ public class PatientAppointmentCollection {
 			mr.message="The hpId: " + hpId + " has no appointment on Date: " + userDate +".";
 			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
 		}else{
+			
 			
 			for(int i=0; i< foundAppointment.size(); i++){
 				if(foundAppointment.get(i).getAppointmentDate() != userDate){
@@ -136,6 +141,9 @@ public class PatientAppointmentCollection {
 		}	
 		
 	}
+	
+	
+	
 	
 	
 }

@@ -22,7 +22,7 @@ public interface AppointmentRepo extends CrudRepository<Appointment, String>{
 	public Appointment findByPatientIdAndAppointmentId(int patientId, int appointmentId);
 	public Appointment findByHpIdAndAppointmentTimeAndAppointmentDate(int hpId, String appointmentTime, String appointmentDate);
 	public Appointment findByAppointmentTime(String appointmentTime);
-	public List<Appointment> findByAppointmentDateAndHpId(String appointmentDate, int hpId);
+	public List<Appointment> findByAppointmentDateAndHpIdAndActive(String appointmentDate, int hpId, boolean isActive);
 	public List<Appointment> findByHpIdAndPatientIdAndAppointmentId(int hpId, int patientId, int appointmentId);
-	
+	public List<Appointment> findByActive(boolean isActive);
 }

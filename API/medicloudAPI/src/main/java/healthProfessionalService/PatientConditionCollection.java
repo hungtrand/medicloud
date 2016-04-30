@@ -40,7 +40,7 @@ public class PatientConditionCollection {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<?> getPatientActiveConditions(@PathVariable("patientId") int patientId) {
-		Patient patient = patientRepo.findByPatientId(patientId);
+		Patient patient = patientRepo.findByPatientId(patientId).get(0);
 		
 		List<ActiveCondition> listCond = patient.getActiveConditions();
 		return new ResponseEntity<List<ActiveCondition>>(listCond, HttpStatus.OK);
@@ -59,7 +59,7 @@ public class PatientConditionCollection {
 		MessageResponse mr = new MessageResponse();
 		
 		Condition cond = conditionRepo.findByInferCId(newAC.inferCId);
-		Patient patient = patientRepo.findByPatientId(patientId);
+		Patient patient = patientRepo.findByPatientId(patientId).get(0);
 		
 		if (newAC.name.length() == 0 || newAC.name == null) {
 			mr.error = "Condition name is missing";

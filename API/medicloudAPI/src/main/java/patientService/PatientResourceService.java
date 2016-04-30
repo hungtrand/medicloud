@@ -161,7 +161,7 @@ public class PatientResourceService {
 			int hpId = newAppointment.getHPId();
 			newAppointment.setRequestDate();
 			newAppointment.setPatient(patientId);
-			newAppointment.setPatientName(patientRepo.findByPatientId(patientId).getFirstName());
+			newAppointment.setPatientName(patientRepo.findByPatientId(patientId).get(0).getFirstName());
 			newAppointment.setHPName(hpRepo.findByHpId(hpId).getUser().getPerson().getFirstName());
 			Patient foundPatient = patientRepo.findByHpIdAndPatientId(hpId, patientId);
 			if(foundPatient == null){
@@ -295,6 +295,31 @@ public class PatientResourceService {
 			}
 			
 		}
+		
+		
+		@RequestMapping(value="{patientId}/hps/{hpId}/appointments/{appointmentId}/cancel", method=RequestMethod.PUT)
+		public ResponseEntity<?> deleteAppointment(@PathVariable("hpId")int hpId
+				, @PathVariable("patientId")int patientId
+				, @PathVariable("appointmentId")int appointmentId){
+			
+			List<Appointment> foundPatient = appointmentRepo.findByHpIdAndPatientIdAndAppointmentId(hpId, patientId, appointmentId);
+			MessageResponse mr = new MessageResponse();
+			if(foundPatient==null){
+				mr.success = false;
+				mr.error ="Not Found: [patientId: " + patientId + " or hpId: " + hpId + "or appointmentId: " + appointmentId + "]";
+				mr.message="";
+				return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
+			}
+			Appointment appointment = appointmentRepo.findByAppointmentId(appointmentId);
+			appointment.setActive(false);
+			mr.success = true;
+			mr.error="";
+			mr.message="You are successfully canceled this appointment on Date: " + appointment.getAppointmentDate() +" !";
+			appointmentRepo.save(appointment);
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.OK);	
+			
+		}
+	
 		
 		
 		
