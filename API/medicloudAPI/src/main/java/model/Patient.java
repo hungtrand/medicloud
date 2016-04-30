@@ -163,6 +163,8 @@ public class Patient {
 		else return contacts.get(0);
 	}
 	
+	
+	
 	public String getPatientSinceDate() {
 		if (this.patientSinceDate == null) return "";
 		DateFormat formatDate = new SimpleDateFormat("MM/dd/yyyy");
