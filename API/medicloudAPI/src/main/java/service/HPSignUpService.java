@@ -74,6 +74,7 @@ public class HPSignUpService {
 		
 		
 		SimpleMailMessage msg = new SimpleMailMessage();
+		msg.setFrom("medicloud.sjsu@gmail.com");
 		msg.setTo(hpSU.getEmail());
 		msg.setCc("medicloud.sjsu@gmail.com");
 		msg.setSubject("Verify your Medicloud account.");

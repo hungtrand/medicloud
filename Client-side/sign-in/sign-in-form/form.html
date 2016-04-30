@@ -17,15 +17,15 @@
                 ng-model="form.password"
                 placeholder="Password" ng-minlength="6" minlength="6" required>
             </div>
-            
+
             <pre class="alert alert-danger" ng-if="error" style="word-wrap: break-word;">{{ error }}</pre>
             <pre class="alert alert-success" ng-if="success" style="word-wrap: break-word;">Success! Redirecting...</pre>
 
             <button type="submit" class="btn btn-primary" ng-if="!waiting">Login
-            <i class="fa fa-fw fa-unlock-alt"></i>
+                <i class="fa fa-fw fa-unlock-alt"></i>
             </button>
             <button type="button" class="btn btn-default" ng-if="waiting"><i class="fa fa-spin fa-spinner"></i></button>
-            
+
             <!-- <a href="#" class="forgot-password">Forgot password?</a> -->
             <a href="../HPSignUp/" class="forgot-password">Sign up</a>
         </div>

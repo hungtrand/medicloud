@@ -3,7 +3,9 @@ module.exports = function() {
         restrict: 'E',
         scope: {
             show: '=',
-            submit: '='
+            submit: '=',
+            error: '=',
+            waiting: '='
         },
         replace: true, // Replace with the template below
         transclude: true, // we want to insert custom content inside the directive

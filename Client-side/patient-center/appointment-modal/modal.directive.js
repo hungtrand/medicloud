@@ -35,7 +35,7 @@ module.exports = function() {
             });
 
         },
-        templateUrl: 'modalDialogue/modal.html',
+        templateUrl: 'appointment-modal/modal.html',
         controller: ['$scope', function($scope) {
           $('[data-toggle="tooltip"]').tooltip('disable');
           $scope.patient = {
