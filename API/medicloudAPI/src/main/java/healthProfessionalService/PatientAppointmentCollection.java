@@ -20,6 +20,7 @@ import java.util.*;
 import java.util.List;
 
 import model.Appointment;
+import model.Patient;
 import provider.MessageResponse;
 import repository.PatientRepo;
 import repository.AppointmentRepo;
@@ -150,6 +151,7 @@ public class PatientAppointmentCollection {
 		}	
 		
 	}
+	
 	
 	
 	
