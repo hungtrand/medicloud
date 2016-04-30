@@ -9,7 +9,7 @@
 
 	app.config(['$routeProvider', '$resourceProvider', configuration]);
 
-	app.service('patientSignUpService', ['$http', '$resource', patientSignUpService]);
+	app.service('patientSignUpService', ['$resource', patientSignUpService]);
 
 	app.controller('patientSignUpController', ['$scope', '$routeParams', '$route', '$rootScope','patientSignUpService', patientSignUpController]);
 })();

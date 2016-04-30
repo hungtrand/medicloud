@@ -58,7 +58,7 @@ module.exports = function() {
                             .addNewObservation($scope.form)
                             .then(
                                     function(succcess) {
-                                        $scope.waiting = true;
+                                        $scope.waiting = false;
                                         $scope.control.hide();	
                                     },
                                     function(failure) { handleError(failure); }

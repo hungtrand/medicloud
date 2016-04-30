@@ -1,29 +1,29 @@
 module.exports = function($resource) {
-	var factory = function(form) {
-		var url = 'http://'+window.location.hostname+'\\:8080/signin';
-		this.client = $resource(url);
+    var factory = function(form) {
+        var url = 'http://'+window.location.hostname+'\\:8080/signin';
+        this.client = $resource(url);
 
-	}
+    }
 
-	factory.prototype = {
-		constructor: factory
-		,
-		post: function(formInputs) {
-			var self = this;
+    factory.prototype = {
+        constructor: factory
+            ,
+        post: function(formInputs) {
+            var self = this;
 
-			var promise = self.client.save(formInputs).$promise;
+            var promise = self.client.save(formInputs).$promise;
 
-			promise
-				.then(
-					function(response) { 
-						angular.extend(self, response.data);
-					}
-				);
+            promise
+                .then(
+                        function(response) { 
+                            angular.extend(self, response.data);
+                        }
+                     );
 
 
-			return promise;
-		}
-	}
+            return promise;
+        }
+    }
 
-	return factory;
+    return factory;
 }

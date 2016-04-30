@@ -148,9 +148,21 @@ public class User implements UserDetails {
 	public String getEmail() {
 		return this.email;
 	}
+	
 	public void setUserId(int newUserId){
 		this.userId = newUserId;
 	}
+	
+	public boolean isTokenValid(String token) {
+		if (this.isVerified) {
+			return false;
+		} else if (this.verificationKey.equals(token)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public void setEmail(String email) throws Exception {
 		String regexEmailPat = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 		Pattern emailPat = Pattern.compile(regexEmailPat);
@@ -195,7 +207,7 @@ public class User implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
+		
+		return this.isVerified;
 	}
 }

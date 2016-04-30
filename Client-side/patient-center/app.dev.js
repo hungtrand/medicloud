@@ -1,0 +1,39 @@
+(function() {
+    var configuration = require('./configuration');
+
+    var calendar_directive = require('./calendar');
+
+    var appointmentModal_directive = require('./appointment-modal/modal.directive');
+    
+    var profile_factory = require('./profile/profile.factory');
+
+    var patientCenterModel_service = require("./model.service");
+
+    var main_controller = require("./main.controller");
+    var profile_controller = require("./profile/profile.controller");
+
+    var app = angular.module('patientCenter', ['ngRoute', 'ngResource', 'ngAnimate']);
+
+    app.config(['$routeProvider', '$httpProvider', configuration]);
+
+    app
+        .directive('calendar_directive', calendar_directive)
+        .directive('appointmentModal_directive', appointmentModal_directive)
+    ;
+
+    app
+        .factory('patientCenter_profile_factory', ['$resource', profile_factory])
+    ;
+
+    app
+        .service('patientCenter_model_service', 
+                ['$resource', 'patientCenter_profile_factory', patientCenterModel_service])
+    ;
+
+    app
+        .controller('patientCenter_main_controller', 
+            ['$scope', 'patientCenter_model_service', main_controller])
+        .controller("patientCenter_profile_controller",
+            ['$scope', 'patientCenter_model_service', profile_controller]);
+    ;
+})();

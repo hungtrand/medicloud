@@ -31,8 +31,10 @@ import repository.NoteRepo;
 import repository.PatientRepo;
 import repository.PersonDao;
 import repository.PersonalViewRepo;
+import repository.Role_repo;
 import repository.User_repo;
 import model.PersonalView;
+import model.Role;
 import model.User;
 //import model.DoctorAvailability.CalculateTime;
 import model.Person;
@@ -65,6 +67,9 @@ public class PatientsCollection {
 	@Autowired
 	private AppointmentRepo appointmentRepo;
 	
+	@Autowired
+	private Role_repo roleRepo;
+	
 	
 	@Value("${client.root}")
 	private String clientRoot;
@@ -87,6 +92,13 @@ public class PatientsCollection {
 		User u = User.create(null, newPatientForm.email, null, p);
 		u.setPerson(p);
 		u.setVerificationKey();
+		
+		Role patientRole = roleRepo.findByDescription("ROLE_PATIENT");
+		if (patientRole == null) {
+			patientRole = Role.create("ROLE_PATIENT");
+		}
+		
+		u.setRole(patientRole);
 		
 		u = userRepo.save(u);
 		
@@ -152,7 +164,7 @@ public class PatientsCollection {
 	private boolean sendVerificationEmailForNewPatient(User newPatientUser) {
 		String vMsg = "Please click on the following link (or copy & paste it to your browser's address bar): \n";
 		try {
-			vMsg += "http://localhost/patientSignUp/#/" 
+			vMsg += "http://" + this.clientRoot + "/patientSignUp/#/" 
 					+ URLEncoder.encode(newPatientUser.getEmail(), "UTF-8") 
 					+  "?token=" + newPatientUser.getVerificationKey();
 		} catch (UnsupportedEncodingException e) {
@@ -162,6 +174,7 @@ public class PatientsCollection {
 		
 		
 		SimpleMailMessage msg = new SimpleMailMessage();
+		msg.setFrom("medicloud.sjsu@gmail.com");
 		msg.setTo(newPatientUser.getEmail());
 		msg.setCc("medicloud.sjsu@gmail.com");
 		msg.setSubject("Verify your Medicloud account.");

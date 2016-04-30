@@ -1,29 +1,118 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+module.exports = function($q, $location) {
+	return {
+		'request': function(config) {
+			var credentials = sessionStorage.getItem("medicloud_user_credentials");
+			// console.log("Credentials: " + credentials);
+			if (credentials) {
+				config.headers.Authorization = 'Basic ' + credentials;
+			}
+
+			return config || $q.when(config);
+		},
+		responseError: function(rejection) {
+
+			console.log("Found responseError: ", rejection);
+			if (rejection.status == 401) {
+
+				console.log("Access denied (error 401), please login again");
+				//$location.nextAfterLogin = $location.path();
+				window.location.href = '/sign-in/';
+			}
+			return $q.reject(rejection);
+		}
+	}
+}
+},{}],2:[function(require,module,exports){
 (function() {
-	var patientCenterService = require('./patientCenter.service');
+    var configuration = require('./configuration');
 
-	var patientCenterController = require('./patientCenter.controller');
+    var calendar_directive = require('./calendar');
 
-	var configuration = require('./configuration.js');
+    var appointmentModal_directive = require('./appointment-modal/modal.directive');
+    
+    var profile_factory = require('./profile/profile.factory');
 
-	var calendarDirective = require('./calendar.js');
+    var patientCenterModel_service = require("./model.service");
 
-	var appointmentModalDirective = require('./formAddPatient/modal.directive.js')
+    var main_controller = require("./main.controller");
+    var profile_controller = require("./profile/profile.controller");
 
-	var app = angular.module('patientCenter', ['ngRoute', 'ngResource']);
+    var app = angular.module('patientCenter', ['ngRoute', 'ngResource', 'ngAnimate']);
 
-	app.config(['$routeProvider', configuration]);
+    app.config(['$routeProvider', '$httpProvider', configuration]);
 
-	app.directive('calendarDirective', calendarDirective);
+    app
+        .directive('calendar_directive', calendar_directive)
+        .directive('appointmentModal_directive', appointmentModal_directive)
+    ;
 
-	app.directive('appointmentModalDirective', appointmentModalDirective);
+    app
+        .factory('patientCenter_profile_factory', ['$resource', profile_factory])
+    ;
 
-	app.service('patientCenterService', ['$http', '$resource', patientCenterService]);
+    app
+        .service('patientCenter_model_service', 
+                ['$resource', 'patientCenter_profile_factory', patientCenterModel_service])
+    ;
 
-	app.controller('patientCenterController', ['$scope', '$routeParams', '$route', '$rootScope','patientCenterService', patientCenterController]);
+    app
+        .controller('patientCenter_main_controller', 
+            ['$scope', 'patientCenter_model_service', main_controller])
+        .controller("patientCenter_profile_controller",
+            ['$scope', 'patientCenter_model_service', profile_controller]);
+    ;
 })();
 
-},{"./calendar.js":2,"./configuration.js":3,"./formAddPatient/modal.directive.js":4,"./patientCenter.controller":5,"./patientCenter.service":6}],2:[function(require,module,exports){
+},{"./appointment-modal/modal.directive":3,"./calendar":4,"./configuration":5,"./main.controller":6,"./model.service":7,"./profile/profile.controller":8,"./profile/profile.factory":9}],3:[function(require,module,exports){
+module.exports = function() {
+    return {
+        restrict: 'E',
+        scope: {
+            show: '=',
+            submit: '='
+        },
+        replace: true, // Replace with the template below
+        transclude: true, // we want to insert custom content inside the directive
+        link: function(scope, element, attrs) {
+            $(document).on('dblclick', function() {
+              console.log("scope.show is " + scope.show);
+            })
+            scope.$watch('show', function(newValue) {
+                if (newValue) {
+                    $(element[0]).modal('show');
+                } else {
+                    $(element[0]).modal('hide');
+                }
+            });
+            /*element.find('#AddPatient').on('click', function() {
+              element.submit();
+            });*/
+            element.on('submit', function(){
+                var elements = element[0].querySelectorAll('input,select,textarea');
+                for (var i = elements.length; i--;) {
+                    elements[i].addEventListener('invalid', function() {
+                        this.scrollIntoView(false);
+                    });
+                }
+               var data = scope.patient;
+               data = angular.extend({}, scope.patient);
+               data.birthdate = element.find('[type=date]').val();
+               scope.submit(data);
+            });
+
+        },
+        templateUrl: 'appointment-modal/modal.html',
+        controller: ['$scope', function($scope) {
+          $('[data-toggle="tooltip"]').tooltip('disable');
+          $scope.patient = {
+            firstName: "", lastName: ""
+          };
+        }],
+    };
+}
+
+},{}],4:[function(require,module,exports){
 module.exports = function() {
   return {
     link: function($scope, elem, attr) {
@@ -192,77 +281,61 @@ module.exports = function() {
   }
 }
 
-},{}],3:[function(require,module,exports){
-module.exports = function configuration($routeProvider) {
-	/* config navigation*/
-	$routeProvider
-		.when('/', {
-			controller	: 'patientCenterController',
-      templateUrl: 'patientCenterHome.html'
-		})
-		.when('/calendar', {
-			controller	:	'patientCenterController',
-			templateUrl: 'calendar.html'
-		});
-};
-
-},{}],4:[function(require,module,exports){
-module.exports = function() {
-    return {
-        restrict: 'E',
-        scope: {
-            show: '=',
-            submit: '='
-        },
-        replace: true, // Replace with the template below
-        transclude: true, // we want to insert custom content inside the directive
-        link: function(scope, element, attrs) {
-            $(document).on('dblclick', function() {
-              console.log("scope.show is " + scope.show);
-            })
-            scope.$watch('show', function(newValue) {
-                if (newValue) {
-                    $(element[0]).modal('show');
-                } else {
-                    $(element[0]).modal('hide');
-                }
-            });
-            /*element.find('#AddPatient').on('click', function() {
-              element.submit();
-            });*/
-            element.on('submit', function(){
-                var elements = element[0].querySelectorAll('input,select,textarea');
-                for (var i = elements.length; i--;) {
-                    elements[i].addEventListener('invalid', function() {
-                        this.scrollIntoView(false);
-                    });
-                }
-               var data = scope.patient;
-               data = angular.extend({}, scope.patient);
-               data.birthdate = element.find('[type=date]').val();
-               scope.submit(data);
-            });
-
-        },
-        templateUrl: 'formAddPatient/modal.html',
-        controller: ['$scope', function($scope) {
-          $('[data-toggle="tooltip"]').tooltip('disable');
-          $scope.patient = {
-            firstName: "", lastName: ""
-          };
-        }],
-    };
-}
-
 },{}],5:[function(require,module,exports){
-module.exports = function ($scope, $routeParams, $route, $rootScope, service) {
-  console.log("Patient center controller attached.");
-  
+module.exports = function($route, $httpProvider) {
+    /* config navigation*/
+    var auth = require("../Shared/authorization.interceptor");
+    $route
+	.when('/', {
+	    templateUrl : 'profile/profile.html',
+            controller: "patientCenter_profile_controller"
+	})
+	.otherwise({
+	    redirectTo: '/'
+	})
+    ;
+
+    $httpProvider.interceptors.push(['$q', '$location', auth]);
 }
 
-},{}],6:[function(require,module,exports){
-module.exports = function ($http, $resource) {
-
+},{"../Shared/authorization.interceptor":1}],6:[function(require,module,exports){
+module.exports = function ($scope, model) {
+    // initialize models 
+    console.log("patient-center: main.controller initiated."); 
 }
 
-},{}]},{},[1]);
+},{}],7:[function(require,module,exports){
+module.exports = function ($resource, profile_factory) {
+    var personId = sessionStorage.getItem("medicloud_person_id");
+    return {
+        profile: profile_factory.get({personId: personId})
+    }
+}
+
+},{}],8:[function(require,module,exports){
+module.exports = function($scope, model) {
+    $scope.ready = false;
+    
+    $scope.profile = model.profile;
+    $scope.profile.$promise.then(
+        function(response) {
+            $scope.ready = true;
+            console.log($scope.profile);
+        },
+        function(failure) {
+            $scope.error = failure.data.message || failure.data.error ||
+                            failure.message || failure.error || failure;
+        }
+    ); 
+
+    console.log("patient-center: profile.controller initiated")
+}
+
+},{}],9:[function(require,module,exports){
+module.exports = function($resource) {
+    var url = "http://" + window.location.hostname + ":8080/api/patient/:personId/profile";
+
+    return $resource(url);
+}
+
+},{}]},{},[2]);

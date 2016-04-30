@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import model.HealthProfessional;
+import model.Person;
 import model.User;
 import provider.MessageResponse;
 import repository.HealthProfessional_repo;
@@ -37,7 +38,7 @@ public class signinService {
 	public ResponseEntity<?> signin(@RequestBody signinForm form) {
 		
 		System.out.println("******* Signing in... *******\n" + form.username);
-		System.out.println("\n\n" + form.password + "**************************\n");
+		System.out.println("\n\n*********" + form.password + "********\n");
 		MessageResponse mr = new MessageResponse();
 		mr.error = "Invalid credentials";
 		mr.success = false;
@@ -58,6 +59,10 @@ public class signinService {
 				} else {
 					return new ResponseEntity<HealthProfessional>(hp, HttpStatus.OK);
 				}
+			} else if (u.getRole().getDescription().equals("ROLE_PATIENT")) {
+				Person p = u.getPerson();
+				
+				return new ResponseEntity<Person>(p, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<MessageResponse>(mr, HttpStatus.UNPROCESSABLE_ENTITY);
 			}

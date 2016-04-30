@@ -49,7 +49,7 @@ module.exports = function($http, $rootScope, $resource) {
             var client = $resource(url, {
                 hpId: hpId
             });
-            client.save(patient,
+            var result = client.save(patient,
                 function(response) {
                     if (response.personId) {
                         $rootScope.$broadcast('patientAdded');
@@ -65,6 +65,8 @@ module.exports = function($http, $rootScope, $resource) {
                     }
                     console.log(response);
                 });
+
+            return result.$promise;
         }
     }
     return service;

@@ -1,5 +1,9 @@
 package patientService;
 
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
@@ -25,6 +29,7 @@ import model.Contact;
 import model.Patient;
 import model.Person;
 import model.Prescription;
+import model.User;
 import model.Appointment;
 import provider.MessageResponse;
 import repository.AppointmentRepo;
@@ -33,11 +38,12 @@ import repository.Contact_repo;
 import repository.HealthProfessional_repo;
 import repository.PatientRepo;
 import repository.PrescriptionRepo;
+import repository.User_repo;
 
 
 @RestController
 @RequestMapping(value="/api/patient")
-public class PatientPersonalResourceServices {
+public class PatientResourceService {
 
 
 		
@@ -51,6 +57,9 @@ public class PatientPersonalResourceServices {
 		private HealthProfessional_repo hpRepo;
 		@Autowired
 		private PrescriptionRepo prescriptionRepo;
+		
+		@Autowired
+		private User_repo userRepo;
 	
 		
 		@Autowired
@@ -170,6 +179,86 @@ public class PatientPersonalResourceServices {
 		}
 		
 		
+		
+		/**
+		 *  verify email and token that a patient has, and return the patient_id to complete account setup
+		 * @param email
+		 * @param token
+		 * @return ResponseEntity<MessageResponse>
+		 */
+		@RequestMapping(method=GET, value="/signup/{email}/{token}")
+		public ResponseEntity<?> verifyAccountSetupLink(
+				@PathVariable("email") String email, @PathVariable("token") String token) {
+			
+			MessageResponse mr = new MessageResponse();
+			mr.success = false;
+			
+			User uAccount = userRepo.findByEmail(email);
+			if (uAccount == null) {
+				mr.error = "eof";
+			} else if (!uAccount.isTokenValid(token)) {
+				mr.error = "eof";
+			} else {
+				mr.success = true;
+			}
+			
+			if (mr.success == false) {
+				return new ResponseEntity<MessageResponse>(mr, HttpStatus.BAD_REQUEST);
+			}
+			
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.OK);
+		}
+		
+		
+		// form from client to set up an account for patient
+		private static class patientSignUpForm {
+			public String username;
+			public String password;
+			public String confPassword;
+		}
+		
+		/**
+		 * @param patientSignUpForm
+		 * @return Patient
+		 */
+		@RequestMapping(method=POST, value="/signup/{email}/{token}")
+		public ResponseEntity<?> setupPatientAccount(
+				@PathVariable("email") String email, @PathVariable("token") String token,
+				@RequestBody patientSignUpForm form) {
+			
+			MessageResponse mr = new MessageResponse();
+			mr.success = false;
+			if (!form.password.equals(form.confPassword)) {
+				mr.error = "Passwords not matched.";
+				return new ResponseEntity<MessageResponse>(mr, HttpStatus.BAD_REQUEST);
+			}
+			
+			User newAccount = userRepo.findByEmail(email);
+			if (newAccount == null) {
+				mr.error = "eof";
+				mr.error = "Invalid request";
+			} else if (!newAccount.isTokenValid(token)) {
+				mr.error = "eof";
+				mr.message = "Invalid token";
+			} else if (userRepo.findByUsername(form.username) != null) {
+				mr.error = "duplicate";
+				mr.message = "Username already exists.";
+			} else {
+				mr.success = true;
+			}
+			
+			if (mr.success == false) {
+				return new ResponseEntity<MessageResponse>(mr, HttpStatus.BAD_REQUEST);
+			}
+			
+			newAccount.setUsername(form.username);
+			newAccount.setPassword(form.password);
+			newAccount.setVerified(true);
+			
+			userRepo.save(newAccount);
+			
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.OK);
+		}
 		
 		//---------------------------------------------PUT-------------------------------------------------------
 		

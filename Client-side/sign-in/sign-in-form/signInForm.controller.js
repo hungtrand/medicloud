@@ -11,6 +11,7 @@ module.exports = function($scope, models) {
     $scope.$on("medicloud.healthprofessional.signin", function(evt, response) {
         $scope.waiting = false;
         $scope.success = true;
+        $scope.error = "";
         setTimeout(function() {
             window.location.href = "/hp-center";
         }, 2000);
@@ -19,6 +20,7 @@ module.exports = function($scope, models) {
     $scope.$on("medicloud.patient.signin", function(evt, response) {
         $scope.waiting = false;
         $scope.success = true;
+        $scope.error = "";
         setTimeout(function() {
             window.location.href = "/patient-center";
         }, 2000);

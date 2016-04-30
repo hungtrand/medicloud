@@ -26,8 +26,17 @@ module.exports = function($scope, $rootScope, service) {
 
     $scope.addPatient = function(newPatientData) {
         $scope.waiting = true;
-        service.addPatient(newPatientData);
-        $scope.modalShown = false;
+        service.addPatient(newPatientData)
+            .then(function(response) {
+                if (response.personId) {
+                    $scope.modalShown = false;
+                }
+                $scope.waiting = false;
+            }, function(failure) {
+                $scope.error = failure.data.message || failure.data.error 
+                                || failure.message || failure.error || failure;
+                $scope.waiting = false;
+            });
     }
 
     function getPatients() {
