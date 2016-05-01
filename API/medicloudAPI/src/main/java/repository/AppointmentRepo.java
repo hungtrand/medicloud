@@ -19,6 +19,7 @@ public interface AppointmentRepo extends CrudRepository<Appointment, String>{
 	public List<Appointment> findByHpId(int hpId);
 //	public Appointment findByHpIdAndPatientId(int hpId, int patientId);
 	public List<Appointment> findByAppointmentDate(String appointmentDate);
+	public List<Appointment> findByHpIdAndAppointmentDate(int hpId, String appointmentDate);
 	public Appointment findByPatientIdAndAppointmentId(int patientId, int appointmentId);
 	public Appointment findByHpIdAndAppointmentTimeAndAppointmentDate(int hpId, String appointmentTime, String appointmentDate);
 	public Appointment findByAppointmentTime(String appointmentTime);
