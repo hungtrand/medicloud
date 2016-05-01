@@ -7,7 +7,11 @@
 package patientService;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,13 +22,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import repository.PatientRepo;
+import repository.AppointmentRepo;
 import repository.HealthProfessional_repo;
+import model.Appointment;
 import model.HealthProfessional;
 import model.Patient;
 import provider.MessageResponse;
 
 @RestController
-@RequestMapping(value="/api/patients/{patientId}")
+@RequestMapping(value="/api/patient")
 public class PatientPersonalCollectionServices {
 
 	@Autowired
@@ -32,6 +38,9 @@ public class PatientPersonalCollectionServices {
 	
 	@Autowired
 	private HealthProfessional_repo hpRepo;
+	
+	@Autowired
+	private AppointmentRepo appointmentRepo;
 	
 	
 //----------------------------------------------------------------------------------GET--------------------------------------------------------------------------
@@ -59,10 +68,11 @@ public class PatientPersonalCollectionServices {
 	 * @param hpId
 	 * @return
 	 */
-	@RequestMapping(value="/hps/{hpId}", method=RequestMethod.GET)
+	@RequestMapping(value="/{patientId}/hps/{hpId}", method=RequestMethod.GET)
 	public ResponseEntity<?> getAnHp(@PathVariable("patientId")int patientId
 			, @PathVariable("hpId")int hpId){
 		Patient foundPatient = patientRepo.findByHpIdAndPatientId(hpId, patientId);
+		
 		if(foundPatient==null){
 			MessageResponse mr = new MessageResponse();
 			mr.success = false;
@@ -81,14 +91,27 @@ public class PatientPersonalCollectionServices {
 	}
 	
 	
-	@RequestMapping(value="/hps", method=RequestMethod.GET)
-	public ResponseEntity<?> getAllHp(@PathVariable("patientId")int patientId){
-
-		List<Patient> foundPatient = patientRepo.findByPatientId(patientId);
+	/**
+	 * Get all Health professional of a person
+	 * @param patientId
+	 * @return
+	 */
+	@RequestMapping(value="/{personId}/health-professionals", method=RequestMethod.GET)
+	public ResponseEntity<?> getAllHpOfaPerson(@PathVariable("personId")int personId){
+		List<String> findDate = new ArrayList<String>();
+		List<Patient> foundPatient = patientRepo.findByPersonId(personId);
+		
+//		for(int i=0; i<foundPatient.size(); i++){
+//			findDate.add(foundPatient.get(i).getPatientSinceDate());
+//			
+//		}
+		Collections.sort(findDate, String.CASE_INSENSITIVE_ORDER);
+		
+		
 		if(foundPatient==null){
 			MessageResponse mr = new MessageResponse();
 			mr.success = false;
-			mr.error= "Not Found: [patientId: " + patientId + "]";
+			mr.error= "Not Found: [personId: " + personId + "]";
 			mr.message = "";
 			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
 		}else{
@@ -97,6 +120,7 @@ public class PatientPersonalCollectionServices {
 				HealthProfessional foundHp = hpRepo.findByHpId(foundPatient.get(i).getHpId());
 				hp.add(foundHp);
 			}
+			
 			return new ResponseEntity<List<HealthProfessional>>(hp, HttpStatus.OK);
 		}
 	
@@ -105,5 +129,66 @@ public class PatientPersonalCollectionServices {
 	
 	
 	
+	/**
+	 * Get all appointments from a patient.
+	 * @param personId
+	 * @return
+	 */
+	@RequestMapping(value="/{personId}/appointments", method=RequestMethod.GET)
+		public ResponseEntity<?> getAllAppointment(@PathVariable("personId")int personId){
+			List<Appointment> foundPatient = new ArrayList<Appointment>();
+			List<Appointment> appointment = new ArrayList<Appointment>();
+			List<Patient> listOfPatient= new ArrayList<Patient>();
+//			foundPatient =  appointmentRepo.findByPatientId(personId);
+			Appointment temp = new Appointment();
+			List<Appointment> listOfFoundPatient= new ArrayList<Appointment>();
+			listOfPatient = patientRepo.findByPersonId(personId);
+			for(int j = 0; j < listOfPatient.size(); j++){
+				int patientId=listOfPatient.get(j).getPatientId();
+				
+				listOfFoundPatient =  appointmentRepo.findByPatientId(patientId);
+				System.out.println(patientId);
+				foundPatient.addAll(listOfFoundPatient);
+				System.out.println(foundPatient.size());
+				
+			}
+			
+			
+			if(foundPatient == null){
+				MessageResponse mr = new MessageResponse();
+				
+				mr.success = false;
+				mr.error = "Not Found: [patientId: " + personId + " ]";
+			
+				System.out.println(mr.error);
+				
+				return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
+			}else{
+				for(int i=0; i<foundPatient.size(); i++){
+						Scanner scanDate = new Scanner(foundPatient.get(i).getAppointmentDate());
+						scanDate.useDelimiter("-");
+						String date="";
+						
+						while(scanDate.hasNext()){
+							date = date + scanDate.next();
+						}
+					
+						int dateTime= Integer.parseInt(date);
+					
+						if((dateTime-temp.dateTimeChecker()) > 0){	
+							appointment.add(foundPatient.get(i));
+						}						
+				}
+				
+				return new ResponseEntity<List<Appointment>>(appointment,HttpStatus.OK);
+			}
+			
+	
+		}
+	
+	
+	
+	
+					
 	
 }

@@ -1,5 +1,11 @@
 package healthProfessionalService;
 
+import org.jsondoc.core.annotation.Api;
+import org.jsondoc.core.annotation.ApiMethod;
+import org.jsondoc.core.annotation.ApiParams;
+import org.jsondoc.core.annotation.ApiPathParam;
+import org.jsondoc.core.annotation.ApiQueryParam;
+import org.jsondoc.core.pojo.ApiStage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +20,14 @@ import java.util.*;
 import java.util.List;
 
 import model.Appointment;
+import model.Patient;
 import provider.MessageResponse;
 import repository.PatientRepo;
 import repository.AppointmentRepo;
 
 @RestController
 @RequestMapping(value="/api/hp/{hpId}/patients")
+@Api(description = "Provides collections of Appointments for Health Professional", name = "Health Professional Appointments API", stage=ApiStage.BETA)
 public class PatientAppointmentCollection {
 
 	@Autowired
@@ -66,8 +74,9 @@ public class PatientAppointmentCollection {
 	 * @return
 	 */
 	@RequestMapping(value="/{patientId}/appointments", method=RequestMethod.GET)
-	public ResponseEntity<?> getAllAppointment(@PathVariable("patientId")int patientId
-			, @PathVariable("hpId")int hpId){
+	@ApiMethod(description="Get all Appointment of health professional that his or her individual patient")
+	public ResponseEntity<?> getAllAppointment(@ApiPathParam(name="patientId") @PathVariable("patientId")int patientId
+			, @ApiPathParam(name="hpId") @PathVariable("hpId")int hpId){
 		List<Appointment> foundPatient = new ArrayList<Appointment>();
 		List<Appointment> appointment = new ArrayList<Appointment>();	
 		
@@ -113,8 +122,9 @@ public class PatientAppointmentCollection {
 	 * @return
 	 */
 	@RequestMapping(value="/appointments", method=RequestMethod.GET)
-	public ResponseEntity<?> getIndividualPatientAppointment(@PathVariable("hpId")int hpId
-			, @RequestParam("userDate")String userDate){
+	@ApiMethod(description="Get all the appointment of Health professional")
+	public ResponseEntity<?> getIndividualPatientAppointment(@ApiPathParam(name="hpId")@PathVariable("hpId")int hpId
+			, @ApiQueryParam(name="userDate")@RequestParam("userDate")String userDate){
 		
 		List<Appointment> foundAppointment = new ArrayList<Appointment>();
 		List<Appointment> appointment = new ArrayList<Appointment>();
@@ -141,6 +151,7 @@ public class PatientAppointmentCollection {
 		}	
 		
 	}
+	
 	
 	
 	

@@ -66,52 +66,8 @@ public class PatientResourceService {
 		private AppointmentRepo appointmentRepo;
 		
 	
+//--------------------------------------------------------------------GET------------------------------------------------------
 		
-		//--------------------------------------------------------------------GET------------------------------------------------------
-		/**
-		 * Get all appointments from a patient.
-		 * @param patientId
-		 * @return
-		 */
-		@RequestMapping(value="/{patient_id}/appointments", method=RequestMethod.GET)
-		public ResponseEntity<?> getAllAppointment(@PathVariable("patient_id")int patientId){
-			List<Appointment> foundPatient = new ArrayList<Appointment>();
-			List<Appointment> appointment = new ArrayList<Appointment>();	
-			
-			foundPatient =  appointmentRepo.findByPatientId(patientId);
-
-			Appointment temp = new Appointment();
-			
-			if(foundPatient == null){
-				MessageResponse mr = new MessageResponse();
-				
-				mr.success = false;
-				mr.error = "Not Found: [patientId: " + patientId + " ]";
-			
-				System.out.println(mr.error);
-				
-				return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
-			}else{
-				for(int i=0; i<foundPatient.size(); i++){
-						Scanner scanDate = new Scanner(foundPatient.get(i).getAppointmentDate());
-						scanDate.useDelimiter("-");
-						String date="";
-						
-						while(scanDate.hasNext()){
-							date = date + scanDate.next();
-						}
-					
-						int dateTime= Integer.parseInt(date);
-					
-						if((dateTime-temp.dateTimeChecker()) > 0){	
-							appointment.add(foundPatient.get(i));
-						}						
-				}
-				
-				return new ResponseEntity<List<Appointment>>(appointment,HttpStatus.OK);
-			}
-			
-		}
 		
 		/**
 		 * Get all the prescription of an individual patient.
