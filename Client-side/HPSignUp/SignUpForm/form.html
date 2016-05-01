@@ -9,6 +9,36 @@
         </div>
 
         <div class="form-group">
+            Prefix, Suffix, Title:
+            <div class="row">
+                <div class="col col-sm-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Prefix</span>
+                        <input type="text" class="form-control"
+                        ng-model="model.prefix" />
+                    </div>
+                </div>
+
+                <div class="col col-sm-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Suffix</span>
+                        <input type="text" class="form-control"
+                        ng-model="model.suffix" />
+                    </div>
+                </div>
+
+                <div class="col col-sm-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Title</span>
+                        <input type="text" class="form-control"
+                        ng-model="model.title" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
             <label for="BusContact">Email:</label>
             <input type="email" name="contactEmail" class="form-control" id="BusContact" placeholder="Email" required ng-model='model.email'>
         </div>

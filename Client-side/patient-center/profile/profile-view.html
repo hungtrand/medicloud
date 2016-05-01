@@ -1,0 +1,58 @@
+<div class=""> 
+        <div class="row">
+            <div class="col col-sm-3">
+                <label>Name: </label>
+            </div>
+
+            <div class="col col-sm-9">
+                {{ profile.firstName }} {{ profile.middleName }} {{ profile.lastName }}
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col col-sm-3"><label>Birthdate:</label></div>
+
+            <div class="col col-sm-9">
+                {{ profile.birthdate | date: 'MM/dd/yyyy' }}
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col col-sm-3"><label>Gender</label></div>
+
+            <div class="col col-sm-9">
+                {{ profile.gender || '[Not specified]' }}
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col col-sm-3"><label>Contact Information</label></div>
+
+            <div class="col col-sm-9">
+                <ul class="list-group">
+                    <li class="list-group-item"
+                        ng-repeat="contact in profile.contacts">
+                        <p ng-if="contact.email">
+                            <i class="fa fa-envelope"></i>&nbsp;&nbsp; {{ contact.email }}
+                        </p>
+                        <p ng-if="contact.phone">
+                            <i class="fa fa-phone"></i>&nbsp;&nbsp; {{ contact.phone }}
+                        </p>
+                        <p ng-if="contact.address">
+                            <i class="fa fa-sign"></i>&nbsp;&nbsp;
+                        <span ng-if="contact.address">{{ contact.address }}</span> 
+                        <span ng-if="contact.city">{{ contact.city }}</span>
+                        <span ng-if="contact.state">{{ contact.state }}</span>
+                        <span ng-if="contact.zip">{{ contact.zip }}</span>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+</div>

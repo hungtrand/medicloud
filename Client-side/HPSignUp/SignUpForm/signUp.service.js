@@ -6,6 +6,9 @@ function signUp_serv($resourceProvider, $rootScope) {
 	/* public model properties*/
 	var model = function() {
 		this.name = '';
+                this.prefix = '';
+                this.suffix = '';
+                this.title = '';
 		this.email = '';
 		this.businessName = '';
 		this.businessAddress = '';
@@ -23,6 +26,9 @@ function signUp_serv($resourceProvider, $rootScope) {
 			var resourceLoc = 'http://'+window.location.hostname+'\\:8080/HPSignUp/';
 			var postData = {
 				name 			: 	this.name,
+                                prefix: this.prefix,
+                                suffix: this.suffix,
+                                title: this.title,
 				email 			: 	this.email,
 				businessName	: 	this.businessName,
 				businessAddress	: 	this.businessAddress,

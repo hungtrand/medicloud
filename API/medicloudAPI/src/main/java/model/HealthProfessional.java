@@ -29,6 +29,12 @@ public class HealthProfessional {
 	@Column(name="title")
 	private String title;
 	
+	@Column(name="prefix")
+	private String prefix;
+	
+	@Column(name="suffix")
+	private String suffix;
+	
 	@Column(name="license")
 	private String license;
 
@@ -70,13 +76,21 @@ public class HealthProfessional {
 		return this.title;
 	}
 	
+	public String getPrefix() {
+		return this.prefix;
+	}
+	
+	public String getSuffix() {
+		return this.suffix;
+	}
+	
 	public String getLicense(){
 		return this.license;
 	}
 	
 	public String getName() {
 		Person person = this.user.getPerson();
-		String name = person.getLastName();
+		String name = person.getFirstName() + " " + person.getLastName();
 		if (this.title != null && this.title.length() > 0) {
 			name = this.title + " " + name;
 		}
@@ -90,6 +104,14 @@ public class HealthProfessional {
 	
 	public void setTitle(String newTitle){
 		this.title = newTitle;
+	}
+	
+	public void setPrefix(String newPrefix) {
+		this.prefix = newPrefix;
+	}
+	
+	public void setSuffix(String newSuffix) {
+		this.suffix = newSuffix;
 	}
 	
 	public void setLicense(String newLicense){

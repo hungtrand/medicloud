@@ -54,7 +54,7 @@ public class Contact {
 	private String state;
 	
 	@Column(name="zip")
-	private int zip;
+	private String zip;
 
 	@Column(name="latest_updated")
 	private String latestUpdate;
@@ -91,7 +91,7 @@ public class Contact {
 	public String getState(){
 		return this.state;
 	}
-	public int getZip(){
+	public String getZip(){
 		return this.zip;
 	}
 	
@@ -114,7 +114,7 @@ public class Contact {
 	public void setState(String newState){
 		this.state = newState;
 	}
-	public void setZip(int newZip){
+	public void setZip(String newZip){
 		this.zip = newZip;
 	}
 	public void setLatestUpdated(){

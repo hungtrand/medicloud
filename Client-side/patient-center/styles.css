@@ -1,3 +1,7 @@
 .content {
     min-height: initial;
 }
+
+.ng-leave, .ng-hide.ng-hide-add {
+    display: none !important;
+}
