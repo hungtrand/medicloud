@@ -28,6 +28,8 @@ module.exports = function($q, $location) {
     var configuration = require('./configuration');
 
     var calendar_directive = require('./calendar');
+    var profileView_directive = require("./profile/profile-view.directive");
+    var profileEdit_directive = require("./profile/profile-edit.directive");
 
     var appointmentModal_directive = require('./appointment-modal/modal.directive');
     
@@ -45,6 +47,8 @@ module.exports = function($q, $location) {
     app
         .directive('calendar_directive', calendar_directive)
         .directive('appointmentModal_directive', appointmentModal_directive)
+        .directive('patientCenterProfileView', profileView_directive)
+        .directive('patientCenterProfileEdit', profileEdit_directive)
     ;
 
     app
@@ -60,11 +64,11 @@ module.exports = function($q, $location) {
         .controller('patientCenter_main_controller', 
             ['$scope', 'patientCenter_model_service', main_controller])
         .controller("patientCenter_profile_controller",
-            ['$scope', 'patientCenter_model_service', profile_controller]);
+            ['$scope', '$filter', 'patientCenter_model_service', profile_controller]);
     ;
 })();
 
-},{"./appointment-modal/modal.directive":3,"./calendar":4,"./configuration":5,"./main.controller":6,"./model.service":7,"./profile/profile.controller":8,"./profile/profile.factory":9}],3:[function(require,module,exports){
+},{"./appointment-modal/modal.directive":3,"./calendar":4,"./configuration":5,"./main.controller":6,"./model.service":7,"./profile/profile-edit.directive":8,"./profile/profile-view.directive":9,"./profile/profile.controller":10,"./profile/profile.factory":11}],3:[function(require,module,exports){
 module.exports = function() {
     return {
         restrict: 'E',
@@ -302,24 +306,89 @@ module.exports = function($route, $httpProvider) {
 module.exports = function ($scope, model) {
     // initialize models 
     console.log("patient-center: main.controller initiated."); 
+    $scope.profile = model.profile;
+
+    $scope.signout = function() {
+       sessionStorage.clear();
+       window.location.href = "/sign-in/";
+    }
 }
 
 },{}],7:[function(require,module,exports){
 module.exports = function ($resource, profile_factory) {
     var personId = sessionStorage.getItem("medicloud_person_id");
     return {
-        profile: profile_factory.get({personId: personId})
+        profile: profile_factory.get({personId: personId}),
+        saveProfile: function(formProfile) {
+            var self = this;
+
+            var newProfile = profile_factory.save(formProfile)
+            newProfile.$promise.then(function(response) {
+                    newProfile.birthdate = new Date(newProfile.birthdate + " 00:00:00");
+                    angular.copy(newProfile, self.profile);
+                });
+
+            return newProfile.$promise;
+        }
     }
 }
 
 },{}],8:[function(require,module,exports){
-module.exports = function($scope, model) {
+module.exports = function() {
+    return {
+        templateUrl: "profile/profile-edit.html",
+        link: function($scope, $element, $attrs) {
+            angular.copy($scope.profile, $scope.formData);
+        }
+    }
+}
+
+},{}],9:[function(require,module,exports){
+module.exports = function() {
+    return {
+        templateUrl: "profile/profile-view.html",
+        link: function($scope, $element, attrs) {
+        
+        }
+    }
+}
+
+},{}],10:[function(require,module,exports){
+module.exports = function($scope, $filter, model) {
     $scope.ready = false;
-    
+    $scope.error = "";
+    $scope.mode = "view";
     $scope.profile = model.profile;
+    $scope.formData = {};
+    $scope.error = "";
+    $scope.loading = false;
+    angular.copy($scope.profile, $scope.formData);
+
+    $scope.toggleMode = function(strMode) {
+        $scope.mode = strMode;
+    }
+
+    $scope.saveProfile = function() {
+        $scope.error = "";
+        $scope.loading = true;
+        
+        var submitData = angular.copy($scope.formData);
+        submitData.birthdate = $filter('date')($scope.formData.birthdate, "yyyy-MM-dd");
+        
+        model.saveProfile(submitData)
+            .then(function(response) {
+                $scope.loading = false;
+            }, function(failure) {
+                $scope.loading = false;
+                $scope.error = failure.data.message || failure.data.error || failure.data
+                                || failure.message || failure.error || failure;
+            });
+    }
+    
     $scope.profile.$promise.then(
         function(response) {
             $scope.ready = true;
+            $scope.profile.birthdate = new Date($scope.profile.birthdate + " 00:00:00");
             console.log($scope.profile);
         },
         function(failure) {
@@ -331,11 +400,14 @@ module.exports = function($scope, model) {
     console.log("patient-center: profile.controller initiated")
 }
 
-},{}],9:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports = function($resource) {
     var url = "http://" + window.location.hostname + ":8080/api/patient/:personId/profile";
+     var personId = sessionStorage.getItem("medicloud_person_id");
 
-    return $resource(url);
+    return $resource(url, {
+        personId: personId
+    });
 }
 
 },{}]},{},[2]);
