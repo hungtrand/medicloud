@@ -106,6 +106,10 @@ public class HPSignUpService {
 														signup.getBusinessPhone()
 													);
 			
+			newHP.setPrefix(signup.getPrefix());
+			newHP.setSuffix(signup.getSuffix());
+			newHP.setTitle(signup.getTitle());
+			
 			// send out an email with the token created in createHPSignUp
 			if (this.sendVerificationEmail(newHP)) {
 				mr.success = true;
@@ -214,6 +218,9 @@ public class HPSignUpService {
 		
 		HealthProfessional hp = HealthProfessional.create(u);
 		hp.setCdo(hpSignup.getBusinessName());
+		hp.setPrefix(hpSignup.getPrefix());
+		hp.setSuffix(hpSignup.getSuffix());
+		hp.setTitle(hpSignup.getTitle());
 		
 		hpRepo.save(hp);
 		

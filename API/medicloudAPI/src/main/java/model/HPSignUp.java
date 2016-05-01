@@ -19,8 +19,17 @@ public class HPSignUp {
 	@Column(name="id")
 	private int id;
 	
+	@Column(name="prefix", nullable=true, length=45)
+	private String prefix;
+	
 	@Column(name="name", nullable=false, length=45)
 	private String name;
+	
+	@Column(name="suffix", nullable=true, length=45)
+	private String suffix;
+	
+	@Column(name="title", nullable=true, length=45)
+	private String title;
 	
 	@Column(name="email", nullable=false,  length=254)
 	private String email;
@@ -43,8 +52,20 @@ public class HPSignUp {
 	@Column(name="timestamp", nullable=false)
 	private String timestamp;
 	
+	public String getPrefix() {
+		return this.prefix;
+	}
+	
 	public String getName() {
 		return this.name;
+	}
+	
+	public String getSuffix() {
+		return this.suffix;
+	}
+	
+	public String getTitle() {
+		return this.title;
 	}
 	
 	public String getEmail() {
@@ -69,6 +90,18 @@ public class HPSignUp {
 	
 	public String getVerificationKey() {
 		return this.verificationKey;
+	}
+	
+	public void setPrefix(String newPrefix) {
+		this.prefix = newPrefix;
+	}
+	
+	public void setSuffix(String newSuffix) {
+		this.suffix = newSuffix;
+	}
+	
+	public void setTitle(String newTitle) {
+		this.title = newTitle;
 	}
 	
 	public boolean verify(String email, String token) {

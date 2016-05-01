@@ -91,43 +91,6 @@ public class PatientPersonalCollectionServices {
 	}
 	
 	
-	/**
-	 * Get all Health professional of a person
-	 * @param patientId
-	 * @return
-	 */
-	@RequestMapping(value="/{personId}/health-professionals", method=RequestMethod.GET)
-	public ResponseEntity<?> getAllHpOfaPerson(@PathVariable("personId")int personId){
-		List<String> findDate = new ArrayList<String>();
-		List<Patient> foundPatient = patientRepo.findByPersonId(personId);
-		
-//		for(int i=0; i<foundPatient.size(); i++){
-//			findDate.add(foundPatient.get(i).getPatientSinceDate());
-//			
-//		}
-		Collections.sort(findDate, String.CASE_INSENSITIVE_ORDER);
-		
-		
-		if(foundPatient==null){
-			MessageResponse mr = new MessageResponse();
-			mr.success = false;
-			mr.error= "Not Found: [personId: " + personId + "]";
-			mr.message = "";
-			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
-		}else{
-			List<HealthProfessional> hp = new ArrayList<HealthProfessional>();
-			for(int i=0; i<foundPatient.size(); i++){
-				HealthProfessional foundHp = hpRepo.findByHpId(foundPatient.get(i).getHpId());
-				hp.add(foundHp);
-			}
-			
-			return new ResponseEntity<List<HealthProfessional>>(hp, HttpStatus.OK);
-		}
-	
-	}
-	
-	
-	
 	
 	/**
 	 * Get all appointments from a patient.

@@ -28,18 +28,18 @@ module.exports = function($scope, $filter, model) {
                                 || failure.message || failure.error || failure;
             });
     }
+
+    if ($scope.profile.personId) $scope.ready = true;
     
     $scope.profile.$promise.then(
         function(response) {
             $scope.ready = true;
-            $scope.profile.birthdate = new Date($scope.profile.birthdate + " 00:00:00");
-            console.log($scope.profile);
         },
         function(failure) {
             $scope.error = failure.data.message || failure.data.error ||
                             failure.message || failure.error || failure;
         }
     ); 
-
+    
     console.log("patient-center: profile.controller initiated")
 }
