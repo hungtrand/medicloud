@@ -145,7 +145,7 @@ public class PatientResource {
 		newAppointment.setRequestDate();
 		newAppointment.setHpId(hpId);
 		newAppointment.setPatient(patientId);
-		newAppointment.setPatientName(patientRepo.findByPatientId(patientId).get(0).getFirstName());
+		newAppointment.setPatientName(patientRepo.findByPatientId(patientId).getFirstName());
 		newAppointment.setHPName(hpRepo.findByHpId(hpId).getUser().getPerson().getFirstName());
 		Patient foundPatient = patientRepo.findByHpIdAndPatientId(hpId, patientId);
 		if(foundPatient == null){
