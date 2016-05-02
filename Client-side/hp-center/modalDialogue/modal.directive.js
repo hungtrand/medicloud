@@ -39,6 +39,7 @@ module.exports = function() {
             console.log("Broadcast received. Date is " + args.date);
             $scope.patientList = patientsListService.getPatients();
             $scope.timesList = calendarService.getTimes();
+            $scope.appointmentList = calendarService.getAppointments();
             appointment.appointmentDate = args.date;
           });
 
@@ -59,7 +60,7 @@ module.exports = function() {
           }
 
           $scope.$on('appointmentAdded', function() {
-            $('.modal.in').modal('hide') 
+            $('.modal.in').modal('hide')
             $('#AddAppointmentForm')[0].reset();
             $scope.selectedTime = 'Select a time';
           }

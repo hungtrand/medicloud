@@ -7,6 +7,7 @@ module.exports = function($http, $rootScope, $resource) {
     var url = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/:patientId';
     var availabilityUrl = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/availability?userDate=:selectedDate';
     var setAppointmentUrl = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/:patientId/appointment';
+    var getAppointmentListUrl = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/getListOfAppointments?userDate=:selectedDate';
     var service = {
       times: [{
             appointmentTime: "9:00"
@@ -35,6 +36,29 @@ module.exports = function($http, $rootScope, $resource) {
           });
           return this.times;
         },
+      appointments: [],
+      getAppointments: function() {
+        selectedDate = this.selectedDate;
+        var that = this;
+        var client = $resource(getAppointmentListUrl, {
+            hpId: hpId,
+            selectedDate: selectedDate
+        });
+        console.log('getAppointments function');
+        var promise = client.query().$promise;
+        promise.then(function(appointments) {
+            angular.extend(that.appointments, appointments);
+            (onSuccessFn || angular.noop)();
+            onSuccessFn = null;
+            onFailureFn = null;
+        }, function(error) {
+            (onFailureFn || angular.noop)(error);
+            onSuccessFn = null;
+            onFailureFn = null;
+        });
+        return this.appointments;
+      },
+
       patients: [],
         getPatients: function() {
             var that = this;
@@ -63,7 +87,7 @@ module.exports = function($http, $rootScope, $resource) {
                 hpId: hpId,
                 patientId: selectedPatientId
             });
-            
+
             client.save(appointment,
                 function(response) {
                   $rootScope.$broadcast('appointmentAdded');
