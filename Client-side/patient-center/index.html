@@ -328,19 +328,20 @@ ng-controller="patientCenter_main_controller">
             <!-- Info boxes -->
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="box info-box">
+                    <a class="box info-box" href="#/encounters" >
                         <span class="info-box-icon bg-aqua">
                             <i class="fa fa-calendar"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Visits</span>
                             <span class="info-box-number">39 <br /><small>Since:
-                                    <em>01/01/2001</em></small></span>
+                                    <em>{{ encounters[0].encounterDateTime }}</em></small></span>
                         </div><!-- /.info-box-content -->
-
+                        <!--
                         <div class="overlay">
                             <i class="fa fa-spin fa-spinner text-success"></i>
                         </div>
-                    </div><!-- /.info-box -->
+                        -->
+                    </a><!-- /.info-box -->
                 </div><!-- /.col -->
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="box info-box">
@@ -373,7 +374,7 @@ ng-controller="patientCenter_main_controller">
                         <div class="info-box-content">
                             <span class="info-box-text">Health Professionals
                             </span>
-                            <span class="info-box-number">10</span>
+                            <span class="info-box-number">{{ hpList.length }}</span>
                         </div><!-- /.info-box-content -->
                     </a><!-- /.info-box -->
                 </div><!-- /.col -->

@@ -10,6 +10,10 @@ module.exports = function($route, $httpProvider) {
             templateUrl: 'health-professionals/directory.html',
             controller: "patientCenter_healthProfessionalsDirectory_controller"
         })
+        .when("/encounters", {
+            templateUrl: 'encounters/encounters.html',
+            controller: "patientCenter_encounterList_controller"
+        })
 	.otherwise({
 	    redirectTo: '/'
 	})

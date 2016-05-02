@@ -1,4 +1,4 @@
-module.exports = function ($resource, profile_factory, hpList_factory) {
+module.exports = function ($resource, profile_factory, hpList_factory, encounterList_factory) {
     var personId = sessionStorage.getItem("medicloud_person_id");
     var model = {
         profile: profile_factory.get(),
@@ -14,13 +14,15 @@ module.exports = function ($resource, profile_factory, hpList_factory) {
             return newProfile.$promise;
         },
 
-        hpList: hpList_factory.query()
+        hpList: hpList_factory.query(),
+
+        encounterList: encounterList_factory.query()
     }
 
     // initialization
     model.profile.$promise.then(
         function() {
-            birthdate = new Date(model.profile.birthdate + " 00:00:00");
+            model.profile.birthdate = new Date(model.profile.birthdate + " 00:00:00");
         }
     );
 

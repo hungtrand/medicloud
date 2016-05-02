@@ -1,0 +1,57 @@
+<div class="box box-warning">
+    <div class="box-header with-border">
+        <h3 class="box-title">Visits, Encounters, and Appointments</h3> 
+    </div>
+
+    <div class="box-body">
+        <!-- The timeline -->
+        <ul class="timeline timeline-inverse">
+            <!-- timeline time label -->
+            <li class="time-label" 
+            ng-repeat-start="encounter in encounters | orderBy: '-encounterDateTime'">
+            <span class="bg-red">
+                {{ encounter.encounterDateTime }}
+            </span>
+            </li>
+            <!-- /.timeline-label -->
+            <!-- timeline item -->
+            <li ng-repeat-end>
+            <i class="fa fa-user-md bg-blue"></i>
+            <div class="timeline-item">
+                <!--<span class="time"><i class="fa fa-clock-o"></i> {{
+                observation.dateCreated }}</span>-->
+                <h3 class="timeline-header">
+                    <strong class="text-primary">Reason for visit:</strong> {{
+                    encounter.description}} 
+                </h3>
+                <div class="timeline-body">
+                    <strong class="text-primary">Comments by Health Professionals:</strong>
+                    <pre ng-repeat="obs in encounter.observations">
+{{ obs.comments }}
+                    </pre>
+                </div>
+                <!-- 
+            <div class="timeline-footer">
+                    <a class="btn btn-warning btn-flat btn-xs">View comments</a>
+            </div> 
+            -->
+            </div>
+            </li>
+            <li>
+            <i class="fa fa-clock-o bg-gray"></i> 
+
+            <h4 class="text-center">
+                <label class="label label-warning" ng-if="waiting">
+                    <i class="fa fa-spin fa-spinner"></i> Loading...
+                </label>
+                <em class="text-muted" ng-if="encounters.length == 0 &&
+                    !waiting">
+                    No visits recorded yet.
+                </em>
+
+            </h4>
+            </li>
+        </ul>
+
+    </div>
+</div>
