@@ -1,5 +1,6 @@
 package model;
 
+import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -63,6 +64,9 @@ public class User implements UserDetails {
 	@Column(name="person_id")
 	private int personId;
 	
+	@Column(name="invitation_code")
+	private int invitationCode;
+	
 	@OneToOne(cascade=CascadeType.ALL)  
     @JoinTable(name="user_role",  
     	joinColumns={@JoinColumn(name="user_id", referencedColumnName="user_id")},  
@@ -82,7 +86,18 @@ public class User implements UserDetails {
 		
 	}
 	
+	@JsonIgnore
+	public int getInvitationCode(){
+		return this.setInvitationCode();
+	}
 	
+	public int setInvitationCode(){
+		SecureRandom random = new SecureRandom();
+		int number = random.nextInt(1000000);		
+		this.invitationCode = number;
+		
+		return this.invitationCode;
+	}
 	
 	public void setPersonId(int newPersonId){
 		this.personId = newPersonId;
