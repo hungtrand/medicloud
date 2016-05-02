@@ -34,7 +34,7 @@
                         <input ng-model = "reason" type="text" class="form-control" name="reason" required>
                     </div>
                 </div>
-                <!--<table class="table">
+                <table class="table">
                   <caption>Appointments</caption>
                   <thead>
                     <tr>
@@ -42,10 +42,15 @@
                       <th>Last Name</th>
                       <th>Appointment Time</th>
                     </tr>
+                    <tr ng-repeat="appointment in appointmentList">
+                      <th>{{ appointment.firstName }}</th>
+                      <th>{{ appointment.lastName }}</th>
+                      <th>{{ appointment.time }}</th>
+                    </tr>
                   </thead>
                   <tbody>
                   </tbody>
-                </table>-->
+                </table>
             </div>
             <div class="modal-footer">
                 <button ng-click = "closeModal()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>

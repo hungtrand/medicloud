@@ -21,9 +21,11 @@ import java.util.List;
 
 import model.Appointment;
 import model.Patient;
+import model.Person;
 import provider.MessageResponse;
 import repository.PatientRepo;
 import repository.AppointmentRepo;
+import repository.PersonDao;
 
 import java.security.SecureRandom;
 
@@ -39,6 +41,9 @@ public class PatientAppointmentCollection {
 	@Autowired
 	private PatientRepo patientRepo;
 	
+	@Autowired
+	private PersonDao personDao;
+	
 	
 	//---------------------------------------------------GET-----------------------------------------
 
@@ -46,6 +51,19 @@ public class PatientAppointmentCollection {
 	 * Doctor's Availability on daily base.
 	 * @param newAvailableTime
 	 */
+	public class listOfAppointments {
+		public String time;
+		public String firstName;
+		public String lastName;
+		
+		listOfAppointments(String time, String firstName, String lastName) {
+			this.time = time;
+			this.firstName = firstName;
+			this.lastName = lastName;
+		}
+	}
+
+	
 	@RequestMapping(value="/availability", method=RequestMethod.GET)
 	@ApiMethod(description="Get all available time of a health professional.")
 	public List<String> getDoctorAvailableTime(@ApiPathParam(name="hpId") @PathVariable("hpId")int hpId
@@ -71,6 +89,32 @@ public class PatientAppointmentCollection {
 		
 		return temp;
 		}
+	}
+	
+	/**
+	 * Get all appointments with appointment time and patient name
+	 * @param hpId, userDate
+	 * @return
+	 */
+	
+	@RequestMapping(value="/getListOfAppointments", method=RequestMethod.GET)
+	public List<listOfAppointments>getListOfAppointments(@PathVariable("hpId")int hpId, @RequestParam("userDate")String userDate) {
+		List<Appointment> appointments = new ArrayList<Appointment>();
+		List<listOfAppointments>appointmentDetails = new ArrayList<listOfAppointments>();
+		int patientId = 0;
+		Patient patient = new Patient();
+		Person person = new Person();
+		appointments = appointmentRepo.findByHpIdAndAppointmentDate(hpId, userDate);
+		for (int i = 0; i < appointments.size(); i++) {
+			patientId = appointments.get(i).getPatientId();
+			String time = appointments.get(i).getAppointmentTime();
+			patient = patientRepo.findByPatientId(patientId);
+			person = personDao.findByPersonId(patient.getPersonId());
+			String firstName = person.getFirstName();
+			String lastName = person.getLastName();
+			appointmentDetails.add(i, new listOfAppointments(time, firstName, lastName));
+		}
+		return appointmentDetails;
 	}
 	
 	
