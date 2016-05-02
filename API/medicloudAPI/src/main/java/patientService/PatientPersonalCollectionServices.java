@@ -6,6 +6,7 @@
  */
 package patientService;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -110,9 +111,9 @@ public class PatientPersonalCollectionServices {
 				int patientId=listOfPatient.get(j).getPatientId();
 				
 				listOfFoundPatient =  appointmentRepo.findByPatientId(patientId);
-				System.out.println(patientId);
+
 				foundPatient.addAll(listOfFoundPatient);
-				System.out.println(foundPatient.size());
+				
 				
 			}
 			

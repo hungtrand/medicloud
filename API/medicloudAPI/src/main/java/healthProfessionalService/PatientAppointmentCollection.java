@@ -27,9 +27,12 @@ import repository.PatientRepo;
 import repository.AppointmentRepo;
 import repository.PersonDao;
 
+import java.security.SecureRandom;
+
+
 @RestController
 @RequestMapping(value="/api/hp/{hpId}/patients")
-@Api(description = "Provides collections of Appointments for Health Professional", name = "Health Professional Appointments API", stage=ApiStage.BETA)
+@Api(description = "Provides collections of Appointments for Health Professional", name = "Health Professional finds Appointments API", stage=ApiStage.BETA)
 public class PatientAppointmentCollection {
 
 	@Autowired
@@ -62,7 +65,9 @@ public class PatientAppointmentCollection {
 
 	
 	@RequestMapping(value="/availability", method=RequestMethod.GET)
-	public List<String> getDoctorAvailableTime( @PathVariable("hpId")int hpId, @RequestParam("userDate") String userDate
+	@ApiMethod(description="Get all available time of a health professional.")
+	public List<String> getDoctorAvailableTime(@ApiPathParam(name="hpId") @PathVariable("hpId")int hpId
+			, @ApiQueryParam(name="userDate", description="find By date")@RequestParam("userDate") String userDate
 			){
 		List<Appointment> appointment = new ArrayList<Appointment>();
 		List<String> temp = new ArrayList<String>();
@@ -71,6 +76,7 @@ public class PatientAppointmentCollection {
 		temp = start.defaultAppointmentAvailability();
 
 		appointment = appointmentRepo.findByAppointmentDate(userDate);
+		
 		
 		if(appointment!= null){
 				
@@ -167,8 +173,8 @@ public class PatientAppointmentCollection {
 	 */
 	@RequestMapping(value="/appointments", method=RequestMethod.GET)
 	@ApiMethod(description="Get all the appointment of Health professional")
-	public ResponseEntity<?> getIndividualPatientAppointment(@ApiPathParam(name="hpId")@PathVariable("hpId")int hpId
-			, @ApiQueryParam(name="userDate")@RequestParam("userDate")String userDate){
+	public ResponseEntity<?> getIndividualPatientAppointment(@ApiPathParam(name="hpId", description="Health Professional ID")@PathVariable("hpId")int hpId
+			, @ApiQueryParam(name="userDate", description="find by date")@RequestParam("userDate")String userDate){
 		
 		List<Appointment> foundAppointment = new ArrayList<Appointment>();
 		List<Appointment> appointment = new ArrayList<Appointment>();

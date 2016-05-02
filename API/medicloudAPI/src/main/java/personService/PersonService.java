@@ -2,7 +2,7 @@ package personService;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import org.jsondoc.core.annotation.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,8 +21,9 @@ import repository.User_repo;
 
 @RestController
 @RequestMapping(value="/api/users/")
+@Api(description="", name="Personal services for user")
 public class PersonService {
-
+	
 	@Autowired
 	private PatientRepo patientRepo;
 
