@@ -9,11 +9,7 @@ module.exports = function($http, $rootScope, $resource) {
     var setAppointmentUrl = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/:patientId/appointment';
     var getAppointmentListUrl = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/getListOfAppointments?userDate=:selectedDate';
     var service = {
-      times: [{
-            appointmentTime: "9:00"
-        }, {
-            appointmentTime: "10:00"
-        }],
+      times: [],
 
         getTimes: function() {
           selectedDate = this.selectedDate;
@@ -25,7 +21,7 @@ module.exports = function($http, $rootScope, $resource) {
           console.log("service.getTimes() selectedDate is " + selectedDate);
           var promise = client.query().$promise;
           promise.then(function(times) {
-              angular.extend(that.times, times);
+              angular.copy(times, that.times);
               (onSuccessFn || angular.noop)();
               onSuccessFn = null;
               onFailureFn = null;
@@ -38,6 +34,7 @@ module.exports = function($http, $rootScope, $resource) {
         },
       appointments: [],
       getAppointments: function() {
+
         selectedDate = this.selectedDate;
         var that = this;
         var client = $resource(getAppointmentListUrl, {
@@ -47,7 +44,8 @@ module.exports = function($http, $rootScope, $resource) {
         console.log('getAppointments function');
         var promise = client.query().$promise;
         promise.then(function(appointments) {
-            angular.extend(that.appointments, appointments);
+            angular.copy(appointments, that.appointments);
+
             (onSuccessFn || angular.noop)();
             onSuccessFn = null;
             onFailureFn = null;
@@ -56,7 +54,8 @@ module.exports = function($http, $rootScope, $resource) {
             onSuccessFn = null;
             onFailureFn = null;
         });
-        return this.appointments;
+        return promise;
+
       },
 
       patients: [],

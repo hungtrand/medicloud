@@ -34,7 +34,7 @@
                         <input ng-model = "reason" type="text" class="form-control" name="reason" required>
                     </div>
                 </div>
-                <table class="table">
+                <table class="table" id="AppointmentTable" ng-show="appointmentList.length">
                   <caption>Appointments</caption>
                   <thead>
                     <tr>
