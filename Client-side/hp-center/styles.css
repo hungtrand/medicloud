@@ -1,11 +1,3 @@
-.content {
-    min-height: initial;
-}
-
-.ng-leave, .ng-hide.ng-hide-add {
-    display: none !important;
-}
-
 pre {
     white-space: pre-wrap;       /* CSS 3 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */

@@ -4,6 +4,7 @@ module.exports = function ($scope, model) {
     $scope.profile = model.profile;
     $scope.hpList = model.hpList;
     $scope.encounters = model.encounterList;
+    $scope.activeConditions = model.activeConditionList;
 
     $scope.signout = function() {
        sessionStorage.clear();

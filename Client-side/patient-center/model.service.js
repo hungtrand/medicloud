@@ -1,4 +1,5 @@
-module.exports = function ($resource, profile_factory, hpList_factory, encounterList_factory) {
+module.exports = function ($resource, profile_factory, hpList_factory, 
+                            encounterList_factory, activeConditionList_factory) {
     var personId = sessionStorage.getItem("medicloud_person_id");
     var model = {
         profile: profile_factory.get(),
@@ -16,7 +17,9 @@ module.exports = function ($resource, profile_factory, hpList_factory, encounter
 
         hpList: hpList_factory.query(),
 
-        encounterList: encounterList_factory.query()
+        encounterList: encounterList_factory.query(),
+
+        activeConditionList: activeConditionList_factory.query()
     }
 
     // initialization

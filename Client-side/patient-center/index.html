@@ -274,7 +274,7 @@ ng-controller="patientCenter_main_controller">
                         <!-- Menu Footer-->
                         <li class="user-footer">
                         <div class="pull-left">
-                            <a href="#/" class="btn btn-default btn-flat">Edit Information</a>
+                            <a href="#/" class="btn btn-default btn-flat">Profile</a>
                         </div>
                         <div class="pull-right">
                             <a href="" ng-click="signout()" class="btn btn-default btn-flat">Sign out</a>
@@ -333,7 +333,7 @@ ng-controller="patientCenter_main_controller">
                             <i class="fa fa-calendar"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Visits</span>
-                            <span class="info-box-number">39 <br /><small>Since:
+                            <span class="info-box-number">{{ encounters.length }} <br /><small>Since:
                                     <em>{{ encounters[0].encounterDateTime }}</em></small></span>
                         </div><!-- /.info-box-content -->
                         <!--
@@ -344,14 +344,15 @@ ng-controller="patientCenter_main_controller">
                     </a><!-- /.info-box -->
                 </div><!-- /.col -->
                 <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="box info-box">
+                    <a class="box info-box" href="#/active-conditions">
                         <span class="info-box-icon bg-red"><i class="fa
                                 fa-heartbeat"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Conditions</span>
-                            <span class="info-box-number">41,410</span>
+                            <span class="info-box-number">{{
+                            activeConditions.length }}</span>
                         </div><!-- /.info-box-content -->
-                    </div><!-- /.info-box -->
+                    </a><!-- /.info-box -->
                 </div><!-- /.col -->
 
                 <!-- fix for small devices only -->

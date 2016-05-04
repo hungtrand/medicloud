@@ -14,6 +14,10 @@ module.exports = function($route, $httpProvider) {
             templateUrl: 'encounters/encounters.html',
             controller: "patientCenter_encounterList_controller"
         })
+        .when("/active-conditions", {
+            templateUrl: 'active-conditions/active-conditions.html',
+            controller: "patientCenter_activeConditionList_controller"
+        })
 	.otherwise({
 	    redirectTo: '/'
 	})

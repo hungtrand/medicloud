@@ -4,8 +4,11 @@
     </div>
 
     <div class="box-body">
+        <h1 class="text-danger text-center" ng-if="!ready && loading"><i class="fa fa-spin fa-spinner"></i></h1>
+        <div class="alert alert-danger" ng-if="error">{{ error }}</div>
         <!-- The timeline -->
-        <ul class="timeline timeline-inverse">
+        <ul class="timeline timeline-inverse ng-animate nga-default nga-stagger nga-slide-left-add"
+                ng-if="ready">
             <!-- timeline time label -->
             <li class="time-label" 
             ng-repeat-start="encounter in encounters | orderBy: '-encounterDateTime'">
@@ -41,11 +44,11 @@
             <i class="fa fa-clock-o bg-gray"></i> 
 
             <h4 class="text-center">
-                <label class="label label-warning" ng-if="waiting">
+                <label class="label label-warning" ng-if="loading">
                     <i class="fa fa-spin fa-spinner"></i> Loading...
                 </label>
                 <em class="text-muted" ng-if="encounters.length == 0 &&
-                    !waiting">
+                    !loading">
                     No visits recorded yet.
                 </em>
 
