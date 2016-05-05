@@ -78,12 +78,12 @@ public class PatientObservationCollection {
 		HealthProfessional hp = hpRepo.findByHpId(hpId);
 		
 		if (patient == null) {
-			mr.error = "Health Professional not found.";
+			mr.error = "Patient not found.";
 			return new ResponseEntity<MessageResponse>(mr, HttpStatus.BAD_REQUEST);
 		}
 		
 		if (hp == null) {
-			mr.error = "Patient not found.";
+			mr.error = "Health Professional not found.";
 			return new ResponseEntity<MessageResponse>(mr, HttpStatus.BAD_REQUEST);
 		}
 		

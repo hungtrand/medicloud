@@ -1,4 +1,6 @@
-module.exports = function($resource, $rootScope, activeCondition_factory, observation_factory, encounterList_factory) {
+module.exports = function($resource, $rootScope, 
+            activeCondition_factory, observation_factory, 
+            encounterList_factory, labResult_factory) {
     var hpId = sessionStorage.getItem("medicloud_hp_id");
     var url = 'http://' + window.location.hostname + '\\:8080/api/hp/:hpId/patients/:patientId';
     var client = $resource(url, {
@@ -27,6 +29,7 @@ module.exports = function($resource, $rootScope, activeCondition_factory, observ
         this.conditions = [];
         this.observations = [];
         this.encounters = [];
+        this.labs = [];
         this.lastVisit = null;
         this.fetch();
     }
@@ -146,6 +149,38 @@ module.exports = function($resource, $rootScope, activeCondition_factory, observ
                     );
 
             return newList.$promise;
+        }
+        , fetchLabResults: function() {
+            var self = this;
+            self.labs.splice(0, self.labs.length);
+
+            var newList = labResult_factory.query(
+                    {hpId: hpId, patientId: self.patientId }
+                    , function(response) {
+                        angular.copy(response, self.labs);
+                    }
+                    , function(failure) {
+                        $rootScope.$broadcast('error', failure);  
+                    }
+                );
+
+            return newList.$promise;
+        }
+        , saveLabResult: function(newLab) {
+            var self= this;
+            var savedLab = labResult_factory.save(
+                    { hpId: hpId, patientId: self.patientId }, 
+                    newLab)
+
+            savedLab.$promise.then(
+                    function(response) {
+                        self.labs.push(savedLab);
+                    },
+                    function(failure) {
+                        $rootScope.$broadcast('error', failure); 
+                    });
+
+            return savedLab.$promise;
         }
     }
 
