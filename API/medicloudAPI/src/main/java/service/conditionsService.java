@@ -28,9 +28,11 @@ import com.google.gson.JsonSyntaxException;
 import model.Condition;
 import provider.MessageResponse;
 import repository.ConditionRepo;
+import org.jsondoc.core.annotation.*;
 
 @Configuration
 @PropertySource("classpath:client-side.properties")
+@Api(name="Condition service" , description="Get information from infermedica api.")
 @RestController
 public class conditionsService {
 	@Value("${infermedica.appId}")
@@ -40,6 +42,7 @@ public class conditionsService {
 	private String appKey;
 	
 	@RequestMapping(value="/conditions", method=GET)
+	@ApiMethod(description="Medicloud get conditions services from infermedical api.")
 	public String lookupConditions() 
 	{
 		String sURL = "https://api.infermedica.com/v2/conditions"; //just a string

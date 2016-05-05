@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.jsondoc.core.annotation.*;
 import model.Encounter;
 import model.HealthProfessional;
 import model.Observation;
@@ -24,6 +24,7 @@ import repository.PatientRepo;
 
 @RestController
 @RequestMapping(value="/api/hp/{hpId}/patients/{patientId}/observations")
+@Api(name="Health professional observation  collections service ", description="Health professional views/gets or create new observations of an individual patient.")
 public class PatientObservationCollection {
 	@Autowired
 	private PatientRepo patientRepo;
@@ -51,7 +52,8 @@ public class PatientObservationCollection {
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public ResponseEntity<?> getPatientObservations(@PathVariable("patientId") int patientId) {
+	@ApiMethod(description="Health professional gets list of all observations of an individual patient.")
+	public ResponseEntity<?> getPatientObservations(@ApiPathParam(name="patient id", description="requries patient id")@PathVariable("patientId") int patientId) {
 		
 		Patient patient = patientRepo.findByPatientId(patientId);
 		
@@ -67,11 +69,12 @@ public class PatientObservationCollection {
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
+	@ApiMethod(description="Health professional creates new observation of an individual patient.")
 	@Transactional
 	public ResponseEntity<?> addObservation(
-			@RequestBody newObservationForm newObsForm, 
-			@PathVariable("hpId") int hpId,
-			@PathVariable("patientId") int patientId) {
+			@ApiBodyObject@RequestBody newObservationForm newObsForm, 
+			@ApiPathParam(name="health professiona id", description="requires health professional id")@PathVariable("hpId") int hpId,
+			@ApiPathParam(name="patient id", description="requires patient id")@PathVariable("patientId") int patientId) {
 		MessageResponse mr = new MessageResponse();
 		
 		Patient patient = patientRepo.findByPatientId(patientId);

@@ -63,7 +63,12 @@ public class PatientAppointmentCollection {
 		}
 	}
 
-	
+	/**
+	 * Get all the available time based on specified date.
+	 * @param hpId - Health professional id
+	 * @param userDate - date that user wants to make appointment.
+	 * @return - list of available time for specified date.
+	 */
 	@RequestMapping(value="/availability", method=RequestMethod.GET)
 	@ApiMethod(description="Get all available time of a health professional.")
 	public List<String> getDoctorAvailableTime(@ApiPathParam(name="hpId") @PathVariable("hpId")int hpId
@@ -77,7 +82,7 @@ public class PatientAppointmentCollection {
 
 		appointment = appointmentRepo.findByAppointmentDate(userDate);
 		
-		
+		//check if specified date has appointment if yes then remove those appointment time else shows all appointments.
 		if(appointment!= null){
 				
 				for(int i =0; i<appointment.size(); i++){
@@ -93,12 +98,15 @@ public class PatientAppointmentCollection {
 	
 	/**
 	 * Get all appointments with appointment time and patient name
-	 * @param hpId, userDate
-	 * @return
+	 * @param hpId, userDate 
+	 * @return - list of all the appointment with patient names that a health professional has with.
 	 */
 	
 	@RequestMapping(value="/getListOfAppointments", method=RequestMethod.GET)
-	public List<listOfAppointments>getListOfAppointments(@PathVariable("hpId")int hpId, @RequestParam("userDate")String userDate) {
+	@ApiMethod(description="Health professional views list of his/her appointment on specified date.")
+	public List<listOfAppointments>getListOfAppointments(
+			@ApiPathParam(name="health professional id")@PathVariable("hpId")int hpId, 
+			@ApiQueryParam(description="Date that user wants to view")@RequestParam("userDate")String userDate) {
 		List<Appointment> appointments = new ArrayList<Appointment>();
 		List<listOfAppointments>appointmentDetails = new ArrayList<listOfAppointments>();
 		int patientId = 0;
@@ -120,8 +128,8 @@ public class PatientAppointmentCollection {
 	
 	/**
 	 * Get all appointments from a patient.
-	 * @param patientId
-	 * @return
+	 * @param patientId - patient id
+	 * @return - health professional gets a list of all appointment with a specified patient.
 	 */
 	@RequestMapping(value="/{patientId}/appointments", method=RequestMethod.GET)
 	@ApiMethod(description="Get all Appointment of health professional that his or her individual patient")
@@ -144,7 +152,7 @@ public class PatientAppointmentCollection {
 			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
 		}else{
 			
-			
+			//check if the appointment date has been expired.
 			for(int i=0; i<foundPatient.size(); i++){
 					Scanner scanDate = new Scanner(foundPatient.get(i).getAppointmentDate());
 					scanDate.useDelimiter("-");
@@ -167,9 +175,9 @@ public class PatientAppointmentCollection {
 	
 	/**
 	 * Get the appointment by date
-	 * @param hpId
-	 * @param userDate
-	 * @return
+	 * @param hpId - health professional id
+	 * @param userDate - user specified date.
+	 * @return - list of all the appointments that a user has on specified date.
 	 */
 	@RequestMapping(value="/appointments", method=RequestMethod.GET)
 	@ApiMethod(description="Get all the appointment of Health professional")

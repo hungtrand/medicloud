@@ -18,9 +18,10 @@ import model.User;
 import provider.MessageResponse;
 import repository.HealthProfessional_repo;
 import repository.User_repo;
-
+import org.jsondoc.core.annotation.*;
 @RestController
 @RequestMapping(value="/signin")
+@Api(name="Sign In service", description="User sign in service including sign in forms.")
 public class signinService {
 	@Autowired
 	private User_repo userRepo;

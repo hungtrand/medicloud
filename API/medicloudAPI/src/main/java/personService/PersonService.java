@@ -1,8 +1,12 @@
 package personService;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import org.jsondoc.core.annotation.Api;
+import org.jsondoc.core.annotation.ApiBodyObject;
+import org.jsondoc.core.annotation.ApiMethod;
+import org.jsondoc.core.annotation.ApiPathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +25,7 @@ import repository.User_repo;
 
 @RestController
 @RequestMapping(value="/api/users/")
-@Api(description="", name="Personal services for user")
+@Api(description="", name="Add or edit personal service for each user")
 public class PersonService {
 	
 	@Autowired
@@ -55,7 +59,8 @@ public class PersonService {
 	//	}
 
 	@RequestMapping(value="/{user_id}", method =RequestMethod.GET)
-	public List<Contact> getUser(@PathVariable("user_id")int userId){
+	@ApiMethod(description="Get user's contact information")
+	public List<Contact> getUser(@ApiPathParam(name="user_id") @PathVariable("user_id")int userId){
 		List<Contact> temp = new ArrayList<Contact>();
 		User findUser = userRepo.findByUserId(userId);
 
@@ -71,7 +76,9 @@ public class PersonService {
 	 * @param newContact
 	 */
 	@RequestMapping(value="/{user_id}/contact", method=RequestMethod.POST)
-	public void setNewUserContact(@PathVariable("user_id")int userId, @RequestBody Contact newContact) {
+	@ApiMethod(description="User create new contact information.")
+	public void setNewUserContact(@ApiPathParam(name="user id")@PathVariable("user_id")int userId, 
+			@ApiBodyObject@RequestBody Contact newContact) {
 		User u = userRepo.findByUserId(userId);
 
 		newContact.setPerson(u.getPerson());
@@ -83,8 +90,11 @@ public class PersonService {
 
 	//---------------------------- PUT method -------------------------
 	@RequestMapping(value="/{user_id}/contacts/{contact_id}", method = RequestMethod.PUT)
-	public void updateUserContact(@PathVariable("user_id")int userId, @PathVariable("contact_id")int contactId,
-			@RequestBody Contact updateContact){
+	@ApiMethod(description="User updates existing contact information.")
+	public void updateUserContact(
+			@ApiPathParam(name="user id")@PathVariable("user_id")int userId, 
+			@ApiPathParam(name="contact id")@PathVariable("contact_id")int contactId,
+			@ApiBodyObject@RequestBody Contact updateContact){
 		
 		Contact temp = contactRepo.findByContactId(contactId);
 		

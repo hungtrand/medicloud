@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
-
+import org.jsondoc.core.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import model.Observation;
