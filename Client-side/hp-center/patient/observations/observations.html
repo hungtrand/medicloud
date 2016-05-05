@@ -10,7 +10,7 @@
     </ul>
 
     <!-- The timeline -->
-    <ul class="timeline timeline-inverse"
+    <ul class="timeline timeline-inverse">
         <!-- timeline time label -->
         <li class="time-label" ng-repeat-start="encounter in patient.encounters">
         <span class="bg-red">
@@ -28,9 +28,9 @@
             </h3>
             <div class="timeline-body">
                 <strong class="text-primary">Comments:</strong>
-                <pre>
+                <div class="text-warning" style="white-space: pre-wrap; font-family:monospace;"> 
 {{ observation.comments }}
-                </pre>
+                </div>
             </div>
             <!-- 
             <div class="timeline-footer">

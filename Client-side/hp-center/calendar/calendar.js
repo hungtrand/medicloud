@@ -106,8 +106,9 @@ module.exports = function() {
       $("[data-date]").click(function() {
         $scope.modalControl.show = !$scope.modalControl.show;
         $scope.selectedDate = $(this).attr("data-date");
-        $scope.setSelectedDate();
         $scope.$apply();
+        $scope.setSelectedDate();
+
       });
 
     },

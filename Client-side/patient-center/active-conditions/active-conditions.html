@@ -1,0 +1,68 @@
+<div class="box box-warning">
+    <div class="box-header with-border">
+        <h3 class="box-title">Active Conditions</h3> 
+    </div>
+
+    <div class="box-body">
+        <h1 class="text-danger text-center" ng-if="!ready && loading"><i class="fa fa-spin fa-spinner"></i></h1>
+        <div class="alert alert-danger" ng-if="error">{{ error }}</div>
+        <!-- The timeline -->
+        <div class="row ng-animate nga-default nga-stagger nga-slide-left-add" ng-if="ready">
+            <!-- timeline time label -->
+            <div class="col-md-4" 
+                ng-repeat="condition in activeConditions | orderBy: '-dateCreated'">
+
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{ condition.name }} </h3>
+                    </div>
+
+                    <div class="box-body">
+                        <div class="small-box bg-aqua"
+                            ng-if="condition.startObservation">
+                            <div class="inner">
+                                Observation begins on 
+                                <label>
+                                    {{
+                                    condition.startObservation.dateCreated
+                                    }}
+                                </label>
+                                <br />
+                                <small>-- {{ condition.startObservation.healthProfessional.name }}</small>
+                            </div>
+                            <div class="small-box-footer">
+                                <div style="white-space: pre-wrap; font-family:monospace;" 
+                                    class="well well-sm text-left text-warning"> 
+{{ condition.startObservation.comments }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="small-box bg-olive"
+                            ng-if="condition.endObservation">
+                            <div class="inner">
+                                Observation ends on 
+                                <label>
+                                    {{ condition.endObservation.dateCreated }}
+                                </label>
+                                <br />
+                                <small>-- {{ condition.endObservation.healthProfessional.name }}</small>
+                            </div>
+                            <div class="small-box-footer">
+                                <div style="white-space: pre-wrap; font-family:monospace;" 
+                                    class="well well-sm text-left text-warning"> 
+{{ condition.endObservation.comments }}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- ./box-body -->
+                    <div class="box-footer">
+                        <blockquote>{{ condition.description }}</blockquote>
+                    </div> 
+                </div><!-- ./box -->
+            </div><!-- ./col-md-3 -->
+
+        </div><!-- ./row -->
+    </div><!-- ./box-body -->
+</div> <!-- ./box-warning -->

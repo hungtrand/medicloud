@@ -33,13 +33,17 @@ module.exports = function() {
           var selectedPatientId;
           $scope.selectedPatient = 'Select a patient';
           $scope.selectedTime = 'Select a time';
+          $scope.appointmentList = calendarService.appointments;
+          $scope.timesList = calendarService.times;
           $('[data-toggle="tooltip"]').tooltip('disable');
-
           $rootScope.$on('dateSelected', function(event, args) {
             console.log("Broadcast received. Date is " + args.date);
             $scope.patientList = patientsListService.getPatients();
-            $scope.timesList = calendarService.getTimes();
-            $scope.appointmentList = calendarService.getAppointments();
+            calendarService.getTimes();
+            calendarService.getAppointments().then(function() {
+              console.log('appointmentList is ' + $scope.appointmentList);
+            });
+
             appointment.appointmentDate = args.date;
           });
 
@@ -57,6 +61,10 @@ module.exports = function() {
             appointment.reason = $scope.reason;
             calendarService.addAppointment(appointment, selectedPatientId);
             console.log('Appointment is ' + appointment);
+          }
+
+          function getAppointments() {
+
           }
 
           $scope.$on('appointmentAdded', function() {

@@ -1,5 +1,7 @@
-<section class="content ng-animate nga-default nga-stagger nga-slide-left-add" ng-if="ready">
-    <div class="row">
+<section class="content">
+    <h1 class="text-danger text-center" ng-if="!ready && loading"><i class="fa fa-spin fa-spinner"></i></h1>
+    <div class="alert alert-danger" ng-if="error">{{ error }}</div>
+    <div class="row ng-animate nga-default nga-stagger nga-slide-left-add" ng-if="ready">
         <div class="col-md-3">
             <!-- Profile Image -->
             <div class="box box-danger">

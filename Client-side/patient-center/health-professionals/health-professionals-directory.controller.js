@@ -1,13 +1,19 @@
 module.exports = function($scope, model) {
     $scope.error = "";
-    $scope.loading = false;
+    $scope.loading = true;
+    $scope.ready = false;
     $scope.hpList = model.hpList;
 
     $scope.hpList.$promise.then(
         function(response) {
-             
+            setTimeout(function() {
+                $scope.ready = true;
+                $scope.loading = false;
+                $scope.$apply();
+            }, 300);
         },
         function(failure) {
+            $scope.loading = false;
             $scope.error = failure.data.message || failure.data.error || failure.data
                             || failure.message || failure.error || failure;
         }

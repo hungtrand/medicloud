@@ -59,7 +59,8 @@ module.exports = function() {
                             .then(
                                     function(succcess) {
                                         $scope.waiting = false;
-                                        $scope.control.hide();	
+                                        $scope.control.hide();
+                                        $scope.form = {};
                                     },
                                     function(failure) { handleError(failure); }
                                  );
