@@ -64,7 +64,7 @@ public class User implements UserDetails {
 	@Column(name="person_id")
 	private int personId;
 	
-	@Column(name="invitation_code")
+	@Column(name="invitation_code", nullable=true)
 	private int invitationCode;
 	
 	@OneToOne(cascade=CascadeType.ALL)  
@@ -88,7 +88,7 @@ public class User implements UserDetails {
 	
 	@JsonIgnore
 	public int getInvitationCode(){
-		return this.setInvitationCode();
+		return this.invitationCode;
 	}
 	
 	public int setInvitationCode(){

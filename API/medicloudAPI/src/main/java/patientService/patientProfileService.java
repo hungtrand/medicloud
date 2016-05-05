@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.jsondoc.core.annotation.*;
 
 import model.Contact;
 import model.Person;
@@ -22,6 +23,7 @@ import repository.PersonDao;
 
 @RestController
 @RequestMapping(value="/api/patient/{personId}")
+@Api(name="Patient profile service", description="Patient can views or change his/her profile.")
 public class patientProfileService {
 	
 	@Autowired
@@ -73,8 +75,9 @@ public class patientProfileService {
 	 * 
 	 */
 	@RequestMapping(value="/profile", method=RequestMethod.GET)
+	@ApiMethod(description="Patient views his/her contact information.")
 	@ResponseBody
-	public ResponseEntity<?> getPatientProfile(@PathVariable("personId") int personId) {
+	public ResponseEntity<?> getPatientProfile(@ApiPathParam(name="patient id", description="require patient id")@PathVariable("personId") int personId) {
 		MessageResponse mr = new MessageResponse();
 		mr.success = false;
 		
@@ -96,9 +99,11 @@ public class patientProfileService {
 	 * @return: savedProfile
 	 */
 	@RequestMapping(value="/profile", method=RequestMethod.POST)
+	@ApiMethod( description="Patient updates or makes changes on his/her contact information.")
 	@ResponseBody
 	@Transactional
-	public ResponseEntity<?> postPatientProfile(@PathVariable("personId") int personId, @RequestBody Person newProfile) {
+	public ResponseEntity<?> postPatientProfile(@ApiPathParam(name="person id")@PathVariable("personId") int personId, 
+			@ApiBodyObject@RequestBody Person newProfile) {
 		MessageResponse mr = new MessageResponse();
 		mr.success = false;
 		

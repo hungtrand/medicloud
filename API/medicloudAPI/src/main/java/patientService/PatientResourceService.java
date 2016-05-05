@@ -23,7 +23,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.aspectj.internal.lang.annotation.ajcPrivileged;
+import org.jsondoc.core.annotation.*;
 import model.Contact;
 
 import model.Patient;
@@ -43,6 +44,7 @@ import repository.User_repo;
 
 @RestController
 @RequestMapping(value="/api/patient")
+@Api(name="Patient Resource service", description="Patient can views prescriptions, create appointments, cancel appointment, sign up an account with medicloud, and generate new adding code to make new connection with health professional.")
 public class PatientResourceService {
 
 
@@ -75,7 +77,8 @@ public class PatientResourceService {
 		 * @return
 		 */
 		@RequestMapping(value="/{patient_id}/prescriptions", method=RequestMethod.GET)
-		public ResponseEntity<?> getAllPrescription(@PathVariable("patient_id")int patientId
+		@ApiMethod(description="Patient views all his/her prescriptions")
+		public ResponseEntity<?> getAllPrescription(@ApiPathParam(name="patient id")@PathVariable("patient_id")int patientId
 				){
 			List<Prescription> foundPatient = new ArrayList<Prescription>();
 			foundPatient = prescriptionRepo.findByPatientId(patientId);
@@ -109,9 +112,10 @@ public class PatientResourceService {
 		 * @param patientId
 		 */
 		@RequestMapping(value="/{patient_id}/appointment", method=RequestMethod.POST)
-		public ResponseEntity<?> setAppointment(@PathVariable("patient_id")int patientId	
+		@ApiMethod(description="Patient creates new appointment with a health professional.")
+		public ResponseEntity<?> setAppointment(@ApiPathParam(name="patient id")@PathVariable("patient_id")int patientId	
 				
-				, @RequestBody Appointment newAppointment){
+				, @ApiBodyObject@RequestBody Appointment newAppointment){
 			
 			Appointment temp = new Appointment();
 			int hpId = newAppointment.getHPId();
@@ -143,8 +147,10 @@ public class PatientResourceService {
 		 * @return ResponseEntity<MessageResponse>
 		 */
 		@RequestMapping(method=GET, value="/signup/{email}/{token}")
+		@ApiMethod(description="Patient verifies account that signed up.")
 		public ResponseEntity<?> verifyAccountSetupLink(
-				@PathVariable("email") String email, @PathVariable("token") String token) {
+				@ApiPathParam(name="email address")@PathVariable("email") String email, 
+				@PathVariable("token") String token) {
 			
 			MessageResponse mr = new MessageResponse();
 			mr.success = false;
@@ -178,9 +184,10 @@ public class PatientResourceService {
 		 * @return Patient
 		 */
 		@RequestMapping(method=POST, value="/signup/{email}/{token}")
+		@ApiMethod(description="Patient sign up an account.")
 		public ResponseEntity<?> setupPatientAccount(
-				@PathVariable("email") String email, @PathVariable("token") String token,
-				@RequestBody patientSignUpForm form) {
+				@ApiPathParam(name="email address")@PathVariable("email") String email, @PathVariable("token") String token,
+				@ApiBodyObject@RequestBody patientSignUpForm form) {
 			
 			MessageResponse mr = new MessageResponse();
 			mr.success = false;
@@ -224,9 +231,11 @@ public class PatientResourceService {
 		 * @param appointmentId
 		 */
 		@RequestMapping(value="/appointment/{appointment_id}", method = RequestMethod.PUT)
-		public ResponseEntity<?> updatePatientAppointment(@PathVariable("patient_id")int patientId
-				,@PathVariable("appointment_id")int appointmentId
-				,@RequestBody Appointment updateAppointment){
+		@ApiMethod(description="Patient updates appointment.")
+		public ResponseEntity<?> updatePatientAppointment(
+				@ApiPathParam(name="patient id")@PathVariable("patient_id")int patientId
+				,@ApiPathParam(name="appointment id")@PathVariable("appointment_id")int appointmentId
+				,@ApiBodyObject@RequestBody Appointment updateAppointment){
 			Appointment temp = new Appointment();
 			
 			
@@ -253,10 +262,19 @@ public class PatientResourceService {
 		}
 		
 		
-		@RequestMapping(value="{patientId}/hps/{hpId}/appointments/{appointmentId}/cancel", method=RequestMethod.PUT)
-		public ResponseEntity<?> deleteAppointment(@PathVariable("hpId")int hpId
-				, @PathVariable("patientId")int patientId
-				, @PathVariable("appointmentId")int appointmentId){
+		/**
+		 * Patient Cancel the appointment
+		 * @param hpId
+		 * @param patientId
+		 * @param appointmentId
+		 * @return
+		 */
+		@RequestMapping(value="/{patientId}/hps/{hpId}/appointments/{appointmentId}/cancel", method=RequestMethod.PUT)
+		@ApiMethod(description="Patient cancels an appointment.")
+		public ResponseEntity<?> deleteAppointment(
+				@ApiPathParam(name="health professional id")@PathVariable("hpId")int hpId
+				, @ApiPathParam(name="Patient id")@PathVariable("patientId")int patientId
+				, @ApiPathParam(name="appointment id")@PathVariable("appointmentId")int appointmentId){
 			
 			List<Appointment> foundPatient = appointmentRepo.findByHpIdAndPatientIdAndAppointmentId(hpId, patientId, appointmentId);
 			MessageResponse mr = new MessageResponse();
@@ -276,6 +294,40 @@ public class PatientResourceService {
 			
 		}
 	
+		
+		/**
+		 * Generate invitation code.
+		 * @param personId
+		 * @param userId
+		 * @return
+		 */
+		@RequestMapping(value="/{personId}/users/{userId}/invitationcode", method=RequestMethod.PUT)
+		@ApiMethod(description="Patient generates an invitation code.")
+		public ResponseEntity<?> setInvitationCode(
+				@ApiPathParam(name="person id")@PathVariable("personId")int personId
+				,@ApiPathParam(name="user id")@PathVariable("userId")int userId){
+			
+			User user = new User();
+			user = userRepo.findByPersonIdAndUserId(personId, userId);
+			
+			if(user==null){
+				MessageResponse mr = new MessageResponse();
+				mr.success = false;
+				mr.error ="Not found: personId [ " + personId + "] , or userId [ " + userId + " ]";
+				mr.message = "";
+				return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
+			}
+			
+			user.setInvitationCode();
+			userRepo.save(user);
+			MessageResponse mr = new MessageResponse();
+			mr.success = true;
+			mr.error="";
+			mr.message="Your invitation code is : " + user.getInvitationCode();
+			
+			
+			return new ResponseEntity<Integer>( user.getInvitationCode(), HttpStatus.OK);
+		}
 		
 		
 		

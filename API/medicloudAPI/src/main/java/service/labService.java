@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import org.jsondoc.core.annotation.*;
 
 @Configuration
 @PropertySource("classpath:client-side.properties")
 @RestController
+@Api(name="Lab services", description="Health professional views lab reports.")
 public class labService {
 	@Value("${infermedica.appId}")
 	private String appId;

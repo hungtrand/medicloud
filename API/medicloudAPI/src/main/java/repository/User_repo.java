@@ -15,4 +15,8 @@ public interface User_repo extends CrudRepository<User, String> {
     public User findByUsername(String username);
     public User findByUserId(int userId);
     public User findByEmail(String email);
+    public User findByPersonId(int personId);
+    public User findByPersonIdAndUserId(int personId, int userId);
+    
+    public User findByInvitationCode(int invitationCode);
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.jsondoc.core.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
@@ -21,13 +22,16 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import model.Appointment;
 import model.Patient;
 import model.Prescription;
+import model.User;
 import provider.MessageResponse;
 import repository.AppointmentRepo;
 import repository.HealthProfessional_repo;
 import repository.PatientRepo;
 import repository.PrescriptionRepo;
+import repository.User_repo;
 @RestController
 @RequestMapping(value="/api/hp/{hpId}/patients/{patientId}")
+@Api(name="Health professional resource services", description="Health professional views or creates new appointments or write prescription to individual patient.")
 public class PatientResource {
 	
 	@Autowired
@@ -42,6 +46,9 @@ public class PatientResource {
 	@Autowired
 	AppointmentRepo appointmentRepo;
 	
+	@Autowired
+	User_repo userRepo;
+	
 	/**
 	 * This method is to use for HP to look at patient.
 	 * @param hpId
@@ -49,9 +56,10 @@ public class PatientResource {
 	 * @return
 	 */
 	@RequestMapping(value="", method = RequestMethod.GET)
+	@ApiMethod(description="Health professional views individual patient's information.")
 	public ResponseEntity<?> getPatient(
-			@PathVariable("hpId") int hpId
-			, @PathVariable("patientId") int patientId 
+			@ApiPathParam(name="health professional id", description="requires health professional id")@PathVariable("hpId") int hpId
+			, @ApiPathParam(name="patient id", description="requires patient id")@PathVariable("patientId") int patientId 
 		) 
 	{
 		Patient foundPatient =  patientRepo.findByHpIdAndPatientId(hpId, patientId);
@@ -70,8 +78,9 @@ public class PatientResource {
 	
 
 	@RequestMapping(value="/prescriptions", method=RequestMethod.GET)
-	public ResponseEntity<?> getAPatientPrescription(@PathVariable("hpId")int hpId
-			, @PathVariable("patientId")int patientId){
+	@ApiMethod(description="Health professional views a patinet's prescription that he/she provided previously.")
+	public ResponseEntity<?> getAPatientPrescription(@ApiPathParam(name="health professional id", description="requires health professional id")@PathVariable("hpId")int hpId
+			, @ApiPathParam(name="patient id", description="requires patient id")@PathVariable("patientId")int patientId){
 		
 		Prescription foundPatient = prescriptionRepo.findByHpIdAndPatientId(hpId, patientId);
 
@@ -106,10 +115,11 @@ public class PatientResource {
 	 * @return
 	 */
 	@RequestMapping(value="/prescription", method=RequestMethod.POST)
+	@ApiMethod(description="health professional creates/writes new prescription to an individual patient.")
 	public ResponseEntity<?> setPatientPrescription(
-			@PathVariable("hpId")int hpId
-			,@PathVariable("patientId")int patientId
-			,@RequestBody Prescription newPrescription){
+			@ApiPathParam(name="health professional id", description="requries health professional id")@PathVariable("hpId")int hpId
+			, @ApiPathParam(name="patient id", description="requires patient id")@PathVariable("patientId")int patientId
+			, @ApiBodyObject@RequestBody Prescription newPrescription){
 		Patient foundPatient = patientRepo.findByHpIdAndPatientId(hpId, patientId);
 		if(foundPatient==null){
 			MessageResponse mr = new MessageResponse();
@@ -136,9 +146,10 @@ public class PatientResource {
 	 * @param patientId
 	 */
 	@RequestMapping(value="/appointment", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public void setAppointment(@PathVariable("patientId")int patientId	
-			, @PathVariable("hpId")int hpId
-			, @RequestBody Appointment newAppointment){
+	@ApiMethod(description="Health professional creates news appointments with an individual patient.")
+	public void setAppointment(@ApiPathParam(name="patient id", description="requires patient id")@PathVariable("patientId")int patientId	
+			, @ApiPathParam(name="health professional id", description="requires health professional id")@PathVariable("hpId")int hpId
+			, @ApiBodyObject@RequestBody Appointment newAppointment){
 		
 		List<Appointment> temp = new ArrayList<Appointment>();
 	
@@ -162,6 +173,17 @@ public class PatientResource {
 			
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//---------------------------------------------------------PUT-----------------------------------
 	
 	/**
@@ -173,10 +195,11 @@ public class PatientResource {
 	 * @return
 	 */
 	@RequestMapping(value="/prescription/{prescriptionId}", method = RequestMethod.PUT)
-	public ResponseEntity<?> updatePatientPrescription(@PathVariable("hpId")int hpId
-			, @PathVariable("patientId")int patientId
-			, @PathVariable("prescriptionId")int prescriptionId
-			, @RequestBody Prescription updatePrescription){
+	@ApiMethod(description="Health professional changes/updates the prescription of an individual patient that prescripted by him/her.")
+	public ResponseEntity<?> updatePatientPrescription(@ApiPathParam(name="health professional id", description="requres health professional id")@PathVariable("hpId")int hpId
+			, @ApiPathParam(name="patient id", description="requies patient id")@PathVariable("patientId")int patientId
+			, @ApiPathParam(name="prescription id", description="requires prescription id")@PathVariable("prescriptionId")int prescriptionId
+			, @ApiBodyObject@RequestBody Prescription updatePrescription){
 		Prescription prescription = prescriptionRepo.findByPdId(prescriptionId);
 		Patient foundPatient = patientRepo.findByHpIdAndPatientId(hpId, patientId);
 		if(foundPatient==null){

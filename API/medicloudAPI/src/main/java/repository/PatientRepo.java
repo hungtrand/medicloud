@@ -14,6 +14,7 @@ import model.Person;
 public interface PatientRepo extends CrudRepository<Patient, String>{
 
 	public Patient findByHpIdAndPatientId(int hpId, int patientId);
+	public Patient findByHpIdAndPersonId(int hpId, int personId);
 	public Patient findByPatientId(int patientId);
 	public Patient findByPerson(Person person);
 	public List<Patient> findByPersonId(int personId);

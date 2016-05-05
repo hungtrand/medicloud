@@ -2,6 +2,7 @@ package healthProfessionalService;
 
 import java.util.List;
 
+import org.jsondoc.core.annotation.ApiMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.jsondoc.core.annotation.Api;
+import org.jsondoc.core.annotation.*;
 import model.Patient;
 import provider.MessageResponse;
 import model.ActiveCondition;
@@ -22,6 +24,7 @@ import repository.PatientRepo;
 
 @RestController
 @RequestMapping(value="/api/hp/{hpId}/patients/{patientId}/conditions")
+@Api(name="Health professional conditions collection service", description="Health professional gets and creates new conditions for his/her patient. ")
 public class PatientConditionCollection {
 	@Autowired
 	private PatientRepo patientRepo;
@@ -39,6 +42,7 @@ public class PatientConditionCollection {
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
+	@ApiMethod(description="Health professional gets the active conditions of a patient.")
 	public ResponseEntity<?> getPatientActiveConditions(@PathVariable("patientId") int patientId) {
 		Patient patient = patientRepo.findByPatientId(patientId);
 		
@@ -55,6 +59,7 @@ public class PatientConditionCollection {
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	@Transactional
+	@ApiMethod(description="transactional method.")
 	public ResponseEntity<?> addActiveCondition(@RequestBody newActiveCondition newAC, @PathVariable("patientId") int patientId) {
 		MessageResponse mr = new MessageResponse();
 		

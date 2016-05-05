@@ -135,6 +135,9 @@ public class Patient {
 		return this.hpId;
 	}
 	
+	public void setHpId(int newHpId){
+		this.hpId = newHpId;
+	}
 	
 	public static Patient create(Person p, HealthProfessional hp) {
 		Patient newPatient = new Patient();

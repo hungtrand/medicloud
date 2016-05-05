@@ -22,6 +22,8 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import repository.AppointmentRepo;
@@ -44,8 +46,9 @@ import model.HealthProfessional;
 import model.Note;
 import model.Patient;
 import provider.MessageResponse;
-
+import org.jsondoc.core.annotation.*;
 @RestController
+@Api(name="Patient Collections Service for Health Professionals", description="Health professional get, create, or update patients' informations.")
 @RequestMapping(value="/api/hp/{hpId}/patients")
 public class PatientsCollection {
 	
@@ -80,6 +83,8 @@ public class PatientsCollection {
 	public PatientsCollection() {
 		
 	}
+	
+	
 	
 	@Transactional
 	private Patient saveNewPatient(int hpId, addPatientForm newPatientForm) throws Exception {
@@ -117,9 +122,15 @@ public class PatientsCollection {
 		return newPatient;
 	}
 	
+	/**
+	 * Health professional views all of his/her patients.
+	 * @param hpId -health professional id.
+	 * @return - list of patients.
+	 */
 	// GET [collections]: /api/hp/{hpId}/patients
 	@RequestMapping(value = "", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Patient> getPatients(@PathVariable("hpId") int hpId) {
+	@ApiMethod(description="Health professional views his or her patients information.")
+	public List<Patient> getPatients(@ApiPathParam(name="health professional id")@PathVariable("hpId") int hpId) {
 		Iterable<Patient> patients = new ArrayList<Patient>();
 		patients = patientRepo.findByHpId(hpId);
 		return (List<Patient>) patients;
@@ -128,10 +139,12 @@ public class PatientsCollection {
 	
 	
 	
+	
+	
 		
 	
 	//-----------------------------------------------------POST--------------------------------------
-	
+	//helper class to collect patient information.
 	public static class addPatientForm {
 		public String firstName;
 		public String lastName;
@@ -139,10 +152,23 @@ public class PatientsCollection {
 		public String birthdate;
 	}
 	
+	
+	
+	/**
+	 * Health professional add new patient. 
+	 * @param hpId
+	 * @param newPatientForm
+	 * @return
+	 * @throws Exception
+	 */
 	// POST: /api/hp/{hpId}/patients
 	@RequestMapping(value = "", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> addPatient(@PathVariable("hpId") int hpId, @RequestBody addPatientForm newPatientForm) throws Exception {
+	@ApiMethod(description="Health professional adds new patient.")
+	public ResponseEntity<?> addPatient(@ApiPathParam(name="Health professional id")@PathVariable("hpId") int hpId, 
+			@ApiBodyObject @RequestBody addPatientForm newPatientForm) throws Exception {
 		HealthProfessional hp = hpRepo.findByHpId(hpId);
+		
+	
 		
 		if (personDao.findByFirstName(newPatientForm.firstName) != null && personDao.findByLastName(newPatientForm.lastName) != null && personDao.findByBirthdate(newPatientForm.birthdate) != null) {
 			MessageResponse mr = new MessageResponse();
@@ -191,6 +217,56 @@ public class PatientsCollection {
             return false;
         }
 	}
+	
+	
+	/**
+	 * Health professional add existing patient to his/her connection.
+	 * @param hpId
+	 * @param personId
+	 * @param addCode
+	 * @return
+	 */
+	@RequestMapping(value="", method=RequestMethod.POST)
+	@ApiMethod(description="Health Professional adds an existing Patient")
+	public ResponseEntity<?> addExistingPatient(@ApiPathParam(name="Health Professional Id")@PathVariable("hpId")int hpId
+			
+			, @ApiPathParam(name="patient's code")@PathParam("addCode")int addCode){
+		User findUser = userRepo.findByInvitationCode(addCode);
+		int personId = findUser.getPersonId();
+		Patient connected = patientRepo.findByHpIdAndPatientId(hpId, personId);
+		if(connected != null){
+			MessageResponse mr = new MessageResponse();
+			mr.success = false;
+			mr.error ="Cannot Add this patient!";
+			mr.message = "Patient is connected";
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_ACCEPTABLE);
+		}
+		
+		
+		User foundUser = userRepo.findByPersonId(personId);
+
+		//patient generated code. 
+		int userCode = foundUser.getInvitationCode();
+		
+		//check if code is valid.
+		if(userCode != addCode){
+			MessageResponse mr = new MessageResponse();
+			mr.success = false;
+			mr.error = "Not Found: Invitation Code: [ " + addCode + " ] ";
+			mr.message = "Wrong inviation code.";
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
+		}
+	
+		Person person = personDao.findByPersonId(personId);
+		
+		HealthProfessional hp = hpRepo.findByHpId(hpId);
+		
+		Patient patient = Patient.create(person, hp);
+		patientRepo.save(patient);
+		
+		return new ResponseEntity<String>("Success!",HttpStatus.OK );
+	}
+	
 	
 	
 	

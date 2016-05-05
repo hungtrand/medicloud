@@ -18,9 +18,14 @@ import model.Appointment;
 import provider.MessageResponse;
 import repository.PatientRepo;
 import repository.AppointmentRepo;
+import org.jsondoc.core.annotation.Api;
+import org.jsondoc.core.annotation.ApiBodyObject;
+import org.jsondoc.core.annotation.ApiMethod;
+import org.jsondoc.core.annotation.ApiPathParam;
 
 @RestController
 @RequestMapping(value="/api/hp/{hpId}/patients")
+@Api(name="Patient Resoure Services for health professionals", description="Health professional create, update, or cancel appointment.")
 public class PatientAppointmentResource {
 
 	@Autowired
@@ -36,10 +41,12 @@ public class PatientAppointmentResource {
 	 * @return
 	 */
 	@RequestMapping(value="/{patientId}/appointments/{appointmentId}",method=RequestMethod.PUT)
-	public ResponseEntity<?> getADoctorAppointments(@PathVariable("hpId")int hpId
-			,@PathVariable("patientId")int patientId
-			,@PathVariable("appointmentId")int appointmentId
-			,@RequestBody Appointment updateAppointment){
+	@ApiMethod(description="Health professional updates or changes the appointment of an individual patient.")
+	public ResponseEntity<?> getADoctorAppointments(
+			@ApiPathParam(name="health professoinal id", description="requires Health professional Id")@PathVariable("hpId")int hpId
+			,@ApiPathParam(name="patient id", description = "requires patient id")@PathVariable("patientId")int patientId
+			,@ApiPathParam(name="appointment id", description="requires appointment id")@PathVariable("appointmentId")int appointmentId
+			,@ApiBodyObject@RequestBody Appointment updateAppointment){
 		
 		List<Appointment> foundPatient = appointmentRepo.findByPatientIdAndHpId(patientId, hpId);
 		if(foundPatient==null){
@@ -99,10 +106,12 @@ public class PatientAppointmentResource {
 	 * @return
 	 */
 	@RequestMapping(value="/{patientId}/appointments/{appointmentId}/acceptAppiontment", method=RequestMethod.PUT)
-	public ResponseEntity<?> setAppointment(@PathVariable("patientId")int patientId
-			,@PathVariable("hpId")int hpId
-			,@PathVariable("appointmentId")int appointmentId
-			,@RequestBody Appointment accept){
+	@ApiMethod(description="Health professional accepts/declines the appointment that requested from patients.")
+	public ResponseEntity<?> setAppointment(
+			@ApiPathParam(name="patient id", description="requires patient id")@PathVariable("patientId")int patientId
+			,@ApiPathParam(name="health professional id", description="requires health professional id")@PathVariable("hpId")int hpId
+			,@ApiPathParam(name="appointment id", description="requires appointment id")@PathVariable("appointmentId")int appointmentId
+			,@ApiBodyObject@RequestBody Appointment accept){
 		MessageResponse mr = new MessageResponse();
 		List<Appointment> foundPatient = appointmentRepo.findByPatientIdAndHpId(patientId, hpId);
 		if(foundPatient==null){
@@ -130,9 +139,10 @@ public class PatientAppointmentResource {
 	 * @return
 	 */
 	@RequestMapping(value="{patientId}/appointments/{appointmentId}/cancel", method=RequestMethod.PUT)
-	public ResponseEntity<?> deleteAppointment(@PathVariable("hpId")int hpId
-			, @PathVariable("patientId")int patientId
-			, @PathVariable("appointmentId")int appointmentId){
+	@ApiMethod(description="Health professional cancels an appointment.")
+	public ResponseEntity<?> deleteAppointment(@ApiPathParam(name="health professional id", description="requires health professional id")@PathVariable("hpId")int hpId
+			, @ApiPathParam(name="patient id", description="requires patient id")@PathVariable("patientId")int patientId
+			, @ApiPathParam(name="appointment id", description="requires appointment id")@PathVariable("appointmentId")int appointmentId){
 		
 		List<Appointment> foundPatient = appointmentRepo.findByHpIdAndPatientIdAndAppointmentId(hpId, patientId, appointmentId);
 		MessageResponse mr = new MessageResponse();

@@ -16,9 +16,11 @@ import repository.EncounterRepo;
 import repository.HealthProfessional_repo;
 import repository.ObservationRepo;
 import repository.PatientRepo;
+import org.jsondoc.core.annotation.*;
 
 @RestController
 @RequestMapping(value="/api/hp/{hpId}/patients/{patientId}/encounters")
+@Api(name="Health professional Encounter Service", description="Health professional get the encounter hisotry with an individual patient.")
 public class PatientEncounterCollection {
 	@Autowired
 	private PatientRepo patientRepo;
@@ -34,7 +36,9 @@ public class PatientEncounterCollection {
 	
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public ResponseEntity<?> getPatientEncounters(@PathVariable("patientId") int patientId) {
+	@ApiMethod(description="health professional gets histories of encounter that encountered with an individual patient.")
+	public ResponseEntity<?> getPatientEncounters(
+			@ApiPathParam(name="patient id", description="requires patient id")@PathVariable("patientId") int patientId) {
 		Patient patient = patientRepo.findByPatientId(patientId);
 		List<Encounter> listEncounters = patient.getEncounters();
 		

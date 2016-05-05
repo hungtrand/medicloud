@@ -31,11 +31,13 @@ import repository.HealthProfessional_repo;
 import repository.PersonDao;
 import repository.Role_repo;
 import repository.User_repo;
+import org.jsondoc.core.annotation.*;
 
 @Configuration
 @PropertySource("classpath:client-side.properties")
 @RestController
 @RequestMapping("/HPSignUp")
+@Api(name="Health professional Sign up service", description="Health professional sign up and set up a new account.")
 public class HPSignUpService {
 	@Autowired
 	private HPSignUp_repo hpsuRepo;
@@ -93,7 +95,8 @@ public class HPSignUpService {
 	}
 	
 	@RequestMapping(method=POST) 
-	public MessageResponse createHPSignUp(@RequestBody HPSignUp signup) 
+	@ApiMethod(description="Health professional sign up a new account.")
+	public MessageResponse createHPSignUp(@ApiBodyObject@RequestBody HPSignUp signup) 
 	{		
 		MessageResponse mr = new MessageResponse();
 		
@@ -126,6 +129,7 @@ public class HPSignUpService {
 		return mr;
 	}
 	
+	@ApiMethod(description="Health professional verifies newly created account.")
 	@RequestMapping(value="/verify/{email}/{token}", method=GET)
 	public MessageResponse verifyHPSignUp(
 			@PathVariable("email") String email, @PathVariable("token") String token) 

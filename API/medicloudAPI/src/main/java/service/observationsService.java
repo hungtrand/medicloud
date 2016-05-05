@@ -31,9 +31,11 @@ import com.google.gson.JsonSyntaxException;
 import model.Condition;
 import provider.MessageResponse;
 import repository.ConditionRepo;
+import org.jsondoc.core.annotation.*;
 
 @Configuration
 @PropertySource("classpath:client-side.properties")
+@Api(name="Observation service", description=" User views observations of a patient.")
 @RestController
 public class observationsService {
 	@Value("${infermedica.appId}")

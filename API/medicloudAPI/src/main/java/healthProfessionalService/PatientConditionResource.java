@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.jsondoc.core.annotation.*;
 import model.ActiveCondition;
 import model.Condition;
 import model.Patient;
@@ -20,6 +20,7 @@ import repository.PatientRepo;
 
 @RestController
 @RequestMapping(value="/api/hp/{hpId}/patients/{patientId}/conditions/{activeConditionId}")
+@Api(name="Health professional condition resource service", description="Health professional updates a condition of a patient. Active condition is condition that is currently active.")
 public class PatientConditionResource {
 	@Autowired
 	private PatientRepo patientRepo;
@@ -37,7 +38,10 @@ public class PatientConditionResource {
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.PUT)
-	public ResponseEntity<?> updateActiveCondition(@PathVariable("activeConditionId") int conditionToBeSaved, @RequestBody tempActiveCondition dataToBeSaved) {
+	@ApiMethod(description="Health professional updates/ makes changes on a condition of a patient. ")
+	public ResponseEntity<?> updateActiveCondition(
+			@ApiPathParam(name="active condition id", description="requires active condition id.")@PathVariable("activeConditionId") int conditionToBeSaved, 
+			@ApiBodyObject@RequestBody tempActiveCondition dataToBeSaved) {
 		MessageResponse mr = new MessageResponse();
 		ActiveCondition targetActCond = activeConditionRepo.findByActiveConditionId(conditionToBeSaved);
 		if (targetActCond == null) {

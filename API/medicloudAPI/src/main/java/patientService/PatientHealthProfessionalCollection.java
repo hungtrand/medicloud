@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.jsondoc.core.annotation.*;
 import model.HealthProfessional;
 import model.Patient;
 import provider.MessageResponse;
@@ -20,6 +20,7 @@ import repository.PatientRepo;
 
 @RestController
 @RequestMapping(value="/api/patient/{personId}")
+@Api(name="Patient Health Services", description="Patient views all his/her health professional's information.")
 public class PatientHealthProfessionalCollection {
 	@Autowired
 	private PatientRepo patientRepo;
@@ -33,7 +34,8 @@ public class PatientHealthProfessionalCollection {
 	 * @return list of health professionals
 	 */
 	@RequestMapping(value="/health-professionals", method=RequestMethod.GET)
-	public ResponseEntity<?> getAllHpOfaPerson(@PathVariable("personId")int personId){
+	@ApiMethod(description="Patient views health professional.")
+	public ResponseEntity<?> getAllHpOfaPerson(@ApiPathParam(name="person id", description="requires person id.")@PathVariable("personId")int personId){
 		List<Patient> foundPatient = patientRepo.findByPersonId(personId);
 		
 		if(foundPatient==null){
