@@ -226,11 +226,13 @@ public class PatientsCollection {
 	 * @param addCode
 	 * @return
 	 */
-	@RequestMapping(value="/{personId}", method=RequestMethod.POST)
+	@RequestMapping(value="", method=RequestMethod.POST)
 	@ApiMethod(description="Health Professional adds an existing Patient")
 	public ResponseEntity<?> addExistingPatient(@ApiPathParam(name="Health Professional Id")@PathVariable("hpId")int hpId
-			, @ApiPathParam(name="Patient Id")@PathVariable("personId")int personId
+			
 			, @ApiPathParam(name="patient's code")@PathParam("addCode")int addCode){
+		User findUser = userRepo.findByInvitationCode(addCode);
+		int personId = findUser.getPersonId();
 		Patient connected = patientRepo.findByHpIdAndPatientId(hpId, personId);
 		if(connected != null){
 			MessageResponse mr = new MessageResponse();
