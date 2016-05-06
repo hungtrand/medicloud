@@ -38,14 +38,14 @@ public class Encounter {
 	@Column(name="patient_id")
 	private int patientId;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="hp_id", insertable = false, updatable = false, nullable = false, referencedColumnName="hp_id")
 	private HealthProfessional healthProfessional;
 	
 	@Column(name="hp_id")
 	private int hpId;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="encounter_id")
 	@OrderBy("date_created DESC")
 	private List<Observation> observations = new ArrayList<Observation>();

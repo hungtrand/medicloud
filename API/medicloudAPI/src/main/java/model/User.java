@@ -86,7 +86,7 @@ public class User implements UserDetails {
 		
 	}
 	
-	@JsonIgnore
+//	@JsonIgnore
 	public int getInvitationCode(){
 		return this.invitationCode;
 	}

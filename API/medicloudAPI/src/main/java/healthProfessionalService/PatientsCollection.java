@@ -226,14 +226,28 @@ public class PatientsCollection {
 	 * @param addCode
 	 * @return
 	 */
-	@RequestMapping(value="", method=RequestMethod.POST)
+	@RequestMapping(value="/addCode", method=RequestMethod.POST)
 	@ApiMethod(description="Health Professional adds an existing Patient")
-	public ResponseEntity<?> addExistingPatient(@ApiPathParam(name="Health Professional Id")@PathVariable("hpId")int hpId
-			
-			, @ApiPathParam(name="patient's code")@PathParam("addCode")int addCode){
-		User findUser = userRepo.findByInvitationCode(addCode);
+	public ResponseEntity<?> addExistingPatient(
+			@ApiPathParam(name="Health Professional Id")@PathVariable("hpId")int hpId
+			, @RequestBody User addCode){
+		
+		int code = addCode.getInvitationCode();
+		System.out.println(addCode.getInvitationCode());
+		
+		System.out.println(code);
+		System.out.println("--------------------====-----------------");
+		User findUser = userRepo.findByInvitationCode(code);
+		
 		int personId = findUser.getPersonId();
-		Patient connected = patientRepo.findByHpIdAndPatientId(hpId, personId);
+			
+		
+		
+		List<Patient> temp = new ArrayList<Patient>();
+		temp = (List<Patient>) patientRepo.findByPersonId(personId);
+		
+		Patient connected = patientRepo.findByHpIdAndPersonId(hpId, personId);
+		
 		if(connected != null){
 			MessageResponse mr = new MessageResponse();
 			mr.success = false;
@@ -249,7 +263,7 @@ public class PatientsCollection {
 		int userCode = foundUser.getInvitationCode();
 		
 		//check if code is valid.
-		if(userCode != addCode){
+		if(userCode != code){
 			MessageResponse mr = new MessageResponse();
 			mr.success = false;
 			mr.error = "Not Found: Invitation Code: [ " + addCode + " ] ";

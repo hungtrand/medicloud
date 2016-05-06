@@ -38,11 +38,11 @@ public class Observation {
 //	@JoinColumn(name="obs_id")
 //	private List<Note> note = new ArrayList<Note>();
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="start_obs_id")
 	private List<ActiveCondition> sactiveCondition = new ArrayList<ActiveCondition>();
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="end_obs_id")
 	private List<ActiveCondition> eactiveCondition  = new ArrayList<ActiveCondition>();
 	

@@ -21,7 +21,7 @@ public class LabTest {
 	private int labTestId;
 	
 	@Column(name="infermedica_lab_id")
-	private int infermedicaLabId;
+	private String infermedicaLabId;
 	
 	@Column(name="name")
 	private String name;
@@ -33,7 +33,7 @@ public class LabTest {
 	public int getLabTestId(){
 		return this.labTestId;
 	}
-	public int getInfermedicaLabId(){
+	public String getInfermedicaLabId(){
 		return this.infermedicaLabId;
 	}
 	public String getName(){
@@ -47,7 +47,7 @@ public class LabTest {
 	public void setLabTestId(int newTestId){
 		this.labTestId = newTestId;
 	}
-	public void setInfermedicaLabId(int newInfermedicaId){
+	public void setInfermedicaLabId(String newInfermedicaId){
 		this.infermedicaLabId = newInfermedicaId;
 	}
 	public void setName(String newName){
@@ -55,6 +55,15 @@ public class LabTest {
 	}
 	public void setCategory(String newCategory){
 		this.category = newCategory;
+	}
+	
+	public static LabTest create(String name, String category, String inferLabId) {
+		LabTest newLabTest = new LabTest();
+		newLabTest.name = name;
+		newLabTest.category = category;
+		newLabTest.infermedicaLabId = inferLabId;
+		
+		return newLabTest;
 	}
 	
 }

@@ -81,6 +81,11 @@ public class Patient {
 	@OrderBy("encounter_datetime DESC, date_created DESC")
 	private List<Encounter> encounters = new ArrayList<Encounter>();
 	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="patient_id")
+	@OrderBy("last_updated DESC")
+	private List<LabResult> labResults = new ArrayList<LabResult>();
+	
 	@JsonIgnore
 	public List<ActiveCondition> getActiveConditions() {
 		return this.activeConditions;
@@ -94,6 +99,11 @@ public class Patient {
 	@JsonIgnore
 	public List<Encounter> getEncounters() {
 		return this.encounters;
+	}
+	
+	@JsonIgnore 
+	public List<LabResult> getLabResults() {
+		return this.labResults;
 	}
 	
 	public void setPersonId(int newPersonId){
