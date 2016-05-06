@@ -2,7 +2,7 @@ package patientService;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import org.jsondoc.core.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +21,7 @@ import repository.PersonDao;
 
 @RestController
 @RequestMapping(value="/api/patient/{personId}")
+@Api(name="Patient condition services", description="Patient views all his/her conditions.")
 public class AllPatientConditionCollectionService {
 	@Autowired
 	private PersonDao personRepo;

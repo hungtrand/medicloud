@@ -18,9 +18,10 @@ import model.Person;
 import provider.MessageResponse;
 import repository.PatientRepo;
 import repository.PersonDao;
-
+import org.jsondoc.core.annotation.*;
 @RestController
 @RequestMapping(value="/api/patient/{personId}")
+@Api(name="Patient encounter services",description="Patient views all his/her encounters.")
 public class AllPatientEncounterCollectionService {
 	@Autowired
 	private PersonDao personRepo;

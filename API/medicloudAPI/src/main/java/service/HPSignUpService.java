@@ -37,7 +37,7 @@ import org.jsondoc.core.annotation.*;
 @PropertySource("classpath:client-side.properties")
 @RestController
 @RequestMapping("/HPSignUp")
-@Api(name="Health professional Sign up service", description="Health professional sign up and set up a new account.")
+@Api(name="Health professional sign up service", description="Health professional sign up and set up a new account.")
 public class HPSignUpService {
 	@Autowired
 	private HPSignUp_repo hpsuRepo;

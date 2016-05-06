@@ -44,7 +44,7 @@ import repository.User_repo;
 
 @RestController
 @RequestMapping(value="/api/patient")
-@Api(name="Patient Resource service", description="Patient can views prescriptions, create appointments, cancel appointment, sign up an account with medicloud, and generate new adding code to make new connection with health professional.")
+@Api(name="Patient resource service", description="Patient can views prescriptions, create appointments, cancel appointment, sign up an account with medicloud, and generate new adding code to make new connection with health professional.")
 public class PatientResourceService {
 
 

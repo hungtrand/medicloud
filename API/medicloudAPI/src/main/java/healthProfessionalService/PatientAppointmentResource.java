@@ -25,7 +25,7 @@ import org.jsondoc.core.annotation.ApiPathParam;
 
 @RestController
 @RequestMapping(value="/api/hp/{hpId}/patients")
-@Api(name="Patient Resoure Services for health professionals", description="Health professional create, update, or cancel appointment.")
+@Api(name="Patient resoure Services for health professionals", description="Health professional create, update, or cancel appointment.")
 public class PatientAppointmentResource {
 
 	@Autowired

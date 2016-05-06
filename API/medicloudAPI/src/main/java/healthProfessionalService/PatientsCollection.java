@@ -48,7 +48,7 @@ import model.Patient;
 import provider.MessageResponse;
 import org.jsondoc.core.annotation.*;
 @RestController
-@Api(name="Patient Collections Service for Health Professionals", description="Health professional get, create, or update patients' informations.")
+@Api(name="Health professional collections services", description="Health professional get, create, or update patients' informations.")
 @RequestMapping(value="/api/hp/{hpId}/patients")
 public class PatientsCollection {
 	
