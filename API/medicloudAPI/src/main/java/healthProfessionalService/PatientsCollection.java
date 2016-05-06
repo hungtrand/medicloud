@@ -228,12 +228,12 @@ public class PatientsCollection {
 	 */
 	@RequestMapping(value="/addCode", method=RequestMethod.POST)
 	@ApiMethod(description="Health Professional adds an existing Patient")
-	public ResponseEntity<?> addExistingPatient(@ApiPathParam(name="Health Professional Id")@PathVariable("hpId")int hpId
-			
+	public ResponseEntity<?> addExistingPatient(
+			@ApiPathParam(name="Health Professional Id")@PathVariable("hpId")int hpId
 			, @RequestBody User addCode){
 		
-		
-		int code =addCode.getInvitationCode();
+		int code = addCode.getInvitationCode();
+		System.out.println(addCode.getInvitationCode());
 		
 		System.out.println(code);
 		System.out.println("--------------------====-----------------");
@@ -242,16 +242,11 @@ public class PatientsCollection {
 		int personId = findUser.getPersonId();
 			
 		
-		Patient connected = new Patient();
+		
 		List<Patient> temp = new ArrayList<Patient>();
 		temp = (List<Patient>) patientRepo.findByPersonId(personId);
-		for(int i=0; i<temp.size(); i++){
-			connected = patientRepo.findByHpIdAndPatientId(hpId, temp.get(i).getPatientId());
-			if(connected != null){
-				break;
-			}
-		}
 		
+		Patient connected = patientRepo.findByHpIdAndPersonId(hpId, personId);
 		
 		if(connected != null){
 			MessageResponse mr = new MessageResponse();
@@ -264,7 +259,6 @@ public class PatientsCollection {
 		
 		User foundUser = userRepo.findByPersonId(personId);
 
-		System.out.println(foundUser.getInvitationCode());
 		//patient generated code. 
 		int userCode = foundUser.getInvitationCode();
 		
