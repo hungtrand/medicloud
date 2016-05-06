@@ -20,4 +20,5 @@ public interface PatientRepo extends CrudRepository<Patient, String>{
 	public List<Patient> findByPersonId(int personId);
 	public List<Patient>findByPatientIdAndPersonId(int patientId, int personId);
 	public Iterable<Patient> findByHpId(int hpId);
+	
 }
