@@ -1,75 +1,137 @@
 <!-- TABLE: LATEST ORDERS -->
-<div class="box box-info">
+<div class="box box-info" ng-controller="labResults_controller">
     <div class="box-header with-border">
         <h3 class="box-title">Latest Lab Orders</h3>
         <div class="box-tools pull-right">
-            <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-            <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+            <a href="" ng-click="addLabResult()" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
         </div>
-        </div><!-- /.box-header -->
-        <div class="box-body">
-            <div class="table-responsive">
-                <table class="table no-margin">
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Item</th>
-                            <th>Status</th>
-                            <th>Notes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/pages/examples/invoice.html">OR9842</a></td>
-                            <td>Complete Blood Cell Count (CBC)</td>
-                            <td><span class="label label-success">Received</span></td>
-                            <td><div class="sparkbar" data-color="#00a65a" data-height="20">On time</div></td>
-                        </tr>
-                        <tr>
-                            <td><a href="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/pages/examples/invoice.html">OR1848</a></td>
-                            <td>AntiBody Tests</td>
-                            <td><span class="label label-info">Pending</span></td>
-                            <td><div class="sparkbar" data-color="#f39c12" data-height="20">Awaiting for more data</div></td>
-                        </tr>
-                        <tr>
-                            <td><a href="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/pages/examples/invoice.html">OR7429</a></td>
-                            <td>Blood Glucose</td>
-                            <td><span class="label label-primary">Processing</span></td>
-                            <td><div class="sparkbar" data-color="#f56954" data-height="20">None</div></td>
-                        </tr>
-                        <tr>
-                            <td><a href="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/pages/examples/invoice.html">OR7429</a></td>
-                            <td>Allergy Test</td>
-                            <td><span class="label label-success">Completed</span></td>
-                            <td><div class="sparkbar" data-color="#00c0ef" data-height="20">Delivered 02/21/2015</div></td>
-                        </tr>
-                        <tr>
-                            <td><a href="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/pages/examples/invoice.html">OR1848</a></td>
-                            <td>Electrolyte panel</td>
-                            <td><span class="label label-info">Pending</span></td>
-                            <td><div class="sparkbar" data-color="#f39c12" data-height="20">Delayed</div></td>
-                        </tr>
-                        <tr>
-                            <td><a href="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/pages/examples/invoice.html">OR7429</a></td>
-                            <td>HDL Cholesterol</td>
-                            <td><span class="label label-warning">Delivered</span></td>
-                            <td><div class="sparkbar" data-color="#f56954" data-height="20">Signed by front desk</div></td>
-                        </tr>
-                        <tr>
-                            <td><a href="../AdminLTE-2.3.0/../Assets/AdminLTE-2.3.0/pages/examples/invoice.html">OR9842</a></td>
-                            <td>Liver Function Panel</td>
-                            <td><span class="label label-danger">Canceled</span></td>
-                            <td><div class="sparkbar" data-color="#00a65a" data-height="20">Patient no longer with us</div></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- /.table-responsive -->
+    </div><!-- /.box-header -->
+    <div class="box-body">
+        <div class="table-responsive">
+            <table class="table no-margin">
+                <thead>
+                    <tr>
+                        <th>Lab ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="lab in patient.labs">
+                    <td>
+                        {{ lab.labResultId }}
+                         <br />
+                        <button class="btn btn-xs btn-default"
+                            ng-if="lab.mode!='edit'"
+                            ng-click="lab.edit()">
+                            <i class="fa fa-edit"></i> 
+                            Edit</button>
+
+                        <button class="btn btn-xs btn-warning"
+                                ng-if="lab.mode=='edit'"
+                                ng-click="saveLab(lab)">
+                                <i class="fa fa-save" ng-hide="lab.loading"></i> 
+                                <i class="fa fa-spin fa-spinner"
+                                ng-show="lab.loading"></i>
+                                Save</button>
+                        </td>
+                    <td>{{ lab.name }}</td>
+                    <td>{{ lab.category }}</td>
+                    <td ng-switch="lab.mode">
+                        <select class="form-control input-xs"
+                            ng-switch-when="edit"
+                            ng-model="lab.status">
+                            <option value="">Select Status</option>
+                            <option value="{{ status }}" ng-repeat="status in labStatusChoices">{{
+                            status }}</option>
+                        </select>
+
+                        <label ng-switch-default class="label"
+                            ng-class="{ 'label-default': lab.status=='Started',
+                                        'label-success': lab.status=='Completed',
+                                        'label-primary': lab.status=='Processing',
+                                        'label-warning': lab.status=='Delivered',
+                                        'label-danger': lab.status=='Cancelled',
+                                        'label-info': lab.status=='Received' ||
+                                        lab.status=='Pending'
+                            }">
+                            {{ lab.status }}
+                        </label>
+                    </td>
+                    <td ng-switch="lab.mode">
+                        <input type="text" class="form-control input-xs"
+                            ng-switch-when="edit"
+                            ng-model="lab.result" />
+                        <span ng-switch-default>{{ lab.result }}</span>
+                    </td>
+                </tr>
+
+                <tr ng-repeat="newLab in newLabs">
+                    <td>
+                        <input type="hidden" model="newLab.infermedicaLabId">
+                        <button class="btn btn-sm btn-success"
+                            ng-click="saveNewLab(newLab, $index)">
+                            <i class="fa fa-save" ng-hide="newLab.loading"></i> 
+                            <i class="fa fa-spin fa-spinner"
+                            ng-show="newLab.loading"></i>
+                            Save</button>
+                    </td>
+                    <td>
+                        <div class="form-group" ng-class="{ 'has-error':
+                            newLab._error == 'name' }">
+                            <input type="text" class="form-control input-xs"
+                                ng-model="newLab.name"
+                                uib-typeahead="labTest.name for labTest in
+                                labTestSuggestions | filter:newLab.name | limitTo:8"
+                                typeahead-loading="loadingLabTests"
+                                typeahead-no-results="noLabTests"
+                                typeahead-wait-ms="100"
+                                typeahead-on-select="selectLabTest(newLab, $item)"
+                                placeholder="Lab Name" />
+                            <label class="label label-warning" ng-if="noLabTests">No
+                                suggestions</label>
+                        </div>
+                    </td>
+
+                    <td> 
+                        <div class="form-group" ng-class="{ 'has-error':
+                            newLab._error == 'category' }">
+
+                            <input type="text" class="form-control input-xs"
+                                ng-model="newLab.category"
+                                ng-readonly="newLab.readonly"
+                                placeholder="Category" />
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="form-group" ng-class="{ 'has-error':
+                            newLab._error == 'status' }">
+
+                            <select class="form-control input-xs"
+                                ng-model="newLab.status">
+                                <option value="">Status</option>
+                                <option value="{{ status }}" ng-repeat="status in labStatusChoices">{{
+                                status }}</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-xs"
+                            ng-model="newLab.result" />
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-        <!-- /.box-body -->
-        <div class="box-footer clearfix">
-            
-        </div>
-        <!-- /.box-footer -->
+        <!-- /.table-responsive -->
     </div>
-    <!-- /.box -->
+    <!-- /.box-body -->
+    <div class="box-footer clearfix">
+
+    </div>
+    <!-- /.box-footer -->
+</div>
+<!-- /.box -->

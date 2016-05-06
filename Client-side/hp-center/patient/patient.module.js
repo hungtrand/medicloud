@@ -19,6 +19,9 @@ module.exports = function() {
     var encounterList_factory = require("./encounters/encounterList.factory");
     var observationPicker_directive = require("./conditions/observationPicker.directive");
     var observationSuggestions_factory = require("./observations/observationSuggestions.factory");
+    var labResult_factory = require('./labs/lab-result.factory');
+    var labResults_controller = require('./labs/lab-results.controller');
+    var labTests_factory = require('./labs/lab-tests_factory');
 
     // initialize angular module 
     var app = angular.module('hpPatient', ['ngRoute', 'ngResource', 'ui.bootstrap']);
@@ -42,7 +45,7 @@ module.exports = function() {
                 ['$resource', '$rootScope', infermedicaConditions_serv])
         .service('patient_factory', 
                 ['$resource', '$rootScope', 'activeCondition_factory', 
-                'observation_factory', 'encounterList_factory'
+                'observation_factory', 'encounterList_factory', 'labResult_factory'
                 , patient_factory])
     ;
     
@@ -52,7 +55,8 @@ module.exports = function() {
         .factory('encounterList_factory', ['$resource', encounterList_factory])
         .factory('observationSuggestions_factory',
                 ['$resource', observationSuggestions_factory])
-
+        .factory('labResult_factory', ['$resource', labResult_factory])
+        .factory('labTests_factory', ['$resource', labTests_factory])
     ;
 
     // directives
@@ -63,13 +67,16 @@ module.exports = function() {
         .directive('mcObservationForm', observationForm_directive)
         .directive('mcModal', modal_dir)
         .directive('mcObservationPicker', observationPicker_directive)
-        ;
+    ;
 
     // controllers
     app
         .controller("profile_ctrl", ['$scope', 'models_service', '$route', '$routeParams', profile_ctrl])
         .controller("conditionList_ctrl", ['$scope', 'models_service', '$route', '$routeParams', conditionList_ctrl])
         .controller("observations_ctrl", ['$scope', 'models_service', '$route', '$routeParams', observations_ctrl])
+        .controller("labResults_controller", 
+                ['$scope', 'models_service', '$route', '$routeParams', 
+                'labResult_factory', 'labTests_factory', labResults_controller ])
         .controller("main_ctrl", ['$scope', 'models_service', '$route', '$routeParams', main_ctrl])
-        ;
+    ;
 }
