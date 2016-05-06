@@ -30,7 +30,7 @@ module.exports = function($http, $rootScope, $resource) {
               onSuccessFn = null;
               onFailureFn = null;
           });
-          return this.times;
+          return promise;
         },
       appointments: [],
       getAppointments: function() {
