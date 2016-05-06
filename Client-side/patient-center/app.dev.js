@@ -11,6 +11,7 @@
     var hpList_factory = require('./health-professionals/hp-list.factory');
     var encounterList_factory = require("./encounters/encounter-list.factory");
     var activeConditionList_factory = require("./active-conditions/active-condition-list.factory");
+    var labResultList_factory = require("./lab-results/lab-result-list.factory");
 
     var patientCenterModel_service = require("./model.service");
 
@@ -19,6 +20,7 @@
     var healthProfessionalsDirectory_controller = require("./health-professionals/health-professionals-directory.controller");
     var encounterList_controller = require("./encounters/encounters.controller");
     var activeConditionList_controller = require("./active-conditions/active-conditions.controller");
+    var labResults_controller = require("./lab-results/lab-results.controller"); 
 
     var app = angular.module('patientCenter', ['ngRoute', 'ngResource', 'ngAnimate']);
 
@@ -36,13 +38,14 @@
         .factory('patientCenter_hpList_factory', ['$resource', hpList_factory])
         .factory('patientCenter_encounterList_factory', ['$resource', encounterList_factory])
         .factory('patientCenter_activeConditionList_factory', ['$resource', activeConditionList_factory])
+        .factory('patientCenter_labResultList_factory', ['$resource', labResultList_factory])
     ;
 
     app
         .service('patientCenter_model_service', 
                 ['$resource', 'patientCenter_profile_factory', 
                 'patientCenter_hpList_factory','patientCenter_encounterList_factory',
-                'patientCenter_activeConditionList_factory',
+                'patientCenter_activeConditionList_factory', 'patientCenter_labResultList_factory',
                 patientCenterModel_service])
     ;
 
@@ -57,5 +60,7 @@
             ['$scope', 'patientCenter_model_service', encounterList_controller])
         .controller("patientCenter_activeConditionList_controller",
             ['$scope', 'patientCenter_model_service', activeConditionList_controller])
+        .controller("patientCenter_labResults_controller",
+            ['$scope', 'patientCenter_model_service', labResults_controller])
     ;
 })();

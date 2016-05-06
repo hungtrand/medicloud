@@ -1,0 +1,51 @@
+<div class="box box-warning">
+    <div class="box-header with-border">
+        <h3 class="box-title">Lab Results</h3> 
+    </div>
+
+    <div class="box-body">
+        <h1 class="text-danger text-center" ng-if="!ready && loading"><i class="fa fa-spin fa-spinner"></i></h1>
+        <div class="alert alert-danger" ng-if="error">{{ error }}</div>
+        <div class="table-responsive ng-animate nga-default nga-stagger
+            nga-slide-left-add" ng-show="ready">
+            <table class="table no-margin">
+                <thead>
+                    <tr>
+                        <th>Lab ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="lab in labs">
+                    <td>
+                        {{ lab.labResultId }}
+                    </td> 
+                    <td>{{ lab.name }}</td> 
+                    <td>{{ lab.category }}</td> 
+                    <td>  
+                        <label class="label"
+                            ng-class="{ 'label-default': lab.status=='Started',
+                                        'label-success': lab.status=='Completed',
+                                        'label-primary': lab.status=='Processing',
+                                        'label-warning': lab.status=='Delivered',
+                                        'label-danger': lab.status=='Cancelled',
+                                        'label-info': lab.status=='Received' ||
+                                        lab.status=='Pending'
+                            }">
+                            {{ lab.status }}
+                        </label>
+                    </td>
+                    <td> 
+                        <span>{{ lab.result }}</span>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+</div>
