@@ -233,10 +233,10 @@ public class PatientsCollection {
 			, @RequestBody User addCode){
 		
 		int code = addCode.getInvitationCode();
-		System.out.println(addCode.getInvitationCode());
+//		System.out.println(addCode.getInvitationCode());
 		
-		System.out.println(code);
-		System.out.println("--------------------====-----------------");
+//		System.out.println(code);
+//		System.out.println("--------------------====-----------------");
 		User findUser = userRepo.findByInvitationCode(code);
 		
 		int personId = findUser.getPersonId();
