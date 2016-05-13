@@ -12,6 +12,9 @@ module.exports = function($scope, $rootScope, service) {
     var validBirthdate = false;
     var validEmail = false;
     var newPatient = true;
+    var existingPatientCode = {
+      invitationCode: 123456
+    };
     $('#patientSuccessAlert').hide();
     $('#patientFailureAlert').hide();
 
@@ -21,6 +24,7 @@ module.exports = function($scope, $rootScope, service) {
     }
 
     $rootScope.$on('patientAdded', function() {
+        $scope.modalShown = false;
         $scope.waiting = false;
         $('#AddPatientForm')[0].reset();
     });
@@ -39,8 +43,9 @@ module.exports = function($scope, $rootScope, service) {
         $scope.waiting = true;
         if (!newPatient) {
           service.invitationCode = newPatientData;
+          existingPatientCode.invitationCode = newPatientData;
           console.log('in contoller: code is' + newPatientData);
-          service.addExistingPatient(newPatientData);
+          service.addExistingPatient(existingPatientCode);
         }
         else {
             service.addPatient(newPatientData)
