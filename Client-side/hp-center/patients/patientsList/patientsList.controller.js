@@ -16,8 +16,14 @@ module.exports = function($scope, $rootScope, service) {
     $('#patientFailureAlert').hide();
 
     $scope.clicked = function(patient) {
-        $scope.contactClicked = true;
-        $scope.selectedPatient = patient;
+        $scope.contactClicked = false;
+
+        setTimeout(function() {
+            $scope.contactClicked = true;
+            $scope.selectedPatient = patient;
+            $scope.$apply();
+        }, 200);
+        
     }
 
     $rootScope.$on('patientAdded', function() {

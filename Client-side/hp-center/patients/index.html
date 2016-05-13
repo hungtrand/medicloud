@@ -24,6 +24,19 @@
                 <modal-dialog show='modalShown' error="error" waiting="waiting" submit="addPatient"></modal-dialog>
             </form>
         </div>
+
+        <div class="col-sm-6 col-md-offset-3 col-md-3">
+            <a class="info-box bg-yellow" href="#/calendar">
+                <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Appointments</span>
+                    <span class="info-box-number">3</span>
+                    <span class="progress-description">
+                        Upcoming
+                    </span>
+                </div><!-- /.info-box-content -->
+            </a><!-- /.info-box -->
+        </div><!-- /.col -->
     </div>
     <hr />
 
@@ -33,27 +46,34 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="list-group">
-                            <a class="list-group-item list-group-item-info" 
+                            <a class="list-group-item list-group-item-success" 
                                 href="" 
                                 ng-repeat="patient in patientList | orderBy: 'lastName' | filter: patientSearchText" 
-                                ng-click="clicked(patient)">
-                                <div class="row">
-                                    <div class="col-xs-2 pull-left">
-                                        <i class="fa fa-user text-muted" style="font-size: 32px;"></i>
+                                ng-mouseover="clicked(patient)">
+
+                                <div class="box box-widget widget-user-2">
+                                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                                    <div class="widget-user-header bg-green">
+                                        <div class="widget-user-image">
+                                            <img class="img-circle"
+                                            src="../Images/patient-placeholder.png" alt="User Avatar">
+                                        </div><!-- /.widget-user-image -->
+                                        <h3 class="widget-user-username">
+                                            {{ patient.lastName }}, {{ patient.firstName }}</h3>
+                                        <h5 class="widget-user-desc">{{ patient.birthdate }}</h5>
                                     </div>
-                                    <div class="col-xs-10">
-                                        <h3 class="list-group-item-heading">
-                                            {{patient.lastName}}, {{patient.firstName}}
-                                        </h3>
-                                    </div>       
+                                    <div class="box-footer no-padding">
+                                    </div>
                                 </div>
+                                
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div ng-show="contactClicked" class="col col-xs-6">
+        <div ng-show="contactClicked" 
+            class="col col-xs-6 ng-animate nga-default nga-stagger nga-slide-left-add">
             <div class="bootcards-card">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
@@ -68,6 +88,12 @@
                             <p class="list-group-item-text">Name</p>
                             <h4 class="list-group-item-heading">{{selectedPatient.firstName}} {{selectedPatient.lastName}}</h4>
                         </div>
+
+                        <div class="list-group-item">
+                            <p class="list-group-item-text">Gender</p>
+                            <h4 class="list-group-item-heading">{{ patient.gender }}</h4>
+                        </div>
+
                         <div class="list-group-item">
                             <p class="list-group-item-text">Email</p>
                             <h4 class="list-group-item-heading">{{selectedPatient.email}}</h4>

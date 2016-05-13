@@ -23,10 +23,6 @@ module.exports = function() {
                 });
         }
 
-
-        $(document).on('dblclick', function() {
-            console.log($scope.invitationCode);
-        });
     }
 
     return {
