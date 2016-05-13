@@ -1,0 +1,13 @@
+<label class="label label-danger" ng-if="!code">NOT SET</label>
+<a href="" ng-click="show=!show" ng-if="code" class="text-success">
+    <span style="font-size: 24px;" 
+        ng-if="show"
+        class="text-success">{{ code }}</span>
+    <span style="font-size: 24px;"
+        ng-if="!show" 
+        class="text-success">******</span>
+</a>
+<button class="btn btn-xs btn-warning" title="Generate invitation code"
+    data-toggle="tooltip" ng-click="generate()">
+    <i class="fa fa-refresh"></i>
+</button>

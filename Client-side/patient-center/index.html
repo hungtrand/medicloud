@@ -116,24 +116,18 @@ ng-controller="patientCenter_main_controller">
                 </a>
                 <div class="pull-left info">
                     <p>{{ profile.firstName }} {{ profile.lastName }}</p>
-                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    <!--<a href="#"><i class="fa fa-circle text-success"></i>
+                        Online</a>-->
                 </div>
             </div>
             <ul class="sidebar-menu">
                 <li class="header">
                     <i class="fa fa-lock text-success"></i> 
-                    INVITATION PIN
+                    INVITATION CODE
                     <small><em>(Click to show)</em></small>
                 </li>
                 <li class="active treeview text-center">
-                    <a href="" ng-click="showPin=!showPin" class="text-success">
-                        <label class="label label-danger" ng-if="!PIN">PIN NOT SET</label>
-                            <div ng-if="PIN">
-                            <span style="font-size: 24px;" ng-if="showPin"
-                                class="text-success">{{ PIN }}</span>
-                            <span style="font-size: 24px;" ng-if="!showPin" class="text-success">******</span>
-                        </div>
-                    </a>
+                    <mc-patient-invitation-code></mc-patient-invitation-code>
                 </li>
             </ul>
         </section>

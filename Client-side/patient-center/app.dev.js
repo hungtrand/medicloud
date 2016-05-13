@@ -4,6 +4,7 @@
     var calendar_directive = require('./calendar');
     var profileView_directive = require("./profile/profile-view.directive");
     var profileEdit_directive = require("./profile/profile-edit.directive");
+    var invitationCode_directive = require("./invitation-code/invitation-code.directive");
 
     var appointmentModal_directive = require('./appointment-modal/modal.directive');
     
@@ -12,6 +13,7 @@
     var encounterList_factory = require("./encounters/encounter-list.factory");
     var activeConditionList_factory = require("./active-conditions/active-condition-list.factory");
     var labResultList_factory = require("./lab-results/lab-result-list.factory");
+    var invitationCode_factory = require("./invitation-code/invitation-code.factory");
 
     var patientCenterModel_service = require("./model.service");
 
@@ -31,6 +33,7 @@
         .directive('appointmentModal_directive', appointmentModal_directive)
         .directive('patientCenterProfileView', profileView_directive)
         .directive('patientCenterProfileEdit', profileEdit_directive)
+        .directive('mcPatientInvitationCode', invitationCode_directive)
     ;
 
     app
@@ -39,6 +42,7 @@
         .factory('patientCenter_encounterList_factory', ['$resource', encounterList_factory])
         .factory('patientCenter_activeConditionList_factory', ['$resource', activeConditionList_factory])
         .factory('patientCenter_labResultList_factory', ['$resource', labResultList_factory])
+        .factory('patientCenter_invitationCode_factory', ['$resource', invitationCode_factory])
     ;
 
     app
