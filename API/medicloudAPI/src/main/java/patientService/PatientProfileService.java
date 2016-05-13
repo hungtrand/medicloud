@@ -24,7 +24,7 @@ import repository.PersonDao;
 @RestController
 @RequestMapping(value="/api/patient/{personId}")
 @Api(name="Patient profile service", description="Patient can views or change his/her profile.")
-public class patientProfileService {
+public class PatientProfileService {
 	
 	@Autowired
 	private PersonDao personRepo;
