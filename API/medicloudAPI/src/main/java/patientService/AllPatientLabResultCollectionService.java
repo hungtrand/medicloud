@@ -12,17 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.Encounter;
+import model.LabResult;
 import model.Patient;
 import model.Person;
 import provider.MessageResponse;
 import repository.PatientRepo;
 import repository.PersonDao;
-import org.jsondoc.core.annotation.*;
+
 @RestController
 @RequestMapping(value="/api/patient/{personId}")
-@Api(name="Patient encounter services",description="Patient views all his/her encounters.")
-public class AllPatientEncounterCollectionService {
+public class AllPatientLabResultCollectionService {
 	@Autowired
 	private PersonDao personRepo;
 	
@@ -32,12 +31,12 @@ public class AllPatientEncounterCollectionService {
 	/**
 	 * @method: GET
 	 * @PathVariable: personId
-	 * @return ResponseEntity<List<Encounter>
+	 * @return ResponseEntity<List<Labs>
 	 * 
 	 */
-	@RequestMapping(value="/encounters", method=RequestMethod.GET)
+	@RequestMapping(value="/labs", method=RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<?> getPatientEncounters(@PathVariable("personId") int personId) {
+	public ResponseEntity<?> getPatientLabResults(@PathVariable("personId") int personId) {
 		MessageResponse mr = new MessageResponse();
 		mr.success = false;
 		
@@ -48,15 +47,15 @@ public class AllPatientEncounterCollectionService {
 			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
 		} else {
 			List<Patient> personAsPatients = patientRepo.findByPersonId(personId);
-			List<Encounter> allEncounters = new ArrayList<Encounter>();
+			List<LabResult> allLabResults = new ArrayList<LabResult>();
 			
 			for(int i = 0; i < personAsPatients.size(); i++){
-				List<Encounter> patientEncounters = personAsPatients.get(i).getEncounters();
+				List<LabResult> patientLabResults = personAsPatients.get(i).getLabResults();
 				
-				allEncounters.addAll(patientEncounters);
+				allLabResults.addAll(patientLabResults);
 			}
 			
-			return new ResponseEntity<List<Encounter>>(allEncounters, HttpStatus.OK);
+			return new ResponseEntity<List<LabResult>>(allLabResults, HttpStatus.OK);
 		}
 		
 	}
