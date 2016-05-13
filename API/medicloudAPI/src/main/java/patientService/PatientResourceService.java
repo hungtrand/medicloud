@@ -44,7 +44,7 @@ import repository.User_repo;
 
 @RestController
 @RequestMapping(value="/api/patient")
-@Api(name="Patient Resource service", description="Patient can views prescriptions, create appointments, cancel appointment, sign up an account with medicloud, and generate new adding code to make new connection with health professional.")
+@Api(name="Patient resource service", description="Patient can views prescriptions, create appointments, cancel appointment, sign up an account with medicloud, and generate new adding code to make new connection with health professional.")
 public class PatientResourceService {
 
 
@@ -304,8 +304,8 @@ public class PatientResourceService {
 		@RequestMapping(value="/{personId}/users/{userId}/invitationcode", method=RequestMethod.PUT)
 		@ApiMethod(description="Patient generates an invitation code.")
 		public ResponseEntity<?> setInvitationCode(
-				@ApiPathParam(name="person id")@PathVariable("personId")int personId
-				,@ApiPathParam(name="user id")@PathVariable("userId")int userId){
+				@PathVariable("personId")int personId
+				,@PathVariable("userId")int userId){
 			
 			User user = new User();
 			user = userRepo.findByPersonIdAndUserId(personId, userId);
@@ -326,7 +326,7 @@ public class PatientResourceService {
 			mr.message="Your invitation code is : " + user.getInvitationCode();
 			
 			
-			return new ResponseEntity<Integer>( user.getInvitationCode(), HttpStatus.OK);
+			return new ResponseEntity<MessageResponse>( mr, HttpStatus.OK);
 		}
 		
 		

@@ -20,7 +20,7 @@ import repository.PatientRepo;
 
 @RestController
 @RequestMapping(value="/api/patient/{personId}")
-@Api(name="Patient Health Services", description="Patient views all his/her health professional's information.")
+@Api(name="Patient health services", description="Patient views all his/her health professional's information.")
 public class PatientHealthProfessionalCollection {
 	@Autowired
 	private PatientRepo patientRepo;

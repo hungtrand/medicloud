@@ -24,7 +24,7 @@ module.exports = function() {
 	app.service('patientsListService', ["$http", "$rootScope", "$resource", patientsListService]);
 
 	// directives
-	app.directive('modalDialog', formAddPatient_dir);
+	app.directive('modalDialog', ["$rootScope", formAddPatient_dir]);
 
 	// controllers
 	app.controller("patientsList_ctrl", ['$scope', '$rootScope', 'patientsListService', patientsList_ctrl]);

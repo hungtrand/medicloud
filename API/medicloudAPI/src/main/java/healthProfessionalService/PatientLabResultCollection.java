@@ -21,9 +21,10 @@ import repository.HealthProfessional_repo;
 import repository.LabResultRepo;
 import repository.LabTest_repo;
 import repository.PatientRepo;
-
+import org.jsondoc.core.annotation.*;
 @RestController
 @RequestMapping(value="/api/hp/{hpId}/patients/{patientId}/lab-results")
+@Api(name="Health professional lab result services", description="Health professional views patients' lab results.")
 public class PatientLabResultCollection {
 	@Autowired
 	private PatientRepo patientRepo;

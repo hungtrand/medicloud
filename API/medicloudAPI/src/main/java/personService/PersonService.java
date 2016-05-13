@@ -24,7 +24,7 @@ import repository.PatientRepo;
 import repository.User_repo;
 
 @RestController
-@RequestMapping(value="/api/users/")
+@RequestMapping(value="/api/users")
 @Api(description="", name="Add or edit personal service for each user")
 public class PersonService {
 	
@@ -60,7 +60,7 @@ public class PersonService {
 
 	@RequestMapping(value="/{user_id}", method =RequestMethod.GET)
 	@ApiMethod(description="Get user's contact information")
-	public List<Contact> getUser(@ApiPathParam(name="user_id") @PathVariable("user_id")int userId){
+	public List<Contact> getUser(@ApiPathParam(name="user_id", description="requires user id") @PathVariable("user_id")int userId){
 		List<Contact> temp = new ArrayList<Contact>();
 		User findUser = userRepo.findByUserId(userId);
 

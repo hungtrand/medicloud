@@ -1,8 +1,11 @@
 module.exports = function($http, $rootScope, $resource) {
     var onSuccessFn;
     var onFailureFn;
+    var invitationCode;
     var hpId = sessionStorage.getItem("medicloud_hp_id");
     var url = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/:patientId';
+    var addExistingPatientUrl = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients?addCode=:invitationCode';
+
     var service = {
       patients: [{
             firstName: "Peter",
@@ -45,7 +48,7 @@ module.exports = function($http, $rootScope, $resource) {
         },
 
         addPatient: function(patient) {
-
+          debugger;
             var client = $resource(url, {
                 hpId: hpId
             });
@@ -67,6 +70,22 @@ module.exports = function($http, $rootScope, $resource) {
                 });
 
             return result.$promise;
+        },
+
+        addExistingPatient: function(PIN) {
+          debugger;
+          invitationCode = this.invitationCode;
+          console.log('service code is ' + invitationCode);
+          var client = $resource(addExistingPatientUrl, {
+            hpId: hpId,
+            invitationCode: invitationCode
+          });
+          var result = client.save({}, {}, function(response) {
+            if (response.personId) {
+              
+              console.log('existing patient added');
+            }
+          })
         }
     }
     return service;
