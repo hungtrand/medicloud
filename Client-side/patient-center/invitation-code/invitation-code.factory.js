@@ -12,7 +12,7 @@ module.exports = function($resource) {
     invitationCodeClass.prototype.invitationCode = null;
     invitationCodeClass.prototype.getInvitationCode = function() {
         return this.invitationCode;
-    };
-     
+    }; 
+
     return invitationCodeClass;
 }

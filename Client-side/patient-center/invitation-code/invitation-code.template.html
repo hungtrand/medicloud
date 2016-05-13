@@ -1,13 +1,13 @@
-<label class="label label-danger" ng-if="!code">NOT SET</label>
-<a href="" ng-click="show=!show" ng-if="code" class="text-success">
+<label class="label label-danger" ng-if="!invitationCode.invitationCode">NOT SET</label>
+<a href="" ng-click="show=!show" ng-if="invitationCode.invitationCode" class="text-success">
     <span style="font-size: 24px;" 
         ng-if="show"
-        class="text-success">{{ code }}</span>
+        class="text-success">{{ invitationCode.invitationCode }}</span>
     <span style="font-size: 24px;"
         ng-if="!show" 
         class="text-success">******</span>
 </a>
 <button class="btn btn-xs btn-warning" title="Generate invitation code"
-    data-toggle="tooltip" ng-click="generate()">
-    <i class="fa fa-refresh"></i>
+    data-toggle="tooltip" ng-disabled="loading" ng-click="generateNewCode()">
+    <i class="fa fa-refresh" ng-class="{ 'fa-spin': loading }"></i>
 </button>

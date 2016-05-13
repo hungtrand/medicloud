@@ -124,9 +124,17 @@ public class PatientProfileService {
 			return new ResponseEntity<Person>(personRepo.findByPersonId(personId), HttpStatus.OK);
 		}
 	}
+
 	private static class userInvitationCode {
 		public int invitationCode;
 	}
+
+	@Transactional
+	private void generate(User user) {
+		user.setInvitationCode();
+		userRepo.save(user);
+	}
+
 	/**
 	 * Generate invitation code.
 	 * @param personId
@@ -146,6 +154,7 @@ public class PatientProfileService {
 			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
 		}
 
+		this.generate(user);
 		userInvitationCode code = new userInvitationCode();
 		code.invitationCode = user.getInvitationCode();
 		return new ResponseEntity<>(code, HttpStatus.OK);

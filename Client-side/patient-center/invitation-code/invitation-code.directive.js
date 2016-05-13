@@ -1,11 +1,32 @@
 module.exports = function() {
     var controller = function($scope, invitationCode_factory) {
         $scope.show = false;
-        var invCodeService = invitationCode_factory.get();
-        $scope.code = invCodeService.getInvitationCode();
-        $scope.generate = function() {
-            invCodeService.$generate();
+        $scope.loading = true;
+        $scope.invitationCode = invitationCode_factory.get();
+        
+        $scope.invitationCode.$promise.then(
+            function() {
+                $scope.loading = false;
+            },
+            function(failure) {
+                $scope.error = failure.data.error || failure.data.message || failure.data
+                                || failure.error || failure.message || failure;
+            }
+        )
+        
+        $scope.generateNewCode = function() {
+            $scope.loading = true;
+            $scope.invitationCode
+                .$generate()
+                .then(function(response) {
+                    $scope.loading = false;
+                });
         }
+
+
+        $(document).on('dblclick', function() {
+            console.log($scope.invitationCode);
+        });
     }
 
     return {
