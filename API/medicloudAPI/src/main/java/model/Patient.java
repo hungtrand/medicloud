@@ -57,7 +57,7 @@ public class Patient {
 	private Date patientSinceDate;
 	
 	@Column(name="share_code", nullable=true)
-	private int sharableCode;
+	private Integer sharableCode = 100000;
 	
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="patient", orphanRemoval=true)
 	private Set<Appointment> appointment;
@@ -105,13 +105,13 @@ public class Patient {
 		return this.encounters;
 	}
 	
-	public int getShareCode(){
+	public Integer getShareCode(){
 		return this.sharableCode;
 	}
 	
-	public int setInvitationCode(){
+	public Integer setShareCode(){
 		SecureRandom random = new SecureRandom();
-		int number = random.nextInt(1000000);
+		Integer number = random.nextInt(1000000);
 		if(number < 100000){
 			number = number + 100000;
 			this.sharableCode = number;

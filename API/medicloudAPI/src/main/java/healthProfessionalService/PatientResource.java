@@ -3,6 +3,8 @@ package healthProfessionalService;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -237,6 +239,69 @@ public class PatientResource {
 		return new ResponseEntity<MessageResponse>(mr, HttpStatus.OK);
 	}
 	
+	private static class patientShareCode {
+		public int shareCode;
+	}
 	
+	@Transactional
+	private void generate(Patient patient) {
+		patient.setShareCode();
+		patientRepo.save(patient);
+	}
+	
+	/**
+	 * Generate share code.
+	 * @param personId
+	 * @return
+	 */
+	@RequestMapping(value="/share-code", method=RequestMethod.PUT)
+	@ApiMethod(description="Health professional generates an share code.")
+	public ResponseEntity<?> setInvitationCode(@PathVariable("patientId")int patientId,
+			@PathVariable("hpId")int hpId) {
+
+		Patient findPatient = patientRepo.findByHpIdAndPatientId(hpId, patientId);
+		
+		if(findPatient==null){
+			MessageResponse mr = new MessageResponse();
+			mr.success = false;
+			mr.error ="Not found: patientID [ " + patientId + " ] or Health professional Id [ " + hpId + "] ";
+			mr.message = "";
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
+		}
+
+		this.generate(findPatient);
+		patientShareCode code = new patientShareCode();
+		code.shareCode = findPatient.getShareCode();
+		return new ResponseEntity<>(code, HttpStatus.OK);
+	}
+
+	
+	/**
+	 * get Generated share code.
+	 * @param personId
+	 * @return
+	 */
+
+	@RequestMapping(value="/share-code", method=RequestMethod.GET)
+	@ApiMethod(description="Get current share code.")
+	public ResponseEntity<?> getInvitationCode(@ApiPathParam(name="patient id")@PathVariable("patientId")int patientId,
+			@ApiPathParam(name="Health professional id")@PathVariable("hpId")int hpId) {
+
+		Patient findPatient = patientRepo.findByHpIdAndPatientId(hpId, patientId);
+
+		if(findPatient==null){
+			MessageResponse mr = new MessageResponse();
+			mr.success = false;
+			mr.error ="Not found: personId [ " + patientId + " ] or health professional ID [ " + hpId + "]";
+			mr.message = "";
+			return new ResponseEntity<>(mr, HttpStatus.NOT_FOUND);
+		}
+
+		
+		patientShareCode code = new patientShareCode();
+		code.shareCode = findPatient.getShareCode();
+
+		return new ResponseEntity<>(code, HttpStatus.OK);
+	}
 	
 }
