@@ -293,44 +293,6 @@ public class PatientResourceService {
 			return new ResponseEntity<MessageResponse>(mr, HttpStatus.OK);	
 			
 		}
-	
-		
-		/**
-		 * Generate invitation code.
-		 * @param personId
-		 * @param userId
-		 * @return
-		 */
-		@RequestMapping(value="/{personId}/users/{userId}/invitationcode", method=RequestMethod.PUT)
-		@ApiMethod(description="Patient generates an invitation code.")
-		public ResponseEntity<?> setInvitationCode(
-				@PathVariable("personId")int personId
-				,@PathVariable("userId")int userId){
-			
-			User user = new User();
-			user = userRepo.findByPersonIdAndUserId(personId, userId);
-			
-			if(user==null){
-				MessageResponse mr = new MessageResponse();
-				mr.success = false;
-				mr.error ="Not found: personId [ " + personId + "] , or userId [ " + userId + " ]";
-				mr.message = "";
-				return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
-			}
-			
-			user.setInvitationCode();
-			userRepo.save(user);
-			MessageResponse mr = new MessageResponse();
-			mr.success = true;
-			mr.error="";
-			mr.message="Your invitation code is : " + user.getInvitationCode();
-			
-			
-			return new ResponseEntity<MessageResponse>( mr, HttpStatus.OK);
-		}
-		
-		
-		
-	
-	
+
+
 }

@@ -99,9 +99,9 @@ public class HPSignUpService {
 	public MessageResponse createHPSignUp(@ApiBodyObject@RequestBody HPSignUp signup) 
 	{		
 		MessageResponse mr = new MessageResponse();
-		
+		User existingUser = userRepo.findByEmail(signup.getEmail());
 		HPSignUp hpSU  = hpsuRepo.findByEmail(signup.getEmail());
-		if (hpSU == null) {
+		if (hpSU == null && existingUser == null) {
 			HPSignUp newHP = HPSignUp.createHPSignUp(	signup.getName(), 
 														signup.getEmail(), 
 														signup.getBusinessName(), 

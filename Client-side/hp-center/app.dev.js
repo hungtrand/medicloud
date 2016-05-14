@@ -1,43 +1,45 @@
 (function() {
-	// patients_module = require("./patients/patients.module");
-	var patient_module = require("./patient/patient.module");
-	var hpPatientList_module = require("./patients/patients.module");
+    // patients_module = require("./patients/patients.module");
+    var patient_module = require("./patient/patient.module");
+    var hpPatientList_module = require("./patients/patients.module");
 
-	var auth = require("../Shared/authorization.interceptor");
-	var hpCalendar_module = require('./calendar/calendar.module');
-	var errorModal_directive = require('./error/error.directive');
+    var auth = require("../Shared/authorization.interceptor");
+    var hpCalendar_module = require('./calendar/calendar.module');
+    var errorModal_directive = require('./error/error.directive');
 
-	patient_module();
-	hpPatientList_module();
-	hpCalendar_module();
-	var app = new angular.module("hp-center", ['ngRoute', 'ngAnimate', 'hpPatient', 'hpPatientList', 'hpCalendar']);
-	// routing and navigation configuration
-	
-	app.config(['$routeProvider', '$httpProvider',
-		function($routeProvider, $httpProvider) {
-			'use strict';
-			$routeProvider
+    var main_controller = require('./main.controller');
 
-				.when('/', {
-					templateUrl: 'dashboard/'
-				})
-				.otherwise({
-					redirectTo: '/'
-				});
+    patient_module();
+    hpPatientList_module();
+    hpCalendar_module();
+    var app = new angular.module("hp-center", ['ngRoute', 'ngResource', 'ngAnimate', 'hpPatient', 'hpPatientList', 'hpCalendar']);
+    // routing and navigation configuration
 
-			$httpProvider.interceptors.push(['$q', '$location', auth]);
-		}
-	]);
+    app.config(['$routeProvider', '$httpProvider',
+        function($routeProvider, $httpProvider) {
+            'use strict';
+            $routeProvider
 
-	// directives
-	app
-		.directive('mdErrorModal', errorModal_directive);
+    .otherwise({
+        redirectTo: '/patients/'
+    });
 
-	// services and factories
+    $httpProvider.interceptors.push(['$q', '$location', auth]);
+        }
+        ]);
 
-	// controllers
+    // directives
+    app
+        .directive('mdErrorModal', errorModal_directive);
 
-	// initiate
-	angular.bootstrap(window.document, ['hp-center']);
+    // services and factories
+
+    // controllers
+    app
+        .controller('hpCenter_main_controller', ['$scope', '$resource', main_controller])
+        ;
+
+    // initiate
+    angular.bootstrap(window.document, ['hp-center']);
 
 })();

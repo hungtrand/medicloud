@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,17 +21,21 @@ import model.Person;
 import provider.MessageResponse;
 import repository.Contact_repo;
 import repository.PersonDao;
+import repository.User_repo;
 
 @RestController
 @RequestMapping(value="/api/patient/{personId}")
 @Api(name="Patient profile service", description="Patient can views or change his/her profile.")
-public class patientProfileService {
+public class PatientProfileService {
 	
 	@Autowired
 	private PersonDao personRepo;
 	
 	@Autowired
 	private Contact_repo contactRepo;
+
+	@Autowired
+	private User_repo userRepo;
 	
 	@Transactional
 	private boolean savePersonalInformation(Person p, Person newInfo) {
@@ -118,5 +123,66 @@ public class patientProfileService {
 			
 			return new ResponseEntity<Person>(personRepo.findByPersonId(personId), HttpStatus.OK);
 		}
+	}
+
+	private static class userInvitationCode {
+		public int invitationCode;
+	}
+
+	@Transactional
+	private void generate(User user) {
+		user.setInvitationCode();
+		userRepo.save(user);
+	}
+
+	/**
+	 * Generate invitation code.
+	 * @param personId
+	 * @return
+	 */
+	@RequestMapping(value="/invitation-code", method=RequestMethod.PUT)
+	@ApiMethod(description="Patient generates an invitation code.")
+	public ResponseEntity<?> setInvitationCode(@PathVariable("personId")int personId) {
+
+		User user = userRepo.findByPersonId(personId);
+
+		if(user==null){
+			MessageResponse mr = new MessageResponse();
+			mr.success = false;
+			mr.error ="Not found: personId [ " + personId + "] ";
+			mr.message = "";
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
+		}
+
+		this.generate(user);
+		userInvitationCode code = new userInvitationCode();
+		code.invitationCode = user.getInvitationCode();
+		return new ResponseEntity<>(code, HttpStatus.OK);
+	}
+
+	/**
+	 * Generate invitation code.
+	 * @param personId
+	 * @return
+	 */
+
+	@RequestMapping(value="/invitation-code", method=RequestMethod.GET)
+	@ApiMethod(description="Get current invitation code.")
+	public ResponseEntity<?> getInvitationCode(@PathVariable("personId")int personId) {
+
+		User user = userRepo.findByPersonId(personId);
+
+		if(user==null){
+			MessageResponse mr = new MessageResponse();
+			mr.success = false;
+			mr.error ="Not found: personId [ " + personId + "]";
+			mr.message = "";
+			return new ResponseEntity<>(mr, HttpStatus.NOT_FOUND);
+		}
+
+		userInvitationCode code = new userInvitationCode();
+		code.invitationCode = user.getInvitationCode();
+
+		return new ResponseEntity<>(code, HttpStatus.OK);
 	}
 }

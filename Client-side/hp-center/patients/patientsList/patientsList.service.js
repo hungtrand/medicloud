@@ -4,7 +4,7 @@ module.exports = function($http, $rootScope, $resource) {
     var invitationCode;
     var hpId = sessionStorage.getItem("medicloud_hp_id");
     var url = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/:patientId';
-    var addExistingPatientUrl = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients?addCode=:invitationCode';
+    var addExistingPatientUrl = 'http://' + window.location.hostname + ':8080/api/hp/:hpId/patients/addCode';
 
     var service = {
       patients: [{
@@ -47,6 +47,7 @@ module.exports = function($http, $rootScope, $resource) {
             return this;
         },
 
+
         addPatient: function(patient) {
           debugger;
             var client = $resource(url, {
@@ -73,19 +74,26 @@ module.exports = function($http, $rootScope, $resource) {
         },
 
         addExistingPatient: function(PIN) {
-          debugger;
           invitationCode = this.invitationCode;
           console.log('service code is ' + invitationCode);
           var client = $resource(addExistingPatientUrl, {
-            hpId: hpId,
-            invitationCode: invitationCode
+            hpId: hpId
           });
-          var result = client.save({}, {}, function(response) {
+          var result = client.save(PIN, function(response) {
+            debugger;
             if (response.personId) {
-              
-              console.log('existing patient added');
+              $rootScope.$broadcast('patientAdded');
+              service.patients.push(response);
+              $('#patientSuccessAlert').show();
+              setTimeout(function() {
+                $('#patientSuccessAlert').fadeOut('slow');
+              }, 3000);
             }
-          })
+            else {
+              $('#patientFailureAlert').show();
+            }
+              console.log('existing patient added');
+          });
         }
     }
     return service;

@@ -4,6 +4,7 @@
     var calendar_directive = require('./calendar');
     var profileView_directive = require("./profile/profile-view.directive");
     var profileEdit_directive = require("./profile/profile-edit.directive");
+    var invitationCode_directive = require("./invitation-code/invitation-code.directive");
 
     var appointmentModal_directive = require('./appointment-modal/modal.directive');
     
@@ -11,6 +12,8 @@
     var hpList_factory = require('./health-professionals/hp-list.factory');
     var encounterList_factory = require("./encounters/encounter-list.factory");
     var activeConditionList_factory = require("./active-conditions/active-condition-list.factory");
+    var labResultList_factory = require("./lab-results/lab-result-list.factory");
+    var invitationCode_factory = require("./invitation-code/invitation-code.factory");
 
     var patientCenterModel_service = require("./model.service");
 
@@ -19,6 +22,7 @@
     var healthProfessionalsDirectory_controller = require("./health-professionals/health-professionals-directory.controller");
     var encounterList_controller = require("./encounters/encounters.controller");
     var activeConditionList_controller = require("./active-conditions/active-conditions.controller");
+    var labResults_controller = require("./lab-results/lab-results.controller"); 
 
     var app = angular.module('patientCenter', ['ngRoute', 'ngResource', 'ngAnimate']);
 
@@ -29,6 +33,7 @@
         .directive('appointmentModal_directive', appointmentModal_directive)
         .directive('patientCenterProfileView', profileView_directive)
         .directive('patientCenterProfileEdit', profileEdit_directive)
+        .directive('mcPatientInvitationCode', invitationCode_directive)
     ;
 
     app
@@ -36,13 +41,15 @@
         .factory('patientCenter_hpList_factory', ['$resource', hpList_factory])
         .factory('patientCenter_encounterList_factory', ['$resource', encounterList_factory])
         .factory('patientCenter_activeConditionList_factory', ['$resource', activeConditionList_factory])
+        .factory('patientCenter_labResultList_factory', ['$resource', labResultList_factory])
+        .factory('patientCenter_invitationCode_factory', ['$resource', invitationCode_factory])
     ;
 
     app
         .service('patientCenter_model_service', 
                 ['$resource', 'patientCenter_profile_factory', 
                 'patientCenter_hpList_factory','patientCenter_encounterList_factory',
-                'patientCenter_activeConditionList_factory',
+                'patientCenter_activeConditionList_factory', 'patientCenter_labResultList_factory',
                 patientCenterModel_service])
     ;
 
@@ -57,5 +64,7 @@
             ['$scope', 'patientCenter_model_service', encounterList_controller])
         .controller("patientCenter_activeConditionList_controller",
             ['$scope', 'patientCenter_model_service', activeConditionList_controller])
+        .controller("patientCenter_labResults_controller",
+            ['$scope', 'patientCenter_model_service', labResults_controller])
     ;
 })();
