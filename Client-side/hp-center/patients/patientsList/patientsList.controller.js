@@ -23,7 +23,11 @@ module.exports = function($scope, $rootScope, service, calendarService, patient_
     
     $scope.clicked = function(patient) {
         if (!$scope.selectedPatient) {
-            $('[data-spy="affix"]').affix();
+            $('[data-spy="affix"]').affix({
+                offset: {
+                    top: 200
+                }
+            });
         }
         $scope.contactClicked = false;
 
