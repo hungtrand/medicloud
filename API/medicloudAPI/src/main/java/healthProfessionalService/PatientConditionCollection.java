@@ -1,7 +1,9 @@
 package healthProfessionalService;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import model.Person;
 import org.jsondoc.core.annotation.ApiMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,9 +20,7 @@ import model.Patient;
 import provider.MessageResponse;
 import model.ActiveCondition;
 import model.Condition;
-import repository.ActiveConditionRepo;
-import repository.ConditionRepo;
-import repository.PatientRepo;
+import repository.*;
 
 @RestController
 @RequestMapping(value="/api/hp/{hpId}/patients/{patientId}/conditions")
@@ -34,6 +34,9 @@ public class PatientConditionCollection {
 	
 	@Autowired
 	private ActiveConditionRepo activeConditionRepo;
+
+	@Autowired
+	private PersonDao personRepo;
 	
 	@Transactional
 	private Condition saveCondition(Condition newCond) {
@@ -43,11 +46,35 @@ public class PatientConditionCollection {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@ApiMethod(description="Health professional gets the active conditions of a patient.")
-	public ResponseEntity<?> getPatientActiveConditions(@PathVariable("patientId") int patientId) {
+	public ResponseEntity<?> getPatientActiveConditions(
+			@PathVariable("patientId") int patientId,
+			@PathVariable("hpId") int hpId) {
+		MessageResponse mr = new MessageResponse();
+		mr.success = false;
+
 		Patient patient = patientRepo.findByPatientId(patientId);
-		
-		List<ActiveCondition> listCond = patient.getActiveConditions();
-		return new ResponseEntity<List<ActiveCondition>>(listCond, HttpStatus.OK);
+
+		if (patient == null) {
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
+		}
+		int personId = patient.getPersonId();
+		Person person = personRepo.findByPersonId(personId);
+		List<ActiveCondition> allConditions = new ArrayList<ActiveCondition>();
+		if (person == null) {
+			mr.error = "Profile not found";
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.BAD_REQUEST);
+		} else if (patientRepo.findByHpIdAndPersonId(hpId, personId).size() > 0) {
+			List<Patient> personAsPatients = patientRepo.findByPersonId(personId);
+
+			for(int i = 0; i < personAsPatients.size(); i++){
+				List<ActiveCondition> patientConditions = personAsPatients.get(i).getActiveConditions();
+
+				allConditions.addAll(patientConditions);
+			}
+
+		}
+
+		return new ResponseEntity<List<ActiveCondition>>(allConditions, HttpStatus.OK);
 	}
 	
 	public static class newActiveCondition {

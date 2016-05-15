@@ -1,7 +1,9 @@
 package healthProfessionalService;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,15 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.HealthProfessional;
-import model.LabResult;
-import model.LabTest;
-import model.Patient;
 import provider.MessageResponse;
-import repository.HealthProfessional_repo;
-import repository.LabResultRepo;
-import repository.LabTest_repo;
-import repository.PatientRepo;
+import repository.*;
 import org.jsondoc.core.annotation.*;
 @RestController
 @RequestMapping(value="/api/hp/{hpId}/patients/{patientId}/lab-results")
@@ -37,6 +32,9 @@ public class PatientLabResultCollection {
 	
 	@Autowired
 	private LabResultRepo labResultRepo;
+
+	@Autowired
+	private PersonDao personRepo;
 	
 	@Transactional
 	private LabTest saveLabTest(String name, String category, String infermedicaLabId) {
@@ -64,12 +62,34 @@ public class PatientLabResultCollection {
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public ResponseEntity<?> getPatientLabResults(@PathVariable("patientId") int patientId) {
-		
+	public ResponseEntity<?> getPatientLabResults(
+			@PathVariable("hpId") int hpId,
+			@PathVariable("patientId") int patientId) {
+		MessageResponse mr = new MessageResponse();
+		mr.success = false;
+
 		Patient patient = patientRepo.findByPatientId(patientId);
-		
-		List<LabResult> listLabs = patient.getLabResults();
-		return new ResponseEntity<List<LabResult>>(listLabs, HttpStatus.OK);
+
+		if (patient == null) {
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
+		}
+		int personId = patient.getPersonId();
+		Person person = personRepo.findByPersonId(personId);
+		List<LabResult> allLabs = new ArrayList<LabResult>();
+		if (person == null) {
+			mr.error = "Profile not found";
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.BAD_REQUEST);
+		} else if (patientRepo.findByHpIdAndPersonId(hpId, personId).size() > 0) {
+			List<Patient> personAsPatients = patientRepo.findByPersonId(personId);
+
+			for(int i = 0; i < personAsPatients.size(); i++){
+				List<LabResult> patientLabs = personAsPatients.get(i).getLabResults();
+
+				allLabs.addAll(patientLabs);
+			}
+
+		}
+		return new ResponseEntity<List<LabResult>>(allLabs, HttpStatus.OK);
 	}
 	
 	public static class newLabResult {

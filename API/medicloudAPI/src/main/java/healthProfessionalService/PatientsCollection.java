@@ -222,7 +222,6 @@ public class PatientsCollection {
 	/**
 	 * Health professional add existing patient to his/her connection.
 	 * @param hpId
-	 * @param personId
 	 * @param addCode
 	 * @return
 	 */
@@ -246,9 +245,9 @@ public class PatientsCollection {
 		List<Patient> temp = new ArrayList<Patient>();
 		temp = (List<Patient>) patientRepo.findByPersonId(personId);
 		
-		Patient connected = patientRepo.findByHpIdAndPersonId(hpId, personId);
+		List<Patient> connected = patientRepo.findByHpIdAndPersonId(hpId, personId);
 		
-		if(connected != null){
+		if(connected.size() > 0){
 			MessageResponse mr = new MessageResponse();
 			mr.success = false;
 			mr.error ="Cannot Add this patient!";

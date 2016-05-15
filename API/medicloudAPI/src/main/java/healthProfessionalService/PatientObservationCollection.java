@@ -1,7 +1,9 @@
 package healthProfessionalService;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,15 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.jsondoc.core.annotation.*;
-import model.Encounter;
-import model.HealthProfessional;
-import model.Observation;
-import model.Patient;
 import provider.MessageResponse;
-import repository.EncounterRepo;
-import repository.HealthProfessional_repo;
-import repository.ObservationRepo;
-import repository.PatientRepo;
+import repository.*;
 
 @RestController
 @RequestMapping(value="/api/hp/{hpId}/patients/{patientId}/observations")
@@ -37,6 +32,9 @@ public class PatientObservationCollection {
 	
 	@Autowired
 	private EncounterRepo encounterRepo;
+
+	@Autowired
+	private PersonDao personRepo;
 	
 	@Transactional
 	private Encounter saveEncounter(String encounterDate, String encounterReason, Patient pt, HealthProfessional hp) {
@@ -53,12 +51,36 @@ public class PatientObservationCollection {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@ApiMethod(description="Health professional gets list of all observations of an individual patient.")
-	public ResponseEntity<?> getPatientObservations(@ApiPathParam(name="patient id", description="requries patient id")@PathVariable("patientId") int patientId) {
-		
+	public ResponseEntity<?> getPatientObservations(
+			@ApiPathParam(name="health professional id", description="requires health professional")
+			@PathVariable("hpId") int hpId,
+			@ApiPathParam(name="patient id", description="requries patient id")
+			@PathVariable("patientId") int patientId) {
+		MessageResponse mr = new MessageResponse();
+		mr.success = false;
+
 		Patient patient = patientRepo.findByPatientId(patientId);
-		
-		List<Observation> listObs = patient.getObservations();
-		return new ResponseEntity<List<Observation>>(listObs, HttpStatus.OK);
+
+		if (patient == null) {
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
+		}
+		int personId = patient.getPersonId();
+		Person person = personRepo.findByPersonId(personId);
+		List<Observation> allObservations = new ArrayList<Observation>();
+		if (person == null) {
+			mr.error = "Profile not found";
+			return new ResponseEntity<MessageResponse>(mr, HttpStatus.BAD_REQUEST);
+		} else if (patientRepo.findByHpIdAndPersonId(hpId, personId).size() > 0) {
+			List<Patient> personAsPatients = patientRepo.findByPersonId(personId);
+
+			for(int i = 0; i < personAsPatients.size(); i++){
+				List<Observation> patientObservations = personAsPatients.get(i).getObservations();
+
+				allObservations.addAll(patientObservations);
+			}
+
+		}
+		return new ResponseEntity<List<Observation>>(allObservations, HttpStatus.OK);
 	}
 	
 	public static class newObservationForm {
