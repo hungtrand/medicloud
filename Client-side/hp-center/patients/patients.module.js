@@ -6,7 +6,7 @@ module.exports = function() {
 	var auth = require("../../Shared/authorization.interceptor");
 
 
-	var app = angular.module('hpPatientList', ['ngRoute']);
+	var app = angular.module('hpPatientList', ['ngRoute', 'hpCalendar', 'hpPatient']);
 	app.config(['$routeProvider', '$httpProvider',
 		function($routeProvider, $httpProvider) {
 			'use strict';
@@ -27,6 +27,7 @@ module.exports = function() {
 	app.directive('modalDialog', ["$rootScope", formAddPatient_dir]);
 
 	// controllers
-	app.controller("patientsList_ctrl", ['$scope', '$rootScope', 'patientsListService', patientsList_ctrl]);
+	app.controller("patientsList_ctrl", ['$scope', '$rootScope', 
+                'patientsListService', 'calendarService', 'patient_factory', patientsList_ctrl]);
 
 }

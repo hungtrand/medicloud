@@ -44,7 +44,7 @@ module.exports = function() {
         .service('infermedicaConditions_serv', 
                 ['$resource', '$rootScope', infermedicaConditions_serv])
         .service('patient_factory', 
-                ['$resource', '$rootScope', 'activeCondition_factory', 
+                ['$resource', '$rootScope', '$filter', 'activeCondition_factory', 
                 'observation_factory', 'encounterList_factory', 'labResult_factory'
                 , patient_factory])
     ;

@@ -30,7 +30,7 @@
                 <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Appointments</span>
-                    <span class="info-box-number">3</span>
+                    <span class="info-box-number">{{ appointments.length }}</span>
                     <span class="progress-description">
                         Upcoming
                     </span>
@@ -73,9 +73,10 @@
             </div>
         </div>
         <div ng-show="contactClicked" 
-            class="col col-xs-6 ng-animate nga-default nga-stagger nga-fade-add">
+            class="col col-xs-6 ng-animate nga-default nga-stagger nga-fade-add"
+            data-spy="affix" data-offset-top="200" >
             <div class="bootcards-card">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left">Patient Information</h3>
                         <a class="btn btn-primary pull-right btn-flat" ng-href="#/patient/{{selectedPatient.patientId}}">
@@ -89,9 +90,15 @@
                             <h4 class="list-group-item-heading">{{selectedPatient.firstName}} {{selectedPatient.lastName}}</h4>
                         </div>
 
-                        <div class="list-group-item">
+                        <div class="list-group-item" ng-show="selectedPatient.gender">
                             <p class="list-group-item-text">Gender</p>
-                            <h4 class="list-group-item-heading">{{ patient.gender }}</h4>
+                            <h4 class="list-group-item-heading">{{ selectedPatient.gender }}</h4>
+                        </div>
+
+                        <div class="list-group-item" ng-show="selectedPatient.contact.phone">
+                            <p class="list-group-item-text">Phone</p>
+                            <h4 class="list-group-item-heading">{{
+                                selectedPatient.contact.phone }}</h4>
                         </div>
 
                         <div class="list-group-item">
@@ -103,14 +110,47 @@
                             <h4 class="list-group-item-heading">{{selectedPatient.birthdate}}</h4>
                         </div>
 
+                        <div class="list-group-item list-group-item-danger"
+                            ng-show="selectedPatient.conditions[0]">
+                            <label class="text-danger">
+                                Last Active Condition:
+                            </label><br />
+                            {{ selectedPatient.conditions[0].name }}
+                            <label class="badge">
+                                {{ selectedPatient.conditions[0].dateCreated }}
+                            </label>
+                        </div>
+                        
+                        <div class="list-group-item list-group-item-warning"
+                            ng-show="selectedPatient.labs[0]">
+                            <label class="text-warning">
+                                Last Updated Lab Test:
+                            </label><br />
+                            {{ selectedPatient.labs[0].name }}
+                            <label class="label label-warning">
+                                {{ selectedPatient.labs[0].status }}
+                            </label>
+                            <label class="badge"
+                                ng-show="selectedPatient.labs[0]">
+                                {{ selectedPatient.labs[0].lastUpdated }}
+                            </label>
+                        </div>
+
+                        <div class="list-group-item list-group-item-info"
+                            ng-show="selectedPatient.encounters[0]">
+                            <label class="text-info">
+                                Last Visit:
+                            </label><br />
+                            <u>Reason:</u> 
+                            {{ selectedPatient.encounters[0].description }}
+                            <label class="badge"
+                                ng-show="selectedPatient.encounters[0]">
+                                {{ selectedPatient.encounters[0].encounterDateTime }}
+                            </label>
+                        </div>
+
                     </div>
                     <div class="panel-footer">
-                        <a href="pages/calendar.html">
-                            <i class="fa fa-fw fa-calendar"></i>
-                        </a>
-                        <a href="pages/mailbox/mailbox.html">
-                            <i class="fa fa-fw fa-envelope"></i>
-                        </a>
                     </div>
                 </div>
             </div>

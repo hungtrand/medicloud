@@ -1127,7 +1127,7 @@ module.exports = function($scope, models_service, $route, $routeParams) {
 	}
 }
 },{}],26:[function(require,module,exports){
-module.exports = function($resource, $rootScope, 
+module.exports = function($resource, $rootScope, $filter, 
             activeCondition_factory, observation_factory, 
             encounterList_factory, labResult_factory) {
     var hpId = sessionStorage.getItem("medicloud_hp_id");
@@ -1160,7 +1160,7 @@ module.exports = function($resource, $rootScope,
         this.encounters = [];
         this.labs = [];
         this.lastVisit = null;
-        this.fetch();
+        this.$promise = this.fetch();
     }
 
     patient.prototype = {
@@ -1184,7 +1184,7 @@ module.exports = function($resource, $rootScope,
                 self.onFailureCallback.call(self, response);
             });
 
-            return promise;
+            return promise.$promise;
         }
         , fetchConditions: function() {
             var self = this;
@@ -1194,7 +1194,9 @@ module.exports = function($resource, $rootScope,
             var promise = cond_client.query({
                 patientId: self.patientId
             }, function(response) {
-                angular.copy(response, self.conditions);
+                var sorted = $filter('orderBy')(response, '-dateCreated');
+                angular.copy(sorted, self.conditions);
+                
             }, function(response) {
                 $rootScope.$broadcast('error', response);
             }).$promise;
@@ -1267,7 +1269,8 @@ module.exports = function($resource, $rootScope,
             var newList = encounterList_factory.query(
                     { hpId: hpId, patientId: self.patientId }
                     , function(response) {
-                        angular.copy(response, self.encounters);
+                        var sorted = $filter('orderBy')(response, '-encounterDateTime');
+                        angular.copy(sorted, self.encounters);
                         if (self.encounters.length > 0) {
                             self.lastVisit = self.encounters[0].encounterDateTime;
                         }
@@ -1286,7 +1289,8 @@ module.exports = function($resource, $rootScope,
             var newList = labResult_factory.query(
                     {hpId: hpId, patientId: self.patientId }
                     , function(response) {
-                        angular.copy(response, self.labs);
+                        var sorted = $filter('orderBy')(response, '-lastUpdated');
+                        angular.copy(sorted, self.labs);
                     }
                     , function(failure) {
                         $rootScope.$broadcast('error', failure);  
@@ -1363,7 +1367,7 @@ module.exports = function() {
         .service('infermedicaConditions_serv', 
                 ['$resource', '$rootScope', infermedicaConditions_serv])
         .service('patient_factory', 
-                ['$resource', '$rootScope', 'activeCondition_factory', 
+                ['$resource', '$rootScope', '$filter', 'activeCondition_factory', 
                 'observation_factory', 'encounterList_factory', 'labResult_factory'
                 , patient_factory])
     ;
@@ -1480,7 +1484,7 @@ module.exports = function() {
 	var auth = require("../../Shared/authorization.interceptor");
 
 
-	var app = angular.module('hpPatientList', ['ngRoute']);
+	var app = angular.module('hpPatientList', ['ngRoute', 'hpCalendar', 'hpPatient']);
 	app.config(['$routeProvider', '$httpProvider',
 		function($routeProvider, $httpProvider) {
 			'use strict';
@@ -1501,12 +1505,13 @@ module.exports = function() {
 	app.directive('modalDialog', ["$rootScope", formAddPatient_dir]);
 
 	// controllers
-	app.controller("patientsList_ctrl", ['$scope', '$rootScope', 'patientsListService', patientsList_ctrl]);
+	app.controller("patientsList_ctrl", ['$scope', '$rootScope', 
+                'patientsListService', 'calendarService', 'patient_factory', patientsList_ctrl]);
 
 }
 
 },{"../../Shared/authorization.interceptor":1,"./formAddPatient/formAddPatient.directive":29,"./patientsList/patientsList.controller":31,"./patientsList/patientsList.service":32}],31:[function(require,module,exports){
-module.exports = function($scope, $rootScope, service) {
+module.exports = function($scope, $rootScope, service, calendarService, patient_factory) {
     $scope.patientList = [];
     getPatients();
     $scope.status;
@@ -1520,19 +1525,29 @@ module.exports = function($scope, $rootScope, service) {
     var validBirthdate = false;
     var validEmail = false;
     var newPatient = true;
+
+    $scope.appointments = calendarService.appointments;
+
     $('#patientSuccessAlert').hide();
     $('#patientFailureAlert').hide();
 
     $scope.clicked = function(patient) {
         $scope.contactClicked = false;
 
-        setTimeout(function() {
-            $scope.contactClicked = true;
-            $scope.selectedPatient = patient;
-            $scope.$apply();
-        }, 200);
-        
+        $scope.contactClicked = true;
+        $scope.selectedPatient = patient;
+        var fullProfile = new patient_factory(patient.patientId);
+        fullProfile.$promise.then(function() {
+            $scope.selectedPatient = fullProfile;
+            $scope.selectedPatient.fetchConditions();
+            $scope.selectedPatient.fetchEncounters();
+            $scope.selectedPatient.fetchLabResults();
+        });
+    
     }
+    $(document).on('dblclick', function() {
+        console.log($scope.selectedPatient);
+    });
 
     $rootScope.$on('patientAdded', function() {
         $scope.waiting = false;

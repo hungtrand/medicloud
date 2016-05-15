@@ -1,4 +1,4 @@
-module.exports = function($scope, $rootScope, service) {
+module.exports = function($scope, $rootScope, service, calendarService, patient_factory) {
     $scope.patientList = [];
     getPatients();
     $scope.status;
@@ -12,19 +12,29 @@ module.exports = function($scope, $rootScope, service) {
     var validBirthdate = false;
     var validEmail = false;
     var newPatient = true;
+
+    $scope.appointments = calendarService.appointments;
+
     $('#patientSuccessAlert').hide();
     $('#patientFailureAlert').hide();
 
     $scope.clicked = function(patient) {
         $scope.contactClicked = false;
 
-        setTimeout(function() {
-            $scope.contactClicked = true;
-            $scope.selectedPatient = patient;
-            $scope.$apply();
-        }, 200);
-        
+        $scope.contactClicked = true;
+        $scope.selectedPatient = patient;
+        var fullProfile = new patient_factory(patient.patientId);
+        fullProfile.$promise.then(function() {
+            $scope.selectedPatient = fullProfile;
+            $scope.selectedPatient.fetchConditions();
+            $scope.selectedPatient.fetchEncounters();
+            $scope.selectedPatient.fetchLabResults();
+        });
+    
     }
+    $(document).on('dblclick', function() {
+        console.log($scope.selectedPatient);
+    });
 
     $rootScope.$on('patientAdded', function() {
         $scope.waiting = false;

@@ -1,4 +1,4 @@
-module.exports = function($resource, $rootScope, 
+module.exports = function($resource, $rootScope, $filter, 
             activeCondition_factory, observation_factory, 
             encounterList_factory, labResult_factory) {
     var hpId = sessionStorage.getItem("medicloud_hp_id");
@@ -31,7 +31,7 @@ module.exports = function($resource, $rootScope,
         this.encounters = [];
         this.labs = [];
         this.lastVisit = null;
-        this.fetch();
+        this.$promise = this.fetch();
     }
 
     patient.prototype = {
@@ -55,7 +55,7 @@ module.exports = function($resource, $rootScope,
                 self.onFailureCallback.call(self, response);
             });
 
-            return promise;
+            return promise.$promise;
         }
         , fetchConditions: function() {
             var self = this;
@@ -65,7 +65,9 @@ module.exports = function($resource, $rootScope,
             var promise = cond_client.query({
                 patientId: self.patientId
             }, function(response) {
-                angular.copy(response, self.conditions);
+                var sorted = $filter('orderBy')(response, '-dateCreated');
+                angular.copy(sorted, self.conditions);
+                
             }, function(response) {
                 $rootScope.$broadcast('error', response);
             }).$promise;
@@ -138,7 +140,8 @@ module.exports = function($resource, $rootScope,
             var newList = encounterList_factory.query(
                     { hpId: hpId, patientId: self.patientId }
                     , function(response) {
-                        angular.copy(response, self.encounters);
+                        var sorted = $filter('orderBy')(response, '-encounterDateTime');
+                        angular.copy(sorted, self.encounters);
                         if (self.encounters.length > 0) {
                             self.lastVisit = self.encounters[0].encounterDateTime;
                         }
@@ -157,7 +160,8 @@ module.exports = function($resource, $rootScope,
             var newList = labResult_factory.query(
                     {hpId: hpId, patientId: self.patientId }
                     , function(response) {
-                        angular.copy(response, self.labs);
+                        var sorted = $filter('orderBy')(response, '-lastUpdated');
+                        angular.copy(sorted, self.labs);
                     }
                     , function(failure) {
                         $rootScope.$broadcast('error', failure);  

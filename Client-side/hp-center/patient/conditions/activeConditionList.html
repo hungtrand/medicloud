@@ -19,7 +19,7 @@
 	<div class="post" 
 		mc-active-condition 
 		active-condition="condition" 
-		ng-repeat="condition in patient.conditions | orderBy: '-conditionId'"
+		ng-repeat="condition in patient.conditions | orderBy:'-dateCreated'"
                 observation-picker="observationPickerControl"></div>
 
         <mc-observation-picker control="observationPickerControl"></mc-observation-picker>
