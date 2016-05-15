@@ -20,6 +20,7 @@ module.exports = function($scope, $rootScope, service, calendarService, patient_
     };
     $('#patientSuccessAlert').hide();
     $('#patientFailureAlert').hide();
+    $('[data-spy="affix"]').affix();
 
     $scope.clicked = function(patient) {
         $scope.contactClicked = false;
