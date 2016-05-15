@@ -65,7 +65,7 @@ public class User implements UserDetails {
 	private int personId;
 	
 	@Column(name="invitation_code", nullable=true)
-	private int invitationCode;
+	private int invitationCode = 100000;
 	
 	@OneToOne(cascade=CascadeType.ALL)  
     @JoinTable(name="user_role",  
@@ -94,6 +94,12 @@ public class User implements UserDetails {
 	public int setInvitationCode(){
 		SecureRandom random = new SecureRandom();
 		int number = random.nextInt(1000000);		
+		if(number < 100000){
+			number = number + 100000;
+			this.invitationCode = number;
+			
+			return this.invitationCode;
+		}
 		this.invitationCode = number;
 		
 		return this.invitationCode;

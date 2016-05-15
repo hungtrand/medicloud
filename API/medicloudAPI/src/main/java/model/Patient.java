@@ -1,4 +1,5 @@
 package model;
+import java.security.SecureRandom;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,6 +56,9 @@ public class Patient {
 	@Column(name="patient_since_date")
 	private Date patientSinceDate;
 	
+	@Column(name="share_code", nullable=true)
+	private Integer sharableCode = 100000;
+	
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="patient", orphanRemoval=true)
 	private Set<Appointment> appointment;
 	
@@ -99,6 +103,24 @@ public class Patient {
 	@JsonIgnore
 	public List<Encounter> getEncounters() {
 		return this.encounters;
+	}
+	
+	public Integer getShareCode(){
+		return this.sharableCode;
+	}
+	
+	public Integer setShareCode(){
+		SecureRandom random = new SecureRandom();
+		Integer number = random.nextInt(1000000);
+		if(number < 100000){
+			number = number + 100000;
+			this.sharableCode = number;
+			
+			return this.sharableCode;
+		}
+		this.sharableCode = number;
+		
+		return this.sharableCode;
 	}
 	
 	@JsonIgnore 

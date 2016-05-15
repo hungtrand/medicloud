@@ -228,7 +228,7 @@ public class PatientsCollection {
 	 */
 	@RequestMapping(value="/addCode", method=RequestMethod.POST)
 	@ApiMethod(description="Health Professional adds an existing Patient")
-	public ResponseEntity<?> addExistingPatient(
+	public Patient addExistingPatient(
 			@ApiPathParam(name="Health Professional Id")@PathVariable("hpId")int hpId
 			, @RequestBody User addCode){
 		
@@ -253,7 +253,7 @@ public class PatientsCollection {
 			mr.success = false;
 			mr.error ="Cannot Add this patient!";
 			mr.message = "Patient is connected";
-			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_ACCEPTABLE);
+			//return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_ACCEPTABLE);
 		}
 		
 		
@@ -268,7 +268,7 @@ public class PatientsCollection {
 			mr.success = false;
 			mr.error = "Not Found: Invitation Code: [ " + addCode + " ] ";
 			mr.message = "Wrong inviation code.";
-			return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
+			//return new ResponseEntity<MessageResponse>(mr, HttpStatus.NOT_FOUND);
 		}
 	
 		Person person = personDao.findByPersonId(personId);
@@ -278,7 +278,7 @@ public class PatientsCollection {
 		Patient patient = Patient.create(person, hp);
 		patientRepo.save(patient);
 		
-		return new ResponseEntity<String>("Success!",HttpStatus.OK );
+		return patient;
 	}
 	
 	

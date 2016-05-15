@@ -15,6 +15,9 @@ module.exports = function($scope, $rootScope, service, calendarService, patient_
 
     $scope.appointments = calendarService.appointments;
 
+    var existingPatientCode = {
+      invitationCode: 123456
+    };
     $('#patientSuccessAlert').hide();
     $('#patientFailureAlert').hide();
 
@@ -37,6 +40,7 @@ module.exports = function($scope, $rootScope, service, calendarService, patient_
     });
 
     $rootScope.$on('patientAdded', function() {
+        $scope.modalShown = false;
         $scope.waiting = false;
         $('#AddPatientForm')[0].reset();
     });
@@ -55,8 +59,9 @@ module.exports = function($scope, $rootScope, service, calendarService, patient_
         $scope.waiting = true;
         if (!newPatient) {
           service.invitationCode = newPatientData;
+          existingPatientCode.invitationCode = newPatientData;
           console.log('in contoller: code is' + newPatientData);
-          service.addExistingPatient(newPatientData);
+          service.addExistingPatient(existingPatientCode);
         }
         else {
             service.addPatient(newPatientData)
