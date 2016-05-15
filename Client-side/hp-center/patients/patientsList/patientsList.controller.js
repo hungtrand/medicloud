@@ -20,9 +20,11 @@ module.exports = function($scope, $rootScope, service, calendarService, patient_
     };
     $('#patientSuccessAlert').hide();
     $('#patientFailureAlert').hide();
-    $('[data-spy="affix"]').affix();
-
+    
     $scope.clicked = function(patient) {
+        if (!$scope.selectedPatient) {
+            $('[data-spy="affix"]').affix();
+        }
         $scope.contactClicked = false;
 
         $scope.contactClicked = true;
@@ -36,10 +38,7 @@ module.exports = function($scope, $rootScope, service, calendarService, patient_
         });
     
     }
-    $(document).on('dblclick', function() {
-        console.log($scope.selectedPatient);
-    });
-
+   
     $rootScope.$on('patientAdded', function() {
         $scope.modalShown = false;
         $scope.waiting = false;
