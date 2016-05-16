@@ -15,7 +15,7 @@ module.exports = function($resource, $rootScope) {
             }
         );
     labResult.prototype.name = "";
-    labResult.prototype.status = "Started";
+    labResult.prototype.status = "";
     labResult.prototype.result = "";
     labResult.prototype.hpId = null;
     labResult.prototype.patientId = null;

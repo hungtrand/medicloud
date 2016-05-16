@@ -44,7 +44,7 @@ module.exports = function($scope, models_service, $route, $routeParams,
             lab.$update().then(
                 function() {
                     lab.loading = false;
-                    lab.edit = false;
+                    lab.mode = '';
                 },
                 function(failure) {
                     lab.loading = false;

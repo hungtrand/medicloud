@@ -24,13 +24,13 @@
                         {{ lab.labResultId }}
                          <br />
                         <button class="btn btn-xs btn-default"
-                            ng-if="lab.mode!='edit'"
+                            ng-show="lab.mode!='edit'"
                             ng-click="lab.edit()">
                             <i class="fa fa-edit"></i> 
                             Edit</button>
 
                         <button class="btn btn-xs btn-warning"
-                                ng-if="lab.mode=='edit'"
+                                ng-show="lab.mode=='edit'"
                                 ng-click="saveLab(lab)">
                                 <i class="fa fa-save" ng-hide="lab.loading"></i> 
                                 <i class="fa fa-spin fa-spinner"

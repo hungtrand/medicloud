@@ -38,7 +38,10 @@ public class PatientLabResultCollection {
 	
 	@Transactional
 	private LabTest saveLabTest(String name, String category, String infermedicaLabId) {
-		LabTest labTest = labTestRepo.findByInfermedicaLabId(infermedicaLabId); 
+		LabTest labTest = null;
+		if (infermedicaLabId != null && (infermedicaLabId + "").length() > 0) {
+			labTest = labTestRepo.findByInfermedicaLabId(infermedicaLabId);
+		}
 		
 		if (labTest == null) {
 			labTest = labTestRepo.findByName(name);
